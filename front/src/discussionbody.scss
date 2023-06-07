@@ -1,0 +1,19 @@
+// Pour la page discussion
+
+body {
+    overflow: hidden !important;
+  }
+
+.liste-conv, .messages{
+    overflow-y: scroll !important;
+    height: 100vh !important;
+  }
+
+.liste-conv::-webkit-scrollbar{
+    display: none !important;
+  }
+.messages::-webkit-scrollbar{
+    display: none !important;
+  }
+
+  // fin de la page discussion
