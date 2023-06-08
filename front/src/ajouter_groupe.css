@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+h2 {
+    text-align: left;
+    margin-left: 130px;     
+
+}
+
+#exampleFormControlInputid {
+    width : 20% ; 
+   
+}
+
+#exampleFormControlInputnom {
+    width : 20%;
+}
+
+.btn {
+    background-color: #b43030;
+    border-color: #b43030;
+    color : white;
+    width : 8%;
+}
