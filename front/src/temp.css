@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+.form-label-1{
+    position: relative;   
+    right: 255px;
+}
+
+.form-label-2{
+    position: relative;   
+    right: 247px;
+}
+
+.form-label-4{
+    position: relative;   
+    right: 234px;
+}
+
+.Enregistrer{
+    height: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+h2{
+    margin-top: 20px;
+    margin-left: 85px;
+    margin-bottom:10px ;
+}
+
+.mb-4{
+    height: 44px;
+}
+
+.btn{
+   background-color: #b43030;
+   border-color: #b43030;
+   color: white;
+}
+
+
