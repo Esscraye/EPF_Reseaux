@@ -1,4 +1,4 @@
-import ViewHome from '../views/discu';
+import ViewHome from '../views/home';
 
 const Home = class Home {
   constructor() {
