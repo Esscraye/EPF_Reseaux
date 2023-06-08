@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+.infoperso {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.prenom{
+    margin-bottom: 20px;
+}
+.nom{
+    margin-bottom: 20px;
+}
+.email{
+    margin-bottom: 20px;
+}
+.description{
+    margin-bottom: 25px;
+}
+.grou {
+    
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.promo{
+    margin-bottom: 20px;
+}
+.classe{
+    margin-bottom: 20px;
+}
+.groupedetp{
+    margin-bottom: 20px;
+}
+.association{
+    margin-bottom: 25px;
+}
+
+.name {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.modifprof{
+    text-align: center;
+}
+
+
+.imageprof{
+    width : 150px;
+    margin-left: 110px; 
+    margin-top: 10px;
+}
+
+.border{
+    margin-top: 30px;
+}
