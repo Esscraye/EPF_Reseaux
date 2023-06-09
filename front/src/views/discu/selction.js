@@ -9,6 +9,11 @@ export default () => (`
         ${Block()}
         ${Block()}
         ${Block()}
+        ${Block()}
+        ${Block()}
+        ${Block()}
+        ${Block()}
+        ${Block()}
     </div>
     <div class="row mt-3">
         <h4 class="text-white text-center">Individuel</h4>
