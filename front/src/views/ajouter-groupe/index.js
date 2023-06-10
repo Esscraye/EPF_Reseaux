@@ -12,11 +12,11 @@ export default () => (`
       </div>
       <div class="mb-4">
           <label for="exampleFormControlInput1" class="form-label">Identifiant</label>
-          <input type="email" class="form-control border-black" id="exampleFormControlInputid1" placeholder="Saisir l'identifiant">
+          <input type="email" class="form-control border-black" id="exampleFormControlInput1" placeholder="Saisir l'identifiant">
       </div>
       <div class="mb-4">
           <label for="exampleFormControlInput2" class="form-label">Nom du groupe</label>
-          <input type="email" class="form-control border-black" id="exampleFormControlInputid2" placeholder="Saisir le nom du groupe">
+          <input type="email" class="form-control border-black" id="exampleFormControlInput2" placeholder="Saisir le nom du groupe">
       </div>
       <button type="button" class="btn">Ajouter</button>
   </div>
