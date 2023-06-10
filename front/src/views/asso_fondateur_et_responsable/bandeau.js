@@ -9,8 +9,6 @@ export default () => (`
                     </div>
                     <div class="col-2">
                         <div class="row pt-3">
-                            <div class="col-4"><button type="button" class="btn btn-primary btn-sm">Supprimer</button>
-                            </div>
                             <div class="col-4"><button type="button" class="btn btn-primary btn-sm">membres</button>
                             </div>
                             <div class="col-4"><button type="button" class="btn btn-primary btn-sm">Modifier</button>
