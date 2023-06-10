@@ -3,7 +3,6 @@ import ViewHome from '../views/creaassos';
 const Home = class Home {
   constructor() {
     this.el = document.body;
-
     this.run();
   }
 
@@ -11,5 +10,4 @@ const Home = class Home {
     this.el.innerHTML = ViewHome();
   }
 };
-
 export default Home;

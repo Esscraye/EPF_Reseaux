@@ -1,5 +1,5 @@
-import Nav from '../home/nav';
-import Foot from '../home/foot';
+import Nav from '../home/header';
+import Foot from '../home/footer';
 import Form from './form';
 
 export default () => (

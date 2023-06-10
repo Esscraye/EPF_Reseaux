@@ -20,7 +20,7 @@ export default () => (`<div class="container-fluid text-center">
         <a href="https://fr.linkedin.com/" target="_blank" class=""><i class="ri-linkedin-box-fill"></i></a>
     </div>
     <div class="col-2">
-        <button type="button" class="btn btn-primary btn-sm">Modifier</button>
+        <button type="button" class="btn btn-danger">Modifier</button>
     </div>
 </div>
 </div>`);

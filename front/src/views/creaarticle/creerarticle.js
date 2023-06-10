@@ -17,7 +17,7 @@ const creerarticle = () => (`
                     </div>
                     <div class="col-3">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Type de l'actualité
                             </button>
                             <ul class="dropdown-menu">
@@ -37,7 +37,7 @@ const creerarticle = () => (`
                         </div>
                     </div>
                     <div class="col-3">
-                        <button type="button" class="mt-4 btn btn-primary">Poster l'actualité</button>
+                        <button type="button" class="mt-4 btn btn-danger">Poster l'actualité</button>
                     </div>
                 </div>
             </div>
