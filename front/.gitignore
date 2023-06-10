@@ -1,5 +1,6 @@
 dist/
 node_modules/
+Baleras_test/
 .DS_Store
 npm-debug.log
 yarn-error.log
