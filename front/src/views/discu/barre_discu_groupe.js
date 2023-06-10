@@ -1,7 +1,7 @@
 import Bulle from './bulle_nom';
 
 export default () => (`
-    <div class="row bg-danger border border-dark border-end-0 border-start-0 border-top-0">
+    <div class="row bg-danger border mt-0 border-dark border-end-0 border-start-0 border-top-0">
         <div class="col-3 mt-1">
             <div class="row text-center mx-0">
                 <div class="col-3 mb-1"><img src="https://tse3.mm.bing.net/th?id=OIP.-xJE4WTayjrJUhukEsN1VwHaHa&pid=Api&P=0&h=180" class="rounded-circle" alt="..." width="40"></div>
