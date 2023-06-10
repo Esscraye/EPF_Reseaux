@@ -11,7 +11,7 @@ const creerarticle = () => (`
                         <p class="text-start">Titre de l'actualité</p>
 
                         <div class="form-floating">
-                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextareaTitle"></textarea>
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextareaTitle">
                             <label for="floatingTextareaTitle">Titre</label>
                         </div>
                     </div>
