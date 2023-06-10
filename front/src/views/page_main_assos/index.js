@@ -1,5 +1,5 @@
-import header from '../home/nav';
-import footer from '../home/foot';
+import header from '../home/header';
+import footer from '../home/footer';
 import card from './card';
 
 export default () => (
