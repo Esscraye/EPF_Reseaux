@@ -1,9 +1,16 @@
 @charset "utf-8";
 
-h2 {
+.divcent{
+    margin-top: 40px;
+}
+.ajt_groupe{
+    margin-bottom: 60px;
     text-align: left;
-    margin-left: 130px;     
+    margin-left: 130px;
+}
 
+.mb-4{
+    margin-bottom: 200px;
 }
 
 #exampleFormControlInputid {
