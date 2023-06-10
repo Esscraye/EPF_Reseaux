@@ -14,14 +14,6 @@ export default () => (`
                                 <div class="col-md-4 d-grid gap-2 mt-2">
                                 <div class="mt-1">
                                     <button type="button" class="btn btn-primary">
-                                        Modifier</button>
-                                </div>
-                                <div class="mt-1">
-                                    <button type="button" class="btn btn-primary">
-                                        Supprimer</button>
-                                </div>
-                                <div class="mt-1">
-                                    <button type="button" class="btn btn-primary">
                                         Voir</button>
                                 </div>
                                 </div>
