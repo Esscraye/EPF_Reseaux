@@ -11,23 +11,25 @@ export default () => (`
         <div class="col-3 liste-conv bg-danger">
             ${Selection()}  
         </div> 
-        <div class="col-9 messages">
+        <div class="col-9 messages-container">
             ${DiscuGroupe()}
-            ${MessG()}
-            ${Heure()}
-            ${MessD()}
-            ${MessD()}
-            ${Heure()}
-            ${MessG()}
-            ${MessG()}
-            ${MessG()}
-            ${Heure()}
-            ${MessD()}
-            ${MessD()}
-            ${MessD()}
-            ${MessD()}
-            ${MessD()}
-            ${MessD()}
+            <div class="messages">
+                ${MessG()}
+                ${Heure()}
+                ${MessD()}
+                ${MessD()}
+                ${Heure()}
+                ${MessG()}
+                ${MessG()}
+                ${MessG()}
+                ${Heure()}
+                ${MessD()}
+                ${MessD()}
+                ${MessD()}
+                ${MessD()}
+                ${MessD()}
+                ${MessD()}
+            </div>
             ${EnvoiMess()}
         </div>
     </div>
