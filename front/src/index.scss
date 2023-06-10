@@ -1,76 +1,115 @@
 @charset "utf-8";
+@import url("https://cdn.jsdelivr.net/npm/remixicon@3.3.0/fonts/remixicon.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
-:root {
-    --container: #eee;
-    --text: #111;
-    --back: #fff;
-    --border: #555;
-    --couleur1: #ce371c;
-    --couleur2 : #e86f24;
-  }
+/* ================================================== */
+/* Initialisation des variables */
+/* ================================================== */
+
+$container: #eee;
+$text: #111;
+$back: #fff;
+$border: #555;
+$couleur1: #ce371c;
+$couleur2 : #e86f24;
+
+/* ================================================== */
+/* Général */
+/* ================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: $back !important;
+}
+
+a:hover{
+    color:$text !important;
+}
+
+.btn {
+    background-color: #b43030;
+    border-color: #b43030;
+    color : white;
+    border: 1px solid $back !important;
+}
+
+.btn:hover{
+    background-color:$couleur2 !important;
+}
+
+html{
+    min-height: 100%;
+}
+
+body {
+    overflow-x:hidden;
+    overflow-y:auto;
+    min-height: 100%;
+}
+
+h2{
+    margin-top: 20px;
+    margin-left: 85px;
+    margin-bottom:10px ;
+}
+
+/* ================================================== */
+/* Partie HEADER */
+/* ================================================== */
+header {
+    position: relative;
+}
 
 .navbar{
-    background-color: var(--couleur1);
+    background-color: $couleur1;
     color: azure;
 }
 
 .navbar a{
-    color:var(--back);
+    color:$back;
     text-decoration: none;
     margin:1em;
 }
 
-a:hover{
-    color:var(--text) !important;
-}
-
-.btn{
-color: var(--back) !important;
-border: 1px solid var(--back) !important;
-}
-
-.btn:hover{
-    background-color:var(--couleur2) !important;
-}
+/* ================================================== */
+/* Partie FOOTER */
+/* ================================================== */
 
 footer{
     position: relative;
-    left: 0;
-    bottom: 0;
     width: 100%;
-    align-items: center;
-    margin-top: auto;
+    text-align: center;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
-    left:0;
-    right:0;
-    border: 1px solid var(--couleur1);
-    margin-top:auto;
     height: 100px;
-    background-color: var(--couleur1);
+    background-color: $couleur1 !important;
+    color: $text;
+    align-items: center;
+
+    a{
+        color: $text !important;
+        transition: 0.5s;
+    }
+    a:hover{
+        color: $border !important;
+        cursor: pointer;
+    }
 }
 
-.footer{
-    background-color: var(--couleur1);
-    color: var(--back);
-    align-items: center;
-    border-radius: 0px !important;
-    border:none !important;
-}
+/* ================================================== */
+/* Partie Home-Page */
+/* ================================================== */
 
 .actu {
     background-color: rgba(210, 210, 210, 0.9) !important;
 }
-a{
-    color: var(--back);
-    text-decoration: none;
-}
-
-
-html, body {
-    height: 100%;
-  }
-  
 
 .nav-filtre-actu{
     display: flex;
@@ -80,10 +119,72 @@ html, body {
   }
 
 .home-page {
-    overflow: hidden !important;
     background-image: url(https://www.epf.fr/sites/default/files/styles/hero/public/2022-03/Cachan_paysage.png?itok=CIUCsBMz);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-  }
+}
+
+/* ================================================== */
+/* Partie Chat de discussion */
+/* ================================================== */
+
+.liste-conv, .messages{
+    overflow-y: scroll !important;
+    height: 100vh !important;
+}
+
+/* ================================================== */
+
+
+.asso_admin{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll !important;
+    height: 32vh !important;
+}
+  // temp.css
+
+.form-label-1{
+    position: relative;   
+    right: 255px;
+}
+
+.form-label-2{
+    position: relative;   
+    right: 247px;
+}
+
+.form-label-4{
+    position: relative;   
+    right: 234px;
+}
+
+.Enregistrer{
+    height: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+/* ================================================== */
+/* Partie ajout d'un groupe */
+/* ================================================== */
+
+
+.ajt_groupe{
+    margin-bottom: 60px;
+    text-align: left;
+    margin-left: 130px;
+}
+
+#exampleFormControlInputid1 {
+    width : 20% ; 
+}
+
+#exampleFormControlInputid2 {
+    width : 20%;
+}
