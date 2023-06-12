@@ -8,7 +8,7 @@ export default (content) => (`
     ${header()}
   </header>
   <main>
-    ${content()}
+    ${content}
   </main>
   <footer>
     ${footer()}
