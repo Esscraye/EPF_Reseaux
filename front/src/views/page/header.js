@@ -25,9 +25,9 @@ export default () => (`
         </ul>
       </li>
     </ul>
-    <form class="d-flex" role="search">
+    <form class="d-flex nav-search" role="search">
       <input class="form-control me-2" style="background-color: white;" type="search" placeholder="Recherche" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Rechercher</button>
+      <button class="btn btn-outline-success" type="button">Rechercher</button>
     </form>
   </div>
 </div>
