@@ -17,8 +17,6 @@ const Page = class Page {
       const elInput = document.querySelector('.nav-search input');
 
       if (elInput.value) {
-        console.log(elInput.value);
-
         elInput.value = '';
       }
     });

@@ -16,6 +16,7 @@ module.exports = {
     'linebreak-style': 0,
     'global-require': 0,
     'eslint linebreak-style': [0, 'error', 'windows'],
-    'no-new': 0
+    'no-new': 0,
+    'no-restricted-globals': 0
   }
 };
