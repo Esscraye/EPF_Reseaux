@@ -1,3 +1,4 @@
+import ControllerPage from './page';
 import ViewHome from '../views/home';
 
 const Home = class Home {
@@ -8,7 +9,7 @@ const Home = class Home {
   }
 
   run() {
-    this.el.innerHTML = ViewHome();
+    new ControllerPage(ViewHome());
   }
 };
 

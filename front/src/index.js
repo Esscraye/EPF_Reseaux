@@ -1,4 +1,4 @@
-import ControllerHome from './controllers/page_home';
+import ControllerHome from './controllers/home';
 
 import './index.scss';
 

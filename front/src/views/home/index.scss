@@ -1,0 +1,18 @@
+.actu {
+    background-color: rgba(210, 210, 210, 0.9) !important;
+}
+
+.nav-filtre-actu{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll !important;
+    height: 72vh !important;
+  }
+
+.home-page {
+    background-image: url(https://www.epf.fr/sites/default/files/styles/hero/public/2022-03/Cachan_paysage.png?itok=CIUCsBMz);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
