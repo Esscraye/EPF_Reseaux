@@ -1,3 +1,3 @@
-export default () => (`
-    <p class="fw-lighter fst-italic text-center m-0">17h32</p>
-`);
+export default (data) => (`
+  <p class="fw-lighter fst-italic text-center m-0">${data.times}</p>
+  `);
