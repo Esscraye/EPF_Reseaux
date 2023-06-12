@@ -1,15 +1,89 @@
-import ViewPagemainassos from '../views/page_main_assos';
+import ControllerPage from './page';
+import ViewPageMainAssos from '../views/page_main_assos';
 
-const pagemainassos = class pagemainassos {
+class PageMainAssos {
   constructor() {
-    this.el = document.body;
+    this.data = {
+      cards: [
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        },
+        {
+          assoc: {
+            logo: 'https://picsum.photos/240/300',
+            title: 'Titre de l\'asso',
+            description: 'lorem ipsum'
+          }
+        }
+      ]
+    };
 
     this.run();
   }
 
   run() {
-    this.el.innerHTML = ViewPagemainassos();
+    new ControllerPage(ViewPageMainAssos(this.data));
   }
-};
+}
 
-export default pagemainassos;
+export default PageMainAssos;
