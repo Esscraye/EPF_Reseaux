@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+#exampleFormControlInput1 {
+    box-align: center;
+    width : 60%;
+}
+
+.col-9{
+    align-items: center !important;
+    justify-content: center ;
+}
+
+.btn {
+    background-color: #b43030 !important;
+    border-color:#b43030 !important;
+    color: white !important;
+
+}
+
+.btn:hover{
+    color:black !important;
+}
+.border {
+    border-radius: 30px;
+}
+
+
+.col-4{
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+    margin-top:5em !important;
+}
+.border{
+    padding-top:5px !important;
+    padding-bottom:5px !important; 
+}
