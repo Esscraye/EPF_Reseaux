@@ -1,13 +1,13 @@
+import ControllerPage from './page';
 import ViewHome from '../views/gestionmembre';
 
 const Home = class Home {
   constructor() {
-    this.el = document.body;
     this.run();
   }
 
   run() {
-    this.el.innerHTML = ViewHome();
+    new ControllerPage(ViewHome());
   }
 };
 export default Home;
