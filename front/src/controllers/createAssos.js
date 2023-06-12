@@ -12,6 +12,3 @@ const Home = class Home {
 };
 
 export default Home;
-router.add('createAssos', () => {
-  new ControllerPage(ViewHome());
-});
