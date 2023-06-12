@@ -2,7 +2,7 @@ import card from './card';
 
 export default (data) => {
   const { cards } = data;
-  return `
+  return (`
     <div class="container-fluid">
       <div>
         <h1 class="text-center pt-3 fw-bold">Portail des associations</h1>
@@ -35,5 +35,5 @@ export default (data) => {
         </div>
       </div>
     </div>
-  `;
+  `);
 };
