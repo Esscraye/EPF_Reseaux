@@ -1,13 +1,14 @@
 import Router from 'vanilla-router';
 
 import ControllerHome from './controllers/home';
+import Page404 from './controllers/page-404';
 
 import './index.scss';
 
 const router = new Router({
   mode: 'history',
   page404: () => {
-    new ControllerHome();
+    new Page404();
   }
 });
 
