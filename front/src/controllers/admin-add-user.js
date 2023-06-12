@@ -15,12 +15,12 @@ const AdminAddUser = class AdminAddUser {
 
     elBtn.addEventListener('click', () => {
       if (elInput.value && isEmail(elInput.value)) {
-        console.log({
-          email: elInput.value
-        });
+        // console.log({
+        // email: elInput.value
+        // });
         elInput.value = '';
       } else {
-        alert('Problem');
+        // alert('Problem');
       }
     });
   }

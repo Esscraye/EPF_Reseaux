@@ -1,5 +1,5 @@
-import Header from '../home/header';
-import Footer from '../home/footer';
+import Header from '../page/header';
+import Footer from '../page/footer';
 
 export default () => (`
 <header>

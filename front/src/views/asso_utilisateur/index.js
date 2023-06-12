@@ -1,5 +1,5 @@
-import Nav from '../home/header';
-import Foot from '../home/footer';
+import Nav from '../page/header';
+import Foot from '../page/footer';
 import Actu from './Actu';
 import DescriptionAsso from './Description-asso';
 import descriptionEquipe from './description-equipe';

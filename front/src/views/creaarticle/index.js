@@ -1,7 +1,7 @@
 import creerarticle from './creerarticle';
 import bandeau from './bandeau';
-import header from '../home/header';
-import foot from '../home/footer';
+import header from '../page/header';
+import foot from '../page/footer';
 
 export default () => (`
   <header>
