@@ -9,70 +9,80 @@ class PageMainAssos {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         },
         {
           assoc: {
             logo: 'https://picsum.photos/240/300',
             name: 'Titre de l\'asso',
-            description: 'lorem ipsum'
+            description: 'lorem ipsum',
+            image_header : 'https://picsum.photos/240/300'
           }
         }
       ]
