@@ -1,6 +1,6 @@
 import Router from 'vanilla-router';
 
-import ControllerHome from './controllers/gestionmembre';
+import ControllerHome from './controllers/home';
 
 import './index.scss';
 
