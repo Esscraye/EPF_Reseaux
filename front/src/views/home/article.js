@@ -19,7 +19,7 @@ export default (data) => {
       <div class="card-body m-1 p-0">
         <div class="row">
           <div class="col-3 m-0 p-0">
-            <img src="${content.img}" class="rounded" height="150" width="180" alt="article">
+            <img src="${content.img}" class="rounded img-article" alt="article">
           </div>
           <div class="col-9 mt-3">
             <h5 class="card-title">${content.title}</h5>

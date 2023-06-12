@@ -1,3 +1,4 @@
+
 .actu {
     background-color: rgba(210, 210, 210, 0.9) !important;
 }
@@ -9,10 +10,35 @@
     height: 72vh !important;
   }
 
-.home-page {
+main {
     background-image: url(https://www.epf.fr/sites/default/files/styles/hero/public/2022-03/Cachan_paysage.png?itok=CIUCsBMz);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+
+.img-article{
+    height: 20vh;
+    width: 80%;
+}
+
+.contener-info-asso{
+    display: flex;
+    align-items: center;
+}
+
+.info-asso{
+    height: auto;
+    width: 70%;
+    border: 3px;
+    border-radius: 25px;
+    text-align: center;
+    margin-left: 15%;
+    align-items: center;
+    background: linear-gradient(45deg, #838383, #bdbcbc);
+}
+
+.info-asso .texte-asso{
+    padding: 5%;
 }
