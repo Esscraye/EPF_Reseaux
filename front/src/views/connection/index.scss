@@ -1,21 +1,34 @@
-#exampleFormControlInput1 {
-    box-align: center;
-    width : 60%;
-}
+#connection{
+    #exampleFormControlInput1 {
+        box-align: center;
+        width : 60%;
+    }
 
-#exampleFormControlInput2 {
-    box-align: center;
-    width : 60%;
-}
+    #exampleFormControlInput2 {
+        box-align: center;
+        width : 60%;
+    }
 
 
-.bt {
-    background-color: #b43030 !important;
-    border-color:#b43030 !important;
-    color: white !important;
+    .bt {
+        background-color: #b43030 !important;
+        border-color:#b43030 !important;
+        color: white !important;
 
-}
+    }
 
-.bt:hover{
-    color:black !important;
+    .bt:hover{
+        color:black !important;
+    }
+
+    .container-photo{
+        display: grid;
+        width: 100%;
+        margin-left: 10%;
+    }
+
+    .part-g{
+        display: flex;
+        align-items: center;
+    }
 }
