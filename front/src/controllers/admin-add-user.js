@@ -11,26 +11,29 @@ const AdminAddUser = class AdminAddUser {
 
   onClickAjouter() {
     const elButton = document.querySelector('#ajouter');
-
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
 
-      const elInputLastname = document.querySelector('#lastname');
-      const elInputFirstname = document.querySelector('#firstname');
-      const elInputEmail = document.querySelector('#email');
-      const elInputDescription = document.querySelector('#description');
-      const elInputPromo = document.querySelector('#promo');
-      const elInputClass = document.querySelector('#class');
-      const elInputGrouptp = document.querySelector('#grouptp');
+      const elInputLastname = document.querySelector('.lastname');
+      const elInputFirstname = document.querySelector('.firstname');
+      const elInputEmail = document.querySelector('.email');
+      const elInputDescription = document.querySelector('.description');
+      const elInputPromo = document.querySelector('.promo');
+      const elInputClass = document.querySelector('.class');
+      const elInputGrouptp = document.querySelector('.grouptp');
       if (elInputEmail.value && isEmail(elInputEmail.value)) {
         console.log({
           lastname: elInputLastname.value,
           firstname: elInputFirstname.value,
+          email: elInputEmail.value,
           description: elInputDescription.value,
-          promo: elInputPromo.value,
-          class: elInputClass.value,
-          groupetp: elInputGrouptp.value,
-          email: elInputEmail.value
+          promoTemp: elInputPromo.options[elInputPromo.selectedIndex].value,
+          promo: elInputPromo.options[elInputPromo.selectedIndex].text,
+          classTemp: elInputClass.options[elInputClass.selectedIndex].value,
+          class: elInputClass.options[elInputClass.selectedIndex].text,
+          groupetpTemp: elInputGrouptp.options[elInputGrouptp.selectedIndex].value,
+          groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
+
         });
       } else {
         console.log('Problem');
