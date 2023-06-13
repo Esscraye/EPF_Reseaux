@@ -1,7 +1,7 @@
 export default () => (`
 <nav class="">
   <div class="partie-g">
-    <div class="navbar-brand log" href="#">EPF Intranet</div>
+    <div class="navbar-brand log">EPF Intranet</div>
     <a href="#" class="btn btn-nav slected">Accueil</a>
     <a href="/homeAssos" class="btn btn-nav">Association</a>
     <a href="/profil" class="btn btn-nav">Profil</a>
