@@ -1,0 +1,26 @@
+#forgot-password {
+  .bt {
+    background-color: #b43030 !important;
+    border-color:#b43030 !important;
+    color: white !important;
+  }
+
+  .bt:hover{
+    color:black !important;
+  }
+  #exampleFormControlInput1 {
+    box-align: center;
+    width : 60%;
+  }
+
+  .container-photo{
+    display: grid;
+    width: 100%;
+    margin-left: 10%;
+  }
+
+  .part-g{
+    display: flex;
+    align-items: center;
+  }
+}

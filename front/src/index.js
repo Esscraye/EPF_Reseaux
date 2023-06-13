@@ -14,7 +14,7 @@ import ControllerCreateArticle from './controllers/creaarticle';
 import ControllerCreateAssos from './controllers/create-assos';
 import ControllerDiscu from './controllers/discu';
 import ControllerGestMember from './controllers/gestionmembre';
-import ControllerMDPForgot from './controllers/mdp_oubli';
+import ControllerMDPForgot from './controllers/password-forgot';
 import ControllerHomeAssos from './controllers/page_main_assos';
 
 import './index.scss';
@@ -49,7 +49,7 @@ router.add('/assosSuperAdmin', () => {
 router.add('/addAssosUser', () => {
   new ControllerAddAssosUser();
 });
-router.add('/connect', () => {
+router.add('/connection', () => {
   new ControllerConnect();
 });
 router.add('/createArticle', () => {
@@ -64,7 +64,7 @@ router.add('/discu', () => {
 router.add('/gestMember', () => {
   new ControllerGestMember();
 });
-router.add('/mdpForgot', () => {
+router.add('/password-forgot', () => {
   new ControllerMDPForgot();
 });
 router.add('/homeAssos', () => {
