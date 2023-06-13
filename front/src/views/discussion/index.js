@@ -1,7 +1,7 @@
 import selection from './selction';
 import barreDiscuSolo from './barre_discu_solo';
+import barreDiscuGroup from './barre_discu_groupe';
 import barreEnvoiMess from './barre_envoie_mess';
-// import heure from './heure_envoi';
 import messG from './message_gauche';
 import messD from './message_droite';
 
@@ -9,8 +9,11 @@ import './index.scss';
 
 export default (data) => {
   const {
-    choicesG, choicesP, soloBar, messages
+    choicesG, choicesP, soloBar, groupBar, conversations
   } = data;
+
+  const conversationId = '21';
+  const conversation = conversations.find((conv) => conv.convId === conversationId);
 
   return (`
     <div class="row">
@@ -18,9 +21,11 @@ export default (data) => {
         ${selection(choicesG, choicesP)}  
       </div>
       <div class="col-9 messages-container">
-        ${barreDiscuSolo(soloBar)}
+        ${conversationId === '12' ? barreDiscuGroup(groupBar) : barreDiscuSolo(soloBar)}
         <div class="messages">
-          ${messages.map((message) => ((message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message)))).join('')}
+        ${conversation.messages
+      .map((message) => (message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message)))
+      .join('')}
         </div>
         ${barreEnvoiMess()}
       </div>

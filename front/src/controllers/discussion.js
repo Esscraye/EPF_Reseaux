@@ -1,8 +1,6 @@
 import ControllerPage from './page';
 import ViewDiscu from '../views/discussion';
 
-const now = new Date();
-
 const Discu = class Discu {
   constructor() {
     this.el = document.body;
@@ -10,32 +8,39 @@ const Discu = class Discu {
       choicesG: [{
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
-        notif: 1
+        notif: 1,
+        IdConv: '1'
       }, {
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
-        notif: 16
+        notif: 16,
+        IdConv: '1'
       }, {
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
-        notif: 5
+        notif: 5,
+        IdConv: '1'
       }],
       choicesP: [{
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
-        notif: 1
+        notif: 1,
+        IdConv: '1'
       }, {
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
-        notif: 0
+        notif: 0,
+        IdConv: '1'
       }, {
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
-        notif: 2
+        notif: 2,
+        IdConv: '1'
       }, {
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
-        notif: 8
+        notif: 8,
+        IdConv: '1'
       }, {
         photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
         name: 'a list item',
@@ -53,77 +58,157 @@ const Discu = class Discu {
         name: 'Mathieu :',
         icone: 'https://tse4.mm.bing.net/th?id=OIP.AENl1AC1hSURPNEUwarSawHaHa&pid=Api&P=0&h=180'
       },
-      messages: [{
-        id: '11',
-        text: 'Hello',
-        times: '13h52',
-        author: {
-          firstName: 'Maxence',
-          lastName: 'Juery',
-          email: 'maxence.juery@epfedu.fr'
-        }
+      groupBar: {
+        name: 'Groupe de promo :',
+        icone: 'https://tse3.mm.bing.net/th?id=OIP.-xJE4WTayjrJUhukEsN1VwHaHa&pid=Api&P=0&h=180'
       },
-      {
-        id: '12',
-        text: 'Comment va ?',
-        times: '13h54',
-        author: {
-          firstName: 'Victor',
-          lastName: 'Marchand',
-          email: 'victor.marchand@epfedu.fr'
+      conversations: [{
+        convId: '21',
+        messages: [{
+          id: '11',
+          text: 'Hello',
+          times: '13h52',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '12',
+          text: 'Comment va ?',
+          times: '13h54',
+          author: {
+            firstName: 'Victor',
+            lastName: 'Marchand',
+            email: 'victor.marchand@epfedu.fr'
+          }
+        },
+        {
+          id: '13',
+          text: '???',
+          times: '13h55',
+          author: {
+            firstName: 'Victor',
+            lastName: 'Marchand',
+            email: 'victor.marchand@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
         }
-      },
-      {
-        id: '13',
-        text: '???',
-        times: '13h55',
-        author: {
-          firstName: 'Victor',
-          lastName: 'Marchand',
-          email: 'victor.marchand@epfedu.fr'
+        ]
+      }, {
+        convId: '12',
+        messages: [{
+          id: '11',
+          text: 'Hello',
+          times: '13h52',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '12',
+          text: 'Comment va ?',
+          times: '13h54',
+          author: {
+            firstName: 'Victor',
+            lastName: 'Marchand',
+            email: 'victor.marchand@epfedu.fr'
+          }
+        },
+        {
+          id: '13',
+          text: '???',
+          times: '13h55',
+          author: {
+            firstName: 'Leo',
+            lastName: 'Le Boss',
+            email: 'victor.marchand@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          id: '14',
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
         }
-      },
-      {
-        id: '14',
-        text: 'Oui',
-        times: '13h57',
-        author: {
-          firstName: 'Maxence',
-          lastName: 'Juery',
-          email: 'maxence.juery@epfedu.fr'
-        }
-      },
-      {
-        id: '14',
-        text: 'Oui',
-        times: '13h57',
-        author: {
-          firstName: 'Maxence',
-          lastName: 'Juery',
-          email: 'maxence.juery@epfedu.fr'
-        }
-      },
-      {
-        id: '14',
-        text: 'Oui',
-        times: '13h57',
-        author: {
-          firstName: 'Maxence',
-          lastName: 'Juery',
-          email: 'maxence.juery@epfedu.fr'
-        }
-      },
-      {
-        id: '14',
-        text: 'Oui',
-        times: '13h57',
-        author: {
-          firstName: 'Maxence',
-          lastName: 'Juery',
-          email: 'maxence.juery@epfedu.fr'
-        }
-      }
-      ]
+        ]
+      }]
 
     };
 
@@ -135,22 +220,29 @@ const Discu = class Discu {
 
     elButton.addEventListener('click', (e) => {
       const elInput = document.querySelector('.send-message-bar input');
-      const message = {
-        id: '1',
-        text: elInput.value,
-        times: `${now.getHours()}h${now.getMinutes()}`,
-        author: {
-          firstName: 'Maxence',
-          lastName: 'Juery',
-          email: 'maxence.juery@epfedu.fr'
-        }
-      };
+      const messageText = elInput.value;
+
       e.preventDefault();
 
-      if (elInput.value) {
+      if (messageText) {
+        const now = new Date();
+        const message = {
+          id: '1',
+          text: messageText,
+          times: `${now.getHours()}h${now.getMinutes()}`,
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        };
+
         elInput.value = '';
+        const conversation = this.data.conversations.find((conv) => (conv.convId === '21'));
+        if (conversation) {
+          conversation.messages.push(message);
+        }
       }
-      this.data.messages.push(message);
     });
   }
 
