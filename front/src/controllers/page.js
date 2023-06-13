@@ -22,9 +22,21 @@ const Page = class Page {
     });
   }
 
+  styleNav() {
+    document.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 0) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
+
   run() {
     this.el.innerHTML = ViewPage(this.content);
     this.onClickSearch();
+    this.styleNav();
   }
 };
 

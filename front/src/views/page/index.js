@@ -4,7 +4,7 @@ import footer from './footer';
 import './index.scss';
 
 export default (content) => (`
-  <header>
+  <header class="">
     ${header()}
   </header>
   <main>
