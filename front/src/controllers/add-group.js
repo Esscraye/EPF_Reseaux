@@ -1,7 +1,7 @@
-import ViewAssoFondateurEtresponsable from '../views/add-group';
+import ViewAddGroup from '../views/add-group';
 import ControllerPage from './page';
 
-const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
+const AddGroup = class AddGroup {
   constructor() {
     this.el = document.body;
 
@@ -28,9 +28,9 @@ const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
   }
 
   run() {
-    new ControllerPage(ViewAssoFondateurEtresponsable(this.data));
+    new ControllerPage(ViewAddGroup(this.data));
     this.onClickSearch();
   }
 };
 
-export default AssoFondateurEtResponsable;
+export default AddGroup;
