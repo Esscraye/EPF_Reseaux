@@ -10,17 +10,30 @@ const AdminAddUser = class AdminAddUser {
   }
 
   onClickAjouter() {
-    const elInput = document.querySelector('email');
-    const elBtn = document.querySelector('ajouter');
+    const elButton = document.querySelector('#ajouter');
 
-    elBtn.addEventListener('click', () => {
-      if (elInput.value && isEmail(elInput.value)) {
+    elButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const elInputLastname = document.querySelector('#lastname');
+      const elInputFirstname = document.querySelector('#firstname');
+      const elInputEmail = document.querySelector('#email');
+      const elInputDescription = document.querySelector('#description');
+      const elInputPromo = document.querySelector('#promo');
+      const elInputClass = document.querySelector('#class');
+      const elInputGrouptp = document.querySelector('#grouptp');
+      if (elInputEmail.value && isEmail(elInputEmail.value)) {
         console.log({
-          email: elInput.value
+          lastname: elInputLastname.value,
+          firstname: elInputFirstname.value,
+          description: elInputDescription.value,
+          promo: elInputPromo.value,
+          class: elInputClass.value,
+          groupetp: elInputGrouptp.value,
+          email: elInputEmail.value
         });
-        elInput.value = '';
       } else {
-        alert('Problem');
+        console.log('Problem');
       }
     });
   }
