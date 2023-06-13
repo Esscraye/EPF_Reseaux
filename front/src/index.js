@@ -6,11 +6,11 @@ import ControllerAddUser from './controllers/admin-add-user';
 import ControllerChangeUser from './controllers/admin-modify-user';
 import ControllerDispProf from './controllers/afficher-profil';
 import ControllerAddGrp from './controllers/ajouter-groupe';
-import ControllerAssosFondResp from './controllers/asso-fondateur-et-responsable';
+// import ControllerAssosFondResp from './controllers/asso-fondateur-et-responsable';
 import ControllerAssosSuperAdmin from './controllers/asso-super-admin';
-import ControllerAddAssosUser from './controllers/asso-utilisateur';
+// import ControllerAddAssosUser from './controllers/asso-utilisateur';
 import ControllerConnect from './controllers/connection';
-import ControllerCreateArticle from './controllers/creaarticle';
+import ControllerCreateArticle from './controllers/create-article';
 import ControllerCreateAssos from './controllers/create-assos';
 import ControllerDiscu from './controllers/discu';
 import ControllerGestMember from './controllers/gestionmembre';
@@ -40,14 +40,8 @@ router.add('/profil', () => {
 router.add('/addGrp', () => {
   new ControllerAddGrp();
 });
-router.add('/assosFond&Resp', () => {
-  new ControllerAssosFondResp();
-});
 router.add('/assosSuperAdmin', () => {
   new ControllerAssosSuperAdmin();
-});
-router.add('/addAssosUser', () => {
-  new ControllerAddAssosUser();
 });
 router.add('/connection', () => {
   new ControllerConnect();

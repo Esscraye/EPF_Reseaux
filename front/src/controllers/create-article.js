@@ -12,12 +12,12 @@ const Createarticle = class Createarticle {
         mail: '',
         phone: '',
         socialNetworks: {
-          instagram:'',
-          discord:'',
-          twitter:'',
-          facebook:'',
-          linkedin:''
-        },
+          instagram: '',
+          discord: '',
+          twitter: '',
+          facebook: '',
+          linkedin: ''
+        }
       },
       userPermissions: {
         founders: {
@@ -28,8 +28,8 @@ const Createarticle = class Createarticle {
           },
           assoc: {
             update: true
-          }, 
-          team: {              
+          },
+          team: {
             create: true,
             delete: true
           }
@@ -47,7 +47,6 @@ const Createarticle = class Createarticle {
           delete: false
         }
       }
-      
     };
 
     this.run();
