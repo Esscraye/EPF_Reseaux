@@ -29,10 +29,6 @@ a{
     color: $back;
 }
 
-a:hover{
-    color:rgba($color: #f8e1af, $alpha: 1.0) !important;
-}
-
 .btn {
     background-color: #b43030;
     color : white;
@@ -45,6 +41,7 @@ a:hover{
                 10px 10px 10px rgba(0,0,0,0.1),
                 inset 5px 5px 5px rgba(255,255,255,0.2),
                 inset -5px -5px 10px rgba(0,0,0,0.1);
+    color: $back;
 }
 
 html{
@@ -99,8 +96,8 @@ nav a{
     margin: 1em;
     transition: background-color 3s ease-in-out;
 }
+
 nav .slected{
-    color:rgba($color: #f8e1af, $alpha: 1.0) !important; 
     background-color:$couleur2;
     box-shadow: -5px -5px 5px rgba(255,255,255,0.2),
                 10px 10px 10px rgba(0,0,0,0.1),
@@ -111,6 +108,7 @@ nav .slected{
 .log{
     font-weight: bold;
 }
+
 .partie-g{
     display: flex;
     align-items: center;
@@ -138,7 +136,7 @@ footer{
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
     height: 100px;
-    background-color: $couleur1 !important;
+    background: linear-gradient(5deg, #b43030, #ff9e02);
     color: $text;
     align-items: center;
 
@@ -146,8 +144,8 @@ footer{
         color: $text !important;
         transition: 0.5s;
     }
+
     a:hover{
-        color: $border !important;
         cursor: pointer;
     }
 }
