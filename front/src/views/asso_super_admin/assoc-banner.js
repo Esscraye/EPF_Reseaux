@@ -1,16 +1,23 @@
 const btn = () => (`
-  <div class="row pt-3">
     <div class="col-4">
       <button type="button" class="btn btn-danger SupprimerAsso">Supprimer</button>
     </div>
+  `);
+const btn1 = () => (`
     <div class="col">
       <button type="button" class="btn btn-danger Membres">Membres</button>
     </div>
+`);
+const btn2 = () => (`
     <div class="col">
       <button type="button" class="btn btn-danger ModifierAsso">Modifier</button>
     </div>
-  </div>
 `);
+const btn3 = () => (`
+    <div class="col">
+      <button type="button" class="btn btn-danger ModifierAsso">Suivre</button>
+    </div>
+  `);
 
 export default (data, permissions) => {
   const { name, logo } = data;
@@ -26,7 +33,12 @@ export default (data, permissions) => {
           <h3 class="pt-3">${name}</h3>
         </div>
         <div class="col-3">
-          ${assoc.update ? btn() : ''}  
+          <div class="row pt-3">
+            ${assoc.delete ? btn() : ''}
+            ${assoc.manage ? btn1() : ''}
+            ${assoc.update ? btn2() : ''}
+            ${assoc.follow ? btn3() : ''}
+          </div>    
         </div>
       </div>
     </div>

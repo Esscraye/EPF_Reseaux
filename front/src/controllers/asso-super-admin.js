@@ -29,7 +29,10 @@ const AssoSuperAdmin = class AssoSuperAdmin {
             update: true
           },
           assoc: {
-            update: true
+            delete: true,
+            manage: true,
+            update: true,
+            follow: false
           },
           team: {
             update: true
@@ -44,7 +47,10 @@ const AssoSuperAdmin = class AssoSuperAdmin {
             update: false
           },
           assoc: {
-            update: false
+            delete: false,
+            manage: false,
+            update: false,
+            follow: true
           },
           team: {
             update: false
