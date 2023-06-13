@@ -10,9 +10,8 @@ import './index.scss';
 
 export default (data) => {
   const {
-    choicesG, choicesP, soloBar, hour, rightMess, leftMess, sender
+    choicesG, choicesP, soloBar, messages
   } = data;
-
   return (`
   <div class="row">
     <div class="col-3 liste-conv bg-danger">
@@ -21,16 +20,16 @@ export default (data) => {
     <div class="col-9 messages-container">
       ${barreDiscuSolo(soloBar)}
       <div class="messages">
-        ${messG(leftMess, sender)}
-        ${heure(hour)}
-        ${messD(rightMess, sender)}
-        ${messD(rightMess, sender)}
-        ${heure(hour)}
-        ${messG(leftMess, sender)}
-        ${messG(leftMess, sender)}
-        ${messG(leftMess, sender)}
-        ${heure(hour)}
-        ${messD(rightMess, sender)}
+        ${messG(messages)}
+        ${heure(messages)}
+        ${messD(messages)}
+        ${messD(messages)}
+        ${heure(messages)}
+        ${messG(messages)}
+        ${messG(messages)}
+        ${messG(messages)}
+        ${heure(messages)}
+        ${messD(messages)}
       </div>
       ${barreEnvoiMess()}
     </div>
