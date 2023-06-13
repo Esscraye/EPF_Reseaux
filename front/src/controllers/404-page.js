@@ -1,6 +1,6 @@
 import View404 from '../views/404-page';
 
-const page404 = class pagem404 {
+const Page404 = class Page404 {
   constructor() {
     this.el = document.body;
 
@@ -23,4 +23,4 @@ const page404 = class pagem404 {
   }
 };
 
-export default page404;
+export default Page404;
