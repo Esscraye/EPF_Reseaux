@@ -1,14 +1,13 @@
 const btn = () => (`
 <button type="button" class="btn btn-danger ModifierDescription">Modifier</button>
 `);
-export default (data, permissions) => {
-  const { description, text } = data;
+export default (permissions) => {
   const { assoc } = permissions;
+
   return (`
-    <div class="row-6">
-        <h3>${description}</h3>
-        <p>${text}</p>
+    <div class="my-3">
+        <h3>Fil des actus</h3>
         ${assoc.update ? btn() : ''}
-    </div>    
-  `);
+    </div>
+    `);
 };

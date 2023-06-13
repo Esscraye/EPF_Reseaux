@@ -1,26 +1,37 @@
-export default () => (`<div class="container-fluid text-center">
-<div class="row">
-    <div class="col-2">
-        <p>Contact us :</p>
-    </div>
-    <div class="col-2">
-        <p>youpi@gmail.com</p>
-    </div>
-    <div class="col-2">
-        <p>0605040302</p>
-    </div>
-    <div class="col-2">
-        <p>Réseaux sociaux :</p>
-    </div>
-    <div class="col-2">
-        <a href="https://www.instagram.com/" target="_blank" class=""><i class="ri-instagram-fill"></i></a>
-        <a href="https://discord.com/" target="_blank" class=""><i class="ri-discord-fill"></i></a>
-        <a href="https://twitter.com/" target="_blank" class=""><i class="ri-twitter-fill"></i></a>
-        <a href="https://fr-fr.facebook.com/" target="_blank" class=""><i class="ri-facebook-box-fill"></i></a>
-        <a href="https://fr.linkedin.com/" target="_blank" class=""><i class="ri-linkedin-box-fill"></i></a>
-    </div>
-    <div class="col-2">
-        <button type="button" class="btn btn-danger">Modifier</button>
-    </div>
-</div>
-</div>`);
+const btn = () => (`
+<button type="button" class="btn btn-danger ModifierContact">Modifier</button>
+`);
+
+export default (data, permissions) => {
+  const {
+    mail, phone, instagram, discord, twitter, facebook, linkedin
+  } = data;
+  const { assoc } = permissions;
+  return (`
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-2">
+                <p>Contact us :</p>
+            </div>
+            <div class="col-2">
+                <p>${mail}</p>
+            </div>
+            <div class="col-2">
+                <p>${phone}</p>
+            </div>
+            <div class="col-2">
+                <p>Réseaux sociaux :</p>
+            </div>
+            <div class="col-2">
+                <a href="${instagram}" target="_blank" class=""><i class="ri-instagram-fill"></i></a>
+                <a href="${discord}" target="_blank" class=""><i class="ri-discord-fill"></i></a>
+                <a href="${twitter}" target="_blank" class=""><i class="ri-twitter-fill"></i></a>
+                <a href="${facebook}" target="_blank" class=""><i class="ri-facebook-box-fill"></i></a>
+                <a href="${linkedin}" target="_blank" class=""><i class="ri-linkedin-box-fill"></i></a>
+            </div>
+            <div class="col-2">
+                ${assoc.update ? btn() : ''}
+            </div>
+        </div>
+    </div>`);
+};

@@ -1,42 +1,31 @@
-import Nav from '../home/header';
-import Foot from '../home/footer';
-import Actu from './Actu';
-import DescriptionAsso from './Description-asso';
+import post from './post';
+import descriptionAsso from './Description-asso';
 import descriptionEquipe from './description-equipe';
-import prefooter from './prefooter';
-import bandeau from './bandeau';
+import contacts from './prefooter';
+import assocBanner from './assoc-banner';
+import createActu from './stream';
 
-export default () => (`
-<header>
-  ${Nav()}
-</header>
-<main class="mb-2">
-  ${bandeau()}
-  <div class="container-fluid text-center">
-  <div class="row">
-      <div class="col-8 mt-3">
-          <div class="my-3">
-              <h3>Fil des actus</h3>
-              <button type="button" class="btn btn-danger">Ajouter Actu</button>
-          </div>
+export default (data) => {
+  const {
+    assoc, usersPermissions, news
+  } = data;
+
+  return (`
+    ${assocBanner(assoc, usersPermissions.founder)}
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col-8 mt-3">
+          ${createActu(usersPermissions.founder)}
           <div class="card text-center mb-2 nav-filtre-actu asso_admin">
-        ${Actu()}
-        ${Actu()}
-        ${Actu()}
-        ${Actu()}
-        ${Actu()}
-        ${Actu()}
-        </div>
+            ${news.map((actu) => post(actu, usersPermissions.founder)).join('')}
+          </div>
         </div>
         <div class="col-4 mt-5 d-grid gap-2">
-            ${DescriptionAsso()}
-            ${descriptionEquipe()}
-          </div>
+          ${descriptionAsso(assoc, usersPermissions.founder)}
+          ${descriptionEquipe(assoc, usersPermissions.founder)}
         </div>
       </div>
-        ${prefooter()}
-</main>
-<footer>
-  ${Foot()}
-</footer>
+    </div>
+    ${contacts(assoc, usersPermissions.founder)}      
   `);
+};
