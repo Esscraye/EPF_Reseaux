@@ -13,9 +13,9 @@ export default () => (`
           <h2>Mot de passe oublié</h2>
         </div>
         <div class="row">
-            <div class="mb-3">
-              <label for="exampleFormControlInput2" class="form-label">Veuillez renseigner votre adresse e-mail epf</label>
-              <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="email">
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Veuillez renseigner votre adresse e-mail epf</label>
+            <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="email">
           </div>
           <div class="mb-3">
             <button type="button" class="btn bt">M'envoyer mon mot de passe</button>

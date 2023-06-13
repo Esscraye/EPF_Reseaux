@@ -5,7 +5,7 @@ export default () => (`
       <input type="text" class="form-control" id="assosname" placeholder="nom de l'association" aria-label="nom de l'association" aria-describedby="basic-addon2">
     </div>
     <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect01">Campus</label>
+      <label class="input-group-text" for="choicecampus">Campus</label>
       <select class="form-select" id="choicecampus">
         <option selected>Sélectionnez...</option>
         <option value="Cachan">Cachan</option>
@@ -23,13 +23,11 @@ export default () => (`
       <span class="input-group-text" id="basic-addon2">@epfedu.fr</span>
     </div>
     <div class="row">
-      <div class="col-5">
-      </div>
+      <div class="col-5"></div>
       <div class="col-2">
         <button class="btn btn-danger" type="button" id="valider">Valider</button>
       </div>
-      <div class="col-5">
-      </div>
+      <div class="col-5"></div>
     </div>
   </div>
 `);

@@ -1,7 +1,7 @@
 import './index.scss';
 
 export default () => (`
-  <div id="connection" classe="container">
+  <div id="connection" class="container">
     <div class="row">
       <div class="col-6 part-g">
         <div class="container-photo">
@@ -25,7 +25,6 @@ export default () => (`
           <p><a href="#" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mot de passe oublié ?</a></p>
         </div>
       </div>
-      </div>
     </div>
-  </div>
+    </div>
 `);

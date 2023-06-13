@@ -178,19 +178,19 @@ footer{
 }
 
 #chat-btn .chat:before{
- content: "";
- position: absolute;
- z-index: -1;
- left: 50%;
- top: 50%;
- transform: translateX(-50%) translateY(-50%);
- display: block;
- width: 60px;
- height: 60px;
- background-color: $couleur2;
- border-radius: 50%;
- -webkit-animation:pulse-border 1500ms ease-out infinite;
- animation: pulse-border 1500ms ease-out infinite;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: $couleur2;
+    border-radius: 50%;
+    -webkit-animation:pulse-border 1500ms ease-out infinite;
+    animation: pulse-border 1500ms ease-out infinite;
 }
 
 #chat-btn .chat:focus{

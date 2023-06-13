@@ -10,9 +10,7 @@ export default (content) => (`
   <main>
     ${content}
     <div id="chat-btn">
-    <a href="#" class="chat">
-    <i class="ri-chat-smile-3-line"></i>
-      </a>
+      <a href="#" class="chat"><i class="ri-chat-smile-3-line"></i></a>
     </div>
   </main>
   <footer>

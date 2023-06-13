@@ -6,8 +6,7 @@ export default (data) => (`
         <div class="d-flex justify-content-between align-items-center bg-danger text-white col-9">${data.name}</div>
       </div>
     </div>
-    <div class="col-8">
-    </div>
+    <div class="col-8"></div>
     <div class="col-1 text-center my-2 pt-1">
       <button type="button" class="btn-close" aria-label="Close"></button>
     </div>

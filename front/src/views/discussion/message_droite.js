@@ -10,4 +10,4 @@ export default (messages) => (`
       </div>
     </div>
   </div>
-  `);
+`);
