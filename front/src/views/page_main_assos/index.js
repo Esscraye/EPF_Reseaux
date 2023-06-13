@@ -3,6 +3,9 @@ import card from './card';
 export default (data) => {
   const { cards } = data;
   return (`
+    <div class="mt-2 float-end">
+      <a href="/createAssos" class="btn btn-danger mr-2" role="button">Créer assos</a>
+    </div>
     <div class="container-fluid">
       <div>
         <h1 class="text-center pt-3 fw-bold">Portail des associations</h1>
