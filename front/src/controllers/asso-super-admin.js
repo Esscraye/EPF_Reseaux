@@ -1,5 +1,5 @@
 import ControllerPage from './page';
-import ViewAssoSuperAdmin from '../views/asso_super_admin';
+import ViewAssoSuperAdmin from '../views/asso-super-admin';
 
 const AssoSuperAdmin = class AssoSuperAdmin {
   constructor() {
