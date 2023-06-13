@@ -1,26 +1,26 @@
 import Router from 'vanilla-router';
 
 import ControllerHome from './controllers/home';
-import ControllerPage404 from './controllers/404-page';
+import Controller404Page from './controllers/404-page';
 import ControllerAddUser from './controllers/admin-add-user';
 import ControllerChangeUser from './controllers/admin-modify-user';
-import ControllerDispProf from './controllers/show-profile';
-import ControllerAddGrp from './controllers/add-group';
-import ControllerAssosSuperAdmin from './controllers/asso-super-admin';
-import ControllerConnect from './controllers/connection';
+import ControllerShowProf from './controllers/show-profile';
+import ControllerAddGroup from './controllers/add-group';
+import ControllerAssoSuperAdmin from './controllers/asso-super-admin';
+import ControllerConnection from './controllers/connection';
 import ControllerCreateArticle from './controllers/create-article';
-import ControllerCreateAssos from './controllers/create-associations';
-import ControllerDiscu from './controllers/discussion';
-import ControllerGestMember from './controllers/member-management';
-import ControllerMDPForgot from './controllers/password-forgotten';
-import ControllerHomeAssos from './controllers/association-page';
+import ControllerCreateAssociation from './controllers/create-associations';
+import ControllerDiscussion from './controllers/discussion';
+import ControllerMemberManagement from './controllers/member-management';
+import ControllerPasswordForgotten from './controllers/password-forgotten';
+import ControllerAssociationPage from './controllers/association-page';
 
 import './index.scss';
 
 const router = new Router({
   mode: 'history',
   page404: () => {
-    new ControllerPage404();
+    new Controller404Page();
   }
 });
 router.add('', () => {
@@ -33,34 +33,34 @@ router.add('/changeUser', () => {
   new ControllerChangeUser();
 });
 router.add('/profil', () => {
-  new ControllerDispProf();
+  new ControllerShowProf();
 });
 router.add('/addGrp', () => {
-  new ControllerAddGrp();
+  new ControllerAddGroup();
 });
 router.add('/assosSuperAdmin', () => {
-  new ControllerAssosSuperAdmin();
+  new ControllerAssoSuperAdmin();
 });
 router.add('/connection', () => {
-  new ControllerConnect();
+  new ControllerConnection();
 });
 router.add('/createArticle', () => {
   new ControllerCreateArticle();
 });
 router.add('/createAssos', () => {
-  new ControllerCreateAssos();
+  new ControllerCreateAssociation();
 });
 router.add('/discu', () => {
-  new ControllerDiscu();
+  new ControllerDiscussion();
 });
 router.add('/gestMember', () => {
-  new ControllerGestMember();
+  new ControllerMemberManagement();
 });
 router.add('/password-forgot', () => {
-  new ControllerMDPForgot();
+  new ControllerPasswordForgotten();
 });
 router.add('/homeAssos', () => {
-  new ControllerHomeAssos();
+  new ControllerAssociationPage();
 });
 const { pathname } = location;
 router.navigateTo(pathname);
