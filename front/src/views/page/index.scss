@@ -12,6 +12,7 @@ $back: #fff;
 $border: #555;
 $couleur1: #ce371c;
 $couleur2 : #e86f24;
+$couleur3 : #1a1e21;
 
 /* ================================================== */
 /* Général */
@@ -69,61 +70,60 @@ header{
     align-items: center;
     position: sticky;
     top: 0;
-    background: linear-gradient(5deg, #ff9e02, #b43030);
+    background: linear-gradient(0deg, #ff9e02, #b43030);
     width: 100%;
     height: 5em;
     z-index: 9999;
     transition: opacity 3s ease-in-out;
-}
 
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: azure;
+        padding: 1.5em 2.5em 1.5em 5em;
+        width: 100%;
+    }
+
+    nav a{
+        color:$back;
+        text-decoration: none;
+        font-size: 1.1em;
+        margin: 1em;
+        transition: background-color 3s ease-in-out;
+    }
+
+    nav .slected{
+        background-color:$couleur2;
+        box-shadow: -5px -5px 5px rgba(255,255,255,0.2),
+                    10px 10px 10px rgba(0,0,0,0.1),
+                    inset 5px 5px 5px rgba(255,255,255,0.2),
+                    inset -5px -5px 10px rgba(0,0,0,0.1);
+    }
+
+    .log{
+        font-weight: bold;
+    }
+
+    .partie-g{
+        display: flex;
+        align-items: center;
+    }
+
+    .partie-d{
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-nav{
+        padding: 2% 2% 2% 2%;
+        border-radius: 50px;
+        background-color: $couleur1;
+        color : white;
+    }
+}
 .scrolled{
     opacity: 0.9;
-}
-
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: azure;
-    padding: 1.5em 2.5em 1.5em 5em;
-    width: 100%;
-}
-
-nav a{
-    color:$back;
-    text-decoration: none;
-    font-size: 1.1em;
-    margin: 1em;
-    transition: background-color 3s ease-in-out;
-}
-
-nav .slected{
-    background-color:$couleur2;
-    box-shadow: -5px -5px 5px rgba(255,255,255,0.2),
-                10px 10px 10px rgba(0,0,0,0.1),
-                inset 5px 5px 5px rgba(255,255,255,0.2),
-                inset -5px -5px 10px rgba(0,0,0,0.1);
-}
-
-.log{
-    font-weight: bold;
-}
-
-.partie-g{
-    display: flex;
-    align-items: center;
-}
-
-.partie-d{
-    display: flex;
-    align-items: center;
-}
-
-.btn-nav{
-    padding: 2% 2% 2% 2%;
-    border-radius: 50px;
-    background-color: $couleur1;
-    color : white;
 }
 /* ================================================== */
 /* Partie FOOTER */
@@ -134,20 +134,99 @@ footer{
     width: 100%;
     text-align: center;
     display: grid;
-    grid-template-columns:1fr 1fr 1fr;
-    height: 100px;
-    background: linear-gradient(5deg, #b43030, #ff9e02);
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    height: 300px;
+    background: linear-gradient(0deg, #b43030, #ff9e02);
     color: $text;
     align-items: center;
+    padding: 0 10 0 0;
+
+    h5, p, a{
+        color: $back;
+    }
 
     a{
-        color: $text !important;
-        transition: 0.5s;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+        color: $back;
     }
-
+    
     a:hover{
         cursor: pointer;
+        color: $back;
     }
+
+    .cont-foot{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .reseaux{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content-reseaux{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $border;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-reseaux{
+        color: $back;
+        margin-right: 8px;
+    }
+    
+    h4{
+        font-size: 18px;
+        color: $back;
+        text-transform: capitalize;
+        margin-bottom: 35px;
+        font-weight: 500;
+        position: relative;
+    }
+    
+    h4::before{
+       content: '';
+       position: absolute;
+       left: 0;
+       bottom: -10px;
+       background-color:$border;
+       height: 2px;
+       box-sizing: border-box;
+       width: 50px;
+    }
+
+    .ender-barre{
+        position: relative;
+    }
+    
+    .ender-barre::after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transform: scaleX(0); 
+        transition: transform 0.3s ease; 
+    }
+  
+    .ender-barre:hover::after {
+        transform: scaleX(1); 
+    }
+ 
+    
 }
 
 /* ================================================== */
@@ -194,6 +273,10 @@ footer{
 #chat-btn .chat:focus{
     border: none;
     outline: none;
+}
+
+main a:hover{
+    color: $text !important;
 }
 
 @keyframes pulse-border {
