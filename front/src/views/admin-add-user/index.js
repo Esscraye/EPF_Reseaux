@@ -8,25 +8,25 @@ export default () => (`
       <div class="col-6">
         <div class="mb-4">
           <label class="form-label" for="lastname">Nom</label>
-          <input type="text" class="form-control" id="lastname" placeholder="Saisir le nom">
+          <input type="text" class="form-control lastname" placeholder="Saisir le nom">
         </div>         
         <div class="mb-4">
           <label class="form-label" for="firstname">Prénom</label>
-          <input type="text" class="form-control border-black" id="firstname" placeholder=" Saisir le prénom">
+          <input type="text" class="form-control border-black firstname"  placeholder=" Saisir le prénom">
         </div>         
         <div class="mb-4">
           <label class="form-label" for="email">Email</label>
-          <input type="email" class="form-control border-black" id="email" placeholder="Saisir l'email">
+          <input type="email" class="form-control border-black email"  placeholder="Saisir l'email">
         </div>
         <div class="mb-4">
           <label class="form-label" for="description">Description</label>
-          <input type="text" class="form-control border-black" id="description" placeholder="Saisir la description">
+          <input type="text" class="form-control border-black description" placeholder="Saisir la description">
         </div>
       </div>
       <div class="col-6">         
         <div class="mb-4">
           <label class="form-label" for="promo">Promo</label>
-          <select class="form-select" id="promo">
+          <select class="form-select promo">
             <option selected>Sélectionner...</option>
             <option value="1">1A</option>
             <option value="2">2A</option>
@@ -37,7 +37,7 @@ export default () => (`
         </div>         
         <div class="mb-4">
           <label class="form-label" for="class">Groupe de TD</label>
-          <select class="form-select" id="class">
+          <select class="form-select class">
             <option selected>Sélectionner...</option>
             <option value="1">TD E</option>
             <option value="2">TD F</option>
@@ -49,7 +49,7 @@ export default () => (`
         </div>           
         <div class="mb-4">
           <label class="form-label" for="grouptp">Groupe de TP</label>
-          <select class="form-select" id="grouptp">
+          <select class="form-select grouptp">
             <option selected>Sélectionner...</option>
             <option value="1">TP AA</option>
             <option value="2">TP AB</option>
