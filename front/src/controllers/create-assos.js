@@ -1,5 +1,5 @@
 import ControllerPage from './page';
-import ViewHome from '../views/creaassos';
+import ViewCreateAssos from '../views/create-assos';
 
 const Home = class Home {
   constructor() {
@@ -7,7 +7,7 @@ const Home = class Home {
   }
 
   run() {
-    new ControllerPage(ViewHome());
+    new ControllerPage(ViewCreateAssos());
   }
 };
 
