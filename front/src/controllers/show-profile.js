@@ -1,4 +1,4 @@
-import ViewAssoFondateurEtresponsable from '../views/afficher-profil';
+import ViewAssoFondateurEtresponsable from '../views/show-profile';
 import ControllerPage from './page';
 
 const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {

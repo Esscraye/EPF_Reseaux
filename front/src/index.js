@@ -1,21 +1,19 @@
 import Router from 'vanilla-router';
 
 import ControllerHome from './controllers/home';
-import ControllerPage404 from './controllers/page-404';
+import ControllerPage404 from './controllers/404-page';
 import ControllerAddUser from './controllers/admin-add-user';
 import ControllerChangeUser from './controllers/admin-modify-user';
-import ControllerDispProf from './controllers/afficher-profil';
-import ControllerAddGrp from './controllers/ajouter-groupe';
-// import ControllerAssosFondResp from './controllers/asso-fondateur-et-responsable';
+import ControllerDispProf from './controllers/show-profile';
+import ControllerAddGrp from './controllers/add-group';
 import ControllerAssosSuperAdmin from './controllers/asso-super-admin';
-// import ControllerAddAssosUser from './controllers/asso-utilisateur';
 import ControllerConnect from './controllers/connection';
 import ControllerCreateArticle from './controllers/create-article';
-import ControllerCreateAssos from './controllers/create-assos';
-import ControllerDiscu from './controllers/discu';
-import ControllerGestMember from './controllers/gestionmembre';
-import ControllerMDPForgot from './controllers/password-forgot';
-import ControllerHomeAssos from './controllers/page_main_assos';
+import ControllerCreateAssos from './controllers/create-associations';
+import ControllerDiscu from './controllers/discussion';
+import ControllerGestMember from './controllers/member-management';
+import ControllerMDPForgot from './controllers/password-forgotten';
+import ControllerHomeAssos from './controllers/association-page';
 
 import './index.scss';
 

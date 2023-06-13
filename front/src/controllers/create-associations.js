@@ -1,6 +1,6 @@
 import { isEmail } from 'validator';
 import ControllerPage from './page';
-import ViewCreateAssos from '../views/create-assos';
+import ViewCreateAssos from '../views/create-associations';
 
 const Home = class Home {
   constructor() {

@@ -1,5 +1,5 @@
 import ControllerPage from './page';
-import ViewHome from '../views/gestionmembre';
+import ViewHome from '../views/member-management';
 
 const Home = class Home {
   constructor() {

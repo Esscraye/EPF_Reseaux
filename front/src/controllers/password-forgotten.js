@@ -1,7 +1,7 @@
 import { isEmail } from 'validator';
 
 import ControllerPage from './page';
-import ViewPasswordForgot from '../views/password-forgot';
+import ViewPasswordForgot from '../views/password-forgotten';
 
 const PasswordForgot = class PasswordForgot {
   constructor() {

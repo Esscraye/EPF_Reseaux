@@ -1,5 +1,5 @@
 import ControllerPage from './page';
-import ViewPageMainAssos from '../views/page_main_assos';
+import ViewPageMainAssos from '../views/association-page';
 
 class PageMainAssos {
   constructor() {

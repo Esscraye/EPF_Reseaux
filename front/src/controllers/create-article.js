@@ -1,4 +1,4 @@
-import ViewCreatearticle from '../views/createarticle';
+import ViewCreatearticle from '../views/create-article';
 import ControllerPage from './page';
 
 const Createarticle = class Createarticle {

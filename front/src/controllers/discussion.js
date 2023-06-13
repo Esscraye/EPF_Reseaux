@@ -1,5 +1,5 @@
 import ControllerPage from './page';
-import ViewDiscu from '../views/discu';
+import ViewDiscu from '../views/discussion';
 
 const now = new Date();
 

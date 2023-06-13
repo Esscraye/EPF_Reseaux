@@ -1,4 +1,4 @@
-import View404 from '../views/page_404';
+import View404 from '../views/404-page';
 
 const page404 = class pagem404 {
   constructor() {

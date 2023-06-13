@@ -1,4 +1,4 @@
-import ViewAssoFondateurEtresponsable from '../views/ajouter-groupe';
+import ViewAssoFondateurEtresponsable from '../views/add-group';
 import ControllerPage from './page';
 
 const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
