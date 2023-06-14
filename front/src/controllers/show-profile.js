@@ -20,17 +20,8 @@ const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
     this.run();
   }
 
-  onClickSearch_modifprof() {
-    const addButton = document.querySelector('#btnmodifprofil');
-    addButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log('bouton marche');
-    });
-  }
-
   run() {
     new ControllerPage(ViewAssoFondateurEtresponsable(this.data));
-    this.onClickSearch_modifprof();
   }
 };
 
