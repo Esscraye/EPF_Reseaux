@@ -52,4 +52,11 @@ $couleur1 : #1a1e21;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
     border: solid 1px;
     border-color: $inputZone;
+    color: $couleur1;
+}
+
+.titre-event{
+    font-size: 25px;
+    text-shadow: 1px 1px 2px #172317;
+    position: relative;
 }
