@@ -22,7 +22,7 @@ export default () => (`
             </div>
           </div>
           <button type="button" class="btn bt">Connexion</button> 
-          <p><a href="#" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mot de passe oublié ?</a></p>
+          <p><a href="/password-forgot" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mot de passe oublié ?</a></p>
         </div>
       </div>
     </div>
