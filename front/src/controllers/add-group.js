@@ -1,3 +1,4 @@
+import axios from 'axios';
 import ViewAddGroup from '../views/add-group';
 import ControllerPage from './page';
 
@@ -15,10 +16,17 @@ const AddGroup = class AddGroup {
       const addInputid = document.querySelector('#nom_groupe_input');
       const addInputname = document.querySelector('#nom_groupe_input');
       if (addInputid.value && addInputname.value) {
-        console.log({
-          identifiant: addInputid.value,
-          nomgroupe: addInputname.value
-        });
+        const body = {
+          idgroup: addInputid.value,
+          namegroup: addInputname.value
+        };
+        axios.post('http://127.0.0.1:3000/group', body)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         addInputid.value = ' ';
         addInputname.value = ' ';
       } else {
