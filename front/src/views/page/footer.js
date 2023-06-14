@@ -1,6 +1,8 @@
 export default () => (`
-  <div class="cont-foot">
-    <h5 class="navbar-brand log">EPF Intranet</h5>  
+
+  <div class="navbar-brand log">
+    <div class="div-ronde"><img src="/images/logo.png" class="logo"></div>
+    <h5>EPF Intranet :</h5>
   </div>
   <div class="cont-foot">
     <h4>Useful link</h4>  
@@ -24,6 +26,9 @@ export default () => (`
   <div class="cont-foot">
     <h4 class="">Contact us</h4>
     <a href="mentionleg.html" class="ender-barre">Mentions légales</a>
+    <a href="mentionleg.html" class="ender-barre">Email: </a>
+    <a href="mentionleg.html" class="ender-barre">epfreseau@epfedu.fr</a>
+    <a href="mentionleg.html" class="ender-barre">epfreseau@epfedu.fr</a>
   </div>
 `);
 

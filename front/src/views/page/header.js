@@ -2,7 +2,7 @@ export default () => (`
   <nav class="">
     <div class="partie-g">
       <div class="navbar-brand log">
-        <div class="div-ronde"></div>
+        <div class="div-ronde"><img src="/images/logo.png" class="logo"></div>
         <h5>EPF Intranet :</h5>
       </div>
       <a href="#" class="btn btn-nav slected">Accueil</a>
@@ -11,7 +11,7 @@ export default () => (`
       <a href="#" class="btn btn-nav">Admin</a>
     </div>
     <form class="d-flex nav-search partie-d" role="search">
-      <input class="form-control me-2" style="background-color: white;" type="search" placeholder="Recherche" aria-label="Search">
+      <input class="form-control me-2 input-col" style="background-color: white;" type="search" placeholder="Recherche" aria-label="Search">
       <button class="btn btn-outline-success" type="button">Rechercher</button>
     </form>
   </nav>
