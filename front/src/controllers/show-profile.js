@@ -1,7 +1,7 @@
-import ViewAssoFondateurEtresponsable from '../views/show-profile';
+import ViewShowProfile from '../views/show-profile';
 import ControllerPage from './page';
 
-const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
+const ShowProfile = class ShowProfile {
   constructor() {
     this.el = document.body;
     this.data = {
@@ -21,8 +21,8 @@ const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
   }
 
   run() {
-    new ControllerPage(ViewAssoFondateurEtresponsable(this.data));
+    new ControllerPage(ViewShowProfile(this.data));
   }
 };
 
-export default AssoFondateurEtResponsable;
+export default ShowProfile;
