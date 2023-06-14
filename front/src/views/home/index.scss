@@ -1,3 +1,13 @@
+/* ================================================== */
+/* Initialisation des variables */
+/* ================================================== */
+
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #fd8f44;
+$couleur1 : #1a1e21;
 
 .actu {
     background-color: rgba(210, 210, 210, 0.9) !important;
@@ -11,11 +21,7 @@
   }
 
 .back-im {
-    background-image: url(https://www.epf.fr/sites/default/files/styles/hero/public/2022-03/Cachan_paysage.png?itok=CIUCsBMz);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: $back;
 }
 
 .img-article{

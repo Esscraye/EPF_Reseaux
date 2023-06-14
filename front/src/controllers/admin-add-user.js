@@ -21,8 +21,8 @@ const AdminAddUser = class AdminAddUser {
       const elInputPromo = document.querySelector('.promo');
       const elInputClass = document.querySelector('.class');
       const elInputGrouptp = document.querySelector('.grouptp');
-      if (elInputEmail.value && isEmail(elInputEmail.value) && elInputLastname.value && elInputFirstname && 
-      elInputDescription && elInputPromo && elInputClass && elInputGrouptp) {
+      if (elInputEmail.value && isEmail(elInputEmail.value) && elInputLastname.value
+      && elInputFirstname && elInputDescription && elInputPromo && elInputClass && elInputGrouptp) {
         console.log({
           lastname: elInputLastname.value,
           firstname: elInputFirstname.value,

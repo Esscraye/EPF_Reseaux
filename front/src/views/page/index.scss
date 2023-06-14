@@ -6,13 +6,12 @@
 /* Initialisation des variables */
 /* ================================================== */
 
-$container: #eee;
-$text: #111;
-$back: #fff;
-$border: #555;
-$couleur1: #ce371c;
-$couleur2 : #e86f24;
-$couleur3 : #1a1e21;
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #fd8f44;
+$couleur1 : #1a1e21;
 
 /* ================================================== */
 /* Général */
@@ -27,13 +26,13 @@ $couleur3 : #1a1e21;
 
 a{
     text-decoration: none;
-    color: $back;
+    color: $text;
 }
 
 .btn {
-    background-color: #b43030;
-    color : white;
-    border: 1px solid $back !important;
+    background-color: $contenant;
+    color : $text;
+    border: 1px solid $couleur1 !important;
 }
 
 .btn:hover{
@@ -45,16 +44,15 @@ a{
     color: $back;
 }
 
-html{
-    min-height: 100%;
-}
-
 body {
-    overflow-x:hidden;
+    overflow:hidden;
     overflow-y:auto;
-    min-height: 100%;
+    background-color: $back;
 }
 
+main{
+    background-color: $back;
+}
 /*h2{
     margin-top: 20px;
     margin-left: 85px;
@@ -70,19 +68,24 @@ header{
     align-items: center;
     position: sticky;
     top: 0;
-    background: linear-gradient(0deg, #ff9e02, #b43030);
     width: 100%;
-    height: 5em;
-    z-index: 9999;
+    height: auto;
     transition: opacity 3s ease-in-out;
+    margin-bottom: 20px;
+    background-color: $back;
+    z-index: 9999;
 
     nav{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: azure;
-        padding: 1.5em 2.5em 1.5em 5em;
+        color: $back;
+        padding: 1em 1em 1em 1em;
         width: 100%;
+        background-color: $couleur1;
+        margin: 1% 1% 0% 1%;
+        border-radius: 20px;
+        
     }
 
     nav a{
@@ -101,8 +104,24 @@ header{
                     inset -5px -5px 10px rgba(0,0,0,0.1);
     }
 
+    h5{
+        margin: 0;
+    }
+
+    .div-ronde {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: url('/public/images/logo.png') $back; 
+        margin-right: 10px;
+    }
+
+
     .log{
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        margin-right: 20%;
     }
 
     .partie-g{
@@ -117,9 +136,10 @@ header{
 
     .btn-nav{
         padding: 2% 2% 2% 2%;
-        border-radius: 50px;
+        border-radius: 10px;
         background-color: $couleur1;
-        color : white;
+        color : $back;
+        margin-right: 20%;
     }
 }
 .scrolled{
@@ -136,10 +156,11 @@ footer{
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
     height: 300px;
-    background: linear-gradient(0deg, #b43030, #ff9e02);
-    color: $text;
+    background-color: $couleur1;
+    color: $back;
     align-items: center;
     padding: 0 10 0 0;
+    margin-top: 20px;
 
     h5, p, a{
         color: $back;
@@ -175,7 +196,7 @@ footer{
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background-color: $border;
+        background-color: $couleur2;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -200,7 +221,7 @@ footer{
        position: absolute;
        left: 0;
        bottom: -10px;
-       background-color:$border;
+       background-color:$couleur2;
        height: 2px;
        box-sizing: border-box;
        width: 50px;
@@ -217,7 +238,7 @@ footer{
         bottom: 0;
         width: 100%;
         height: 2px;
-        background-color: white;
+        background-color: $couleur2;
         transform: scaleX(0); 
         transition: transform 0.3s ease; 
     }
@@ -242,7 +263,7 @@ footer{
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
     border-radius: 50px;
     border-left: none;
-    color: #fff;
+    color: $back;
     font-weight: 700;
     font-size: 30px;
     bottom: 125px;
