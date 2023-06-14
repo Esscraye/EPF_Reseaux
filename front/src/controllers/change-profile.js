@@ -3,7 +3,7 @@ import { isEmail, isEmpty } from 'validator';
 import ControllerPage from './page';
 import ViewChangeProfile from '../views/change_profile';
 
-const ControllerChangeProfile = class ControllerChangeProfile {
+const ChangeProfile = class ChangeProfile {
   constructor() {
     this.run();
   }
@@ -44,8 +44,8 @@ const ControllerChangeProfile = class ControllerChangeProfile {
       }
     });
 
-    const elOtroButton = document.querySelector('.delete-profile');
-    elOtroButton.addEventListener('click', (e) => {
+    const elOtherButton = document.querySelector('.delete-profile');
+    elOtherButton.addEventListener('click', (e) => {
       e.preventDefault();
       const ConfirmEmail = document.querySelector('.confirm-email');
       if (isEmail(ConfirmEmail.value)) {
@@ -65,4 +65,4 @@ const ControllerChangeProfile = class ControllerChangeProfile {
   }
 };
 
-export default ControllerChangeProfile;
+export default ChangeProfile;
