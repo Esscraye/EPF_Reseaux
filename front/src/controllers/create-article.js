@@ -8,6 +8,7 @@ const Createarticle = class Createarticle {
       assoc: {
         name: 'Blank',
         logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
+        back: 'https://i.redd.it/qbkwy20nvoa61.jpg',
         description: '',
         mail: '',
         phone: '',
@@ -49,45 +50,42 @@ const Createarticle = class Createarticle {
       }
     };
 
-    this.newNews = {
-      title: '',
-      text: '',
-      img: ''
-    };
-
     this.run();
   }
 
-  initializeFileInput() {
-    const fileInput = document.querySelector('#formFileImage');
-    fileInput.addEventListener('change', (event) => {
-      const selectedFile = event.target.files[0];
+  saveNews() {
+    const newsTitleInput = document.querySelector('#floatingTextareaTitle');
+    const newsTextInput = document.querySelector('#floatingTextareaTexte');
+    const newsImgInput = document.querySelector('#formFileImage');
+    const newsTitle = newsTitleInput.value;
+    const newsText = newsTextInput.value;
+    const newsImg = newsImgInput.files[0];
 
-      if (selectedFile.value) {
-        selectedFile.value = '';
-      }
+    if (newsTitleInput.value === '' || newsTextInput.value === '' || newsImgInput.files[0] === '') {
+      alert('Il faut remplir tous les champs');
+    } else {
+      newsTitleInput.value = '';
+      newsTextInput.value = '';
+      newsImgInput.files[0] = '';
+    }
+
+    return {
+      title: newsTitle,
+      text: newsText,
+      img: newsImg
+    };
+  }
+
+  runCreate() {
+    const postNews = document.querySelector('.postNewsButton');
+    postNews.addEventListener('click', () => {
+      this.saveNews();
     });
-  }
-
-  saveText() {
-    const newsTitle = document.getElementById('floatingTextareaTitle');
-    this.newNews.title = newsTitle.value;
-    const newsText = document.getElementById('floatingTextareaTexte');
-    this.newNews.text = newsText.value;
-  }
-
-  handlePostNews() {
-    console.log('Posted news:', this.newNews);
   }
 
   run() {
-    this.initializeFileInput();
-    const button = document.querySelector('.postbutton');
-    button.addEventListener('click', () => {
-      this.saveText();
-      this.handlePostNews();
-    });
     new ControllerPage((ViewCreatearticle(this.data)));
+    this.runCreate();
   }
 };
 
