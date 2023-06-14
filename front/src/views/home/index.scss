@@ -10,7 +10,7 @@ $couleur2 : #fd8f44;
 $couleur1 : #1a1e21;
 
 .actu {
-    background-color: rgba(210, 210, 210, 0.9) !important;
+    background-color: $contenant;
 }
 
 .nav-filtre-actu{
@@ -37,14 +37,19 @@ $couleur1 : #1a1e21;
 .info-asso{
     height: auto;
     width: 70%;
-    border: 3px;
     border-radius: 25px;
     text-align: center;
     margin-left: 15%;
     align-items: center;
-    background: linear-gradient(45deg, #838383, #bdbcbc);
+    background: $contenant;
 }
 
 .info-asso .texte-asso{
     padding: 5%;
+}
+
+.shadow-manuelle{
+    box-shadow: 4px 6px 10px $couleur1;
+    border: solid 1px;
+    border-color: $inputZone;
 }

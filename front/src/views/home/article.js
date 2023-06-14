@@ -2,7 +2,7 @@ export default (data) => {
   const { assoc, content } = data;
 
   return (`
-    <div class="card text-center actu mb-2">
+    <div class="card text-center actu my-3 shadow-manuelle">
       <div class="card-header">
         <div class="row">
           <div class="col-1">

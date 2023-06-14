@@ -11,7 +11,7 @@ $back: #f9efef;
 $inputZone: #555;
 $contenant: lightgray;
 $couleur2 : #fd8f44;
-$couleur1 : #1a1e21;
+$couleur1 : #1a1e21; // #1a1e21
 
 /* ================================================== */
 /* Général */
@@ -37,10 +37,10 @@ a{
 
 .btn:hover{
     background-color:$couleur2 !important;
-    box-shadow: -5px -5px 5px rgba(255,255,255,0.2),
-                10px 10px 10px rgba(0,0,0,0.1),
-                inset 5px 5px 5px rgba(255,255,255,0.2),
-                inset -5px -5px 10px rgba(0,0,0,0.1);
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.2),
+                10px 10px 15px rgba(0,0,0,0.1),
+                inset 5px 5px 15px rgba(255,255,255,0.2),
+                inset -5px -5px 15px rgba(0,0,0,0.1);
     color: $back;
 }
 
@@ -53,6 +53,12 @@ body {
 main{
     background-color: $back;
 }
+
+input{
+    background-color: $contenant !important;
+    border: solid 2px $inputZone !important;
+}
+
 /*h2{
     margin-top: 20px;
     margin-left: 85px;
@@ -98,30 +104,14 @@ header{
 
     nav .slected{
         background-color:$couleur2;
-        box-shadow: -5px -5px 5px rgba(255,255,255,0.2),
-                    10px 10px 10px rgba(0,0,0,0.1),
-                    inset 5px 5px 5px rgba(255,255,255,0.2),
-                    inset -5px -5px 10px rgba(0,0,0,0.1);
+        box-shadow: -5px -5px 15px rgba(255,255,255,0.2),
+                    10px 10px 15px rgba(0,0,0,0.1),
+                    inset 5px 5px 15px rgba(255,255,255,0.2),
+                    inset -5px -5px 15px rgba(0,0,0,0.1);
     }
 
     h5{
         margin: 0;
-    }
-
-    .div-ronde {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: url('/public/images/logo.png') $back; 
-        margin-right: 10px;
-    }
-
-
-    .log{
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        margin-right: 20%;
     }
 
     .partie-g{
@@ -145,6 +135,33 @@ header{
 .scrolled{
     opacity: 0.9;
 }
+
+header, footer{
+    .div-ronde {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background:$couleur1; 
+        margin-right: 10px;
+    }
+
+    .logo{
+        display: flex;
+        width:240%;
+        height: 170%;
+    }
+
+    .log{
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20%;
+    }
+}
 /* ================================================== */
 /* Partie FOOTER */
 /* ================================================== */
@@ -166,11 +183,14 @@ footer{
         color: $back;
     }
 
+    .log h5{
+        margin: 0;
+    }
+
     a{
         font-size: 16px;
         text-decoration: none;
         text-transform: capitalize;
-        margin-bottom: 15px;
         transition: all 0.3s ease;
         color: $back;
     }
@@ -185,6 +205,9 @@ footer{
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        height: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 
     .reseaux{
@@ -200,13 +223,17 @@ footer{
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .content-reseaux{
         color: $back;
         margin-right: 8px;
+        transition: all 0.3S ease;
     }
-    
+
+    .content-reseaux:hover{
+        background-color: $couleur1;
+        color: $couleur2;
+        padding-bottom: 5px;
+    }
+
     h4{
         font-size: 18px;
         color: $back;
