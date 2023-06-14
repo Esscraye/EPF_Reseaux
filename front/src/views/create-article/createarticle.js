@@ -3,47 +3,34 @@ export default () => (`
     <div class="m-5 rectangle">
       <div class="p-4 row">
         <div class="row">
-          <h3 class="fw-bold">Créer une actualité</h3>
+          <h3 class="fw-bold mb-3">Créer une actualité</h3>
         </div>
         <div class="row mb-3 align-items-end">
           <div class="col-9">
-            <p class="text-start">Titre de l'article</p>
             <div class="form-floating">
               <input class="form-control" placeholder="Leave a comment here"  id="floatingTextareaTitle">
-              <label for="floatingTextareaTitle">Title</label>
+              <label for="floatingTextareaTitle">Title de l'article</label>
             </div>
           </div>
-          <div class="col-3">
-            <div class="dropdown">
-              <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Type de l'actualité
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="mb-1 dropdown-item text-center" href="#" >Article</a></li>
-                <li><a class="dropdown-item text-center" href="#" >Post</a></li>
-                <li><a class="mt-1 dropdown-item text-center" href="#">Event</a></li>
-              </ul>
-            </div>
-          </div>
+          <div class="col-3"></div>
         </div>
         <div class="row align-items-end">
           <div class="col-9">
-            <p class="text-start">Image titre de l'actualité</p>
+            <p class="text-start">Image de l'actualité</p>
             <div class="mb-3">
-              <input class="form-control" type="file" id="formFileImageTitre" width="200" height="200" class=" rounded-start" alt="...">
+              <input class="form-control rounded-start" type="file" id="formFileImage">
             </div>
           </div>
         </div>
         <div class="row mt-3 align-items-end">
           <div class="col-9">
-            <p class="text-start">Texte</p>
             <div class="form-floating">
               <textarea class="form-control h-50" rows="9" placeholder="Texte" id="floatingTextareaTexte"></textarea>
-              <label for="floatingTextareaTexte">Texte</label>
+              <label for="floatingTextareaTexte">Texte de l'actualité</label>
             </div>
           </div>
           <div class="col-3">
-            <button type="button" class="mt-4 btn btn-danger">Poster l'actualité</button>
+            <button type="button" class="mt-4 btn btn-danger postNewsButton">Poster l'actualité</button>
           </div>
         </div>
       </div>

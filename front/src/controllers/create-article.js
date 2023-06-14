@@ -8,6 +8,7 @@ const Createarticle = class Createarticle {
       assoc: {
         name: 'Blank',
         logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
+        back: 'https://i.redd.it/qbkwy20nvoa61.jpg',
         description: '',
         mail: '',
         phone: '',
@@ -52,22 +53,39 @@ const Createarticle = class Createarticle {
     this.run();
   }
 
-  onClickSearch() {
-    const elButton = document.querySelector('.nav-search button');
+  saveNews() {
+    const newsTitleInput = document.querySelector('#floatingTextareaTitle');
+    const newsTextInput = document.querySelector('#floatingTextareaTexte');
+    const newsImgInput = document.querySelector('#formFileImage');
+    const newsTitle = newsTitleInput.value;
+    const newsText = newsTextInput.value;
+    const newsImg = newsImgInput.files[0];
 
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
+    if (newsTitleInput.value === '' || newsTextInput.value === '' || newsImgInput.files[0] === '') {
+      alert('Il faut remplir tous les champs');
+    } else {
+      newsTitleInput.value = '';
+      newsTextInput.value = '';
+      newsImgInput.files[0] = '';
+    }
 
-      const elInput = document.querySelector('.nav-search input');
+    return {
+      title: newsTitle,
+      text: newsText,
+      img: newsImg
+    };
+  }
 
-      if (elInput.value) {
-        elInput.value = '';
-      }
+  runCreate() {
+    const postNews = document.querySelector('.postNewsButton');
+    postNews.addEventListener('click', () => {
+      this.saveNews();
     });
   }
 
   run() {
     new ControllerPage(ViewCreatearticle(this.data));
+    this.runCreate();
   }
 };
 

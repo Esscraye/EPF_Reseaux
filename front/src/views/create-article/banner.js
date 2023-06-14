@@ -1,6 +1,7 @@
 const banner = (data) => (`
   <div class="container-fluid text-center">
     <div class="row shadow-lg p-2 align-items-center">
+    <img src="${data.back}" alt="background">
       <div class="col-2">
         <img width="200" src="${data.logo}" alt="logo">
       </div>
