@@ -5,7 +5,7 @@ export default (data) => (`
         <li class="col-3 "><img src="${data.icone}" class="rounded" alt="..." width="40"></li>
         <li class="d-flex justify-content-between align-items-center bg-danger text-white col-9">
           ${data.name}
-          <span class="badge bg-primary rounded-pill bg-white text-black ">${data.convId}</span>
+          <span class="badge bg-primary rounded-pill bg-white text-black" data-message-count>${data.messages.length}</span>
         </li>
       </div>
     </a>

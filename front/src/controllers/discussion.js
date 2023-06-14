@@ -1,25 +1,18 @@
 import ControllerPage from './page';
 import ViewDiscu from '../views/discussion';
+import messD from '../views/discussion/message_droite';
 
 const Discu = class Discu {
   constructor() {
     this.el = document.body;
     this.data = {
-      soloBar: {
-        name: 'Mathieu :',
-        icone: 'https://tse4.mm.bing.net/th?id=OIP.AENl1AC1hSURPNEUwarSawHaHa&pid=Api&P=0&h=180'
-      },
-      groupBar: {
-        name: 'Groupe de promo :',
-        icone: 'https://tse3.mm.bing.net/th?id=OIP.-xJE4WTayjrJUhukEsN1VwHaHa&pid=Api&P=0&h=180'
-      },
       conversations: [{
         participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr'],
         type: 'individual',
         name: 'Victor Marchand',
-        icone: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
+        icone: 'https://tse4.mm.bing.net/th?id=OIP.AENl1AC1hSURPNEUwarSawHaHa&pid=Api&P=0&h=180',
         censure: false,
-        convId: '21',
+        convId: '1',
         messages: [{
           text: 'Hello !',
           times: '13h52',
@@ -88,9 +81,9 @@ const Discu = class Discu {
         participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr', 'leo.leboss@epfedu.fr'],
         type: 'group',
         name: 'Projet intranet',
-        icone: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
+        icone: 'https://tse3.mm.bing.net/th?id=OIP.-xJE4WTayjrJUhukEsN1VwHaHa&pid=Api&P=0&h=180',
         censure: false,
-        convId: '12',
+        convId: '2',
         messages: [{
           text: 'Hello',
           times: '13h52',
@@ -126,33 +119,6 @@ const Discu = class Discu {
             lastName: 'Juery',
             email: 'maxence.juery@epfedu.fr'
           }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
         }
         ]
       }]
@@ -164,12 +130,10 @@ const Discu = class Discu {
 
   onClickSearch() {
     const elButton = document.querySelector('.send-message-bar button');
+    const elInput = document.querySelector('.send-message-bar input');
 
-    elButton.addEventListener('click', (e) => {
-      const elInput = document.querySelector('.send-message-bar input');
-      const messageText = elInput.value;
-
-      e.preventDefault();
+    const sendMessage = () => {
+      const messageText = elInput.value.trim();
 
       if (messageText) {
         const now = new Date();
@@ -184,10 +148,32 @@ const Discu = class Discu {
         };
 
         elInput.value = '';
-        const conversation = this.data.conversations.find((conv) => (conv.convId === '21'));
+
+        const conversation = this.data.conversations.find((conv) => conv.convId === '1');
         if (conversation) {
           conversation.messages.push(message);
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.innerHTML += messD(message);
+
+          const messageCountElement = document.querySelector('[data-message-count]');
+          if (messageCountElement) {
+            const currentMessageCount = parseInt(messageCountElement.textContent, 10);
+            const updatedMessageCount = currentMessageCount + 1;
+            messageCountElement.textContent = updatedMessageCount;
+          }
         }
+      }
+    };
+
+    elButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      sendMessage();
+    });
+
+    elInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
       }
     });
   }
