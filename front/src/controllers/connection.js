@@ -1,9 +1,10 @@
 import { isEmail } from 'validator';
-import ControllerPage from './page';
 import ViewConnection from '../views/connection';
 
 const Connection = class Connection {
-  constructor() {
+  constructor(content) {
+    this.el = document.body;
+    this.content = content;
     this.run();
   }
 
@@ -26,9 +27,8 @@ const Connection = class Connection {
   }
 
   run() {
-    new ControllerPage(ViewConnection());
+    this.el.innerHTML = ViewConnection(this.content);
     this.onClickConnection();
-    console.log('hello');
   }
 };
 
