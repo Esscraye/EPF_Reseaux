@@ -25,23 +25,28 @@ const Home = class Home {
           name: elInputNameassos.value,
           campus: elInputChoicecampus.value,
           image_heade: '',
-          logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
+          logo: '',
           description: elInputDescription.value,
-          text: 'lorem ipsum',
+          text: 'Description',
           mail: elInputMailAssos,
-          phone: '0605040302',
+          phone: '',
           socialNetworks: {
-            instagram: 'https://www.instagram.com/',
-            discord: 'https://discord.com/',
-            twitter: 'https://twitter.com/',
-            facebook: 'https://fr-fr.facebook.com/',
-            linkedin: 'https://fr.linkedin.com/'
+            instagram: '',
+            discord: '',
+            twitter: '',
+            facebook: '',
+            linkedin: ''
           }
         };
 
         axios.post('http://172.25.56.114:3000/assoc', body)
           .then((response) => {
             console.log(response);
+            // Vider les champs de saisie
+            elInputNameassos.value = '';
+            elInputChoicecampus.value = '';
+            elInputDescription.value = '';
+            document.querySelector('#mailassos').value = '';
           })
           .catch((error) => {
             console.log(error);
