@@ -37,7 +37,5 @@ export default (data) => {
       </div>
     `);
   }
-
-  // Gérer le cas où aucune conversation de type "group" ou "individual" n'est trouvée
   return "Aucune conversation de type 'group' ou 'individual' n'est disponible.";
 };
