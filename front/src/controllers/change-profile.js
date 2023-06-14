@@ -1,9 +1,9 @@
+import { isEmail, isEmpty } from 'validator';
 // import validator from 'validator';
-
 import ControllerPage from './page';
 import ViewChangeProfile from '../views/change_profile';
 
-const ChangeProfile = class ChangeProfile {
+const ControllerChangeProfile = class ControllerChangeProfile {
   constructor() {
     this.run();
   }
@@ -17,11 +17,45 @@ const ChangeProfile = class ChangeProfile {
       const ConfirmNewMdp = document.querySelector('.ConfirmNewMdp');
       const Description = document.querySelector('.Description');
       console.log({
-        pwd: AcutalPassword.value,
-        newpwd: NewPassword.value,
-        confpwd: ConfirmNewMdp.value,
-        descr: Description.value
+        description: Description.value
       });
+      if (!isEmpty(AcutalPassword.value)) {
+        console.log({
+          pwd: AcutalPassword.value
+        });
+      } else {
+        alert('Veuillez saisir votre mot de passe.');
+      }
+
+      if (!isEmpty(NewPassword.value)) {
+        console.log({
+          new_pwd: NewPassword.value
+        });
+      } else {
+        alert('Veuillez saisir votre nouveau mot de passe.');
+      }
+
+      if (!isEmpty(ConfirmNewMdp.value)) {
+        console.log({
+          confirm_new_pwd: ConfirmNewMdp.value
+        });
+      } else {
+        alert('Veuillez confirmer votre nouveau mot de passe.');
+      }
+    });
+
+    const elOtroButton = document.querySelector('.delete-profile');
+    elOtroButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const ConfirmEmail = document.querySelector('.confirm-email');
+      if (isEmail(ConfirmEmail.value)) {
+        console.log({
+          email: ConfirmEmail.value
+        });
+      } else {
+        ConfirmEmail.value = null;
+        alert('Veuillez rentrer une adresse mail valide.');
+      }
     });
   }
 
@@ -31,4 +65,4 @@ const ChangeProfile = class ChangeProfile {
   }
 };
 
-export default ChangeProfile;
+export default ControllerChangeProfile;
