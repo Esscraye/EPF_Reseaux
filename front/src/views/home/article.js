@@ -22,7 +22,7 @@ export default (data) => {
             <img src="${content.img}" class="rounded img-article" alt="article">
           </div>
           <div class="col-9 mt-3">
-            <h5 class="card-title">${content.title}</h5>
+            <h5 class="card-title titre-event">${content.title}</h5>
             <p class="card-text text-truncate">${content.text}</p>
             <a href="${content.link}" class="btn btn-primary">Go somewhere</a>
           </div>
