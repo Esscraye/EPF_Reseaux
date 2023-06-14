@@ -84,7 +84,7 @@ const Createarticle = class Createarticle {
   }
 
   run() {
-    new ControllerPage((ViewCreatearticle(this.data)));
+    new ControllerPage(ViewCreatearticle(this.data));
     this.runCreate();
   }
 };

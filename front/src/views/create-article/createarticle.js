@@ -18,7 +18,7 @@ export default () => (`
           <div class="col-9">
             <p class="text-start">Image de l'actualité</p>
             <div class="mb-3">
-              <input class="form-control" type="file" id="formFileImage" class=" rounded-start" alt="...">
+              <input class="form-control rounded-start" type="file" id="formFileImage">
             </div>
           </div>
         </div>
