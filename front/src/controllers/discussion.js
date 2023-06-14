@@ -5,55 +5,6 @@ const Discu = class Discu {
   constructor() {
     this.el = document.body;
     this.data = {
-      choicesG: [{
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 1,
-        IdConv: '1'
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 16,
-        IdConv: '1'
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 5,
-        IdConv: '1'
-      }],
-      choicesP: [{
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 1,
-        IdConv: '1'
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 0,
-        IdConv: '1'
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 2,
-        IdConv: '1'
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 8,
-        IdConv: '1'
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 8
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 15
-      }, {
-        photo: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
-        name: 'a list item',
-        notif: 7
-      }],
       soloBar: {
         name: 'Mathieu :',
         icone: 'https://tse4.mm.bing.net/th?id=OIP.AENl1AC1hSURPNEUwarSawHaHa&pid=Api&P=0&h=180'
@@ -63,10 +14,14 @@ const Discu = class Discu {
         icone: 'https://tse3.mm.bing.net/th?id=OIP.-xJE4WTayjrJUhukEsN1VwHaHa&pid=Api&P=0&h=180'
       },
       conversations: [{
+        participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr'],
+        type: 'individual',
+        name: 'Victor Marchand',
+        icone: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
+        censure: false,
         convId: '21',
         messages: [{
-          id: '11',
-          text: 'Hello',
+          text: 'Hello !',
           times: '13h52',
           author: {
             firstName: 'Maxence',
@@ -75,7 +30,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '12',
           text: 'Comment va ?',
           times: '13h54',
           author: {
@@ -85,7 +39,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '13',
           text: '???',
           times: '13h55',
           author: {
@@ -95,7 +48,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -105,7 +57,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -115,7 +66,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -125,7 +75,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -136,9 +85,13 @@ const Discu = class Discu {
         }
         ]
       }, {
+        participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr', 'leo.leboss@epfedu.fr'],
+        type: 'group',
+        name: 'Projet intranet',
+        icone: 'https://tse1.mm.bing.net/th?id=OIP.EUZ-YXYEdyEPpxXyuV6_ZAHaHa&pid=Api&P=0&h=180',
+        censure: false,
         convId: '12',
         messages: [{
-          id: '11',
           text: 'Hello',
           times: '13h52',
           author: {
@@ -148,7 +101,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '12',
           text: 'Comment va ?',
           times: '13h54',
           author: {
@@ -158,7 +110,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '13',
           text: '???',
           times: '13h55',
           author: {
@@ -168,7 +119,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -178,7 +128,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -188,7 +137,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -198,7 +146,6 @@ const Discu = class Discu {
           }
         },
         {
-          id: '14',
           text: 'Oui',
           times: '13h57',
           author: {
@@ -227,7 +174,6 @@ const Discu = class Discu {
       if (messageText) {
         const now = new Date();
         const message = {
-          id: '1',
           text: messageText,
           times: `${now.getHours()}h${now.getMinutes()}`,
           author: {
