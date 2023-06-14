@@ -20,7 +20,7 @@ export default () => (`
           <div class="mb-3">
             <button type="button" class="btn bt">M'envoyer mon mot de passe</button>
           </div>
-          <p><a href="#" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Revenir à la page de connexion</a></p>
+          <p><a href="/connection" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Revenir à la page de connexion</a></p>
         </div>
       </div>
     </div>
