@@ -22,6 +22,9 @@ const AssoSuperAdmin = class AssoSuperAdmin {
           linkedin: 'https://fr.linkedin.com/'
         }
       },
+      follower: {
+        assoc: true
+      },
       usersPermissions: {
         founder: {
           news: {
@@ -79,37 +82,54 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   }
 
   onClickFollow() {
-    const elButton = document.querySelector('.followAsso');
+    const btn = document.querySelector('.follow-assoc');
 
-    if (!elButton) {
-      return;
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (btn.classList.contains('btn-assoc-follow')) {
+          btn.textContent = 'Ne plus suivre';
+          e.target.classList.add('btn-assoc-unfollow');
+          e.target.classList.remove('btn-assoc-follow');
+
+          return;
+        }
+
+        e.target.classList.remove('btn-assoc-unfollow');
+        e.target.classList.add('btn-assoc-follow');
+
+        btn.textContent = 'Suivre';
+      });
     }
-
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (elButton.textContent === 'Suivre') {
-        alert('Association suivie');
-        elButton.textContent = 'Ne plus suivre';
-      } else {
-        alert('Association non suivie');
-        elButton.textContent = 'Suivre';
-      }
-    });
   }
 
   onClickDel() {
     const elButton = document.querySelector('.delAsso');
+    const elButtonActu = document.querySelector('.delActu');
 
     if (!elButton) {
       return;
     }
-
+    if (!elButtonActu) {
+      return;
+    }
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
       const dialog = confirm('Supprimer l\'association ?');
       if (dialog) {
         alert('association supprimée');
         document.location.href = '../homeAssos';
+      } else {
+        alert('annulation de la demande');
+      }
+    });
+
+    elButtonActu.addEventListener('click', (e) => {
+      e.preventDefault();
+      const dialog = confirm('Supprimer l\'actualité ?');
+      if (dialog) {
+        alert('actualité supprimée');
       } else {
         alert('annulation de la demande');
       }
