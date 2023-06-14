@@ -28,7 +28,7 @@ export default () => (`
   </section>
   <section class="s3">
     <div>Confirmez votre adresse mail afin de supprimer</div>
-    <div><input class="form-control me-2" style="background-color: white;" type="search" aria-label="Search"></div>
-    <div><button class="btn btn-outline-success" type="submit">Supprimer le profil</button></div>
+    <div><input class="form-control me-2 confirm-email" style="background-color: white;" type="search" aria-label="Search"></div>
+    <div><button class="btn btn-outline-success delete-profile" type="submit">Supprimer le profil</button></div>
   </section>
 `);

@@ -14,6 +14,7 @@ import ControllerDiscussion from './controllers/discussion';
 import ControllerMemberManagement from './controllers/member-management';
 import ControllerPasswordForgotten from './controllers/password-forgotten';
 import ControllerAssociationPage from './controllers/association-page';
+import ControllerChangeProfile from './controllers/change-profile';
 
 import './index.scss';
 
@@ -62,5 +63,9 @@ router.add('/password-forgot', () => {
 router.add('/homeAssos', () => {
   new ControllerAssociationPage();
 });
+router.add('/change-profile', () => {
+  new ControllerChangeProfile();
+});
+
 const { pathname } = location;
 router.navigateTo(pathname);
