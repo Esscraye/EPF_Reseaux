@@ -37,7 +37,7 @@ $couleur1 : #1a1e21;
 .info-asso{
     height: auto;
     width: 70%;
-    border-radius: 25px;
+    border-radius: 10px;
     text-align: center;
     margin-left: 15%;
     align-items: center;
@@ -49,7 +49,14 @@ $couleur1 : #1a1e21;
 }
 
 .shadow-manuelle{
-    box-shadow: 4px 6px 10px $couleur1;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
     border: solid 1px;
     border-color: $inputZone;
+    color: $couleur1;
+}
+
+.titre-event{
+    font-size: 25px;
+    text-shadow: 1px 1px 2px #172317;
+    position: relative;
 }

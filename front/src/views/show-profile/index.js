@@ -5,19 +5,19 @@ export default (data) => {
   return (`
     <div class="container.fluid">
       <div class="row mb-5" >
-        <div class="col-3">
-          <img src="${infoPerso.picture}" alt="Image utilisateur" class="imageprof" id ="affprofimage">
+        <div class="col-3 container-info-prof">
+          <img src="${infoPerso.picture}" alt="Image utilisateur" class="imageprof image-prof" id ="affprofimage">
           <div class = "name" id = "affprofprenomnom">
             <strong>
               ${infoPerso.firstName} ${infoPerso.lastName}
             </strong>
           </div>
           <div class="modifprof" id="affprofmodifprof">
-            <a href="/createAssos" class="btn btn-danger mr-2" role="button" id ="btnmodifprofil">Modifier profil</a>
+            <a href="/changeUser" class="btn btn-danger mr-2" role="button" id ="btnmodifprofil">Modifier profil</a>
           </div>
         </div>
-        <div class="col-4">
-          <div class ="border" id="affprofborder">
+        <div class="col-6">
+          <div class ="border shadow-manuelle container-profil" id="affprofborder">
             <div class = "infoperso" id ="affprofinfo">
               <strong>
                 Informations personnelles
@@ -36,7 +36,7 @@ export default (data) => {
             Description : ${infoPerso.description}
             </div>
           </div>
-          <div class = "border" id="affprofborder">
+          <div class = "border shadow-manuelle container-profil" id="affprofborder">
             <div class = "grou" id = "affprofgrou">
               <strong>
                 Groupes
@@ -56,6 +56,7 @@ export default (data) => {
             </div>
           </div>
         </div>
+        <div class="col-3"></div>
       </div>
     </div>
   `);

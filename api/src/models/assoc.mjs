@@ -2,8 +2,10 @@ import mongoose from 'mongoose';
 
 const Schema = new mongoose.Schema({
   name: String,
-  logo: Number,
-  description: String,
+  campus: String,
+  image_header: String,
+  logo: String,
+  text: String,
   mail: String,
   phone: String,
   socialNetworks: {

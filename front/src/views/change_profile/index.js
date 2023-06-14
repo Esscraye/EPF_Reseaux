@@ -4,10 +4,10 @@ export default () => (`
   <section class="recherche-profil">
     <section class ="s1">
       <img src="https://meetanentrepreneur.lu/wp-content/uploads/2019/08/profil-linkedin-1.jpg" class="image-proportionnelle" alt="image-profil">
-      <button class="btn btn-outline-success" type="submit">Modifier la photo de profil</button>
-      <span>Prénom Nom</span>
-      <span>Promo</span>
-      <button class="btn btn-outline-success" type="submit">Profil</button>
+      <button class="btn btn-outline-success modif-profil" type="submit">Modifier la photo de profil</button>
+      <span class ="info-profil">Prénom Nom</span>
+      <span class ="info-profil">Promo</span>
+      <button class="btn btn-outline-success modif-profil" type="submit">Profil</button>
     </section>
     <section class="s2">
       <div>Mot de passe actuel
@@ -27,7 +27,7 @@ export default () => (`
     </section>
   </section>
   <section class="s3">
-    <div>Confirmez votre adresse mail afin de supprimer</div>
+    <div>Confirmez votre adresse mail pour de supprimer votre profil</div>
     <div><input class="form-control me-2 confirm-email" style="background-color: white;" type="search" aria-label="Search"></div>
     <div><button class="btn btn-outline-success delete-profile" type="submit">Supprimer le profil</button></div>
   </section>
