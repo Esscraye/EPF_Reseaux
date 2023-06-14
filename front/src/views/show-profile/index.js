@@ -13,9 +13,7 @@ export default (data) => {
             </strong>
           </div>
           <div class="modifprof" id="affprofmodifprof">
-            <button type="button" id ="btnmodifprofil">
-              Modifier profil
-            </button>
+            <a href="/createAssos" class="btn btn-danger mr-2" role="button" id ="btnmodifprofil">Modifier profil</a>
           </div>
         </div>
         <div class="col-4">

@@ -1,7 +1,7 @@
-import ViewAssoFondateurEtresponsable from '../views/show-profile';
+import ViewShowProfile from '../views/show-profile';
 import ControllerPage from './page';
 
-const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
+const ShowProfile = class ShowProfile {
   constructor() {
     this.el = document.body;
     this.data = {
@@ -20,18 +20,9 @@ const AssoFondateurEtResponsable = class AssoFondateurEtResponsable {
     this.run();
   }
 
-  onClickSearch_modifprof() {
-    const addButton = document.querySelector('#btnmodifprofil');
-    addButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log('bouton marche');
-    });
-  }
-
   run() {
-    new ControllerPage(ViewAssoFondateurEtresponsable(this.data));
-    this.onClickSearch_modifprof();
+    new ControllerPage(ViewShowProfile(this.data));
   }
 };
 
-export default AssoFondateurEtResponsable;
+export default ShowProfile;
