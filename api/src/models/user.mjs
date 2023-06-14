@@ -3,9 +3,13 @@ import mongoose from 'mongoose';
 const Schema = new mongoose.Schema({
   firstname: String,
   lastname: String,
-  avatar: String,
-  age: Number,
-  city: String
+  image: String,
+  password: String,
+  email: String,
+  description: String,
+  promo: String,
+  class: String,
+  grouptp: String
 }, {
   collection: 'users',
   minimize: false,
