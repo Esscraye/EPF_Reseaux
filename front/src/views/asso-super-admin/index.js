@@ -11,21 +11,21 @@ export default (data) => {
   } = data;
 
   return (`
-    ${assocBanner(assoc, usersPermissions.founder)}
+    ${assocBanner(assoc, usersPermissions.member)}
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-8 mt-3">
-          ${createActu(usersPermissions.founder)}
+          ${createActu(usersPermissions.member)}
           <div class="card text-center mb-2 nav-filtre-actu asso_admin">
-            ${news.map((actu) => post(actu, usersPermissions.founder)).join('')}
+            ${news.map((actu) => post(actu, usersPermissions.member)).join('')}
           </div>
         </div>
         <div class="col-4 mt-5 d-grid gap-2">
-          ${descriptionAsso(assoc, usersPermissions.founder)}
-          ${descriptionEquipe(assoc, usersPermissions.founder)}
+          ${descriptionAsso(assoc, usersPermissions.member)}
+          ${descriptionEquipe(assoc, usersPermissions.member)}
         </div>
       </div>
     </div>
-    ${contacts(assoc, usersPermissions.founder)}      
+    ${contacts(assoc, usersPermissions.member)}      
   `);
 };

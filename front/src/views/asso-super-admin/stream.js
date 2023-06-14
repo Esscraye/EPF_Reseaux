@@ -1,13 +1,13 @@
 const btn = () => (`
-  <button type="button" class="btn btn-danger ModifierDescription">Modifier</button>
+  <a href="/createArticle" class="btn btn-danger CreateActu" role="button">Créer Actualité</a>
 `);
 export default (permissions) => {
-  const { assoc } = permissions;
+  const { ajoutActu } = permissions;
 
   return (`
     <div class="my-3">
       <h3>Fil des actus</h3>
-      ${assoc.update ? btn() : ''}
+      ${ajoutActu.create ? btn() : ''}
     </div>
   `);
 };

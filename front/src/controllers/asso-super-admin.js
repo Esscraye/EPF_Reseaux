@@ -78,6 +78,42 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     this.run();
   }
 
+  displayNotification(title, msg) {
+    if (!('Notification' in window)) {
+      console.log('Les notifications ne sont pas prises en charge par ce navigateur.');
+      return;
+    }
+
+    if (Notification.permission === 'granted') {
+      new Notification(title, {
+        body: msg
+      });
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          new Notification(title, {
+            body: msg
+          });
+        }
+      });
+    }
+  }
+  
+  onClickFollow() {
+    const elButton = document.querySelector('#FollowAsso');
+
+    elButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (elButton.textContent === 'Suivre') {
+        this.displayNotification('Association suivie', "A partir de maintenant, vous suivez l'association LEAP");
+        elButton.textContent = 'Ne plus suivre';
+      } else {
+        this.displayNotification('Association non suivie', "A partir de maintenant, vous ne suivez plus l'association LEAP");
+        elButton.textContent = 'Suivre';
+      }
+    });
+  }
+
   /* BoutonSupprimerAsso() {
     const elButton = document.querySelector('.SupprimerAsso');
     elButton.addEventListener('click', (e) => {
@@ -142,6 +178,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
   run() {
     new ControllerPage(ViewAssoSuperAdmin(this.data));
+    this.onClickFollow();
   }
 };
 
