@@ -1,7 +1,7 @@
 import './index.scss';
 
 export default () => (`
-  <div id="connection" class="container">
+  <div class="container connection">
     <div class="row">
       <div class="col-6 part-g">
         <div class="container-photo">
@@ -14,11 +14,11 @@ export default () => (`
           <div align="center">
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email">
+              <input type="email" class="form-control exampleFormControlInput1" placeholder="email">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput2" class="form-label">Mot de passe</label>
-              <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="mdp">
+              <input type="password" class="form-control exampleFormControlInput2" placeholder="mdp">
             </div>
           </div>
           <button type="button" class="btn bt">Connexion</button> 

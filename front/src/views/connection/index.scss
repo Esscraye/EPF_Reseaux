@@ -1,10 +1,10 @@
-#connection{
-    #exampleFormControlInput1 {
+.connection{
+    .exampleFormControlInput1 {
         box-align: center;
         width : 60%;
     }
 
-    #exampleFormControlInput2 {
+    .exampleFormControlInput2 {
         box-align: center;
         width : 60%;
     }
@@ -32,3 +32,9 @@
         align-items: center;
     }
 }
+
+.imgconnect{
+    max-width: 10%;
+    min-width: 10%;
+}
+
