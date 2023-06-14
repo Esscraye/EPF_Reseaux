@@ -35,12 +35,12 @@ const AdminModifyUser = class AdminModifyUser {
           groupetpTemp: elInputGrouptp.options[elInputGrouptp.selectedIndex].value,
           groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
 
-            });
-          } else {
-            console.log('Problem');
-          }
         });
+      } else {
+        console.log('Problem');
       }
+    });
+  }
 
   run() {
     new ControllerPage(ViewAdminModifyUser());
