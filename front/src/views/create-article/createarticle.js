@@ -13,24 +13,13 @@ export default () => (`
               <label for="floatingTextareaTitle">Title</label>
             </div>
           </div>
-          <div class="col-3">
-            <div class="dropdown">
-              <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Type de l'actualité
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="mb-1 dropdown-item text-center" href="#" >Article</a></li>
-                <li><a class="dropdown-item text-center" href="#" >Post</a></li>
-                <li><a class="mt-1 dropdown-item text-center" href="#">Event</a></li>
-              </ul>
-            </div>
-          </div>
+          <div class="col-3"></div>
         </div>
         <div class="row align-items-end">
           <div class="col-9">
             <p class="text-start">Image titre de l'actualité</p>
             <div class="mb-3">
-              <input class="form-control" type="file" id="formFileImageTitre" width="200" height="200" class=" rounded-start" alt="...">
+              <input class="form-control" type="file" id="formFileImage" class=" rounded-start" alt="...">
             </div>
           </div>
         </div>
@@ -43,7 +32,7 @@ export default () => (`
             </div>
           </div>
           <div class="col-3">
-            <button type="button" class="mt-4 btn btn-danger">Poster l'actualité</button>
+            <button type="button" class="mt-4 btn btn-danger postbutton">Poster l'actualité</button>
           </div>
         </div>
       </div>

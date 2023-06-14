@@ -49,25 +49,45 @@ const Createarticle = class Createarticle {
       }
     };
 
+    this.newNews = {
+      title: '',
+      text: '',
+      img: ''
+    };
+
     this.run();
   }
 
-  onClickSearch() {
-    const elButton = document.querySelector('.nav-search button');
+  initializeFileInput() {
+    const fileInput = document.querySelector('#formFileImage');
+    fileInput.addEventListener('change', (event) => {
+      const selectedFile = event.target.files[0];
 
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const elInput = document.querySelector('.nav-search input');
-
-      if (elInput.value) {
-        elInput.value = '';
+      if (selectedFile.value) {
+        selectedFile.value = '';
       }
     });
   }
 
+  saveText() {
+    const newsTitle = document.getElementById('floatingTextareaTitle');
+    this.newNews.title = newsTitle.value;
+    const newsText = document.getElementById('floatingTextareaTexte');
+    this.newNews.text = newsText.value;
+  }
+
+  handlePostNews() {
+    console.log('Posted news:', this.newNews);
+  }
+
   run() {
-    new ControllerPage(ViewCreatearticle(this.data));
+    this.initializeFileInput();
+    const button = document.querySelector('.postbutton');
+    button.addEventListener('click', () => {
+      this.saveText();
+      this.handlePostNews();
+    });
+    new ControllerPage((ViewCreatearticle(this.data)));
   }
 };
 
