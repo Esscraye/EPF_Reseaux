@@ -1,17 +1,17 @@
 const btn = () => `
-  <button type="button" class="btn btn-danger SupprimerAsso">Supprimer</button>
+  <button type="button" class="btn btn-danger delAsso">Supprimer</button>
 `;
 
 const btn1 = () => `
-  <a href="/gestMember" class="btn btn-danger Membres" role="button">Membres</a>
+  <a href="/gestMember" class="btn btn-danger Member" role="button">Membres</a>
 `;
 
 const btn2 = () => `
-  <button type="button" class="btn btn-danger ModifierAsso">Modifier</button>
+  <button type="button" class="btn btn-danger changeAsso">Modifier</button>
 `;
 
 const btn3 = () => `
-  <button type="button" class="btn btn-danger SuivreAsso" id="FollowAsso">Suivre</button>
+  <button type="button" class="btn btn-danger followAsso">Suivre</button>
 `;
 
 export default (data, permissions) => {

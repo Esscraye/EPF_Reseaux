@@ -78,56 +78,63 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     this.run();
   }
 
-  displayNotification(title, msg) {
-    if (!('Notification' in window)) {
-      console.log('Les notifications ne sont pas prises en charge par ce navigateur.');
+  onClickFollow() {
+    const elButton = document.querySelector('.followAsso');
+
+    if (!elButton) {
       return;
     }
-
-    if (Notification.permission === 'granted') {
-      new Notification(title, {
-        body: msg
-      });
-    } else if (Notification.permission !== 'denied') {
-      Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-          new Notification(title, {
-            body: msg
-          });
-        }
-      });
-    }
-  }
-  
-  onClickFollow() {
-    const elButton = document.querySelector('#FollowAsso');
 
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
       if (elButton.textContent === 'Suivre') {
-        this.displayNotification('Association suivie', "A partir de maintenant, vous suivez l'association LEAP");
+        alert('Association suivie');
         elButton.textContent = 'Ne plus suivre';
       } else {
-        this.displayNotification('Association non suivie', "A partir de maintenant, vous ne suivez plus l'association LEAP");
+        alert('Association non suivie');
         elButton.textContent = 'Suivre';
       }
     });
   }
 
-  /* BoutonSupprimerAsso() {
-    const elButton = document.querySelector('.SupprimerAsso');
+  onClickDel() {
+    const elButton = document.querySelector('.delAsso');
+
+    if (!elButton) {
+      return;
+    }
+
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
+      const dialog = confirm('Supprimer l\'association ?');
+      if (dialog) {
+        alert('association supprimée');
+        document.location.href = '../homeAssos';
+      }
+      else {
+        alert('annulation de la demande');
+      }
     });
   }
-  BoutonModifierAsso() {
+
+  onClickChange() {
+    const elButton = document.querySelector('.changeAsso');
+
+    if (!elButton) {
+      return;
+    }
+
+    elButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (elButton.textContent === 'Modifier') {
+        elButton.textContent = 'Valider Modification';
+      } else {
+        elButton.textContent = 'Modifier';
+      }
+    });
+  }
+  /*  BoutonModifierAsso() {
     const elButton = document.querySelector('.ModifierAsso');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonMembres() {
-    const elButton = document.querySelector('.Membres');
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
     });
@@ -179,6 +186,8 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   run() {
     new ControllerPage(ViewAssoSuperAdmin(this.data));
     this.onClickFollow();
+    this.onClickDel();
+    this.onClickChange();
   }
 };
 
