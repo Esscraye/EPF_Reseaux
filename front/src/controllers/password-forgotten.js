@@ -1,10 +1,10 @@
 import { isEmail } from 'validator';
-
-import ControllerPage from './page';
 import ViewPasswordForgot from '../views/password-forgotten';
 
 const PasswordForgot = class PasswordForgot {
-  constructor() {
+  constructor(content) {
+    this.el = document.body;
+    this.content = content;
     this.run();
   }
 
@@ -23,7 +23,7 @@ const PasswordForgot = class PasswordForgot {
   }
 
   run() {
-    new ControllerPage(ViewPasswordForgot());
+    this.el.innerHTML = ViewPasswordForgot(this.content);
     this.onClickForgotPassword();
   }
 };

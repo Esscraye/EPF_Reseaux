@@ -110,8 +110,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
       if (dialog) {
         alert('association supprimée');
         document.location.href = '../homeAssos';
-      }
-      else {
+      } else {
         alert('annulation de la demande');
       }
     });
