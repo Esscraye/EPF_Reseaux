@@ -1,3 +1,4 @@
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import ControllerPage from './page';
 import ViewAssoSuperAdmin from '../views/asso-super-admin';
 
@@ -137,21 +138,32 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   }
 
   onClickChange() {
-    const elButton = document.querySelector('.changeAsso');
+    const myModal = document.querySelector('.change');
+    const myInput = document.querySelector('#staticBackdrop');
+
+    myModal.addEventListener('shown.bs.modal', () => {
+      myInput.focus();
+    });
+  }
+
+  /* onClickConfirm() {
+    const elButton = document.querySelector('#confirm');
 
     if (!elButton) {
       return;
     }
-
     elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (elButton.textContent === 'Modifier') {
-        elButton.textContent = 'Valider Modification';
-      } else {
-        elButton.textContent = 'Modifier';
+      const logo = document.querySelector('#logo');
+      const image = document.querySelector('#image');
+
+      if (logo.value){
+        const logoPlace = document.querySelector('#logo-img');
+        var change = logoPlace.getAttribute('src');
+        change = logo.value;
+        logoPlace.setAttribute('src', change);
       }
     });
-  }
+  } */
   /*  BoutonModifierAsso() {
     const elButton = document.querySelector('.ModifierAsso');
     elButton.addEventListener('click', (e) => {

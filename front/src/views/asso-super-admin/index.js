@@ -4,6 +4,7 @@ import descriptionEquipe from './description-equipe';
 import contacts from './prefooter';
 import assocBanner from './assoc-banner';
 import createActu from './stream';
+import changeasso from './change-asso';
 
 export default (data) => {
   const {
@@ -26,6 +27,7 @@ export default (data) => {
         </div>
       </div>
     </div>
-    ${contacts(assoc, usersPermissions.founder)}     
+    ${contacts(assoc, usersPermissions.founder)}  
+    ${changeasso()}   
   `);
 };
