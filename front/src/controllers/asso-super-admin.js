@@ -147,6 +147,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   }
 
   /* onClickConfirm() {
+    // fonction pour update la page avec les images quand on clique la validation dans le popup
     const elButton = document.querySelector('#confirm');
 
     if (!elButton) {
@@ -206,6 +207,35 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     });
   }
 
+  onClickChangeContact() {
+    const myModal = document.querySelector('.changeContact');
+    const myInput = document.querySelector('#contact-form');
+
+    myModal.addEventListener('shown.bs.modal', () => {
+      myInput.focus();
+    });
+  }
+
+  /* onClickConfirm() {
+    // fonction pour update les contact en validant dans le pop-up
+    const elButton = document.querySelector('#confirm-contact');
+
+    if (!elButton) {
+      return;
+    }
+    elButton.addEventListener('click', (e) => {
+      const logo = document.querySelector('#logo');
+      const image = document.querySelector('#image');
+
+      if (logo.value){
+        const logoPlace = document.querySelector('#logo-img');
+        var change = logoPlace.getAttribute('src');
+        change = logo.value;
+        logoPlace.setAttribute('src', change);
+      }
+    });
+  } */
+
   run() {
     new ControllerPage(ViewAssoSuperAdmin(this.data));
     this.onClickFollow();
@@ -214,6 +244,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     this.onClickChangeActu();
     this.onClickChangeDesc();
     this.onClickChangeTeam();
+    this.onClickChangeContact();
   }
 };
 
