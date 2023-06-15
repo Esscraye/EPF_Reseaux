@@ -1,3 +1,4 @@
+import axios from 'axios';
 import ViewCreatearticle from '../views/create-article';
 import ControllerPage from './page';
 
@@ -61,19 +62,36 @@ const Createarticle = class Createarticle {
     const newsText = newsTextInput.value;
     const newsImg = newsImgInput.files[0];
 
-    if (newsTitleInput.value === '' || newsTextInput.value === '' || newsImgInput.files[0] === '') {
+    if (newsTitleInput.value === '' || newsTextInput.value === '' || newsImgInput.files[0] === null) {
       alert('Il faut remplir tous les champs');
     } else {
-      newsTitleInput.value = '';
-      newsTextInput.value = '';
-      newsImgInput.files[0] = '';
-    }
+      // Vérifier le type de fichier
+      const allowedExtensions = /(\.jpg|\.jpeg)$/i;
+      if (!allowedExtensions.test(newsImg.name)) {
+        alert('Seuls les fichiers JPEG sont autorisés.');
+        return; // Sortir de la fonction sans rien faire
+      }
 
-    return {
-      title: newsTitle,
-      text: newsText,
-      img: newsImg
-    };
+      const formData = new FormData();
+      formData.append('title', newsTitle);
+      formData.append('text', newsText);
+      formData.append('img', newsImg);
+
+      axios.post('http://172.25.56.114:3000/news', formData)
+        .then((response) => {
+          console.log(response);
+          // Vider les champs de saisie
+          newsTitleInput.value = '';
+          newsTextInput.value = '';
+          const newFileInput = document.createElement('input');
+          newFileInput.id = 'formFileImage';
+          newFileInput.type = 'file';
+          newsImgInput.parentNode.replaceChild(newFileInput, newsImgInput);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   runCreate() {
