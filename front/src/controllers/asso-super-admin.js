@@ -1,3 +1,4 @@
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import ControllerPage from './page';
 import ViewAssoSuperAdmin from '../views/asso-super-admin';
 
@@ -137,52 +138,43 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   }
 
   onClickChange() {
-    const elButton = document.querySelector('.changeAsso');
+    const myModal = document.querySelector('.change');
+    const myInput = document.querySelector('#staticBackdrop');
+
+    myModal.addEventListener('shown.bs.modal', () => {
+      myInput.focus();
+    });
+  }
+
+  /* onClickConfirm() {
+    const elButton = document.querySelector('#confirm');
 
     if (!elButton) {
       return;
     }
-
     elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (elButton.textContent === 'Modifier') {
-        elButton.textContent = 'Valider Modification';
-      } else {
-        elButton.textContent = 'Modifier';
+      const logo = document.querySelector('#logo');
+      const image = document.querySelector('#image');
+
+      if (logo.value){
+        const logoPlace = document.querySelector('#logo-img');
+        var change = logoPlace.getAttribute('src');
+        change = logo.value;
+        logoPlace.setAttribute('src', change);
       }
     });
-  }
-  /*  BoutonModifierAsso() {
-    const elButton = document.querySelector('.ModifierAsso');
+  } */
+
+  onClickChangeActu() {
+    const elButton = document.querySelector('.changeActu');
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
+      document.location.href = '../createActu';
+      // il faut qu'on trouve comment récup l'info de l'actu pour l'ingecter dans la page
     });
   }
-  BoutonAjouterActu() {
-    const elButton = document.querySelector('.AjouterActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonSupprimerActu() {
-    const elButton = document.querySelector('.SupprimerActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonModifierActu() {
-    const elButton = document.querySelector('.ModifierActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonVoirActu() {
-    const elButton = document.querySelector('.VoirActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonModifierDescription() {
+
+  /* BoutonModifierDescription() {
     const elButton = document.querySelector('.ModifierDescription');
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -207,6 +199,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     this.onClickFollow();
     this.onClickDel();
     this.onClickChange();
+    this.onClickChangeActu();
   }
 };
 

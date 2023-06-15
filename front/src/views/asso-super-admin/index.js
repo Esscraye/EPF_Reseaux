@@ -26,6 +26,6 @@ export default (data) => {
         </div>
       </div>
     </div>
-    ${contacts(assoc, usersPermissions.founder)}     
+    ${contacts(assoc, usersPermissions.founder)}  
   `);
 };
