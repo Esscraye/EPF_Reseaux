@@ -1,13 +1,15 @@
 const btn = () => (`
-  <button type="button" class="btn btn-danger ModifierDescription">Modifier</button>
+  <button type="button" class="btn btn-danger changeDesc">Modifier</button>
 `);
+
 export default (data, permissions) => {
-  const { description, text } = data;
+  const { description } = data;
   const { assoc } = permissions;
+
   return (`
     <div class="row-6">
-      <h3>${description}</h3>
-      <p>${text}</p>
+      <h3>Description de l'association</h3>
+      <p id="textDesc" contenteditable="false">${description}</p>
       ${assoc.update ? btn() : ''}
     </div>    
   `);

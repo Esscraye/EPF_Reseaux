@@ -11,8 +11,8 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         campus: '',
         image_header: '',
         logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
-        description: 'Description de l\'asso',
-        text: 'lorem ipsum',
+        description: 'lorem ipsum, lorem ipsum, lorem ipsum',
+        team: 'ipsum lorem ipsum',
         mail: 'youpi@gmail.com',
         phone: '0605040302',
         socialNetworks: {
@@ -174,25 +174,37 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     });
   }
 
-  /* BoutonModifierDescription() {
-    const elButton = document.querySelector('.ModifierDescription');
+  onClickChangeDesc() {
+    const elButton = document.querySelector('.changeDesc');
+    let editable = false;
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
+      const paragraph = document.querySelector('#textDesc');
+      editable = !paragraph.isContentEditable;
+      paragraph.contentEditable = editable;
+      if (editable) {
+        elButton.textContent = 'Valider';
+        return;
+      }
+      elButton.textContent = 'Modifier';
     });
   }
-  BoutonModifierEquipe() {
-    const elButton = document.querySelector('.ModifierEquipe');
+
+  onClickChangeTeam() {
+    const elButton = document.querySelector('.changeTeam');
+    let editable = false;
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
+      const paragraph = document.querySelector('#textTeam');
+      editable = !paragraph.isContentEditable;
+      paragraph.contentEditable = editable;
+      if (editable) {
+        elButton.textContent = 'Valider';
+        return;
+      }
+      elButton.textContent = 'Modifier';
     });
   }
-  BoutonModifierContact() {
-    const elButton = document.querySelector('.ModifierContact');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-*/
 
   run() {
     new ControllerPage(ViewAssoSuperAdmin(this.data));
@@ -200,6 +212,8 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     this.onClickDel();
     this.onClickChange();
     this.onClickChangeActu();
+    this.onClickChangeDesc();
+    this.onClickChangeTeam();
   }
 };
 
