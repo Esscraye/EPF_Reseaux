@@ -1,12 +1,12 @@
 const btn = () => (`
   <div>
-    <button type="button" class="btn btn-danger ModifierActu">Modifier</button>
+    <button type="button" class="btn btn-danger changeActu">Modifier</button>
   </div>
 `);
 
 const btn2 = () => (`
   <div>
-    <button type="button" class="btn btn-danger SupprimerActu">Supprimer</button>
+    <button type="button" class="btn btn-danger delActu">Supprimer</button>
   </div>
 `);
 
@@ -29,10 +29,9 @@ export default (data, permissions) => {
           </div>
         </div>
         <div class="col-md-3 d-grid mt-3">
-          ${news.update ? btn() : ''}
-          ${news.delete ? btn2() : ''}
-          <div>
-            <button type="button" class="btn btn-danger VoirActu">Voir</button>
+          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            ${news.update ? btn() : ''}
+            ${news.delete ? btn2() : ''}
           </div>
         </div>
       </div>

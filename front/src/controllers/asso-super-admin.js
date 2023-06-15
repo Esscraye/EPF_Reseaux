@@ -164,37 +164,17 @@ const AssoSuperAdmin = class AssoSuperAdmin {
       }
     });
   } */
-  /*  BoutonModifierAsso() {
-    const elButton = document.querySelector('.ModifierAsso');
+
+  onClickChangeActu() {
+    const elButton = document.querySelector('.changeActu');
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
+      document.location.href = '../createActu';
+      // il faut qu'on trouve comment récup l'info de l'actu pour l'ingecter dans la page
     });
   }
-  BoutonAjouterActu() {
-    const elButton = document.querySelector('.AjouterActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonSupprimerActu() {
-    const elButton = document.querySelector('.SupprimerActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonModifierActu() {
-    const elButton = document.querySelector('.ModifierActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonVoirActu() {
-    const elButton = document.querySelector('.VoirActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  }
-  BoutonModifierDescription() {
+
+  /* BoutonModifierDescription() {
     const elButton = document.querySelector('.ModifierDescription');
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -219,6 +199,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     this.onClickFollow();
     this.onClickDel();
     this.onClickChange();
+    this.onClickChangeActu();
   }
 };
 
