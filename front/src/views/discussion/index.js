@@ -1,4 +1,4 @@
-import selection from './selction';
+import selection from './selection';
 import barreDiscuGroup from './barre_discu_groupe';
 import barreDiscuPerso from './barre_discu_solo';
 import barreEnvoiMess from './barre_envoie_mess';
@@ -10,7 +10,7 @@ import './index.scss';
 export default (data) => {
   const { conversations } = data;
 
-  const conversation = conversations.find((conv) => conv.convId === '12');
+  const conversation = conversations.find((conv) => conv.convId === '2');
 
   if (conversation) {
     const messagesHTML = conversation.messages.map((message) => (message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message))).join('');
