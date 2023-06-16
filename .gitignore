@@ -11,3 +11,5 @@ api/npm-debug.log
 api/yarn-error.log
 api/yarn.lock
 api/package-lock.json
+api/.env
+api/src/config.mjs
