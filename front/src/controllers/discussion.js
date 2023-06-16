@@ -2,6 +2,10 @@ import ControllerPage from './page';
 import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
 
+const convParameter = require('../views/discussion/index');
+
+console.log(convParameter);
+
 const Discu = class Discu {
   constructor() {
     this.el = document.body;
@@ -132,8 +136,10 @@ const Discu = class Discu {
     const elButton = document.querySelector('.send-message-bar button');
     const elInput = document.querySelector('.send-message-bar input');
 
-    const sendMessage = () => {
-      const messageText = elInput.value.trim();
+    elButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const messageText = elInput.value;
 
       if (messageText) {
         const now = new Date();
@@ -149,31 +155,63 @@ const Discu = class Discu {
 
         elInput.value = '';
 
-        const conversation = this.data.conversations.find((conv) => conv.convId === '1');
+        const conversationId = '2'; // Remplacez '1' par l'ID de la conversation appropriée
+        const conversation = this.data.conversations.find((conv) => conv.convId === conversationId);
         if (conversation) {
           conversation.messages.push(message);
-          const messagesContainer = document.querySelector('.messages');
-          messagesContainer.innerHTML += messD(message);
 
-          const messageCountElement = document.querySelector('[data-message-count]');
+          const conversationElement = document.querySelector(`.conv-${conversationId}`);
+          const messageCountElement = conversationElement.querySelector('[data-message-count]');
           if (messageCountElement) {
             const currentMessageCount = parseInt(messageCountElement.textContent, 10);
             const updatedMessageCount = currentMessageCount + 1;
             messageCountElement.textContent = updatedMessageCount;
           }
+
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.innerHTML += messD(message);
         }
       }
-    };
-
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      sendMessage();
     });
 
     elInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        sendMessage();
+
+        const messageText = elInput.value;
+
+        if (messageText) {
+          const now = new Date();
+          const message = {
+            text: messageText,
+            times: `${now.getHours()}h${now.getMinutes()}`,
+            author: {
+              firstName: 'Maxence',
+              lastName: 'Juery',
+              email: 'maxence.juery@epfedu.fr'
+            }
+          };
+
+          elInput.value = '';
+
+          const conversationId = convParameter;
+          const conversation = this.data.conversations
+            .find((conv) => conv.convId === conversationId);
+          if (conversation) {
+            conversation.messages.push(message);
+
+            const conversationElement = document.querySelector(`.conv-${conversationId}`);
+            const messageCountElement = conversationElement.querySelector('[data-message-count]');
+            if (messageCountElement) {
+              const currentMessageCount = parseInt(messageCountElement.textContent, 10);
+              const updatedMessageCount = currentMessageCount + 1;
+              messageCountElement.textContent = updatedMessageCount;
+            }
+
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.innerHTML += messD(message);
+          }
+        }
       }
     });
   }

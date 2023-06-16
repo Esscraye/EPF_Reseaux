@@ -7,10 +7,25 @@ import messD from './message_droite';
 
 import './index.scss';
 
+let convParameter = '1';
+
+function handleConversationClick(event) {
+  const convClass = event.target.classList[0];
+  const convNumber = convClass.split('-')[1];
+  convParameter = convNumber;
+  console.log(convParameter);
+}
+
+const conversationLinks = document.querySelectorAll('a[data-conv-id]');
+
+conversationLinks.forEach((link) => {
+  link.addEventListener('click', handleConversationClick);
+});
+
 export default (data) => {
   const { conversations } = data;
 
-  const conversation = conversations.find((conv) => conv.convId === '2');
+  const conversation = conversations.find((conv) => conv.convId === convParameter);
 
   if (conversation) {
     const messagesHTML = conversation.messages.map((message) => (message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message))).join('');
