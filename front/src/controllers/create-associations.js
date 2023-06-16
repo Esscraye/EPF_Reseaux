@@ -25,10 +25,10 @@ const Home = class Home {
         const body = {
           name: elInputNameassos.value,
           campus: elInputChoicecampus.value,
-          image_heade: '',
+          image_header: '',
           logo: '',
           description: elInputDescription.value,
-          text: 'Description',
+          team: '',
           mail: elInputMailAssos,
           phone: '',
           socialNetworks: {
