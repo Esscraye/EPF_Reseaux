@@ -1,12 +1,15 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default {
   development: {
     type: 'development',
     port: 3000,
-    mongodb: 'mongodb+srv://12345:12345@demo.v4muu5b.mongodb.net/ecole'
+    mongodb: process.env.MONGODB_URL
   },
   production: {
     type: 'production',
     port: 3000,
-    mongodb: 'mongodb+srv://12345:12345@demo.v4muu5b.mongodb.net/ecole'
+    mongodb: process.env.MONGODB_URL
   }
 };
