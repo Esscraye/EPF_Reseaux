@@ -1,4 +1,5 @@
 import AssocModel from '../models/assoc.mjs';
+import authToken from '../hook/auth.mjs';
 
 const Assoc = class Assoc {
   constructor(app, connect) {
@@ -9,7 +10,7 @@ const Assoc = class Assoc {
   }
 
   create() {
-    this.app.post('/assoc/', (req, res) => {
+    this.app.post('/assoc/',authToken, (req, res) => {
       try {
         const assocModel = new this.AssocModel(req.body);
 
