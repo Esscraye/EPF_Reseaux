@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ControllerPage from './page';
 import ViewCreateAssos from '../views/create-associations';
@@ -39,7 +40,15 @@ const Home = class Home {
           }
         };
 
-        axios.post('http://172.25.56.114:3000/assoc', body)
+        axios.post(
+          'http://127.0.0.1:3000/assoc',
+          body,
+          {
+            headers: {
+              authorization: cookie.get('token')
+            }
+          }
+        )
           .then((response) => {
             console.log(response);
             // Vider les champs de saisie
