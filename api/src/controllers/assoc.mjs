@@ -30,8 +30,30 @@ const Assoc = class Assoc {
     });
   }
 
+  showAll() {
+    this.app.get('/assoc', (req, res) => {
+      try {
+        this.AssocModel.find().then((associations) => {
+          res.status(200).json(associations || []);
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] /assoc -> ${err}`);
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
     this.create();
+    this.showAll();
   }
 };
 

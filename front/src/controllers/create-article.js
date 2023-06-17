@@ -58,8 +58,6 @@ const Createarticle = class Createarticle {
     const newsTitleInput = document.querySelector('#floatingTextareaTitle');
     const newsTextInput = document.querySelector('#floatingTextareaTexte');
     const newsImgInput = document.querySelector('#formFileImage');
-    const newsTitle = newsTitleInput.value;
-    const newsText = newsTextInput.value;
     const newsImg = newsImgInput.files[0];
 
     if (newsTitleInput.value === '' || newsTextInput.value === '' || newsImgInput.files[0] === null) {
@@ -72,10 +70,11 @@ const Createarticle = class Createarticle {
         return; // Sortir de la fonction sans rien faire
       }
 
-      const formData = new FormData();
-      formData.append('title', newsTitle);
-      formData.append('text', newsText);
-      formData.append('img', newsImg);
+      const formData = {
+        title: newsTitleInput.value,
+        text: newsTextInput.value,
+        img: newsImgInput.files[0]
+      };
 
       axios.post('http://172.25.56.114:3000/news', formData)
         .then((response) => {
