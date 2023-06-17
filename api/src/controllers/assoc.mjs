@@ -10,7 +10,7 @@ const Assoc = class Assoc {
   }
 
   create() {
-    this.app.post('/assoc/',authToken, (req, res) => {
+    this.app.post('/assoc/', authToken, (req, res) => {
       try {
         const assocModel = new this.AssocModel(req.body);
 
