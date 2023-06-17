@@ -11,7 +11,7 @@ export default (data) => {
               ${infoPerso.firstName} ${infoPerso.lastName}
           </div>
           <div class="">
-            <a href="/changeUser" class="btn btn-danger mr-2" role="button" id ="btnmodifprofil">Modifier profil</a>
+            <a href="/change-profile" class="btn btn-danger mr-2" role="button" id ="btnmodifprofil">Modifier profil</a>
           </div>
         </div>
         <div class="col-6">
