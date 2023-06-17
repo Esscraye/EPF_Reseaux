@@ -8,13 +8,13 @@
 | Discussion | Ouverture du chat de discussion | Non commencé | @Alban |
 | Discussion | Ajouter liste utilisateur dans les groupes | Non commencé | @Léo |
 | Discussion | Ajouter liste groupe dans la bdd users | Non commencé | @Léo |
-| Discussion | Ajouter liste groupe bloqué/appartenant dans la bdd users | Non commencé | @Léo + @maxence + @responsable bdd users |
+| Discussion | Ajouter liste groupe bloqué/appartenant dans la bdd users | Non commencé | @Léo + @maxence + @augustin ? |
 
 ## **Rendre le projet fonctionnel :**
 
-| Partie | Description                                | Etat       | Assigné |
+| Partie | Description | Etat | Assigné |
 | ------ | ------------------------------------------ | ---------- | ------- |
-| BDD    | Connexion à une seule bdd avec une seule clé | Non commencé | @léo    |
+| BDD    | Connexion à une seule bdd avec une seule clé | Non commencé | @léo |
 
 ## **Arborescence des pages :**
 
@@ -46,7 +46,6 @@
 - recherche d'un profil
 ---
 - test de la bdd
-
 
 
 ## **Amélioration du projet :**
