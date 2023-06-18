@@ -27,7 +27,8 @@ const Home = class Home {
           campus: elInputChoicecampus.value,
           image_header: '',
           logo: '',
-          description: elInputDescription.value,
+          description_asso: elInputDescription.value,
+          description_team: '',
           team: '',
           mail: elInputMailAssos,
           phone: '',
@@ -41,11 +42,11 @@ const Home = class Home {
         };
 
         axios.post(
-          'http://127.0.0.1:3000/assoc',
+          'http://172.25.56.114:3000/assoc',
           body,
           {
             headers: {
-              authorization: cookie.get('token')
+              // authorization: cookie.get('token')
             }
           }
         )
