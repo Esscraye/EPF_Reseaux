@@ -15,6 +15,7 @@ import ControllerMemberManagement from './controllers/member-management';
 import ControllerPasswordForgotten from './controllers/password-forgotten';
 import ControllerAssociationPage from './controllers/association-page';
 import ControllerChangeProfile from './controllers/change-profile';
+import ControllerDelGroup from './controllers/delete-group';
 
 import './index.scss';
 
@@ -38,6 +39,9 @@ router.add('/profil', () => {
 });
 router.add('/addGrp', () => {
   new ControllerAddGroup();
+});
+router.add('/delGrp', () => {
+  new ControllerDelGroup();
 });
 router.add('/assosSuperAdmin', () => {
   new ControllerAssoSuperAdmin();
