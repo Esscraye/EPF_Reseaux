@@ -49,7 +49,7 @@
 
 
 ## **Amélioration du projet :**
-
+- bcrypt : hash des password
 - Bouton de déconnexion
 - créer une url automatique pour chaque assos
 - CGU - mensions légales
