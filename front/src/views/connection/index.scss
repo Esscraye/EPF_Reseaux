@@ -1,40 +1,33 @@
-.connection{
-    .exampleFormControlInput1 {
-        box-align: center;
-        width : 60%;
-    }
-
-    .exampleFormControlInput2 {
-        box-align: center;
-        width : 60%;
-    }
-
-
-    .bt {
-        background-color: #b43030 !important;
-        border-color:#b43030 !important;
-        color: white !important;
-
-    }
-
-    .bt:hover{
-        color:black !important;
-    }
-
-    .container-photo{
-        display: grid;
-        width: 100%;
-        margin-left: 10%;
-    }
-
-    .part-g{
-        display: flex;
-        align-items: center;
-    }
+.grid-connect{
+    display: grid;
+    text-align: center;
+    place-items: center;
+    justify-content: center;
+    flex-direction: column;
+    grid-template-columns: 1fr 3fr;
 }
 
-.imgconnect{
-    max-width: 10%;
-    min-width: 10%;
+.sect-2{
+    display: grid;
+    -ms-grid-column-align: center;
+    border-radius: 20px;
+    border: 1px solid rgb(50, 50, 50);
+    box-shadow: 1px 1px 1px rgb(50, 50, 50);
+    padding: 2em;
+    margin-top: 2em;
+    width: 30em;
 }
 
+.underline-connect:hover{
+    text-decoration: underline;
+}
+
+.bt{
+    width: 6em;
+    align-items: center;
+    text-align: center;
+}
+
+*{
+    border:1px solid black;
+}
