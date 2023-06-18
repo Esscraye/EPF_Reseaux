@@ -7,23 +7,10 @@ import messD from './message_droite';
 
 import './index.scss';
 
-let convParameter = '1';
-
-function handleConversationClick(event) {
-  const convClass = event.target.classList[0];
-  const convNumber = convClass.split('-')[1];
-  convParameter = convNumber;
-  console.log(convParameter);
-}
-
-const conversationLinks = document.querySelectorAll('a[data-conv-id]');
-
-conversationLinks.forEach((link) => {
-  link.addEventListener('click', handleConversationClick);
-});
-
 export default (data) => {
   const { conversations } = data;
+
+  const convParameter = '1';
 
   const conversation = conversations.find((conv) => conv.convId === convParameter);
 
@@ -52,5 +39,6 @@ export default (data) => {
       </div>
     `);
   }
+
   return "Aucune conversation de type 'group' ou 'individual' n'est disponible.";
 };
