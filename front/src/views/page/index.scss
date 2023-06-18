@@ -80,7 +80,7 @@ header{
     transition: opacity 3s ease-in-out;
     margin-bottom: 20px;
     background-color: $back;
-    z-index: 9999;
+    z-index: 8000;
 
     nav{
         display: flex;
@@ -347,6 +347,14 @@ main button:hover{
     animation: slide-up 1000ms forwards;
 }
 
+.modal[closing] {
+    display: block;
+    pointer-events: none;
+    inset: 0;
+    z-index: 9999;
+    animation: slide-down 1000ms forwards;
+}
+
 .modal-add{
     display: grid;
     overflow: hidden;
@@ -358,5 +366,14 @@ main button:hover{
     }
     100% {
       transform: translateX(0%);
+    }
+  }
+
+  @keyframes slide-down {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(100%);
     }
   }
