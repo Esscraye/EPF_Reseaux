@@ -1,14 +1,11 @@
-import ControllerPage from './page';
 import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
 
-const convParameter = require('../views/discussion/index');
-
-console.log(convParameter);
+let conversationId = '1';
 
 const Discu = class Discu {
   constructor() {
-    this.el = document.body;
+    this.el = document.dialog;
     this.data = {
       conversations: [{
         participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr'],
@@ -135,6 +132,22 @@ const Discu = class Discu {
   onClickSearch() {
     const elButton = document.querySelector('.send-message-bar button');
     const elInput = document.querySelector('.send-message-bar input');
+    const elChoices = document.querySelectorAll('.discu-choice');
+
+    elChoices.forEach((elChoice) => {
+      elChoice.addEventListener('click', () => {
+        // Vérification si l'élément existe
+        if (elChoice) {
+          // Accès à la valeur de l'attribut id
+          const valeurId = elChoice.id;
+          console.log(valeurId);
+          conversationId = valeurId;
+          console.log('balise');
+        } else {
+          console.log("L'élément avec cet ID n'existe pas.");
+        }
+      });
+    });
 
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -155,12 +168,11 @@ const Discu = class Discu {
 
         elInput.value = '';
 
-        const conversationId = '2'; // Remplacez '1' par l'ID de la conversation appropriée
         const conversation = this.data.conversations.find((conv) => conv.convId === conversationId);
         if (conversation) {
           conversation.messages.push(message);
 
-          const conversationElement = document.querySelector(`.conv-${conversationId}`);
+          const conversationElement = document.getElementById(`${conversationId}`);
           const messageCountElement = conversationElement.querySelector('[data-message-count]');
           if (messageCountElement) {
             const currentMessageCount = parseInt(messageCountElement.textContent, 10);
@@ -200,7 +212,7 @@ const Discu = class Discu {
           if (conversation) {
             conversation.messages.push(message);
 
-            const conversationElement = document.querySelector(`.conv-${conversationId}`);
+            const conversationElement = document.getElementById(`${conversationId}`);
             const messageCountElement = conversationElement.querySelector('[data-message-count]');
             if (messageCountElement) {
               const currentMessageCount = parseInt(messageCountElement.textContent, 10);
@@ -217,7 +229,7 @@ const Discu = class Discu {
   }
 
   run() {
-    new ControllerPage(ViewDiscu(this.data));
+    new ViewDiscu(this.data);
     this.onClickSearch();
   }
 };

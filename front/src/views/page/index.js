@@ -3,15 +3,18 @@ import footer from './footer';
 
 import './index.scss';
 
-export default (content) => (`
+export default (content, discu) => (`
   <header class="">
     ${header()}
   </header>
   <main>
     ${content}
     <div id="chat-btn">
-      <a href="#" class="chat"><i class="ri-chat-smile-3-line"></i></a>
+      <button href="#" class="chat open-button"><i class="ri-chat-smile-3-line"></i></button>
     </div>
+    <dialog class="modal" id="modal">
+      ${discu}
+    </dialog>
   </main>
   <footer>
     ${footer()}
