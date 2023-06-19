@@ -2,7 +2,7 @@ export default (data) => {
   const assoc = data;
   return (`
     <div class="col d-flex contener-manuelle">
-      <a href="/assosSuperAdmin" class="card card-link m-3 shadow-manuelle box-manuelle">
+      <a href="/assosSuperAdmin?id=${encodeURIComponent(assoc.id)}" class="card card-link m-3 shadow-manuelle box-manuelle">
           <div class="aspect-ratio-wrapper">
             <img src="${assoc.logo}" class="card-img-top img-manuelle" alt="logo_assos">
           </div>

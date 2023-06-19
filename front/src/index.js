@@ -24,48 +24,69 @@ const router = new Router({
     new Controller404Page();
   }
 });
+
 router.add('', () => {
   new ControllerHome();
 });
+
 router.add('/addUser', () => {
   new ControllerAddUser();
 });
+
 router.add('/changeUser', () => {
   new ControllerChangeUser();
 });
+
 router.add('/profil', () => {
   new ControllerShowProf();
 });
+
 router.add('/addGrp', () => {
   new ControllerAddGroup();
 });
+
 router.add('/delGrp', () => {
   new ControllerDelGroup();
 });
+
 router.add('/assosSuperAdmin', () => {
   new ControllerAssoSuperAdmin();
 });
+
 router.add('/connection', () => {
   new ControllerConnection();
 });
+
 router.add('/createArticle', () => {
   new ControllerCreateArticle();
 });
+
 router.add('/createAssos', () => {
   new ControllerCreateAssociation();
 });
+
+router.add('/discu', () => {
+  new ControllerDiscussion();
+});
+
 router.add('/gestMember', () => {
   new ControllerMemberManagement();
 });
+
 router.add('/password-forgot', () => {
   new ControllerPasswordForgotten();
 });
+
 router.add('/homeAssos', () => {
   new ControllerAssociationPage();
 });
+
 router.add('/change-profile', () => {
   new ControllerChangeProfile();
 });
 
+const queryString = window.location.search;
 const { pathname } = location;
-router.navigateTo(pathname);
+router.navigateTo(pathname + queryString);
+
+router.init();
