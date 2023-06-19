@@ -1,6 +1,7 @@
 import axios from 'axios';
 import ControllerPage from './page';
 import ViewAssoSuperAdmin from '../views/asso-super-admin';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const AssoSuperAdmin = class AssoSuperAdmin {
   constructor() {
