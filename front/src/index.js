@@ -10,7 +10,6 @@ import ControllerAssoSuperAdmin from './controllers/asso-super-admin';
 import ControllerConnection from './controllers/connection';
 import ControllerCreateArticle from './controllers/create-article';
 import ControllerCreateAssociation from './controllers/create-associations';
-import ControllerDiscussion from './controllers/discussion';
 import ControllerMemberManagement from './controllers/member-management';
 import ControllerPasswordForgotten from './controllers/password-forgotten';
 import ControllerAssociationPage from './controllers/association-page';
@@ -54,9 +53,6 @@ router.add('/createArticle', () => {
 });
 router.add('/createAssos', () => {
   new ControllerCreateAssociation();
-});
-router.add('/discu', () => {
-  new ControllerDiscussion();
 });
 router.add('/gestMember', () => {
   new ControllerMemberManagement();
