@@ -83,7 +83,7 @@ const Createarticle = class Createarticle {
         text: newsTextInput.value,
         date: formattedDate,
         img: newsImgInput.files[0],
-        idAsso: id,
+        idAsso: id
       };
 
       console.log(formData);
