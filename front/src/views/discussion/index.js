@@ -8,9 +8,9 @@ import messD from './message_droite';
 import './index.scss';
 
 export default (data) => {
-  const { conversations } = data;
+  const { conversations, newConvPara } = data;
 
-  const convParameter = '1';
+  const convParameter = newConvPara || '1';
 
   const conversation = conversations.find((conv) => conv.convId === convParameter);
 

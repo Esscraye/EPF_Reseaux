@@ -1,5 +1,9 @@
 import ViewPage from '../views/page';
 import ViewDiscu from '../views/discussion';
+import messD from '../views/discussion/message_droite';
+
+let conversationId = localStorage.getItem('conversationId') || '1';
+console.log(conversationId);
 
 const Page = class Page {
   constructor(content) {
@@ -129,15 +133,110 @@ const Page = class Page {
   }
 
   onClickSearch() {
-    const elButton = document.querySelector('.nav-search button');
+    const elButton = document.querySelector('.send-message-bar button');
+    const elInput = document.querySelector('.send-message-bar input');
+    const elChoices = document.querySelectorAll('.discu-choice');
+    const elButtonSearch = document.querySelector('.nav-search button');
+
+    elButtonSearch.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const elInputSearch = document.querySelector('.nav-search input');
+
+      if (elInputSearch.value) {
+        elInputSearch.value = '';
+      }
+    });
+
+    elChoices.forEach((elChoice) => {
+      elChoice.addEventListener('click', () => {
+        // Vérification si l'élément existe
+        if (elChoice) {
+          // Accès à la valeur de l'attribut id
+          const valeurId = elChoice.id;
+          console.log(valeurId);
+          localStorage.setItem('conversationId');
+          location.reload();
+        } else {
+          console.log("L'élément avec cet ID n'existe pas.");
+        }
+      });
+    });
 
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
 
-      const elInput = document.querySelector('.nav-search input');
+      const messageText = elInput.value;
 
-      if (elInput.value) {
+      if (messageText) {
+        const now = new Date();
+        const message = {
+          text: messageText,
+          times: `${now.getHours()}h${now.getMinutes()}`,
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        };
+
         elInput.value = '';
+
+        const conversation = this.data.conversations.find((conv) => conv.convId === conversationId);
+        if (conversation) {
+          conversation.messages.push(message);
+
+          const conversationElement = document.getElementById(`${conversationId}`);
+          const messageCountElement = conversationElement.querySelector('[data-message-count]');
+          if (messageCountElement) {
+            const currentMessageCount = parseInt(messageCountElement.textContent, 10);
+            const updatedMessageCount = currentMessageCount + 1;
+            messageCountElement.textContent = updatedMessageCount;
+          }
+
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.innerHTML += messD(message);
+        }
+      }
+    });
+
+    elInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+
+        const messageText = elInput.value;
+
+        if (messageText) {
+          const now = new Date();
+          const message = {
+            text: messageText,
+            times: `${now.getHours()}h${now.getMinutes()}`,
+            author: {
+              firstName: 'Maxence',
+              lastName: 'Juery',
+              email: 'maxence.juery@epfedu.fr'
+            }
+          };
+
+          elInput.value = '';
+
+          const conversation = this.data.conversations
+            .find((conv) => conv.convId === conversationId);
+          if (conversation) {
+            conversation.messages.push(message);
+
+            const conversationElement = document.getElementById(`${conversationId}`);
+            const messageCountElement = conversationElement.querySelector('[data-message-count]');
+            if (messageCountElement) {
+              const currentMessageCount = parseInt(messageCountElement.textContent, 10);
+              const updatedMessageCount = currentMessageCount + 1;
+              messageCountElement.textContent = updatedMessageCount;
+            }
+
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.innerHTML += messD(message);
+          }
+        }
       }
     });
   }
@@ -172,6 +271,8 @@ const Page = class Page {
 
   run() {
     this.el.innerHTML = ViewPage(this.content, this.discu);
+    conversationId = localStorage.getItem('conversationId') || '1';
+    // new ControllerPage(ViewDiscu(this.data), conversationId);
     this.onClickSearch();
     this.styleNav();
     this.OpenChat();
