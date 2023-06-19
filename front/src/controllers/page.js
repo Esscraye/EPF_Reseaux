@@ -168,6 +168,15 @@ const Page = class Page {
       clasDialog.classList.remove('modal-add');
       modal.close();
     });
+
+    closeModal.addEventListener('click', () => {
+      modal.setAttribute('closing', '');
+      modal.addEventListener('animationend', () => {
+        modal.removeAttribute('closing');
+        clasDialog.classList.remove('modal-add');
+        modal.close();
+      }, { once: true });
+    });
   }
 
   run() {
