@@ -3,14 +3,14 @@ const btn = () => (`
 `);
 
 export default (data, permissions) => {
-  const assoc = data;
-  const assocPerm = permissions;
+  const { descriptionTeam } = data;
+  const { assoc } = permissions;
 
   return (`
     <div class="row-6">
-      <h3>Déscription de l'équipe</h3>
-      <p id="textTeam" contenteditable="false">${assoc.description_team}</p>
-      ${assocPerm.update ? btn() : ''}
+      <h3>Description de l'équipe</h3>
+      <p id="textTeam" contenteditable="false">${descriptionTeam}</p>
+      ${assoc.update ? btn() : ''}
     </div>    
   `);
 };

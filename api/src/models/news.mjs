@@ -5,7 +5,8 @@ const Schema = new mongoose.Schema({
   text: String,
   img: {
     format: { type: String, default: 'jpeg' }
-  }
+  },
+  idAsso: String
 }, {
   collection: 'news',
   minimize: false,

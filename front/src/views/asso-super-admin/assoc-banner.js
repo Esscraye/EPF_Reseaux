@@ -15,25 +15,24 @@ const btn3 = () => `
 `;
 
 export default (data, permissions) => {
-  const assoc = data;
-  console.log(assoc.name);
-  const assocPerm = permissions;
-  return `
+  const { name, logo } = data;
+  const { assoc } = permissions;
+  return (`
     <div class="container-fluid text-center">
       <div class="row shadow-lg p-1">
         <div class="col-2">
-          <img width="150" src="${assoc.logo}" alt="logo" id="logo-img">
+          <img width="150" src="${logo}" alt="logo" id="logo-img">
         </div>
         <div class="col-7">
-          <h3 class="pt-3">${assoc.name}</h3>
+          <h3 class="pt-3">${name}</h3>
         </div>
         <div class="col-3">
           <div class="row pt-3">
             <div class="btn-group" role="group" aria-label="Basic example">
-              ${assocPerm.delete ? btn() : ''}
-              ${assocPerm.manage ? btn1() : ''}
-              ${assocPerm.update ? btn2() : ''}
-              ${assocPerm.follow ? btn3() : ''}
+              ${assoc.delete ? btn() : ''}
+              ${assoc.manage ? btn1() : ''}
+              ${assoc.update ? btn2() : ''}
+              ${assoc.follow ? btn3() : ''}
             </div>
           </div>    
         </div>
@@ -64,5 +63,5 @@ export default (data, permissions) => {
             </div>
         </div>
     </div>
-  `;
+  `);
 };

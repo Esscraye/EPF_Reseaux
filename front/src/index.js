@@ -88,5 +88,3 @@ router.add('/change-profile', () => {
 const queryString = window.location.search;
 const { pathname } = location;
 router.navigateTo(pathname + queryString);
-
-router.init();

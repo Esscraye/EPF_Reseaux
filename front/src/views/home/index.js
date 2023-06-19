@@ -15,7 +15,7 @@ export default (data) => {
         <div class="info-asso shadow-manuelle">
           <div class="texte-asso">
             <h2>Notre Asso</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ratione ab repudiandae mollitia doloribus! A numquam tempore odio, pariatur quas fugit molestiae obcaecati libero consectetur reprehenderit delectus! Id, nihil ex.Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ratione ab repudiandae mollitia doloribus! A numquam tempore odio, pariatur quas fugit molestiae obcaecati libero consectetur reprehenderit delectus! Id, nihil ex.</p>
+            <p>Découvrez notre nouvel intranet scolaire à l'EPF ! Fini Facebook et les services cloud éparpillés, notre plateforme centralisée facilitera la communication, la protection des données et la visibilité des actions associatives. Avec des fonctionnalités sur mesure et une sécurité renforcée, notre intranet améliorera la vie étudiante et associative sans perturber le réseau existant.</p>
           </div>
         </div>
       </div>

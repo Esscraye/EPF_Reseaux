@@ -8,7 +8,7 @@ export default (data) => {
           </div>
           <div class="card-body d-flex flex-column">
             <h5 class="card-title titre-manuelle">${assoc.name}</h5>
-            <p class="card-text text-manuelle">${assoc.description_asso}</p>
+            <p class="card-text text-manuelle">${assoc.descriptionAsso}</p>
           </div>
       </a>
     </div>

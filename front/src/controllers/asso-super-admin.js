@@ -62,22 +62,28 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     // console.log(window.location);
     try {
       const response = await axios.get(`http://172.25.56.114:3000/assoc/${id}`);
-      // const monAssoc = this.data.assoc.find((assoc) => assoc.id === id);
       this.data.assoc = response.data;
-      console.log(response);
-      console.log(this.data.assoc);
+      // console.log(response);
+      // console.log(this.data.assoc);
     } catch (error) {
-      console.log('bollos');
+      console.log('perdu');
       // Gérer l'erreur
     }
   }
 
-  async fetchAssociationDataNews() {
+  async fetchAssociationDataNews(id) {
     try {
       const response = await axios.get('http://172.25.56.114:3000/news');
-      this.data.news = response.data;
-      console.log(this.data);
-      console.log(response.data);
+      // console.log(response);
+      // console.log(id);
+      // console.log(news.idAsso);
+      // console.log(response.data.news.idAsso);
+      console.log(response.data.idAsso);
+      const filteredNews = response.data.filter((news) => news.idAsso === id);
+      console.log('news filtrer');
+      console.log(filteredNews);
+      // const CachanCards = cards.filter((assoc) => assoc.campus === 'Cachan');
+      this.data.news = filteredNews;
     } catch (error) {
       console.log(error);
       // Gérer l'erreur
@@ -240,8 +246,10 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
   async run() {
     await this.fetchAssociationDataAsso();
-    await this.fetchAssociationDataNews();
+    console.log(this.data.assoc.id);
+    await this.fetchAssociationDataNews(this.data.assoc.id);
     new ControllerPage(ViewAssoSuperAdmin(this.data));
+    console.log(this.data);
     this.onClickFollow();
     this.onClickDel();
     this.onClickChange();

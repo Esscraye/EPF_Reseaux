@@ -27,8 +27,8 @@ const Home = class Home {
           campus: elInputChoicecampus.value,
           image_header: '',
           logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
-          description_asso: elInputDescription.value,
-          description_team: '',
+          descriptionAsso: elInputDescription.value,
+          descriptionTeam: '',
           mail: elInputMailAssos,
           phone: '',
           socialNetworks: {
