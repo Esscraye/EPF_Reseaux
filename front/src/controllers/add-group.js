@@ -13,13 +13,14 @@ const AddGroup = class AddGroup {
     const addButton = document.querySelector('#addgroupbtn');
     addButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const addInputid = document.querySelector('#nom_groupe_input');
+      const addInputid = document.querySelector('#identifiant_input');
       const addInputname = document.querySelector('#nom_groupe_input');
       if (addInputid.value && addInputname.value) {
         const body = {
           idgroup: addInputid.value,
           namegroup: addInputname.value
         };
+        console.log(body);
         axios.post('http://127.0.0.1:3000/group', body)
           .then((response) => {
             console.log(response);
