@@ -19,7 +19,7 @@ export default (data, permissions) => {
     <div class="card m-2">
       <div class="row g-0 my-1">
         <div class="col-3">
-          <img src="${img}" width="200" height="200" class=" rounded-start" alt="...">
+          <img src="${img}" width="200" height="200" class=" rounded-start" alt="image_du_post">
         </div>
         <div class="col-md-6">
           <div class="card-body">

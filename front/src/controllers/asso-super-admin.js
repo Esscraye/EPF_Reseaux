@@ -114,10 +114,10 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     }
   }
 
-onClickDel() {
+  onClickDel() {
     const elButton = document.querySelector('.delAsso');
     const elButtonsActu = document.querySelectorAll('.delActu');
-  
+
     if (!elButton) {
       return;
     }
@@ -134,8 +134,8 @@ onClickDel() {
         alert('annulation de la demande');
       }
     });
-  
-    elButtonsActu.forEach(function(elButtonActu) {
+
+    elButtonsActu.forEach((elButtonActu) => {
       elButtonActu.addEventListener('click', (e) => {
         e.preventDefault();
         const dialog = confirm("Supprimer l'actualité ?");
@@ -147,7 +147,6 @@ onClickDel() {
       });
     });
   }
-  
 
   onClickChange() {
     const myModal = document.querySelector('.change');
@@ -180,8 +179,8 @@ onClickDel() {
 
   onClickChangeActu() {
     const elButtons = document.querySelectorAll('.changeActu');
-    elButtons.forEach(function(elButton) {
-      elButton.addEventListener('click', function(e) {
+    elButtons.forEach((elButton) => {
+      elButton.addEventListener('click', (e) => {
         e.preventDefault();
         const infoActu = elButton.getAttribute('data-actu');
         // Utilisez l'information de l'actu comme vous le souhaitez
