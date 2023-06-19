@@ -155,7 +155,8 @@ const Page = class Page {
           // Accès à la valeur de l'attribut id
           const valeurId = elChoice.id;
           console.log(valeurId);
-          localStorage.setItem('conversationId');
+          conversationId = valeurId;
+          localStorage.setItem('conversationId', conversationId);
           location.reload();
         } else {
           console.log("L'élément avec cet ID n'existe pas.");
@@ -271,7 +272,7 @@ const Page = class Page {
 
   run() {
     this.el.innerHTML = ViewPage(this.content, this.discu);
-    conversationId = localStorage.getItem('conversationId') || '1';
+    // conversationId = localStorage.getItem('conversationId') || '1';
     // new ControllerPage(ViewDiscu(this.data), conversationId);
     this.onClickSearch();
     this.styleNav();
