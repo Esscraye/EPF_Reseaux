@@ -9,18 +9,18 @@ const DelGroup = class DelGroup {
     this.run();
   }
 
-  onClickSearch() {
+  onClickDel() {
     const delButton = document.querySelector('#addgroupbtn');
     delButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const delInputid = document.querySelector('#nom_groupe_input');
+      const delInputid = document.querySelector('#identifiant_input');
       const delInputname = document.querySelector('#nom_groupe_input');
       if (delInputid.value && delInputname.value) {
         const body = {
-          iddelgroup: delInputid.value,
-          namedelgroup: delInputname.value
+          idgroup: delInputid.value,
+          namegroup: delInputname.value
         };
-        axios.post('http://127.0.0.1:3000/group', body)
+        axios.delete('http://127.0.0.1:3000/group', body)
           .then((response) => {
             console.log(response);
           })
@@ -37,7 +37,7 @@ const DelGroup = class DelGroup {
 
   run() {
     new ControllerPage(ViewDelGroup(this.data));
-    this.onClickSearch();
+    this.onClickDel();
   }
 };
 
