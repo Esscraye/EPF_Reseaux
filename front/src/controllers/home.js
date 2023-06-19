@@ -1,52 +1,44 @@
+import axios from 'axios';
 import ControllerPage from './page';
 import ViewHome from '../views/home';
+import 'regenerator-runtime/runtime';
 
 const Home = class Home {
   constructor() {
     this.data = {
-      articles: [{
-        assoc: {
-          name: 'EPF BDE',
-          logo: 'https://picsum.photos/240/300'
-        },
-        content: {
-          title: 'Titre de l\'article',
-          text: 'lorem ipsum',
-          img: 'https://picsum.photos/207/300',
-          link: '#',
-          date: 'depuis 2 jours'
-        }
-      }, {
-        assoc: {
-          name: 'EPF BDE',
-          logo: 'https://picsum.photos/240/300'
-        },
-        content: {
-          title: 'Titre de l\'article',
-          text: 'lorem ipsum',
-          img: 'https://picsum.photos/207/300',
-          link: '#',
-          date: 'depuis 2 jours'
-        }
-      }, {
-        assoc: {
-          name: 'EPF BDE',
-          logo: 'https://picsum.photos/240/300'
-        },
-        content: {
-          title: 'Titre de l\'article',
-          text: 'lorem ipsum',
-          img: 'https://picsum.photos/207/300',
-          link: '#',
-          date: 'depuis 2 jours'
-        }
-      }]
+      assoc: {},
+      news: {}
     };
 
     this.run();
   }
 
-  run() {
+  async fetchAssociationDataNews() {
+    try {
+      const response = await axios.get('http://172.25.56.114:3000/news');
+      this.data.news = response.data;
+      await this.fetchAssociationData();
+    } catch (error) {
+      console.error('Error fetching news data:', error);
+    }
+  }
+
+  async fetchAssociationData() {
+    try {
+      const associationIds = this.data.news.map((newsItem) => newsItem.idAsso);
+      const uniqueAssociationIds = [...new Set(associationIds)];
+      const associationDataPromises = uniqueAssociationIds.map(async (associationId) => {
+        const response = await axios.get(`http://172.25.56.114:3000/assoc/${associationId}`);
+        this.data.assoc[associationId] = response.data;
+      });
+      await Promise.all(associationDataPromises);
+    } catch (error) {
+      console.error('Error fetching association data:', error);
+    }
+  }
+
+  async run() {
+    await this.fetchAssociationDataNews();
     new ControllerPage(ViewHome(this.data));
   }
 };

@@ -253,7 +253,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
   async run() {
     await this.fetchAssociationDataAsso();
-    console.log(this.data.assoc.id);
     await this.fetchAssociationDataNews(this.data.assoc.id);
     new ControllerPage(ViewAssoSuperAdmin(this.data));
     console.log(this.data);
