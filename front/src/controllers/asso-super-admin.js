@@ -114,19 +114,19 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     }
   }
 
-  onClickDel() {
+onClickDel() {
     const elButton = document.querySelector('.delAsso');
-    const elButtonActu = document.querySelector('.delActu');
-
+    const elButtonsActu = document.querySelectorAll('.delActu');
+  
     if (!elButton) {
       return;
     }
-    if (!elButtonActu) {
+    if (!elButtonsActu.length) {
       return;
     }
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const dialog = confirm('Supprimer l\'association ?');
+      const dialog = confirm("Supprimer l'association ?");
       if (dialog) {
         alert('association supprimée');
         document.location.href = '../homeAssos';
@@ -134,17 +134,20 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         alert('annulation de la demande');
       }
     });
-
-    elButtonActu.addEventListener('click', (e) => {
-      e.preventDefault();
-      const dialog = confirm('Supprimer l\'actualité ?');
-      if (dialog) {
-        alert('actualité supprimée');
-      } else {
-        alert('annulation de la demande');
-      }
+  
+    elButtonsActu.forEach(function(elButtonActu) {
+      elButtonActu.addEventListener('click', (e) => {
+        e.preventDefault();
+        const dialog = confirm("Supprimer l'actualité ?");
+        if (dialog) {
+          alert('actualité supprimée');
+        } else {
+          alert('annulation de la demande');
+        }
+      });
     });
   }
+  
 
   onClickChange() {
     const myModal = document.querySelector('.change');
@@ -176,11 +179,15 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   } */
 
   onClickChangeActu() {
-    const elButton = document.querySelector('.changeActu');
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      document.location.href = '../createActu';
-      // il faut qu'on trouve comment récup l'info de l'actu pour l'injecter dans la page
+    const elButtons = document.querySelectorAll('.changeActu');
+    elButtons.forEach(function(elButton) {
+      elButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        const infoActu = elButton.getAttribute('data-actu');
+        // Utilisez l'information de l'actu comme vous le souhaitez
+        console.log(infoActu); // Exemple d'utilisation : affichage dans la console
+        document.location.href = '../createArticle';
+      });
     });
   }
 
