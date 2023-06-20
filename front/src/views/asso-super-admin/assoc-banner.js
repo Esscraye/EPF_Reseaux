@@ -1,16 +1,21 @@
-const btn = () => `
-  <button type="button" class="btn btn-danger delAsso">Supprimer</button>
-`;
-
-const btn1 = () => `
+const btnDelete = (data) => {
+  const {
+    id
+  } = data;
+  console.log('je supprime asso');
+  return (`
+  <button type="button" id="${id}" class="btn btn-danger delAsso">${id}</button>
+`);
+};
+const btnManage = () => `
   <a href="/gestMember" class="btn btn-danger Member" role="button">Membres</a>
 `;
 
-const btn2 = () => `
+const btnUpdate = () => `
   <button type="button" class="btn btn-danger change" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifier</button>
 `;
 
-const btn3 = () => `
+const btnFollow = () => `
   <button type="button" class="btn btn-danger followAsso">Suivre</button>
 `;
 
@@ -29,10 +34,10 @@ export default (data, permissions) => {
         <div class="col-3">
           <div class="row pt-3">
             <div class="btn-group" role="group" aria-label="Basic example">
-              ${assoc.delete ? btn() : ''}
-              ${assoc.manage ? btn1() : ''}
-              ${assoc.update ? btn2() : ''}
-              ${assoc.follow ? btn3() : ''}
+              ${assoc.delete ? btnDelete(data) : ''}
+              ${assoc.manage ? btnManage() : ''}
+              ${assoc.update ? btnUpdate() : ''}
+              ${assoc.follow ? btnFollow() : ''}
             </div>
           </div>    
         </div>
