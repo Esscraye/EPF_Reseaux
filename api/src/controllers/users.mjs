@@ -1,4 +1,5 @@
 import UserModel from '../models/user.mjs';
+import authToken from '../hook/auth.mjs';
 
 const Users = class Users {
   constructor(app, connect) {
@@ -73,10 +74,33 @@ const Users = class Users {
     });
   }
 
+  update() {
+    this.app.put('/users/:id', authToken, (req, res) => {
+      try {
+        this.UsersModel.findByIdAndUpdate(req.params.id, req.body).then(() => {
+          res.status(200).json("ok c'est good" || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] users/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
     this.create();
     this.showByEmail();
     this.deleteById();
+    this.update();
   }
 };
 
