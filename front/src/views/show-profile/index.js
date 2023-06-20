@@ -8,7 +8,7 @@ export default (data) => {
         <div class="col-3 container-info-prof">
           <img src="${infoPerso.picture}" alt="Image utilisateur" class=" rounded-circle imageprof image-prof" id ="affprofimage">
           <div class ="text-gras">
-              ${infoPerso.firstName} ${infoPerso.lastName}
+              ${infoPerso.firstname} ${infoPerso.lastname}
           </div>
           <div class="">
             <a href="/change-profile" class="btn btn-danger mr-2" role="button" id ="btnmodifprofil">Modifier profil</a>
@@ -20,10 +20,10 @@ export default (data) => {
                 Informations personnelles
             </div>
             <div class ="info-profil">
-              Prénom : ${infoPerso.firstName}
+              Prénom : ${infoPerso.firstname}
             </div>
             <div class ="info-profil">
-              Nom : ${infoPerso.lastName}
+              Nom : ${infoPerso.lastname}
             </div>
             <div class ="info-profil">
               Email : ${infoPerso.email}
@@ -43,7 +43,7 @@ export default (data) => {
               Classe : ${infoPerso.class}
             </div>
             <div class ="info-profil">
-              Groupe de TP : ${infoPerso.groupTp}
+              Groupe de TP : ${infoPerso.grouptp}
             </div>
             <div class ="info-profil">
               Associations : ${infoPerso.associations}

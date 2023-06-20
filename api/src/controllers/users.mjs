@@ -30,10 +30,10 @@ const Users = class Users {
     });
   }
 
-  showById() {
-    this.app.get('/user/:id', (req, res) => {
+  showByEmail() {
+    this.app.get('/user/:email', (req, res) => {
       try {
-        this.UserModel.findById(req.params.id).then((user) => {
+        this.UserModel.findOne({ email: req.params.email }).then((user) => {
           res.status(200).json(user || {});
         }).catch(() => {
           res.status(500).json({
@@ -42,7 +42,7 @@ const Users = class Users {
           });
         });
       } catch (err) {
-        console.error(`[ERROR] users/:id -> ${err}`);
+        console.error(`[ERROR] users/:email -> ${err}`);
 
         res.status(400).json({
           code: 400,
@@ -75,7 +75,7 @@ const Users = class Users {
 
   run() {
     this.create();
-    this.showById();
+    this.showByEmail();
     this.deleteById();
   }
 };
