@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 const AssoSuperAdmin = class AssoSuperAdmin {
   constructor() {
     this.el = document.body;
+
     this.data = {
       assoc: {},
       follower: {
@@ -135,18 +136,30 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         alert('annulation de la demande');
       }
     });
+  }
 
-    elButtonsActu.forEach((elButtonActu) => {
-      elButtonActu.addEventListener('click', (e) => {
-        e.preventDefault();
-        const dialog = confirm("Supprimer l'actualité ?");
-        if (dialog) {
-          alert('actualité supprimée');
-        } else {
-          alert('annulation de la demande');
-        }
+  async deleteNews() {
+    const elButtonsActu = document.querySelectorAll('.delActu'); // Move the querySelectorAll here
+    // Check if elButtonsActu exists and is iterable
+    if (elButtonsActu && elButtonsActu.length) {
+      Array.from(elButtonsActu).forEach((elButtonActu) => {
+        elButtonActu.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const newsId = elButtonActu.getAttribute('id');
+          const dialog = confirm("Supprimer l'actualité ?");
+          if (dialog) {
+            try {
+              await axios.delete(`${config.IP_API}/news/${newsId}`);
+              alert('actualité supprimée');
+            } catch (error) {
+              throw new Error("Erreur lors de la suppression de l'actualité");
+            }
+          } else {
+            alert('annulation de la demande');
+          }
+        });
       });
-    });
+    }
   }
 
   onClickChange() {
@@ -217,7 +230,8 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     new ControllerPage(ViewAssoSuperAdmin(this.data));
     console.log(this.data);
     this.onClickFollow();
-    this.onClickDel();
+    this.onClickDel(this.data.assoc.id);
+    this.deleteNews();
     this.onClickChange();
     this.onClickChangeActu();
     this.onClickChangeDesc();
