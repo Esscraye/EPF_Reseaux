@@ -16,11 +16,11 @@ const DelGroup = class DelGroup {
       const delInputid = document.querySelector('#identifiant_input');
       const delInputname = document.querySelector('#nom_groupe_input');
       if (delInputid.value && delInputname.value) {
-        const body = {
-          idgroup: delInputid.value,
-          namegroup: delInputname.value
-        };
-        axios.delete('http://127.0.0.1:3000/group', body)
+        const idgr = delInputid.value;
+        const namegr = delInputname.value;
+        console.log(idgr);
+        console.log(namegr);
+        axios.delete(`http://127.0.0.1:3000/group/?idgroup=${idgr}&namegroup=${namegr}`)
           .then((response) => {
             console.log(response);
           })
