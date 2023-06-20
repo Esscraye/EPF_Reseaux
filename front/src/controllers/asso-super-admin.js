@@ -157,34 +157,13 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     });
   }
 
-  /* onClickConfirm() {
-    // fonction pour update la page avec les images quand on clique la validation dans le popup
-    const elButton = document.querySelector('#confirm');
-
-    if (!elButton) {
-      return;
-    }
-    elButton.addEventListener('click', (e) => {
-      const logo = document.querySelector('#logo');
-      const image = document.querySelector('#image');
-
-      if (logo.value){
-        const logoPlace = document.querySelector('#logo-img');
-        var change = logoPlace.getAttribute('src');
-        change = logo.value;
-        logoPlace.setAttribute('src', change);
-      }
-    });
-  } */
-
   onClickChangeActu() {
     const elButtons = document.querySelectorAll('.changeActu');
     elButtons.forEach((elButton) => {
       elButton.addEventListener('click', (e) => {
         e.preventDefault();
         const infoActu = elButton.getAttribute('data-actu');
-        // Utilisez l'information de l'actu comme vous le souhaitez
-        console.log(infoActu); // Exemple d'utilisation : affichage dans la console
+        console.log(infoActu);
         document.location.href = '../createArticle';
       });
     });
@@ -230,26 +209,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
       myInput.focus();
     });
   }
-
-  /* onClickConfirm() {
-    // fonction pour update les contact en validant dans le pop-up
-    const elButton = document.querySelector('#confirm-contact');
-
-    if (!elButton) {
-      return;
-    }
-    elButton.addEventListener('click', (e) => {
-      const logo = document.querySelector('#logo');
-      const image = document.querySelector('#image');
-
-      if (logo.value){
-        const logoPlace = document.querySelector('#logo-img');
-        var change = logoPlace.getAttribute('src');
-        change = logo.value;
-        logoPlace.setAttribute('src', change);
-      }
-    });
-  } */
 
   async run() {
     await this.fetchAssociationDataAsso();

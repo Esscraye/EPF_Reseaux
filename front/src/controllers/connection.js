@@ -1,33 +1,47 @@
+import axios from 'axios';
+import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ViewConnection from '../views/connection';
 
 const Connection = class Connection {
-  constructor(content) {
+  constructor() {
     this.el = document.body;
-    this.content = content;
     this.run();
   }
 
   onClickConnection() {
-    const elBtn = document.querySelector('#connection button');
+    const elBtn = document.querySelector('.connection');
 
-    elBtn.addEventListener('click', () => {
-      const elInput1 = document.querySelector('#exampleFormControlInput1');
-      const elInput2 = document.querySelector('#exampleFormControlInput2');
+    elBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const elInputEmail = document.querySelector('.emailInput');
+      const elInputPassword = document.querySelector('.passwordInput');
 
-      if (elInput1.value && isEmail(elInput1.value) && elInput2.value) {
+      if (elInputEmail.value && isEmail(elInputEmail.value) && elInputPassword.value) {
         console.log({
-          email: elInput1.value,
-          mdp: elInput2.value
+          email: elInputEmail.value,
+          mdp: elInputPassword.value
         });
-        elInput1.value = '';
-        elInput2.value = '';
+        const data = {
+          email: elInputEmail.value,
+          password: elInputPassword.value
+        };
+        try {
+          axios.post('http://127.0.0.1:3000/login', data).then((response) => {
+            cookie.set('token', response.data.token);
+            if (response.status === 200) {
+              window.location.replace('http://127.0.0.1:9090/');
+            }
+          });
+        } catch (error) {
+          console.error('Error fetching association data:', error);
+        }
       }
     });
   }
 
   run() {
-    this.el.innerHTML = ViewConnection(this.content);
+    this.el.innerHTML = ViewConnection();
     this.onClickConnection();
   }
 };

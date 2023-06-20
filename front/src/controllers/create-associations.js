@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import cookie from 'js-cookie';
+import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ControllerPage from './page';
 import ViewCreateAssos from '../views/create-associations';
@@ -45,7 +45,7 @@ const Home = class Home {
           body,
           {
             headers: {
-              // authorization: cookie.get('token')
+              authorization: cookie.get('token')
             }
           }
         )
