@@ -1,17 +1,38 @@
 import mongoose from 'mongoose';
 
-const Schema = new mongoose.Schema({
-  title: String,
-  text: String,
-  img: {
-    format: { type: String, default: 'jpeg' }
+const newsSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true
+    },
+    text: {
+      type: String,
+      required: true
+    },
+    img: {
+      format: {
+        type: String,
+        default: 'jpeg'
+      }
+    },
+    idAsso: {
+      type: String,
+      required: true
+    },
+    date: {
+      type: String,
+      required: true
+    }
   },
-  idAsso: String
-}, {
-  collection: 'news',
-  minimize: false,
-  versionKey: false
-}).set('toJSON', {
+  {
+    collection: 'news',
+    minimize: false,
+    versionKey: false
+  }
+);
+
+newsSchema.set('toJSON', {
   transform: (doc, ret) => {
     const retUpdated = ret;
     retUpdated.id = ret._id;
@@ -22,4 +43,4 @@ const Schema = new mongoose.Schema({
   }
 });
 
-export default Schema;
+export default newsSchema;
