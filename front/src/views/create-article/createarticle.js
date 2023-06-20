@@ -1,11 +1,11 @@
 export default () => (`
   <div class="text-center">
     <div class="m-5 rectangle">
-      <div class="p-4 row">
+      <div class="p-4 row shadow-manuelle info-asso">
         <div class="row">
-          <h3 class="fw-bold mb-3">Créer une actualité</h3>
+          <h3 class="fw-bold mb-5">Créer une actualité</h3>
         </div>
-        <div class="row mb-3 align-items-end">
+        <div class="row mb-4 align-items-end">
           <div class="col-9">
             <div class="form-floating">
               <input class="form-control" placeholder="Leave a comment here"  id="floatingTextareaTitle">
