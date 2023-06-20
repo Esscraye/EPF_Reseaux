@@ -1,15 +1,14 @@
 import article from './article';
-
 import './index.scss';
 
 export default (data) => {
-  const { articles } = data;
+  const { news, assoc } = data;
 
   return (`
     <div class="row back-im">
       <div class="col-1"></div>
       <div class="col-6 my-2 p-3 nav-filtre-actu">
-        ${articles.map((post) => article(post)).join('')}
+        ${news.map((newsItem) => article(newsItem, assoc[newsItem.idAsso])).join('')}
       </div>
       <div class="col-5 contener-info-asso">
         <div class="info-asso shadow-manuelle">
