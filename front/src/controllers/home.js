@@ -14,7 +14,7 @@ const Home = class Home {
 
   async fetchAssociationDataNews() {
     try {
-      const response = await axios.get('http://127.0.0.1:3000/news');
+      const response = await axios.get('http://leobaleras.live:3000/news');
       this.data.news = response.data;
       await this.fetchAssociationData();
     } catch (error) {
@@ -27,7 +27,7 @@ const Home = class Home {
       const associationIds = this.data.news.map((newsItem) => newsItem.idAsso);
       const uniqueAssociationIds = [...new Set(associationIds)];
       const associationDataPromises = uniqueAssociationIds.map(async (associationId) => {
-        const response = await axios.get(`http://127.0.0.1:3000/assoc/${associationId}`);
+        const response = await axios.get(`http://leobaleras.live:3000/assoc/${associationId}`);
         this.data.assoc[associationId] = response.data;
       });
       await Promise.all(associationDataPromises);

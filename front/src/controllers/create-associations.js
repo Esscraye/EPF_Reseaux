@@ -41,7 +41,7 @@ const Home = class Home {
         };
 
         axios.post(
-          'http://172.25.56.114:3000/assoc',
+          'http://leobaleras.live:3000/assoc',
           body,
           {
             headers: {

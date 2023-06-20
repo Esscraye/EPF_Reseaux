@@ -21,7 +21,7 @@ const AddGroup = class AddGroup {
           namegroup: addInputname.value
         };
         console.log(body);
-        axios.post('http://127.0.0.1:3000/group', body)
+        axios.post('http://leobaleras.live:3000/group', body)
           .then((response) => {
             console.log(response);
           })

@@ -20,7 +20,7 @@ const DelGroup = class DelGroup {
         const namegr = delInputname.value;
         console.log(idgr);
         console.log(namegr);
-        axios.delete(`http://127.0.0.1:3000/group/?idgroup=${idgr}&namegroup=${namegr}`)
+        axios.delete(`http://leobaleras.live:3000/group/?idgroup=${idgr}&namegroup=${namegr}`)
           .then((response) => {
             console.log(response);
           })

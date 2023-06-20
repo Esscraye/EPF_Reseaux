@@ -88,7 +88,7 @@ const Createarticle = class Createarticle {
 
       console.log(formData);
 
-      axios.post('http://172.25.56.114:3000/news', formData)
+      axios.post('http://leobaleras.live:3000/news', formData)
         .then((response) => {
           console.log(response);
           // Vider les champs de saisie
