@@ -62,7 +62,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     console.log(id);
     // console.log(window.location);
     try {
-      const response = await axios.get(`http://172.25.56.114:3000/assoc/${id}`);
+      const response = await axios.get(`http://127.0.0.1:3000/assoc/${id}`);
       this.data.assoc = response.data;
       // console.log(response);
       // console.log(this.data.assoc);
@@ -74,7 +74,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
   async fetchAssociationDataNews(id) {
     try {
-      const response = await axios.get('http://172.25.56.114:3000/news');
+      const response = await axios.get('http://127.0.0.1:3000/news');
       // console.log(response);
       // console.log(id);
       // console.log(news.idAsso);

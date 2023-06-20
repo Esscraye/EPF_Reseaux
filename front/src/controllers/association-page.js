@@ -12,7 +12,7 @@ class PageMainAssos {
   // get the cards of the associations and put it in this.data
   async fetchAssociationData() {
     try {
-      const response = await axios.get('http://172.25.56.114:3000/assoc');
+      const response = await axios.get('http://127.0.0.1:3000/assoc');
       this.data.cards = response.data;
       console.log(this.data);
       console.log(response.data);
