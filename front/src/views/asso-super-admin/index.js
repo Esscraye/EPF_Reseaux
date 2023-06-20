@@ -15,7 +15,7 @@ export default (data) => {
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-8 mt-3">
-          ${createActu(userPermission.founder)}
+          ${createActu(assoc, userPermission.founder)}
           <div class="card text-center mb-2 nav-filtre-actu asso_admin">
             ${news.map((actu) => post(actu, userPermission.founder)).join('')}
           </div>
