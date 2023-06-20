@@ -7,10 +7,10 @@ import messD from './message_droite';
 
 import './index.scss';
 
-export default (data) => {
-  const { conversations, newConvPara } = data;
+export default (data, idChat) => {
+  const { conversations } = data;
 
-  const convParameter = newConvPara || '1';
+  const convParameter = idChat || '2';
 
   const conversation = conversations.find((conv) => conv.convId === convParameter);
 

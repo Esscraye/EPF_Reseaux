@@ -2,13 +2,14 @@ import ViewPage from '../views/page';
 import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
 
-let conversationId = localStorage.getItem('conversationId') || '1';
-console.log(conversationId);
+let conversationId = localStorage.getItem('conversationId') || '2';
+let val = localStorage.getItem('val') || 1;
 
 const Page = class Page {
   constructor(content) {
     this.el = document.body;
     this.content = content;
+    this.idChat = localStorage.getItem('conversationId') || '2';
     this.data = {
       conversations: [{
         participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr'],
@@ -128,7 +129,7 @@ const Page = class Page {
       }]
 
     };
-    this.discu = ViewDiscu(this.data);
+    this.discu = ViewDiscu(this.data, this.idChat);
     this.run();
   }
 
@@ -251,11 +252,15 @@ const Page = class Page {
     openModal.addEventListener('click', () => {
       clasDialog.classList.add('modal-add');
       modal.showModal();
+      val = 2;
+      localStorage.setItem('val', val);
     });
 
     closeModal.addEventListener('click', () => {
       clasDialog.classList.remove('modal-add');
       modal.close();
+      val = 1;
+      localStorage.setItem('val', val);
     });
 
     closeModal.addEventListener('click', () => {
@@ -281,6 +286,15 @@ const Page = class Page {
     });
   }
 
+  keppOpenNav() {
+    const dial = document.querySelector('#modal');
+    // eslint-disable-next-line eqeqeq
+    if (localStorage.getItem('val') == 2) {
+      dial.classList.add('modal-add');
+      dial.showModal();
+    }
+  }
+
   run() {
     this.el.innerHTML = ViewPage(this.content, this.discu);
     // conversationId = localStorage.getItem('conversationId') || '1';
@@ -288,6 +302,7 @@ const Page = class Page {
     this.onClickSearch();
     this.OpenChat();
     this.ResponsiveNav();
+    this.keppOpenNav();
   }
 };
 
