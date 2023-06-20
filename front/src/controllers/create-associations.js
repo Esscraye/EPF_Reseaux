@@ -3,6 +3,7 @@ import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ControllerPage from './page';
 import ViewCreateAssos from '../views/create-associations';
+import config from '../../config';
 
 const Home = class Home {
   constructor() {
@@ -41,7 +42,7 @@ const Home = class Home {
         };
 
         axios.post(
-          'http://leobaleras.live:3000/assoc',
+          `${config.IP_API}/assoc`,
           body,
           {
             headers: {

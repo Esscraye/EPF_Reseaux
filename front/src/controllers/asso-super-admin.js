@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from '../../config';
 import ControllerPage from './page';
 import ViewAssoSuperAdmin from '../views/asso-super-admin';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -62,7 +63,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     console.log(id);
     // console.log(window.location);
     try {
-      const response = await axios.get(`http://leobaleras.live:3000/assoc/${id}`);
+      const response = await axios.get(`${config.IP_API}/assoc/${id}`);
       this.data.assoc = response.data;
       // console.log(response);
       // console.log(this.data.assoc);
@@ -74,7 +75,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
   async fetchAssociationDataNews(id) {
     try {
-      const response = await axios.get('http://leobaleras.live:3000/news');
+      const response = await axios.get(`${config.IP_API}/news`);
       // console.log(response);
       // console.log(id);
       // console.log(news.idAsso);

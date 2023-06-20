@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from '../../config';
 import ControllerPage from './page';
 import ViewPageMainAssos from '../views/association-page';
 
@@ -12,7 +13,7 @@ class PageMainAssos {
   // get the cards of the associations and put it in this.data
   async fetchAssociationData() {
     try {
-      const response = await axios.get('http://leobaleras.live:3000/assoc');
+      const response = await axios.get(`${config.IP_API}/assoc`);
       this.data.cards = response.data;
       console.log(this.data);
       console.log(response.data);

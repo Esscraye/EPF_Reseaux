@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from '../../config';
 import ViewCreatearticle from '../views/create-article';
 import ControllerPage from './page';
 
@@ -88,7 +89,7 @@ const Createarticle = class Createarticle {
 
       console.log(formData);
 
-      axios.post('http://leobaleras.live:3000/news', formData)
+      axios.post(`${config.IP_API}/news`, formData)
         .then((response) => {
           console.log(response);
           // Vider les champs de saisie

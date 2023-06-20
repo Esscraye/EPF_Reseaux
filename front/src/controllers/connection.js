@@ -2,6 +2,7 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ViewConnection from '../views/connection';
+import config from '../../config';
 
 const Connection = class Connection {
   constructor() {
@@ -27,10 +28,10 @@ const Connection = class Connection {
           password: elInputPassword.value
         };
         try {
-          axios.post('http://127.0.0.1:3000/login', data).then((response) => {
+          axios.post(`${config.IP_API}/login`, data).then((response) => {
             cookie.set('token', response.data.token);
             if (response.status === 200) {
-              window.location.replace('http://127.0.0.1:9090/');
+              window.location.replace(`${config.IP_FRONT}/`);
             }
           });
         } catch (error) {

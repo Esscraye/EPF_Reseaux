@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from '../../config';
 import ViewAddGroup from '../views/add-group';
 import ControllerPage from './page';
 
@@ -21,7 +22,7 @@ const AddGroup = class AddGroup {
           namegroup: addInputname.value
         };
         console.log(body);
-        axios.post('http://leobaleras.live:3000/group', body)
+        axios.post(`${config.IP_API}/group`, body)
           .then((response) => {
             console.log(response);
           })
