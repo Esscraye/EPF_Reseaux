@@ -9,7 +9,12 @@ const Schema = new mongoose.Schema({
   description: String,
   promo: String,
   class: String,
-  grouptp: String
+  grouptp: String,
+  role: String,
+  assos: [{
+    nameAsso: String,
+    roleAsso: String
+  }]
 }, {
   collection: 'users',
   minimize: false,
