@@ -9,19 +9,22 @@ const Group = class Group {
   }
 
   deleteById() {
-    this.app.delete('/group/:id', (req, res) => {
+    this.app.delete('/group/', (req, res) => {
+      const idg = req.query.idgroup;
+      const nameg = req.query.namegroup;
       try {
-        this.GroupModel.findByIdAndDelete(req.params.id).then((group) => {
-          res.status(200).json(group || {});
-        }).catch(() => {
-          res.status(500).json({
-            code: 500,
-            message: 'Internal Server error'
+        this.GroupModel.findOneAndDelete({ idgroup: idg, namegroup: nameg })
+          .then((group) => {
+            res.status(200).json(group || {});
+          })
+          .catch(() => {
+            res.status(500).json({
+              code: 500,
+              message: 'Internal Server error'
+            });
           });
-        });
       } catch (err) {
         console.error(`[ERROR] groups/:id -> ${err}`);
-
         res.status(400).json({
           code: 400,
           message: 'Bad request'
