@@ -12,7 +12,7 @@ const btn2 = () => (`
 
 export default (data, permissions) => {
   const {
-    title, text, img, date
+    img, title, text, date
   } = data;
   const { news } = permissions;
   return (`

@@ -1,32 +1,17 @@
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import axios from 'axios';
 import ControllerPage from './page';
 import ViewAssoSuperAdmin from '../views/asso-super-admin';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const AssoSuperAdmin = class AssoSuperAdmin {
   constructor() {
     this.el = document.body;
     this.data = {
-      assoc: {
-        name: 'My Assoc',
-        campus: '',
-        image_header: '',
-        logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
-        description: 'lorem ipsum, lorem ipsum, lorem ipsum',
-        team: 'ipsum lorem ipsum',
-        mail: 'youpi@gmail.com',
-        phone: '0605040302',
-        socialNetworks: {
-          instagram: 'https://www.instagram.com/',
-          discord: 'https://discord.com/',
-          twitter: 'https://twitter.com/',
-          facebook: 'https://fr-fr.facebook.com/',
-          linkedin: 'https://fr.linkedin.com/'
-        }
-      },
+      assoc: {},
       follower: {
         assoc: true
       },
-      usersPermissions: {
+      userPermission: {
         founder: {
           news: {
             delete: true,
@@ -64,22 +49,46 @@ const AssoSuperAdmin = class AssoSuperAdmin {
           }
         }
       },
-      news: [{
-        title: 'Titre de l\'actu',
-        text: 'lorem ipsum',
-        img: 'https://picsum.photos/207/300',
-        date: 'depuis 2 jours',
-        link: '#'
-      }, {
-        title: 'Titre de l\'actu',
-        text: 'lorem ipsum',
-        img: 'https://picsum.photos/207/300',
-        date: 'depuis 2 jours',
-        link: '#'
-      }]
+      news: []
     };
 
     this.run();
+  }
+
+  async fetchAssociationDataAsso() {
+    const queryString = window.location.search;
+    const url = new URLSearchParams(queryString);
+    const id = url.get('id');
+    console.log(id);
+    // console.log(window.location);
+    try {
+      const response = await axios.get(`http://172.25.56.114:3000/assoc/${id}`);
+      this.data.assoc = response.data;
+      // console.log(response);
+      // console.log(this.data.assoc);
+    } catch (error) {
+      console.log('perdu');
+      // Gérer l'erreur
+    }
+  }
+
+  async fetchAssociationDataNews(id) {
+    try {
+      const response = await axios.get('http://172.25.56.114:3000/news');
+      // console.log(response);
+      // console.log(id);
+      // console.log(news.idAsso);
+      // console.log(response.data.news.idAsso);
+      console.log(response.data.idAsso);
+      const filteredNews = response.data.filter((news) => news.idAsso === id);
+      console.log('news filtrer');
+      console.log(filteredNews);
+      // const CachanCards = cards.filter((assoc) => assoc.campus === 'Cachan');
+      this.data.news = filteredNews;
+    } catch (error) {
+      console.log(error);
+      // Gérer l'erreur
+    }
   }
 
   onClickFollow() {
@@ -181,6 +190,7 @@ onClickDel() {
       });
     });
   }
+
   onClickChangeDesc() {
     const elButton = document.querySelector('.changeDesc');
     let editable = false;
@@ -242,8 +252,12 @@ onClickDel() {
     });
   } */
 
-  run() {
+  async run() {
+    await this.fetchAssociationDataAsso();
+    console.log(this.data.assoc.id);
+    await this.fetchAssociationDataNews(this.data.assoc.id);
     new ControllerPage(ViewAssoSuperAdmin(this.data));
+    console.log(this.data);
     this.onClickFollow();
     this.onClickDel();
     this.onClickChange();

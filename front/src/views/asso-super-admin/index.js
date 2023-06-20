@@ -7,25 +7,25 @@ import createActu from './stream';
 
 export default (data) => {
   const {
-    assoc, usersPermissions, news
+    assoc, userPermission, news
   } = data;
 
   return (`
-    ${assocBanner(assoc, usersPermissions.founder)}
+    ${assocBanner(assoc, userPermission.founder)}
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-8 mt-3">
-          ${createActu(usersPermissions.founder)}
+          ${createActu(userPermission.founder)}
           <div class="card text-center mb-2 nav-filtre-actu asso_admin">
-            ${news.map((actu) => post(actu, usersPermissions.founder)).join('')}
+            ${news.map((actu) => post(actu, userPermission.founder)).join('')}
           </div>
         </div>
         <div class="col-4 mt-5 d-grid gap-2">
-          ${descriptionAsso(assoc, usersPermissions.founder)}
-          ${descriptionEquipe(assoc, usersPermissions.founder)}
+          ${descriptionAsso(assoc, userPermission.founder)}
+          ${descriptionEquipe(assoc, userPermission.founder)}
         </div>
       </div>
     </div>
-    ${contacts(assoc, usersPermissions.founder)}  
+    ${contacts(assoc, userPermission.founder)}  
   `);
 };
