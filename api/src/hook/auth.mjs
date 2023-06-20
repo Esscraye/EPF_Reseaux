@@ -6,15 +6,16 @@ dotenv.config();
 export default (req, res, next) => {
   const token = req.headers.authorization;
 
-  if (!token) return res.sendStatus(403);
+  if (!token) {
+    return res.sendStatus(403);
+  }
 
-  jwt.verify(token, process.env.JWT_TOKEN, (err, user) => {
-    if (err) return res.sendStatus(401);
-
-    req.user = user;
-
-    return next();
-  });
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_TOKEN);
+    req.user = decoded;
+  } catch (err) {
+    return res.sendStatus(401);
+  }
 
   return next();
 };
