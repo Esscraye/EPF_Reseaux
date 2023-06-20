@@ -118,10 +118,16 @@ const AssoSuperAdmin = class AssoSuperAdmin {
           console.log(`${config.IP_API}/assoc/${idAssoc}`);
           if (dialog) {
             try {
+              // Supprimer l'association
               await axios.delete(`${config.IP_API}/assoc/${idAssoc}`);
-              alert('association supprimée');
+              // Supprimer toutes les actualités associées
+              const response = await axios.get(`${config.IP_API}/news`);
+              const filteredNews = response.data.filter((news) => news.idAsso === idAssoc);
+              const newsIds = filteredNews.map((news) => news.id);
+              await Promise.all(newsIds.map((newsId) => axios.delete(`${config.IP_API}/news/${newsId}`)));
+              alert('Association et actualités supprimées');
             } catch (error) {
-              throw new Error("Erreur lors de la suppression de l'association");
+              throw new Error("Erreur lors de la suppression de l'association et des actualités");
             }
           } else {
             alert('annulation de la demande');
