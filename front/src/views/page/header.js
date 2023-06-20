@@ -6,7 +6,7 @@ export default () => (`
         <h5>EPF Intranet :</h5>
       </div>
       <div class="nav-links"> 
-        <a href="#" class="btn btn-nav slected">Accueil</a>
+        <a href="/" class="btn btn-nav slected">Accueil</a>
         <a href="/homeAssos" class="btn btn-nav">Association</a>
         <a href="/profil" class="btn btn-nav">Profil</a>
         <a href="#" class="btn btn-nav">Admin</a>

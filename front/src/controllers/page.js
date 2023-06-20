@@ -268,7 +268,7 @@ const Page = class Page {
     });
   }
 
-  ResonsiveNav() {
+  ResponsiveNav() {
     const menuHamburger = document.querySelector('.menu-hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -287,7 +287,7 @@ const Page = class Page {
     // new ControllerPage(ViewDiscu(this.data), conversationId);
     this.onClickSearch();
     this.OpenChat();
-    this.ResonsiveNav();
+    this.ResponsiveNav();
   }
 };
 
