@@ -65,10 +65,6 @@ router.add('/createAssos', () => {
   new ControllerCreateAssociation();
 });
 
-router.add('/discu', () => {
-  new ControllerDiscussion();
-});
-
 router.add('/gestMember', () => {
   new ControllerMemberManagement();
 });
