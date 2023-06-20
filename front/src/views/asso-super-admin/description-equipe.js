@@ -3,13 +3,13 @@ const btn = () => (`
 `);
 
 export default (data, permissions) => {
-  const { description } = data;
+  const { descriptionTeam } = data;
   const { assoc } = permissions;
 
   return (`
     <div class="row-6">
-      <h3>L'équipe</h3>
-      <p id="textTeam" contenteditable="false">${description}</p>
+      <h3>Description de l'équipe</h3>
+      <p id="textTeam" contenteditable="false">${descriptionTeam}</p>
       ${assoc.update ? btn() : ''}
     </div>    
   `);

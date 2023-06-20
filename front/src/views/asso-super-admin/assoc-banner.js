@@ -17,8 +17,7 @@ const btn3 = () => `
 export default (data, permissions) => {
   const { name, logo } = data;
   const { assoc } = permissions;
-
-  return `
+  return (`
     <div class="container-fluid text-center">
       <div class="row shadow-lg p-1">
         <div class="col-2">
@@ -64,5 +63,5 @@ export default (data, permissions) => {
             </div>
         </div>
     </div>
-  `;
+  `);
 };

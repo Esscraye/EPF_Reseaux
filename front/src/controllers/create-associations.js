@@ -1,5 +1,5 @@
 import axios from 'axios';
-import cookie from 'js-cookie';
+// import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ControllerPage from './page';
 import ViewCreateAssos from '../views/create-associations';
@@ -26,10 +26,9 @@ const Home = class Home {
           name: elInputNameassos.value,
           campus: elInputChoicecampus.value,
           image_header: '',
-          logo: '',
-          description_asso: elInputDescription.value,
-          description_team: '',
-          team: '',
+          logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
+          descriptionAsso: elInputDescription.value,
+          descriptionTeam: '',
           mail: elInputMailAssos,
           phone: '',
           socialNetworks: {

@@ -21,7 +21,7 @@ const Createarticle = class Createarticle {
           linkedin: ''
         }
       },
-      userPermissions: {
+      userPermission: {
         founders: {
           news: {
             create: true,

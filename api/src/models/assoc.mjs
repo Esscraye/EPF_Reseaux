@@ -6,8 +6,8 @@ const Schema = new mongoose.Schema(
     campus: String,
     image_header: String,
     logo: String,
-    description_asso: String,
-    description_team: String,
+    descriptionAsso: String,
+    descriptionTeam: String,
     mail: String,
     phone: String,
     socialNetworks: {
