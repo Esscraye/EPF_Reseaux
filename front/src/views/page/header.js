@@ -6,10 +6,10 @@ export default () => (`
         <h5>EPF Intranet :</h5>
       </div>
       <div class="nav-links"> 
-        <a href="/" class="btn btn-nav slected">Accueil</a>
-        <a href="/homeAssos" class="btn btn-nav">Association</a>
-        <a href="/profil" class="btn btn-nav">Profil</a>
-        <a href="#" class="btn btn-nav">Admin</a>
+        <a href="/" class="btn btn-nav" id="ACC">Accueil</a>
+        <a href="/homeAssos" class="btn btn-nav" id="ASS">Association</a>
+        <a href="/profil" class="btn btn-nav" id="PRO">Profil</a>
+        <a href="#" class="btn btn-nav" id="ADM">Admin</a>
       </div>
       <img src="/images/menu-btn.png" class="menu-hamburger btn btn-port">
     </div>

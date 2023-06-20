@@ -4,6 +4,7 @@ import messD from '../views/discussion/message_droite';
 
 let conversationId = localStorage.getItem('conversationId') || '2';
 let val = localStorage.getItem('val') || 1;
+let headerSelect = localStorage.getItem('head') || 1;
 
 const Page = class Page {
   constructor(content) {
@@ -276,7 +277,6 @@ const Page = class Page {
   ResponsiveNav() {
     const menuHamburger = document.querySelector('.menu-hamburger');
     const navLinks = document.querySelector('.nav-links');
-
     menuHamburger.addEventListener('click', () => {
       if (navLinks.classList.contains('mobile-menu')) {
         navLinks.classList.remove('mobile-menu');
@@ -295,6 +295,46 @@ const Page = class Page {
     }
   }
 
+  slectedPage() {
+    const Accueil = document.querySelector('#ACC');
+    const Profile = document.querySelector('#PRO');
+    const Asso = document.querySelector('#ASS');
+    const Admin = document.querySelector('#ADM');
+
+    Accueil.addEventListener('click', () => {
+      headerSelect = 1;
+      localStorage.setItem('head', headerSelect);
+    });
+    Profile.addEventListener('click', () => {
+      headerSelect = 2;
+      localStorage.setItem('head', headerSelect);
+    });
+    Asso.addEventListener('click', () => {
+      headerSelect = 3;
+      localStorage.setItem('head', headerSelect);
+    });
+    Admin.addEventListener('click', () => {
+      headerSelect = 4;
+      localStorage.setItem('head', headerSelect);
+    });
+    // eslint-disable-next-line eqeqeq
+    if (localStorage.getItem('head') == 1) {
+      Accueil.classList.add('slected');
+    }
+    // eslint-disable-next-line eqeqeq
+    if (localStorage.getItem('head') == 2) {
+      Profile.classList.add('slected');
+    }
+    // eslint-disable-next-line eqeqeq
+    if (localStorage.getItem('head') == 3) {
+      Asso.classList.add('slected');
+    }
+    // eslint-disable-next-line eqeqeq
+    if (localStorage.getItem('head') == 4) {
+      Admin.classList.add('slected');
+    }
+  }
+
   run() {
     this.el.innerHTML = ViewPage(this.content, this.discu);
     // conversationId = localStorage.getItem('conversationId') || '1';
@@ -303,6 +343,7 @@ const Page = class Page {
     this.OpenChat();
     this.ResponsiveNav();
     this.keppOpenNav();
+    this.slectedPage();
   }
 };
 
