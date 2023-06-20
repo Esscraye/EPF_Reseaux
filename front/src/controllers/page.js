@@ -242,17 +242,6 @@ const Page = class Page {
     });
   }
 
-  styleNav() {
-    document.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (window.scrollY > 0) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  }
-
   OpenChat() {
     const modal = document.querySelector('#modal');
     const openModal = document.querySelector('.open-button');
@@ -279,13 +268,26 @@ const Page = class Page {
     });
   }
 
+  ResponsiveNav() {
+    const menuHamburger = document.querySelector('.menu-hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuHamburger.addEventListener('click', () => {
+      if (navLinks.classList.contains('mobile-menu')) {
+        navLinks.classList.remove('mobile-menu');
+      } else {
+        navLinks.classList.add('mobile-menu');
+      }
+    });
+  }
+
   run() {
     this.el.innerHTML = ViewPage(this.content, this.discu);
     // conversationId = localStorage.getItem('conversationId') || '1';
     // new ControllerPage(ViewDiscu(this.data), conversationId);
     this.onClickSearch();
-    this.styleNav();
     this.OpenChat();
+    this.ResponsiveNav();
   }
 };
 

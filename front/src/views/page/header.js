@@ -5,10 +5,13 @@ export default () => (`
         <div class="div-ronde"><img src="/images/logo.png" class="logo"></div>
         <h5>EPF Intranet :</h5>
       </div>
-      <a href="#" class="btn btn-nav slected">Accueil</a>
-      <a href="/homeAssos" class="btn btn-nav">Association</a>
-      <a href="/profil" class="btn btn-nav">Profil</a>
-      <a href="#" class="btn btn-nav">Admin</a>
+      <div class="nav-links"> 
+        <a href="/" class="btn btn-nav slected">Accueil</a>
+        <a href="/homeAssos" class="btn btn-nav">Association</a>
+        <a href="/profil" class="btn btn-nav">Profil</a>
+        <a href="#" class="btn btn-nav">Admin</a>
+      </div>
+      <img src="/images/menu-btn.png" class="menu-hamburger btn btn-port">
     </div>
     <form class="d-flex nav-search partie-d" role="search">
       <input class="form-control me-2 input-col" style="background-color: white;" type="search" placeholder="Recherche" aria-label="Search">
