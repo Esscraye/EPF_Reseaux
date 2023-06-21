@@ -87,11 +87,11 @@ export default () => (`
   <h2>Supprimer un groupe</h2>
     <div class="reglageT shadow-manuelle info-asso">
       <div class="mb-4">
-        <label for="exampleFormControlInput1" class="form-label">Identifiant</label>
+        <label class="form-label">Identifiant</label>
         <input type="email" class="form-control border-black" placeholder="Saisir l'identifiant">
       </div>
       <div class="mb-4">
-        <label for="exampleFormControlInput2" class="form-label">Nom du groupe</label>
+        <label class="form-label">Nom du groupe</label>
         <input type="email" class="form-control border-black" placeholder="Saisir le nom du groupe">
       </div>
       <button type="button" class="btn mb-4">Supprimer</button>
