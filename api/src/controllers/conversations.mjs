@@ -16,7 +16,7 @@ const Conversations = class Conversations {
         }).catch(() => {
           res.status(500).json({
             code: 500,
-            conversation: 'Internal Server error'
+            message: 'Internal Server error'
           });
         });
       } catch (err) {
@@ -24,7 +24,7 @@ const Conversations = class Conversations {
 
         res.status(400).json({
           code: 400,
-          conversation: 'Bad request'
+          message: 'Bad request'
         });
       }
     });
@@ -38,7 +38,7 @@ const Conversations = class Conversations {
         }).catch(() => {
           res.status(500).json({
             code: 500,
-            conversation: 'Internal Server error'
+            message: 'Internal Server error'
           });
         });
       } catch (err) {
@@ -46,7 +46,7 @@ const Conversations = class Conversations {
 
         res.status(400).json({
           code: 400,
-          conversation: 'Bad request'
+          message: 'Bad request'
         });
       }
     });
@@ -67,7 +67,7 @@ const Conversations = class Conversations {
 
         res.status(400).json({
           code: 400,
-          conversation: 'Bad request'
+          message: 'Bad request'
         });
       }
     });
