@@ -4,6 +4,10 @@ import config from '../../config';
 import ViewShowProfile from '../views/show-profile';
 import ControllerPage from './page';
 
+const queryString = window.location.search;
+const url = new URLSearchParams(queryString);
+let emailsearch = url.get('email');
+
 const ShowProfile = class ShowProfile {
   getemailuser() {
     const token = cookie.get('token');
@@ -15,20 +19,24 @@ const ShowProfile = class ShowProfile {
 
   constructor() {
     this.el = document.body;
-    this.data = {};
-
+    this.data = {
+      // infoPerso: {
+      // delete: false
+      // }
+    };
+    if (!emailsearch) {
+      emailsearch = this.getemailuser();
+    }
+    localStorage.setItem('emailsearch', emailsearch);
+    console.log('localestorage', emailsearch);
     this.run();
   }
 
   async fetchProfilData() {
-    const queryString = window.location.search;
-    const url = new URLSearchParams(queryString);
-    const mailurl = url.get('email');
-    if (mailurl) {
+    if (emailsearch) {
       try {
-        const response = await axios.get(`${config.IP_API}/user/${mailurl}`);
+        const response = await axios.get(`${config.IP_API}/user/${emailsearch}`);
         this.data.infoPerso = response.data;
-        // new ControllerPage(ViewShowProfile(this.data));
       } catch (error) {
         console.log('perdu');
         // Gérer l'erreur
@@ -40,9 +48,29 @@ const ShowProfile = class ShowProfile {
     }
   }
 
+  onClickModifProfil() {
+    const modifprofilButton = document.querySelector('#btnmodifprofil');
+    modifprofilButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      try {
+        console.log('efominzbielbu');
+        console.log('loca sorage', emailsearch);
+        const response = axios.get(`${config.IP_API}/user/${emailsearch}`);
+        console.log(response);
+        this.data.infoPerso = response.data;
+        console.log(this.data.infoPerso);
+        window.location.href = `${config.IP_FRONT}/changeUser`;
+      } catch (error) {
+        console.log('perdu');
+        // Gérer l'erreur
+      }
+    });
+  }
+
   async run() {
     await this.fetchProfilData();
     new ControllerPage(ViewShowProfile(this.data));
+    this.onClickModifProfil();
   }
 };
 

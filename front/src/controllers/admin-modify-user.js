@@ -11,9 +11,10 @@ const AdminModifyUser = class AdminModifyUser {
 
   onClickModifier() {
     const elButton = document.querySelector('#modifier');
+    // let emailprofile = localStorage.getItem('emailsearch') || 1;
+    // mettre cet email pour modifier le profil
     elButton.addEventListener('click', (e) => {
       e.preventDefault();
-
       const elInputLastname = document.querySelector('.lastname');
       const elInputFirstname = document.querySelector('.firstname');
       const elInputEmail = document.querySelector('.email');
