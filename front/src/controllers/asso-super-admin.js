@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cookie from 'js-cookie';
 import config from '../../config';
 import ControllerPage from './page';
 import ViewAssoSuperAdmin from '../views/asso-super-admin';
@@ -60,13 +61,9 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     const queryString = window.location.search;
     const url = new URLSearchParams(queryString);
     const id = url.get('id');
-    console.log(id);
-    // console.log(window.location);
     try {
       const response = await axios.get(`${config.IP_API}/assoc/${id}`);
       this.data.assoc = response.data;
-      // console.log(response);
-      // console.log(this.data.assoc);
     } catch (error) {
       console.log('perdu');
       // Gérer l'erreur
@@ -76,14 +73,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   async fetchAssociationDataNews(id) {
     try {
       const response = await axios.get(`${config.IP_API}/news`);
-      // console.log(response);
-      // console.log(id);
-      // console.log(news.idAsso);
-      // console.log(response.data.news.idAsso);
-      console.log(response.data.idAsso);
       const filteredNews = response.data.filter((news) => news.idAsso === id);
-      console.log('news filtrer');
-      console.log(filteredNews);
       // const CachanCards = cards.filter((assoc) => assoc.campus === 'Cachan');
       this.data.news = filteredNews;
     } catch (error) {
@@ -211,11 +201,19 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     });
   }
 
+  getemailuser() {
+    const token = cookie.get('token');
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+    return JSON.parse(jsonPayload).email;
+  }
+
   async run() {
+    // const mail = this.getemailuser(); // récupérer le mail de la personne connecté.
     await this.fetchAssociationDataAsso();
     await this.fetchAssociationDataNews(this.data.assoc.id);
     new ControllerPage(ViewAssoSuperAdmin(this.data));
-    console.log(this.data);
     this.onClickFollow();
     this.onClickDel();
     this.onClickChange();

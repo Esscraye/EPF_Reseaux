@@ -90,8 +90,7 @@ const Users = class Users {
               message: 'User not found'
             });
           } else if (user.password === password) {
-            const { role, assos } = user;
-            const token = jwt.sign({ email, role, assos }, process.env.JWT_TOKEN, { expiresIn: '24h' });
+            const token = jwt.sign({ email }, process.env.JWT_TOKEN, { expiresIn: '24h' });
             res.status(200).json({
               token
             });
