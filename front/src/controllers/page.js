@@ -5,6 +5,8 @@ import messD from '../views/discussion/message_droite';
 let conversationId = localStorage.getItem('conversationId') || '2';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
+const censure = [];
+console.log(censure);
 
 const Page = class Page {
   constructor(content) {
@@ -127,10 +129,80 @@ const Page = class Page {
           }
         }
         ]
+      }, {
+        participants: ['alban.lauby@epfedu.fr', 'maxence.juery@epfedu.fr'],
+        type: 'individual',
+        name: 'Alban Lauby',
+        icone: 'https://tse4.mm.bing.net/th?id=OIP.AENl1AC1hSURPNEUwarSawHaHa&pid=Api&P=0&h=180',
+        censure: false,
+        convId: '3',
+        messages: [{
+          text: 'Hello !',
+          times: '13h52',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          text: 'Comment va ?',
+          times: '13h54',
+          author: {
+            firstName: 'Alban',
+            lastName: 'Lauby',
+            email: 'alban.lauby@epfedu.fr'
+          }
+        },
+        {
+          text: '???',
+          times: '13h55',
+          author: {
+            firstName: 'Alban',
+            lastName: 'Lauby',
+            email: 'alban.lauby@epfedu.fr'
+          }
+        },
+        {
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        },
+        {
+          text: 'Oui',
+          times: '13h57',
+          author: {
+            firstName: 'Maxence',
+            lastName: 'Juery',
+            email: 'maxence.juery@epfedu.fr'
+          }
+        }
+        ]
       }]
-
     };
-    this.discu = ViewDiscu(this.data, this.idChat);
+    this.discu = ViewDiscu(this.data, this.idChat, censure);
     this.run();
   }
 
@@ -242,6 +314,17 @@ const Page = class Page {
         }
       }
     });
+
+    const conversation = this.data.conversations.find((conv) => conv.convId === conversationId);
+
+    if (conversation.type === 'individual') {
+      const elBlock = conversation.type === 'individual' ? document.querySelector('.bloquer button') : null;
+      elBlock.addEventListener('click', () => {
+        conversation.censure = true;
+        localStorage.setItem('censure', censure);
+        location.reload();
+      });
+    }
   }
 
   OpenChat() {
