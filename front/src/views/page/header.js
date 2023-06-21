@@ -9,7 +9,7 @@ export default () => (`
         <a href="/" class="btn btn-nav" id="ACC">Accueil</a>
         <a href="/homeAssos" class="btn btn-nav" id="ASS">Association</a>
         <a href="/profil" class="btn btn-nav" id="PRO">Profil</a>
-        <a href="#" class="btn btn-nav" id="ADM">Admin</a>
+        <a href="/addUser" class="btn btn-nav" id="ADM">Admin</a>
       </div>
       <img src="/images/menu-btn.png" class="menu-hamburger btn btn-port">
     </div>
