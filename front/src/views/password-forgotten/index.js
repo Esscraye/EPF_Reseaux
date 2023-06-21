@@ -5,7 +5,7 @@ export default () => (`
 <section  class="sec1">
   <div class="forgot-password">
     <div>
-      <div class="mt-5">
+      <div class="mt-5 info-asso shadow-manuelle">
         <div class="ecart">
           <h2>Mot de passe oublié</h2>
         </div>
