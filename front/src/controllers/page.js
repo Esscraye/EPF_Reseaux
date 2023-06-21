@@ -431,6 +431,30 @@ const Page = class Page {
     }
   }
 
+  slectedPagefooter() {
+    const Accueil = document.querySelector('#ACC2');
+    const Profile = document.querySelector('#PRO2');
+    const Asso = document.querySelector('#ASS2');
+    const Admin = document.querySelector('#ADM2');
+
+    Accueil.addEventListener('click', () => {
+      headerSelect = 1;
+      localStorage.setItem('head', headerSelect);
+    });
+    Profile.addEventListener('click', () => {
+      headerSelect = 2;
+      localStorage.setItem('head', headerSelect);
+    });
+    Asso.addEventListener('click', () => {
+      headerSelect = 3;
+      localStorage.setItem('head', headerSelect);
+    });
+    Admin.addEventListener('click', () => {
+      headerSelect = 4;
+      localStorage.setItem('head', headerSelect);
+    });
+  }
+
   run() {
     this.el.innerHTML = ViewPage(this.content, this.discu);
     // conversationId = localStorage.getItem('conversationId') || '1';
@@ -440,6 +464,7 @@ const Page = class Page {
     this.ResponsiveNav();
     this.keppOpenNav();
     this.slectedPage();
+    this.slectedPagefooter();
   }
 };
 
