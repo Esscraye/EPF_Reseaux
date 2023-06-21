@@ -344,7 +344,7 @@ const Page = class Page {
     const modal = document.querySelector('#modal');
     const openModal = document.querySelector('.open-button');
     const clasDialog = document.getElementById('modal');
-    const closeModal = document.querySelector('.btn-close');
+    const closeModal = document.querySelector('.close-btn');
 
     openModal.addEventListener('click', () => {
       clasDialog.classList.add('modal-add');
