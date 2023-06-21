@@ -38,10 +38,14 @@ $couleur1 : #1a1e21;
     height: auto;
     width: 70%;
     border-radius: 10px;
-    text-align: center;
+    text-align: justify;
     margin-left: 15%;
     align-items: center;
     background: $contenant;
+}
+
+.info-asso h2{
+    text-align: center;
 }
 
 .info-asso .texte-asso{
@@ -59,4 +63,12 @@ $couleur1 : #1a1e21;
     font-size: 25px;
     text-shadow: 1px 1px 2px #172317;
     position: relative;
+}
+
+.changeActu{
+    margin-bottom: 10px;
+}
+
+.text-style{
+    text-align: justify;
 }

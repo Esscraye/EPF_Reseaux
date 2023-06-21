@@ -9,7 +9,7 @@ export default (data, permissions) => {
   return (`
     <div class="row-6">
       <h3>Description de l'équipe</h3>
-      <p id="textTeam" contenteditable="false">${descriptionTeam}</p>
+      <p class="text-style" id="textTeam" contenteditable="false">${descriptionTeam}</p>
       ${assoc.update ? btn() : ''}
     </div>    
   `);
