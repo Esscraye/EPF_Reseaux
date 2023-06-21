@@ -16,6 +16,7 @@ import ControllerPasswordForgotten from './controllers/password-forgotten';
 import ControllerAssociationPage from './controllers/association-page';
 import ControllerChangeProfile from './controllers/change-profile';
 import ControllerDelGroup from './controllers/delete-group';
+import ControllerGenProfile from './controllers/general-profile';
 
 import './index.scss';
 
@@ -80,6 +81,10 @@ router.add('/homeAssos', () => {
 
 router.add('/change-profile', () => {
   new ControllerChangeProfile();
+});
+
+router.add('/general-profile', () => {
+  new ControllerGenProfile();
 });
 
 const queryString = window.location.search;
