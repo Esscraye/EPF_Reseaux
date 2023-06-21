@@ -1,21 +1,32 @@
-.grid-connect{
-    display: grid;
-    text-align: center;
-    place-items: center;
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #ef3d3d;
+$couleur1 : #1a1e21;
+
+
+.contener-conn{
+    min-height: 100vh;
+    display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    grid-template-columns: 1fr 3fr;
+    background: linear-gradient(45deg, #b43030, #ff9e02); 
 }
 
 .sect-2{
     display: grid;
-    -ms-grid-column-align: center;
-    border-radius: 20px;
-    border: 1px solid rgb(50, 50, 50);
-    box-shadow: 1px 1px 1px rgb(50, 50, 50);
-    padding: 2em;
-    margin-top: 2em;
+    padding: 2% 2% 2% 2%;
     width: 30em;
+}
+
+.conn-border{
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    background: $contenant;
 }
 
 .underline-connect:hover{

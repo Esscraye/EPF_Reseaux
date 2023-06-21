@@ -1,21 +1,15 @@
-.forgot-password {
-  .bt {
-    background-color: #b43030 !important;
-    border-color:#b43030 !important;
-    color: white !important;
-  }
-
-  .bt:hover{
-    color:black !important;
-  }
-}
-
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #ef3d3d;
+$couleur1 : #1a1e21;
 
 .sec1{
-align-items: center;
-width: 50%;
-margin-left: 20em;
-margin-top: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .ecart{
@@ -24,4 +18,8 @@ margin-top: 10em;
 
 .deco:hover{
   text-decoration: underline;
+}
+
+.box-mdp{
+  padding: 2% 2% 2% 2%;
 }
