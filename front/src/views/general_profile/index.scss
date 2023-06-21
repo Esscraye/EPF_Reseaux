@@ -1,3 +1,10 @@
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #ef3d3d;
+$couleur1 : #1a1e21;
+
 .reglageD{
     display: flex;
     flex-direction: row;
@@ -11,4 +18,36 @@
     justify-content: center;
     align-items: center;
     padding: 10px 10px 10px 10px;
+}
+
+.s-space{
+    margin-top: 40px;
+}
+
+.title-underline-admin{
+    color: $couleur1;
+    font-size: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 30%;
+    margin-left: 20px;
+}
+
+.title-underline-admin::before{
+    content: '';
+    position: absolute;
+    left: 1;
+    bottom: -2px;
+    background-color:$couleur2;
+    height: 2px;
+    box-sizing: border-box;
+    width: 20%;
+}
+
+.size-colomn{
+    width: 45%;
+}
+
+.size-colomn2{
+    width: 95%;
 }

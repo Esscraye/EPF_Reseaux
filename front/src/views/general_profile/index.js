@@ -1,12 +1,12 @@
 import './index.scss';
 
 export default () => (`
-    <section>
-    <form>
-    <div class="container">
-        <h2>Ajouter un utilisateur</h2>
+<section class="s-space">
+  <form>
+    <div class="">
+      <h2 class="title-underline-admin">Ajouter un utilisateur</h2>
       <div class="reglageD shadow-manuelle info-asso">
-        <div class="me-4">
+        <div class="me-4 size-colomn">
           <div class="mb-4">
             <label class="form-label">Nom</label>
             <input type="text" class="form-control" placeholder="Saisir le nom">
@@ -24,7 +24,7 @@ export default () => (`
             <input type="text" class="form-control border-black description" placeholder="Saisir la description">
           </div>
         </div>
-        <div>         
+        <div class="size-colomn">         
           <div class="mb-4">
             <label class="form-label">Promo</label>
             <select class="form-select">
@@ -70,31 +70,41 @@ export default () => (`
       </div>
     </div>
   </form>
-  </section>
-<section>
-  <h2>Ajouter un groupe</h2>
+</section>
+
+<section class="s-space">
+  <h2 class="title-underline-admin">Ajouter un groupe</h2>
   <div class ="reglageT shadow-manuelle info-asso">
-    <div class="mb-4">Identifiant
-      <input type="email" class="form-control border-black" placeholder="Saisir l'identifiant">
-    </div> 
-    <div class="mb-4">Nom du groupe
-      <input type="email" class="form-control border-black" placeholder="Saisir le nom du groupe">
-    </div>
-    <button type="button" class="btn mb-4">Ajouter</button>
+    <div class="size-colomn2">
+      <div class="mb-4">Identifiant
+          <input type="email" class="form-control border-black" placeholder="Saisir l'identifiant">
+        </div> 
+        <div class="mb-4">Nom du groupe
+          <input type="email" class="form-control border-black" placeholder="Saisir le nom du groupe">
+        </div>
+        <div class="reglageD">
+          <button type="button" class="btn mb-4">Ajouter</button>
+        </div>
+      </div>
   </div>
 </section>
-<section>
-  <h2>Supprimer un groupe</h2>
+
+<section class="s-space">
+  <h2 class="title-underline-admin">Supprimer un groupe</h2>
     <div class="reglageT shadow-manuelle info-asso">
-      <div class="mb-4">
-        <label class="form-label">Identifiant</label>
-        <input type="email" class="form-control border-black" placeholder="Saisir l'identifiant">
+      <div class="size-colomn2">
+        <div class="mb-4">
+          <label class="form-label">Identifiant</label>
+          <input type="email" class="form-control border-black" placeholder="Saisir l'identifiant">
+        </div>
+        <div class="mb-4">
+          <label class="form-label">Nom du groupe</label>
+          <input type="email" class="form-control border-black" placeholder="Saisir le nom du groupe">
+        </div>
+        <div class="reglageD">
+          <button type="button" class="btn mb-4">Supprimer</button>
+        </div>
       </div>
-      <div class="mb-4">
-        <label class="form-label">Nom du groupe</label>
-        <input type="email" class="form-control border-black" placeholder="Saisir le nom du groupe">
-      </div>
-      <button type="button" class="btn mb-4">Supprimer</button>
     </div>
 </section>
 `);
