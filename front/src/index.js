@@ -1,4 +1,5 @@
 import Router from 'vanilla-router';
+import cookie from 'js-cookie';
 
 import ControllerHome from './controllers/home';
 import Controller404Page from './controllers/404-page';
@@ -83,4 +84,9 @@ router.add('/change-profile', () => {
 
 const queryString = window.location.search;
 const { pathname } = location;
-router.navigateTo(pathname + queryString);
+
+if (cookie.get('token')) {
+  router.navigateTo(pathname + queryString);
+} else {
+  router.navigateTo('/connection');
+}
