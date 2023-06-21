@@ -1,3 +1,10 @@
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #ef3d3d;
+$couleur1 : #1a1e21;
+
 .liste-conv{
     overflow-y: scroll !important;
     height: 100vh !important;
@@ -16,4 +23,18 @@
 .bulle{
     border-radius: 50%;
     height: 40px;
+}
+
+.btn-fermeture{
+    width: 40px;
+    border-radius: 100%;
+}
+
+.close-btn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
 }

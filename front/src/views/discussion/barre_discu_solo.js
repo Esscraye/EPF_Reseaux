@@ -13,7 +13,7 @@ export default (name, icone) => (`
       </div>
     </div>
     <div class="col-1 text-center my-2 pt-1">
-      <button type="button" class="btn-close" aria-label="Close"></button>
+      <button type="button" class="close-btn bg-danger" aria-label="Close"><img src="/images/croix.png" class="btn-fermeture"></button>
     </div>
   </div>
 `);
