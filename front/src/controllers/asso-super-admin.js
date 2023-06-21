@@ -186,7 +186,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   onClickChangeDesc() {
     const elButton = document.querySelector('.changeDesc');
     let editable = false;
-    elButton.addEventListener('click', (e) => {
+    elButton.addEventListener('click', async (e) => {
       e.preventDefault();
       const paragraph = document.querySelector('#textDesc');
       editable = !paragraph.isContentEditable;
@@ -196,13 +196,28 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         return;
       }
       elButton.textContent = 'Modifier';
+
+      // Update the assoc.descriptionAsso value in the database
+      const { id } = this.data.assoc;
+      const newDescriptionAsso = paragraph.textContent.trim(); // Obtenir la nouvelle description
+      try {
+        await axios.put(`${config.IP_API}/assoc/${id}`, { descriptionAsso: newDescriptionAsso }, {
+          headers: {
+            authorization: cookie.get('token')
+          }
+        });
+        this.data.assoc.descriptionAsso = newDescriptionAsso;
+        console.log('Description de l\'équipe mise à jour :', newDescriptionAsso);
+      } catch (error) {
+        console.log('Erreur lors de la mise à jour de la description de l\'équipe');
+      }
     });
   }
 
   onClickChangeTeam() {
     const elButton = document.querySelector('.changeTeam');
     let editable = false;
-    elButton.addEventListener('click', (e) => {
+    elButton.addEventListener('click', async (e) => {
       e.preventDefault();
       const paragraph = document.querySelector('#textTeam');
       editable = !paragraph.isContentEditable;
@@ -212,6 +227,21 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         return;
       }
       elButton.textContent = 'Modifier';
+
+      // Update the assoc.descriptionTeam value in the database
+      const { id } = this.data.assoc;
+      const newDescriptionTeam = paragraph.textContent.trim(); // Obtenir la nouvelle description
+      try {
+        await axios.put(`${config.IP_API}/assoc/${id}`, { descriptionTeam: newDescriptionTeam }, {
+          headers: {
+            authorization: cookie.get('token')
+          }
+        });
+        this.data.assoc.descriptionTeam = newDescriptionTeam;
+        console.log('Description de l\'équipe mise à jour :', newDescriptionTeam);
+      } catch (error) {
+        console.log('Erreur lors de la mise à jour de la description de l\'équipe');
+      }
     });
   }
 
