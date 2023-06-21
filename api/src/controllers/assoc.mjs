@@ -72,10 +72,33 @@ const Assoc = class Assoc {
     });
   }
 
+  deleteById() {
+    this.app.delete('/assoc/:id', (req, res) => {
+      try {
+        this.AssocModel.findByIdAndDelete(req.params.id).then((association) => {
+          res.status(200).json(association || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] assoc/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
     this.create();
     this.showAll();
     this.showByID();
+    this.deleteById();
   }
 };
 

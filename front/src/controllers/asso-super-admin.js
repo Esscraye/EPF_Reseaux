@@ -97,40 +97,44 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
           return;
         }
-
         e.target.classList.remove('btn-assoc-unfollow');
         e.target.classList.add('btn-assoc-follow');
-
         btn.textContent = 'Suivre';
       });
     }
   }
 
-  onClickDel() {
-    const elButton = document.querySelector('.delAsso');
-    const elButtonsActu = document.querySelectorAll('.delActu');
-
-    if (!elButton) {
-      return;
+  async deleteAsso() {
+    const elButtonsAsso = document.querySelectorAll('.delAsso');
+    console.log(elButtonsAsso);
+    console.log(elButtonsAsso.length);
+    if (elButtonsAsso && elButtonsAsso.length) {
+      Array.from(elButtonsAsso).forEach((button) => {
+        button.addEventListener('click', async (e) => {
+          e.preventDefault();
+          console.log('je suis la');
+          const idAssoc = button.getAttribute('id');
+          const dialog = confirm("Supprimer l'association ?");
+          console.log(`${config.IP_API}/assoc/${idAssoc}`);
+          if (dialog) {
+            try {
+              await axios.delete(`${config.IP_API}/assoc/${idAssoc}`);
+              alert('association supprimée');
+            } catch (error) {
+              throw new Error("Erreur lors de la suppression de l'association");
+            }
+          } else {
+            alert('annulation de la demande');
+          }
+        });
+      });
     }
-    if (!elButtonsActu.length) {
-      return;
-    }
-    elButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      const dialog = confirm("Supprimer l'association ?");
-      if (dialog) {
-        alert('association supprimée');
-        document.location.href = '../homeAssos';
-      } else {
-        alert('annulation de la demande');
-      }
-    });
   }
 
   async deleteNews() {
     const elButtonsActu = document.querySelectorAll('.delActu'); // Move the querySelectorAll here
     // Check if elButtonsActu exists and is iterable
+    console.log(elButtonsActu.length);
     if (elButtonsActu && elButtonsActu.length) {
       Array.from(elButtonsActu).forEach((elButtonActu) => {
         elButtonActu.addEventListener('click', async (e) => {
@@ -228,8 +232,8 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     await this.fetchAssociationDataNews(this.data.assoc.id);
     new ControllerPage(ViewAssoSuperAdmin(this.data));
     this.onClickFollow();
-    this.onClickDel(this.data.assoc.id);
     this.deleteNews();
+    this.deleteAsso();
     this.onClickChange();
     this.onClickChangeActu();
     this.onClickChangeDesc();
