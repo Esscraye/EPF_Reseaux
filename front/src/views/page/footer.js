@@ -18,10 +18,10 @@ export default () => (`
   </div>
   <div class="cont-foot">
     <h4>Quick Links</h4>
-    <a href="/" class="ender-barre">Accueil</a>
-    <a href="/homeAssos" class="ender-barre">Association</a>
-    <a href="/profil" class="ender-barre">Profil</a>
-    <a href="#" class="ender-barre">Admin</a>
+    <a href="/" class="ender-barre" id="ACC2">Accueil</a>
+    <a href="/homeAssos" class="ender-barre" id="ASS2">Association</a>
+    <a href="/profil" class="ender-barre" id="PRO2">Profil</a>
+    <a href="/general-profile" class="ender-barre" id="ADM2">Admin</a>
   </div>
   <div class="cont-foot">
     <h4 class="">Contact us</h4>
