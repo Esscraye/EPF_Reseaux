@@ -1,0 +1,19 @@
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #ef3d3d;
+$couleur1 : #1a1e21;
+
+.actu-manuelle{
+    background-color: $back;
+    border: none;
+    min-height: 70%;
+}
+
+.art-border{
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+    background: $contenant;
+}

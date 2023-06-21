@@ -5,6 +5,8 @@ import contacts from './prefooter';
 import assocBanner from './assoc-banner';
 import createActu from './stream';
 
+import './index.scss';
+
 export default (data) => {
   const {
     assoc, userPermission, news
@@ -16,7 +18,7 @@ export default (data) => {
       <div class="row">
         <div class="col-8 mt-3">
           ${createActu(assoc, userPermission.founder)}
-          <div class="card text-center mb-2 nav-filtre-actu asso_admin">
+          <div class="card text-center mb-2 nav-filtre-actu asso_admin actu-manuelle">
             ${news.map((actu) => post(actu, userPermission.founder)).join('')}
           </div>
         </div>
@@ -26,6 +28,8 @@ export default (data) => {
         </div>
       </div>
     </div>
-    ${contacts(assoc, userPermission.founder)}  
+    <div class="mt-4">
+      ${contacts(assoc, userPermission.founder)}  
+    </div>
   `);
 };

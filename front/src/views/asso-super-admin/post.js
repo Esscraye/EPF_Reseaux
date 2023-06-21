@@ -27,7 +27,7 @@ export default (data, permissions) => {
   } = data;
   const { news } = permissions;
   return (`
-    <div class="card m-2">
+    <div class="card m-2 shadow-manuelle art-border">
       <div class="row g-0 my-1">
         <div class="col-3">
           <img src="${img}" width="200" height="200" class=" rounded-start" alt="image_du_post">
@@ -40,7 +40,7 @@ export default (data, permissions) => {
           </div>
         </div>
         <div class="col-md-3 d-grid mt-3">
-          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+          <div class="btn-group-vertical" role="group" aria-label="Vertical button group ">
             ${news.update ? btn(data) : ''}
             ${news.delete ? btn2(data) : ''}
           </div>
