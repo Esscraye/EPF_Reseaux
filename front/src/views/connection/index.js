@@ -5,7 +5,7 @@ export default () => (`
 <section class="sect-1">
   <img class="image-connect" src="https://www.univ-lyon2.fr/medias/photo/illus-pole-asso_1594492888834-png?ID_FICHE=1006216" alt="Photo epf">
 </section>
-<section class="sect-2">
+<section class="sect-2 info-asso shadow-manuelle">
   <div>
     <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/e/e9/EPF_logo_2021.png/640px-EPF_logo_2021.png" alt="logo epf" width="100" height="80">
   </div>
