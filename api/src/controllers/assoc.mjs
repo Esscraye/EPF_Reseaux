@@ -99,12 +99,7 @@ const Assoc = class Assoc {
       try {
         const { id } = req.params;
         const {
-          name, campus, logo, descriptionAsso, descriptionTeam, mail, phone,
-          instagram,
-          discord,
-          twitter,
-          facebook,
-          linkedin
+          name, campus, logo, descriptionAsso, descriptionTeam, mail, phone, socialNetworks
         } = req.body;
         this.AssocModel.findByIdAndUpdate(id, {
           name,
@@ -114,13 +109,7 @@ const Assoc = class Assoc {
           descriptionTeam,
           mail,
           phone,
-          socialNetworks: {
-            instagram,
-            discord,
-            twitter,
-            facebook,
-            linkedin
-          }
+          socialNetworks
         }).then((assoc) => {
           res.status(200).json(assoc || {});
         }).catch(() => {
