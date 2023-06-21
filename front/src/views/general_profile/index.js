@@ -8,26 +8,26 @@ export default () => (`
       <div class="reglageD shadow-manuelle info-asso">
         <div class="me-4">
           <div class="mb-4">
-            <label class="form-label" for="lastname">Nom</label>
-            <input type="text" class="form-control lastname" placeholder="Saisir le nom">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-control" placeholder="Saisir le nom">
           </div>         
           <div class="mb-4">
-            <label class="form-label" for="firstname">Prénom</label>
-            <input type="text" class="form-control border-black firstname"  placeholder=" Saisir le prénom">
+            <label class="form-label">Prénom</label>
+            <input type="text" class="form-control border-black"  placeholder=" Saisir le prénom">
           </div>         
           <div class="mb-4">
-            <label class="form-label" for="email">Email</label>
-            <input type="email" class="form-control border-black email"  placeholder="Saisir l'email">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control border-black"  placeholder="Saisir l'email">
           </div>
           <div class="mb-4">
-            <label class="form-label" for="description">Description</label>
+            <label class="form-label">Description</label>
             <input type="text" class="form-control border-black description" placeholder="Saisir la description">
           </div>
         </div>
         <div>         
           <div class="mb-4">
-            <label class="form-label" for="promo">Promo</label>
-            <select class="form-select promo">
+            <label class="form-label">Promo</label>
+            <select class="form-select">
               <option selected>Sélectionner...</option>
               <option value="1">1A</option>
               <option value="2">2A</option>
@@ -37,7 +37,7 @@ export default () => (`
             </select>
           </div>         
           <div class="mb-4">
-            <label class="form-label" for="class">Groupe de TD</label>
+            <label class="form-label">Groupe de TD</label>
             <select class="form-select class">
               <option selected>Sélectionner...</option>
               <option value="1">TD E</option>
@@ -49,7 +49,7 @@ export default () => (`
             </select>
           </div>           
           <div class="mb-4">
-            <label class="form-label" for="grouptp">Groupe de TP</label>
+            <label class="form-label">Groupe de TP</label>
             <select class="form-select grouptp">
               <option selected>Sélectionner...</option>
               <option value="1">TP AA</option>
@@ -63,7 +63,7 @@ export default () => (`
             </select>
           </div>
           <div class="mb-4 d-grid ">
-            <label class="form-label" for="grouptp">Finalisation</label>         
+            <label class="form-label">Finalisation</label>         
             <button type="button" class="btn" id="ajouter">Ajouter</button>
           </div>
         </div>
