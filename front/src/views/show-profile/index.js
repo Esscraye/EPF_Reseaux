@@ -6,7 +6,7 @@ export default (data) => {
     <div class="container.fluid">
       <div class="row mb-5" >
         <div class="col-3 container-info-prof">
-          <img src="${infoPerso.picture}" alt="Image utilisateur" class=" rounded-circle imageprof image-prof" id ="affprofimage">
+          <img src="${infoPerso.image}" alt="Image utilisateur" class=" rounded-circle imageprof image-prof" id ="affprofimage">
           <div class ="text-gras">
               ${infoPerso.firstname} ${infoPerso.lastname}
           </div>

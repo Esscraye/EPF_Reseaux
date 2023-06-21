@@ -14,8 +14,8 @@ export default () => (`
       <img src="/images/menu-btn.png" class="menu-hamburger btn btn-port">
     </div>
     <form class="d-flex nav-search partie-d" role="search">
-      <input class="form-control me-2 input-col" style="background-color: white;" type="search" placeholder="Recherche" aria-label="Search">
-      <button class="btn btn-outline-success" type="button">Rechercher</button>
+      <input class="form-control me-2 input-col" id ="navpageinputsearch" style="background-color: white;" type="search" placeholder="Recherche" aria-label="Search">
+      <button class="btn btn-outline-success" id ="navpagebutton" type="button">Rechercher</button>
     </form>
   </nav>
 `);

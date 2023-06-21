@@ -1,6 +1,8 @@
+import axios from 'axios';
 import ViewPage from '../views/page';
 import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
+import config from '../../config';
 
 let conversationId = localStorage.getItem('conversationId') || '2';
 let val = localStorage.getItem('val') || 1;
@@ -146,10 +148,21 @@ const Page = class Page {
       const elInputSearch = document.querySelector('.nav-search input');
 
       if (elInputSearch.value) {
-        elInputSearch.value = '';
+        const emailsearch = elInputSearch.value;
+        axios.get(`${config.IP_API}/user/${encodeURIComponent(emailsearch)}`)
+          .then((response) => {
+            console.log(response);
+            // this.data.infoPerso = response.data;
+            window.location.replace(`${config.IP_FRONT}/profil?email=${emailsearch}`);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        elInputSearch.value = ' ';
+      } else {
+        console.log('Veuillez réessayer !');
       }
     });
-
     elChoices.forEach((elChoice) => {
       elChoice.addEventListener('click', () => {
         // Vérification si l'élément existe
