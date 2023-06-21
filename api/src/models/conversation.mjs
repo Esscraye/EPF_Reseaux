@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
 
 const Schema = new mongoose.Schema({
-  text: { type: String, required: true },
-  times: { type: String, required: true },
-  idconv: { type: String, required: true },
-  author: {
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+  participants: [{
     email: { type: String, required: true }
-  }
+  }],
+  type: { type: String, required: true },
+  name: String,
+  icone: String,
+  censure: Boolean,
+  convId: String
 }, {
-  collection: 'messages',
+  collection: 'conversations',
   minimize: false,
   versionKey: false
 }).set('toJSON', {
