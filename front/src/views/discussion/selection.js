@@ -7,7 +7,7 @@ export default (data) => {
   data.forEach((conversation) => {
     if (conversation.type === 'group') {
       groupChoices.push(conversation);
-    } else if (conversation.type === 'individual') {
+    } else if (conversation.type === 'individual' && conversation.censure === false) {
       individualChoices.push(conversation);
     }
   });

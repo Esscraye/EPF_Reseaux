@@ -8,7 +8,9 @@ export default (name, icone) => (`
     </div>
     <div class="col-7 my-1 text-center"></div>
     <div class="col-1 my-1 text-center">
-      <button type="button" class="btn btn-danger">Bloquer</button>
+      <div class='bloquer'>
+        <button type="button" class="btn btn-danger">Bloquer</button>
+      </div>
     </div>
     <div class="col-1 text-center my-2 pt-1">
       <button type="button" class="btn-close" aria-label="Close"></button>
