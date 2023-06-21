@@ -14,7 +14,6 @@ export default (data, idChat) => {
 
   const conversation = conversations.find((conv) => conv.convId === convParameter);
   const convMessages = messages.filter((mess) => mess.idconv === convParameter);
-  console.log(convMessages);
 
   if (convMessages) {
     const messagesHTML = convMessages.map((message) => (message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message))).join('');

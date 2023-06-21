@@ -97,11 +97,50 @@ const Conversations = class Conversations {
     });
   }
 
+  update() {
+    this.app.put('/conversation/:id', (req, res) => {
+      try {
+        const { id } = req.params;
+        const {
+          participants,
+          type,
+          name,
+          icone,
+          censure,
+          convId
+        } = req.body;
+        this.ConversationModel.findByIdAndUpdate(id, {
+          participants,
+          type,
+          name,
+          icone,
+          censure,
+          convId
+        }).then((conversation) => {
+          res.status(200).json(conversation || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] conversation/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
     this.create();
     this.showById();
     this.deleteById();
     this.showAll();
+    this.update();
   }
 };
 

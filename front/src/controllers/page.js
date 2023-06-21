@@ -8,7 +8,6 @@ let conversationId = localStorage.getItem('conversationId') || '1';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
 const censure = [];
-console.log(censure);
 
 const Page = class Page {
   constructor(content) {
@@ -332,10 +331,14 @@ const Page = class Page {
 
     if (conversation.type === 'individual') {
       const elBlock = conversation.type === 'individual' ? document.querySelector('.bloquer button') : null;
+      console.log(elBlock);
       elBlock.addEventListener('click', () => {
-        conversation.censure = true;
-        localStorage.setItem('censure', censure);
-        location.reload();
+        const { id } = conversation;
+        axios.put(`${config.IP_API}/conversation/${id}`, { censure: true })
+          .then(() => {
+            localStorage.setItem('conversationId', '2');
+            location.reload();
+          });
       });
     }
   }
