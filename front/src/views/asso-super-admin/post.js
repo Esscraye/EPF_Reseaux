@@ -1,14 +1,25 @@
-const btn = () => (`
+const btn = (data) => {
+  const {
+    id
+  } = data;
+  return (`
   <div>
-    <button type="button" class="btn btn-danger changeActu">Modifier</button>
+    <button type="button" id="${id}" class="btn btn-danger changeActu">Modifier</button>
   </div>
 `);
+};
 
-const btn2 = () => (`
+const btn2 = (data) => {
+  const {
+    id
+  } = data;
+  console.log('je supprime');
+  return (`
   <div>
-    <button type="button" class="btn btn-danger delActu">Supprimer</button>
+    <button type="button" id="${id}" class="btn btn-danger delActu">Supprimer</button>
   </div>
 `);
+};
 
 export default (data, permissions) => {
   const {
@@ -30,8 +41,8 @@ export default (data, permissions) => {
         </div>
         <div class="col-md-3 d-grid mt-3">
           <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-            ${news.update ? btn() : ''}
-            ${news.delete ? btn2() : ''}
+            ${news.update ? btn(data) : ''}
+            ${news.delete ? btn2(data) : ''}
           </div>
         </div>
       </div>
