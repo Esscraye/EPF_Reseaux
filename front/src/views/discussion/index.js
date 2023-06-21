@@ -1,3 +1,4 @@
+import cookie from 'js-cookie';
 import selection from './selection';
 import barreDiscuGroup from './barre_discu_groupe';
 import barreDiscuPerso from './barre_discu_solo';
@@ -6,6 +7,12 @@ import messG from './message_gauche';
 import messD from './message_droite';
 
 import './index.scss';
+
+const token = cookie.get('token');
+const base64Url = token.split('.')[1];
+const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+const mailUserConnected = JSON.parse(jsonPayload).email;
 
 export default (data, idChat) => {
   const { conversations, messages } = data;
@@ -16,7 +23,7 @@ export default (data, idChat) => {
   const convMessages = messages.filter((mess) => mess.idconv === convParameter);
 
   if (convMessages) {
-    const messagesHTML = convMessages.map((message) => (message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message))).join('');
+    const messagesHTML = convMessages.map((message) => (message.author.email === mailUserConnected ? messD(message) : messG(message))).join('');
 
     let barreDiscuComponent;
     if (conversation.type === 'group') {

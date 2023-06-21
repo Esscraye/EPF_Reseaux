@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cookie from 'js-cookie';
 import ViewPage from '../views/page';
 import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
@@ -8,6 +9,12 @@ let conversationId = localStorage.getItem('conversationId') || '1';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
 const censure = [];
+
+const token = cookie.get('token');
+const base64Url = token.split('.')[1];
+const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+const mailUserConnected = JSON.parse(jsonPayload).email;
 
 const Page = class Page {
   constructor(content) {
@@ -260,10 +267,11 @@ const Page = class Page {
         const message = {
           text: messageText,
           times: `${now.getHours()}h${now.getMinutes()}`,
+          idconv: conversationId,
           author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
+            firstName: mailUserConnected.split('.')[0],
+            lastName: mailUserConnected.split('.')[1],
+            email: mailUserConnected
           }
         };
 
@@ -271,8 +279,7 @@ const Page = class Page {
 
         const conversation = this.data.conversations.find((conv) => conv.convId === conversationId);
         if (conversation) {
-          conversation.messages.push(message);
-
+          axios.post(`${config.IP_API}/message`, message).then();
           const conversationElement = document.getElementById(`${conversationId}`);
           const messageCountElement = conversationElement.querySelector('[data-message-count]');
           if (messageCountElement) {
