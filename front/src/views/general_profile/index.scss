@@ -1,0 +1,14 @@
+.reglageD{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.reglageT{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+}
