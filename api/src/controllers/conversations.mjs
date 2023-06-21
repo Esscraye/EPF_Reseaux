@@ -59,8 +59,11 @@ const Conversations = class Conversations {
 
         conversationModel.save().then((conversation) => {
           res.status(200).json(conversation || {});
-        }).catch(() => {
-          res.status(200).json({});
+        }).catch((e) => {
+          res.status(500).json({
+            code: 500,
+            message: e.message
+          });
         });
       } catch (err) {
         console.error(`[ERROR] conversation/create -> ${err}`);
@@ -73,10 +76,32 @@ const Conversations = class Conversations {
     });
   }
 
+  showAll() {
+    this.app.get('/conversation', (req, res) => {
+      try {
+        this.ConversationModel.find().then((conversations) => {
+          res.status(200).json(conversations || []);
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] conversation -> ${err}`);
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
     this.create();
     this.showById();
     this.deleteById();
+    this.showAll();
   }
 };
 

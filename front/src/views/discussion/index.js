@@ -8,14 +8,16 @@ import messD from './message_droite';
 import './index.scss';
 
 export default (data, idChat) => {
-  const { conversations } = data;
+  const { conversations, messages } = data;
 
-  const convParameter = idChat || '2';
+  const convParameter = idChat || '1';
 
   const conversation = conversations.find((conv) => conv.convId === convParameter);
+  const convMessages = messages.filter((mess) => mess.idconv === convParameter);
+  console.log(convMessages);
 
-  if (conversation) {
-    const messagesHTML = conversation.messages.map((message) => (message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message))).join('');
+  if (convMessages) {
+    const messagesHTML = convMessages.map((message) => (message.author.email === 'maxence.juery@epfedu.fr' ? messD(message) : messG(message))).join('');
 
     let barreDiscuComponent;
     if (conversation.type === 'group') {
@@ -27,7 +29,7 @@ export default (data, idChat) => {
     return (`
       <div class="row">
         <div class="col-3 liste-conv bg-danger">
-          ${selection(conversations)}  
+          ${selection(data)}
         </div>
         <div class="col-9 messages-container">
           ${barreDiscuComponent}

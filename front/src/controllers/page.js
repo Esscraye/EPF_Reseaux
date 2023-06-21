@@ -4,7 +4,7 @@ import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
 import config from '../../config';
 
-let conversationId = localStorage.getItem('conversationId') || '2';
+let conversationId = localStorage.getItem('conversationId') || '1';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
 const censure = [];
@@ -14,7 +14,7 @@ const Page = class Page {
   constructor(content) {
     this.el = document.body;
     this.content = content;
-    this.idChat = localStorage.getItem('conversationId') || '2';
+    this.idChat = localStorage.getItem('conversationId') || '1';
     this.data = {
       conversations: [{
         participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr'],
@@ -204,7 +204,6 @@ const Page = class Page {
         ]
       }]
     };
-    this.discu = ViewDiscu(this.data, this.idChat, censure);
     this.run();
   }
 
@@ -235,6 +234,7 @@ const Page = class Page {
         console.log('Veuillez réessayer !');
       }
     });
+
     elChoices.forEach((elChoice) => {
       elChoice.addEventListener('click', () => {
         // Vérification si l'élément existe
@@ -455,7 +455,18 @@ const Page = class Page {
     });
   }
 
-  run() {
+  async getConversations() {
+    const convs = await fetch(`${config.IP_API}/conversation/`);
+    const conversations = await convs.json();
+    const mess = await fetch(`${config.IP_API}/message/`);
+    const messages = await mess.json();
+    this.data.conversations = conversations;
+    this.data.messages = messages;
+  }
+
+  async run() {
+    await this.getConversations();
+    this.discu = ViewDiscu(this.data, this.idChat, censure);
     this.el.innerHTML = ViewPage(this.content, this.discu);
     // conversationId = localStorage.getItem('conversationId') || '1';
     // new ControllerPage(ViewDiscu(this.data), conversationId);

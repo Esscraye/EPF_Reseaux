@@ -73,10 +73,33 @@ const Messages = class Messages {
     });
   }
 
+  showAll() {
+    this.app.get('/message/', (req, res) => {
+      try {
+        this.MessageModel.find().then((messages) => {
+          res.status(200).json(messages || []);
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] messages/ -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
     this.create();
     this.showById();
     this.deleteById();
+    this.showAll();
   }
 };
 

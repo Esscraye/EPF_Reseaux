@@ -1,16 +1,8 @@
 import block from './choix_discu';
 
 export default (data) => {
-  const groupChoices = [];
-  const individualChoices = [];
-
-  data.forEach((conversation) => {
-    if (conversation.type === 'group') {
-      groupChoices.push(conversation);
-    } else if (conversation.type === 'individual' && conversation.censure === false) {
-      individualChoices.push(conversation);
-    }
-  });
+  const groupChoices = data.conversations.filter((conv) => conv.type === 'group');
+  const individualChoices = data.conversations.filter((conv) => (conv.type === 'individual' && conv.censure === false));
 
   const groupChoicesHTML = groupChoices.map((conversation) => block(conversation)).join('');
   const individualChoicesHTML = individualChoices.map((conversation) => block(conversation)).join('');
