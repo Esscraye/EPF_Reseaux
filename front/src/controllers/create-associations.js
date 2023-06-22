@@ -29,15 +29,15 @@ const Home = class Home {
           image_header: '',
           logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
           descriptionAsso: elInputDescription.value,
-          descriptionTeam: '',
+          descriptionTeam: 'none',
           mail: elInputMailAssos,
-          phone: '',
+          phone: '+33 6.00.00.00.00.',
           socialNetworks: {
-            instagram: '',
-            discord: '',
-            twitter: '',
-            facebook: '',
-            linkedin: ''
+            instagram: 'none',
+            discord: 'none',
+            twitter: 'none',
+            facebook: 'none',
+            linkedin: 'none'
           }
         };
 
@@ -69,9 +69,11 @@ const Home = class Home {
     });
   }
 
-  run() {
+  async run() {
     new ControllerPage(ViewCreateAssos());
-    this.onClickAjouter();
+    await setTimeout(() => {
+      this.onClickAjouter();
+    }, 500);
   }
 };
 

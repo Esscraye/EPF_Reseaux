@@ -151,6 +151,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
             try {
               await axios.delete(`${config.IP_API}/news/${newsId}`);
               alert('actualité supprimée');
+              location.reload();
             } catch (error) {
               throw new Error("Erreur lors de la suppression de l'actualité");
             }
@@ -168,6 +169,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
     myModal.addEventListener('shown.bs.modal', () => {
       myInput.focus();
+      console.log('test');
     });
   }
 
@@ -208,6 +210,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         });
         this.data.assoc.descriptionAsso = newDescriptionAsso;
         console.log('Description de l\'équipe mise à jour :', newDescriptionAsso);
+        location.reload();
       } catch (error) {
         console.log('Erreur lors de la mise à jour de la description de l\'équipe');
       }
@@ -239,6 +242,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         });
         this.data.assoc.descriptionTeam = newDescriptionTeam;
         console.log('Description de l\'équipe mise à jour :', newDescriptionTeam);
+        location.reload();
       } catch (error) {
         console.log('Erreur lors de la mise à jour de la description de l\'équipe');
       }
@@ -246,11 +250,43 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   }
 
   onClickChangeContact() {
-    const myModal = document.querySelector('.changeContact');
-    const myInput = document.querySelector('#contact-form');
+    const social = document.querySelector('.validerReso');
+    console.log('social value ', social);
+    social.addEventListener('click', async () => {
+      social.focus();
+      console.log(social);
+      const emailValue = document.querySelector('input[aria-describedby="basic-addon2"]').value;
+      const newPhone = document.querySelector('input[aria-describedby="basic-addon3"]').value;
+      const newInstagram = document.querySelector('input[aria-describedby="basic-addon4"]').value;
+      const newDiscord = document.querySelector('input[aria-describedby="basic-addon5"]').value;
+      const newTwitter = document.querySelector('input[aria-describedby="basic-addon6"]').value;
+      const newFacebook = document.querySelector('input[aria-describedby="basic-addon7"]').value;
+      const newLinkedin = document.querySelector('input[aria-describedby="basic-addon8"]').value;
+      console.log('mail', emailValue, 'phone', newPhone, 'insta', newInstagram, newDiscord, newTwitter, newFacebook, newLinkedin);
 
-    myModal.addEventListener('shown.bs.modal', () => {
-      myInput.focus();
+      // Update the assoc.SocialNetwork value in the database
+      const { id } = this.data.assoc;
+      try {
+        await axios.put(`${config.IP_API}/assoc/${id}`, {
+          mail: emailValue,
+          phone: newPhone,
+          socialNetworks: {
+            instagram: newInstagram,
+            discord: newDiscord,
+            twitter: newTwitter,
+            facebook: newFacebook,
+            linkedin: newLinkedin
+          }
+        }, {
+          headers: {
+            authorization: cookie.get('token')
+          }
+        });
+        console.log('social mis a jour');
+        location.reload();
+      } catch (error) {
+        console.log('Erreur lors de la mise à jour de la description de l\'équipe');
+      }
     });
   }
 
