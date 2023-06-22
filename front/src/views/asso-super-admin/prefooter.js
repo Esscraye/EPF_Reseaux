@@ -4,7 +4,7 @@ const btn = () => (`
 
 export default (data, permissions) => {
   const {
-    mail, phone, instagram, discord, twitter, facebook, linkedin
+    mail, phone, socialNetworks
   } = data;
   const { assoc } = permissions;
   return (`
@@ -23,11 +23,11 @@ export default (data, permissions) => {
           <p>Réseaux sociaux :</p>
         </div>
         <div class="col-2">
-          <a href="${instagram}" target="_blank" class=""><i class="ri-instagram-fill"></i></a>
-          <a href="${discord}" target="_blank" class=""><i class="ri-discord-fill"></i></a>
-          <a href="${twitter}" target="_blank" class=""><i class="ri-twitter-fill"></i></a>
-          <a href="${facebook}" target="_blank" class=""><i class="ri-facebook-box-fill"></i></a>
-          <a href="${linkedin}" target="_blank" class=""><i class="ri-linkedin-box-fill"></i></a>
+          <a href="${socialNetworks.instagram}" target="_blank" class=""><i class="ri-instagram-fill"></i></a>
+          <a href="${socialNetworks.discord}" target="_blank" class=""><i class="ri-discord-fill"></i></a>
+          <a href="${socialNetworks.twitter}" target="_blank" class=""><i class="ri-twitter-fill"></i></a>
+          <a href="${socialNetworks.facebook}" target="_blank" class=""><i class="ri-facebook-box-fill"></i></a>
+          <a href="${socialNetworks.linkedin}" target="_blank" class=""><i class="ri-linkedin-box-fill"></i></a>
         </div>
         <div class="col-2">
           ${assoc.update ? btn() : ''}
@@ -45,36 +45,36 @@ export default (data, permissions) => {
           <div class="modal-body">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon2">e-mail</span>
-              <input type="text" class="form-control" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" aria-describedby="basic-addon2" value="${mail}">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon2">téléphone</span>
-              <input type="text" class="form-control" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" aria-describedby="basic-addon3" value="${phone}">
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" aria-describedby="basic-addon4" value="${socialNetworks.instagram}">
               <span class="input-group-text" id="basic-addon2">Instagram</span>
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" aria-describedby="basic-addon5" value="${socialNetworks.discord}">
               <span class="input-group-text" id="basic-addon2">Discord</span>
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" aria-describedby="basic-addon6" value="${socialNetworks.twitter}">
               <span class="input-group-text" id="basic-addon2">Twitter</span>
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" aria-describedby="basic-addon7" value="${socialNetworks.facebook}">
               <span class="input-group-text" id="basic-addon2">Facebook</span>
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" aria-describedby="basic-addon8" value="${socialNetworks.linkedin}">
               <span class="input-group-text" id="basic-addon2">LinkedIn</span>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirm-contact">Valider les modifications</button>
+            <button type="button" class="btn btn-primary validerReso" data-bs-dismiss="modal" id="confirm-contact">Valider les modifications</button>
           </div>
         </div>
       </div>
