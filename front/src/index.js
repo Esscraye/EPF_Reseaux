@@ -90,7 +90,7 @@ router.add('/general-profile', () => {
 const queryString = window.location.search;
 const { pathname } = location;
 
-if (cookie.get('token')) {
+if (cookie.get('token') || (pathname === '/password-forgot')) {
   router.navigateTo(pathname + queryString);
 } else {
   router.navigateTo('/connection');
