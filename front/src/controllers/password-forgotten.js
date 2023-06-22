@@ -9,10 +9,11 @@ const PasswordForgot = class PasswordForgot {
   }
 
   onClickForgotPassword() {
-    const elInput = document.querySelector('#forgot-password input');
-    const elBtn = document.querySelector('#forgot-password button');
+    const elInput = document.querySelector('#exampleFormControlInput');
+    const elBtn = document.querySelector('#btnmdp');
 
-    elBtn.addEventListener('click', () => {
+    elBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       if (elInput.value && isEmail(elInput.value)) {
         console.log({
           email: elInput.value
