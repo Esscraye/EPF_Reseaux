@@ -17,6 +17,14 @@ const ShowProfile = class ShowProfile {
     return JSON.parse(jsonPayload).email;
   }
 
+  getroleuser() {
+    const token = cookie.get('token');
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+    return JSON.parse(jsonPayload).role;
+  }
+
   constructor() {
     this.el = document.body;
     this.data = {
@@ -59,7 +67,14 @@ const ShowProfile = class ShowProfile {
         console.log(response);
         this.data.infoPerso = response.data;
         console.log(this.data.infoPerso);
-        window.location.href = `${config.IP_FRONT}/changeUser`;
+        const roleuser = this.getroleuser();
+        if (roleuser === 'admin') {
+          window.location.href = `${config.IP_FRONT}/changeUser`;
+          console.log('adminnnnnn');
+        } else {
+          window.location.href = `${config.IP_FRONT}//changeUser`;
+          console.log('eleveeee');
+        }
       } catch (error) {
         console.log('perdu');
         // Gérer l'erreur
