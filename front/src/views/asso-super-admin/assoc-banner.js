@@ -24,6 +24,7 @@ export default (data, permissions) => {
   const { assoc } = permissions;
   return (`
     <div class="container-fluid text-center">
+    <div class="background-img" style="background-image: url('/images/bannerphoto.jpg'); background-size: cover;">
       <div class="row shadow-lg p-1">
         <div class="col-2">
           <img width="150" src="${logo}" alt="logo" id="logo-img">
@@ -41,6 +42,7 @@ export default (data, permissions) => {
             </div>
           </div>    
         </div>
+      </div>
       </div>
     </div>
 
