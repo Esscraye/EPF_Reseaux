@@ -9,15 +9,15 @@ export default () => (`
         <div class="me-4 size-colomn">
           <div class="mb-4">
             <label class="form-label">Nom</label>
-            <input type="text" class="form-control" placeholder="Saisir le nom">
+            <input type="text" class="form-control lastname" placeholder="Saisir le nom">
           </div>         
           <div class="mb-4">
             <label class="form-label">Prénom</label>
-            <input type="text" class="form-control border-black"  placeholder=" Saisir le prénom">
+            <input type="text" class="form-control border-black firstname"  placeholder=" Saisir le prénom">
           </div>         
           <div class="mb-4">
             <label class="form-label">Email</label>
-            <input type="email" class="form-control border-black"  placeholder="Saisir l'email">
+            <input type="email" class="form-control border-black email"  placeholder="Saisir l'email">
           </div>
           <div class="mb-4">
             <label class="form-label">Description</label>
@@ -27,7 +27,7 @@ export default () => (`
         <div class="size-colomn">         
           <div class="mb-4">
             <label class="form-label">Promo</label>
-            <select class="form-select">
+            <select class="form-select promo">
               <option selected>Sélectionner...</option>
               <option value="1">1A</option>
               <option value="2">2A</option>
@@ -77,13 +77,13 @@ export default () => (`
   <div class ="reglageT shadow-manuelle info-asso">
     <div class="size-colomn2">
       <div class="mb-4">Identifiant
-          <input type="email" class="form-control border-black" placeholder="Saisir l'identifiant">
+          <input type="email" id="id_input" class="form-control border-black" placeholder="Saisir l'identifiant">
         </div> 
         <div class="mb-4">Nom du groupe
-          <input type="email" class="form-control border-black" placeholder="Saisir le nom du groupe">
+          <input type="email" id="nom_group_input" class="form-control border-black" placeholder="Saisir le nom du groupe">
         </div>
         <div class="reglageD">
-          <button type="button" class="btn mb-4">Ajouter</button>
+          <button type="button" class="btn mb-4" id="addgroup">Ajouter</button>
         </div>
       </div>
   </div>
@@ -93,16 +93,14 @@ export default () => (`
   <h2 class="title-underline-admin">Supprimer un groupe</h2>
     <div class="reglageT shadow-manuelle info-asso">
       <div class="size-colomn2">
-        <div class="mb-4">
-          <label class="form-label">Identifiant</label>
-          <input type="email" class="form-control border-black" placeholder="Saisir l'identifiant">
+        <div class="mb-4">Identifiant
+          <input type="email" id="id_input" class="form-control border-black" placeholder="Saisir l'identifiant">
         </div>
-        <div class="mb-4">
-          <label class="form-label">Nom du groupe</label>
-          <input type="email" class="form-control border-black" placeholder="Saisir le nom du groupe">
+        <div class="mb-4">Nom du groupe
+          <input type="email" id="#nom_groupe_input" class="form-control border-black" placeholder="Saisir le nom du groupe">
         </div>
         <div class="reglageD">
-          <button type="button" class="btn mb-4">Supprimer</button>
+          <button type="button" class="btn mb-4" id="delgroupbtn">Supprimer</button>
         </div>
       </div>
     </div>
