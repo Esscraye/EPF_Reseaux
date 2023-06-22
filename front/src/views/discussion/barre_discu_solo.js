@@ -1,19 +1,16 @@
 export default (name, icone) => (`
-  <div class="row bg-danger border border-dark border-end-0 border-start-0 border-top-0">
-    <div class="col-3 mt-1">
-      <div class="row text-center mx-0">
-        <div class="col-3 mb-1"><img src="${icone}" class="rounded-circle" alt="..." width="40"></div>
-        <div class="d-flex justify-content-between align-items-center bg-danger text-white col-9">${name}</div>
+  <div class="barre-discu">
+    <div class="info-discu-barre mt-1">
+      <div class="barre-intern">
+        <div class="icone-discu mb-1"><img src="${icone}" class="rounded-circle" alt="..." width="40"></div>
+        <div class="name-discu d-flex">${name}</div>
       </div>
     </div>
-    <div class="col-7 my-1 text-center"></div>
-    <div class="col-1 my-1 text-center">
+    <div class="cross-discu pt-1 my-2 mx-2 text-center">
       <div class='bloquer'>
         <button type="button" class="btn btn-danger">Bloquer</button>
       </div>
-    </div>
-    <div class="col-1 text-center my-2 pt-1">
-      <button type="button" class="close-btn bg-danger" aria-label="Close"><img src="/images/croix.png" class="btn-fermeture"></button>
+      <button type="button" class="close-btn" aria-label="Close"><img src="/images/croix.png" class="btn-fermeture"></button>
     </div>
   </div>
 `);
