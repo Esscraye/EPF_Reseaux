@@ -11,10 +11,13 @@ let headerSelect = localStorage.getItem('head') || 1;
 const censure = [];
 
 const token = cookie.get('token');
-const base64Url = token.split('.')[1];
-const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
-const mailUserConnected = JSON.parse(jsonPayload).email;
+let mailUserConnected = 'maxence.juery@epfedu.fr';
+if (token) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+  mailUserConnected = JSON.parse(jsonPayload).email;
+}
 
 const Page = class Page {
   constructor(content) {
