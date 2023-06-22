@@ -267,14 +267,16 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     await this.fetchAssociationDataAsso();
     await this.fetchAssociationDataNews(this.data.assoc.id);
     new ControllerPage(ViewAssoSuperAdmin(this.data));
-    this.onClickFollow();
-    this.deleteNews();
-    this.deleteAsso();
-    this.onClickChange();
-    this.onClickChangeActu();
-    this.onClickChangeDesc();
-    this.onClickChangeTeam();
-    this.onClickChangeContact();
+    await setTimeout(() => {
+      this.onClickFollow();
+      this.deleteNews();
+      this.deleteAsso();
+      this.onClickChange();
+      this.onClickChangeActu();
+      this.onClickChangeDesc();
+      this.onClickChangeTeam();
+      this.onClickChangeContact();
+    }, 500);
   }
 };
 

@@ -115,7 +115,9 @@ const Createarticle = class Createarticle {
 
   run() {
     new ControllerPage(ViewCreatearticle(this.data));
-    this.runCreate();
+    setTimeout(() => {
+      this.runCreate();
+    }, 500);
   }
 };
 
