@@ -8,9 +8,9 @@ const Createarticle = class Createarticle {
     this.router = router;
     this.data = {
       assoc: {
-        name: 'Blank',
+        name: 'EPF Aventure',
         logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/d/d3/Logo_FAGE.svg/langfr-1920px-Logo_FAGE.svg.png',
-        back: 'https://i.redd.it/qbkwy20nvoa61.jpg',
+        back: 'https://altereo.fr/wp-content/uploads/2019/04/ENV-generique-99-Redimentionne-web.jpg',
         description: '',
         mail: '',
         phone: '',
