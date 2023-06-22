@@ -17,12 +17,14 @@ const ShowProfile = class ShowProfile {
     return JSON.parse(jsonPayload).email;
   }
 
-  getroleuser() {
-    const token = cookie.get('token');
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
-    return JSON.parse(jsonPayload).role;
+  async getroleuser() {
+    const varmail = this.getemailuser();
+    console.log('varmail', varmail);
+    const responsevar = await axios.get(`${config.IP_API}/user/${varmail}`);
+    this.data.infoPerso = responsevar.data;
+    const { role } = this.data.infoPerso; // Récupération du rôle depuis les données
+    console.log('fctrole', role);
+    return role;
   }
 
   constructor() {
@@ -40,6 +42,21 @@ const ShowProfile = class ShowProfile {
     this.run();
   }
 
+  /* getrole() {
+    try {
+      const varmail2 = this.getemailuser();
+      console.log('varmail2', varmail2);
+      const responsevar2 = axios.get(`${config.IP_API}/user/${varmail2}`);
+      this.data.infoPerso = responsevar2.data;
+      const roleuser = this.data.infoPerso.role; // Récupération du rôle depuis les données
+      return roleuser;
+    } catch (error) {
+      console.log('perdu');
+      return ;
+      // Gérer l'erreur
+    }
+  } */
+
   async fetchProfilData() {
     if (emailsearch) {
       try {
@@ -56,28 +73,24 @@ const ShowProfile = class ShowProfile {
     }
   }
 
-  onClickModifProfil() {
+  async onClickModifProfil() {
     const modifprofilButton = document.querySelector('#btnmodifprofil');
-    modifprofilButton.addEventListener('click', (e) => {
+    console.log(modifprofilButton);
+    modifprofilButton.addEventListener('click', async (e) => {
       e.preventDefault();
-      try {
-        console.log('efominzbielbu');
-        console.log('loca sorage', emailsearch);
-        const response = axios.get(`${config.IP_API}/user/${emailsearch}`);
-        console.log(response);
-        this.data.infoPerso = response.data;
-        console.log(this.data.infoPerso);
-        const roleuser = this.getroleuser();
-        if (roleuser === 'admin') {
-          window.location.href = `${config.IP_FRONT}/changeUser`;
-          console.log('adminnnnnn');
-        } else {
-          window.location.href = `${config.IP_FRONT}//changeUser`;
-          console.log('eleveeee');
-        }
-      } catch (error) {
-        console.log('perdu');
-        // Gérer l'erreur
+      console.log('efominzbielbu');
+      console.log('loca sorage', emailsearch);
+      const response = await axios.get(`${config.IP_API}/user/${emailsearch}`);
+      console.log(response);
+      this.data.infoPerso = response.data;
+      console.log(this.data.infoPerso);
+      const roleuser = await this.getroleuser();
+      if (roleuser === 'admin') {
+        window.location.href = `${config.IP_FRONT}/changeUser`;
+        console.log('adminnnnnn');
+      } else {
+        window.location.href = `${config.IP_FRONT}/change-profile`;
+        console.log('eleveeee');
       }
     });
   }
@@ -85,7 +98,9 @@ const ShowProfile = class ShowProfile {
   async run() {
     await this.fetchProfilData();
     new ControllerPage(ViewShowProfile(this.data));
-    this.onClickModifProfil();
+    setTimeout(() => {
+      this.onClickModifProfil();
+    }, 500);
   }
 };
 
