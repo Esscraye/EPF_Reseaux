@@ -308,20 +308,19 @@ const Page = class Page {
           const message = {
             text: messageText,
             times: `${now.getHours()}h${now.getMinutes()}`,
+            idconv: conversationId,
             author: {
-              firstName: 'Maxence',
-              lastName: 'Juery',
-              email: 'maxence.juery@epfedu.fr'
+              firstName: mailUserConnected.split('.')[0],
+              lastName: mailUserConnected.split('.')[1],
+              email: mailUserConnected
             }
           };
 
           elInput.value = '';
 
-          const conversation = this.data.conversations
-            .find((conv) => conv.convId === conversationId);
+          const conversation = this.data.conversations.find((cv) => cv.convId === conversationId);
           if (conversation) {
-            conversation.messages.push(message);
-
+            axios.post(`${config.IP_API}/message`, message).then();
             const conversationElement = document.getElementById(`${conversationId}`);
             const messageCountElement = conversationElement.querySelector('[data-message-count]');
             if (messageCountElement) {
