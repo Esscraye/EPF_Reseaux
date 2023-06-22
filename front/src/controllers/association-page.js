@@ -15,8 +15,6 @@ class PageMainAssos {
     try {
       const response = await axios.get(`${config.IP_API}/assoc`);
       this.data.cards = response.data;
-      console.log(this.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
       // Gérer l'erreur

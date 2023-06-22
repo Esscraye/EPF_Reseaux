@@ -106,16 +106,12 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
   async deleteAsso() {
     const elButtonsAsso = document.querySelectorAll('.delAsso');
-    console.log(elButtonsAsso);
-    console.log(elButtonsAsso.length);
     if (elButtonsAsso && elButtonsAsso.length) {
       Array.from(elButtonsAsso).forEach((button) => {
         button.addEventListener('click', async (e) => {
           e.preventDefault();
-          console.log('je suis la');
           const idAssoc = button.getAttribute('id');
           const dialog = confirm("Supprimer l'association ?");
-          console.log(`${config.IP_API}/assoc/${idAssoc}`);
           if (dialog) {
             try {
               // Supprimer l'association
@@ -140,7 +136,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
   async deleteNews() {
     const elButtonsActu = document.querySelectorAll('.delActu'); // Move the querySelectorAll here
     // Check if elButtonsActu exists and is iterable
-    console.log(elButtonsActu.length);
     if (elButtonsActu && elButtonsActu.length) {
       Array.from(elButtonsActu).forEach((elButtonActu) => {
         elButtonActu.addEventListener('click', async (e) => {
@@ -169,7 +164,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
     myModal.addEventListener('shown.bs.modal', () => {
       myInput.focus();
-      console.log('test');
     });
   }
 
@@ -209,7 +203,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
           }
         });
         this.data.assoc.descriptionAsso = newDescriptionAsso;
-        console.log('Description de l\'équipe mise à jour :', newDescriptionAsso);
         location.reload();
       } catch (error) {
         console.log('Erreur lors de la mise à jour de la description de l\'équipe');
@@ -241,7 +234,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
           }
         });
         this.data.assoc.descriptionTeam = newDescriptionTeam;
-        console.log('Description de l\'équipe mise à jour :', newDescriptionTeam);
         location.reload();
       } catch (error) {
         console.log('Erreur lors de la mise à jour de la description de l\'équipe');
@@ -251,10 +243,8 @@ const AssoSuperAdmin = class AssoSuperAdmin {
 
   onClickChangeContact() {
     const social = document.querySelector('.validerReso');
-    console.log('social value ', social);
     social.addEventListener('click', async () => {
       social.focus();
-      console.log(social);
       const emailValue = document.querySelector('input[aria-describedby="basic-addon2"]').value;
       const newPhone = document.querySelector('input[aria-describedby="basic-addon3"]').value;
       const newInstagram = document.querySelector('input[aria-describedby="basic-addon4"]').value;
@@ -262,7 +252,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
       const newTwitter = document.querySelector('input[aria-describedby="basic-addon6"]').value;
       const newFacebook = document.querySelector('input[aria-describedby="basic-addon7"]').value;
       const newLinkedin = document.querySelector('input[aria-describedby="basic-addon8"]').value;
-      console.log('mail', emailValue, 'phone', newPhone, 'insta', newInstagram, newDiscord, newTwitter, newFacebook, newLinkedin);
 
       // Update the assoc.SocialNetwork value in the database
       const { id } = this.data.assoc;
@@ -282,7 +271,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
             authorization: cookie.get('token')
           }
         });
-        console.log('social mis a jour');
         location.reload();
       } catch (error) {
         console.log('Erreur lors de la mise à jour de la description de l\'équipe');

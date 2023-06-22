@@ -21,7 +21,6 @@ const AddGroup = class AddGroup {
           idgroup: addInputid.value,
           namegroup: addInputname.value
         };
-        console.log(body);
         axios.post(`${config.IP_API}/group`, body)
           .then((response) => {
             console.log(response);

@@ -28,7 +28,6 @@ const ShowProfile = class ShowProfile {
       emailsearch = this.getemailuser();
     }
     localStorage.setItem('emailsearch', emailsearch);
-    console.log('localestorage', emailsearch);
     this.run();
   }
 
@@ -53,8 +52,6 @@ const ShowProfile = class ShowProfile {
     modifprofilButton.addEventListener('click', (e) => {
       e.preventDefault();
       try {
-        console.log('efominzbielbu');
-        console.log('loca sorage', emailsearch);
         const response = axios.get(`${config.IP_API}/user/${emailsearch}`);
         console.log(response);
         this.data.infoPerso = response.data;

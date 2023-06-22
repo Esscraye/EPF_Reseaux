@@ -64,7 +64,6 @@ const Createarticle = class Createarticle {
     const queryString = window.location.search;
     const url = new URLSearchParams(queryString);
     const id = url.get('id');
-    console.log(id);
     // on récupere la date
     const currentDate = new Date();
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -86,8 +85,6 @@ const Createarticle = class Createarticle {
         img: newsImgInput.files[0],
         idAsso: id
       };
-
-      console.log(formData);
 
       axios.post(`${config.IP_API}/news`, formData)
         .then((response) => {

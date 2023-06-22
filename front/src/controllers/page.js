@@ -250,7 +250,6 @@ const Page = class Page {
         if (elChoice) {
           // Accès à la valeur de l'attribut id
           const valeurId = elChoice.id;
-          console.log(valeurId);
           conversationId = valeurId;
           localStorage.setItem('conversationId', conversationId);
           location.reload();
@@ -341,7 +340,6 @@ const Page = class Page {
 
     if (conversation.type === 'individual') {
       const elBlock = conversation.type === 'individual' ? document.querySelector('.bloquer button') : null;
-      console.log(elBlock);
       elBlock.addEventListener('click', () => {
         const { id } = conversation;
         axios.put(`${config.IP_API}/conversation/${id}`, { censure: true })

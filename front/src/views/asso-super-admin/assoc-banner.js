@@ -2,7 +2,6 @@ const btnDelete = (data) => {
   const {
     id
   } = data;
-  console.log('je supprime asso');
   return (`
   <button type="button" id="${id}" class="btn btn-danger delAsso">Supprimer</button>
 `);
