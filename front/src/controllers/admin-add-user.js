@@ -1,4 +1,6 @@
+import axios from 'axios';
 import { isEmail } from 'validator';
+import config from '../../config';
 import ControllerPage from './page';
 import ViewAdminAddUser from '../views/admin-add-user';
 
@@ -23,7 +25,7 @@ const AdminAddUser = class AdminAddUser {
       const elInputGrouptp = document.querySelector('.grouptp');
       if (elInputEmail.value && isEmail(elInputEmail.value) && elInputLastname.value
       && elInputFirstname && elInputDescription && elInputPromo && elInputClass && elInputGrouptp) {
-        console.log({
+        const body = {
           lastname: elInputLastname.value,
           firstname: elInputFirstname.value,
           email: elInputEmail.value,
@@ -35,7 +37,22 @@ const AdminAddUser = class AdminAddUser {
           groupetpTemp: elInputGrouptp.options[elInputGrouptp.selectedIndex].value,
           groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
 
-        });
+        };
+        console.log(body);
+        axios.post(`${config.IP_API}/user`, body)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        elInputLastname.value = ' ';
+        elInputFirstname.value = ' ';
+        elInputEmail.value = ' ';
+        elInputDescription.value = ' ';
+        elInputPromo.options[elInputPromo.selectedIndex].text = ' ';
+        elInputClass.options[elInputClass.selectedIndex].text = ' ';
+        elInputGrouptp.options[elInputGrouptp.selectedIndex].text = ' ';
       } else {
         console.log('Problem');
       }
