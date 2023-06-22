@@ -27,6 +27,6 @@ const PasswordForgot = class PasswordForgot {
     this.el.innerHTML = ViewPasswordForgot(this.content);
     this.onClickForgotPassword();
   }
-}
+};
 
 export default PasswordForgot;
