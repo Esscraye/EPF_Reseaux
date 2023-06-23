@@ -60,7 +60,7 @@ const Createarticle = class Createarticle {
     const newsTextInput = document.querySelector('#floatingTextareaTexte');
     const newsImgInput = document.querySelector('#formFileImage');
     const newsImg = newsImgInput.files[0];
-    // on récupere la clef étrangere idAsso stocker dans l'url
+    console.log('newsImgInput.files', newsImgInput);
     const queryString = window.location.search;
     const url = new URLSearchParams(queryString);
     const id = url.get('id');
@@ -85,19 +85,50 @@ const Createarticle = class Createarticle {
         img: newsImgInput.files[0],
         idAsso: id
       };
-      axios.post(`${config.IP_API}/news`, formData)
-        .then(() => {
-          // Vider les champs de saisie
-          newsTitleInput.value = '';
-          newsTextInput.value = '';
-          const newFileInput = document.createElement('input');
-          newFileInput.id = 'formFileImage';
-          newFileInput.type = 'file';
-          newsImgInput.parentNode.replaceChild(newFileInput, newsImgInput);
-        })
-        .catch((error) => {
-          throw new Error(error);
-        });
+
+      if (id) {
+        axios.put(`${config.IP_API}/news/${id}`, formData)
+          .then((response) => {
+            console.log(response);
+            // Mise à jour réussie, effectuer les actions nécessaires
+          })
+          .catch((error) => {
+            console.log(error);
+            // Gérer l'erreur lors de la mise à jour
+          });
+      } else {
+        axios.post(`${config.IP_API}/news`, formData)
+          .then((response) => {
+            console.log(response);
+            // Publication réussie, effectuer les actions nécessaires
+          })
+          .catch((error) => {
+            console.log(error);
+            // Gérer l'erreur lors de la publication
+          });
+      }
+      // Vider les champs de saisie
+      newsTitleInput.value = '';
+      newsTextInput.value = '';
+      const newFileInput = document.createElement('input');
+      newFileInput.id = 'formFileImage';
+      newFileInput.type = 'file';
+      newsImgInput.parentNode.replaceChild(newFileInput, newsImgInput);
+    }
+  }
+
+  async fetchAssociationDataNews() {
+    const queryString = window.location.search;
+    const url = new URLSearchParams(queryString);
+    const id = url.get('id'); // id de la news
+    console.log('idNews', id);
+    try {
+      const response = await axios.get(`${config.IP_API}/news/${id}`);
+      this.data.news = response.data;
+      console.log('coucou les loulous je suis dans le constructeur du front', this.data.news);
+    } catch (error) {
+      console.log('perdu');
+      // Gérer l'erreur
     }
   }
 
@@ -108,11 +139,28 @@ const Createarticle = class Createarticle {
     });
   }
 
-  run() {
-    new ControllerPage(ViewCreatearticle(this.data));
+  async fetchAssociationDataAsso() {
+    const queryString = window.location.search;
+    const url = new URLSearchParams(queryString);
+    const id = url.get('id');
+    try {
+      const response = await axios.get(`${config.IP_API}/assoc/${id}`);
+      this.data.assoc = response.data;
+    } catch (error) {
+      console.log('perdu');
+      // Gérer l'erreur
+      console.log('coucou les asso', this.data.assoc);
+    }
+  }
+
+  async run() {
+    await this.fetchAssociationDataNews(); // Fetch news data first
+    const { assoc, news } = this.data; // Destructure assoc and news from this.data
+    new ControllerPage(ViewCreatearticle({ assoc, news }));
     setTimeout(() => {
       this.runCreate();
     }, 500);
+    await this.fetchAssociationDataAsso();
   }
 };
 

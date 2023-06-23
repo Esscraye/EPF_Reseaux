@@ -23,7 +23,7 @@ export default (data, permissions) => {
           <p>Réseaux sociaux :</p>
         </div>
         <div class="col-2">
-          <a href="${socialNetworks.instagram}" target="_blank" class=""><i class="ri-instagram-fill"></i></a>
+          <a href="https://www.instagram.com/${socialNetworks.instagram}" target="_blank" class=""><i class="ri-instagram-fill"></i></a>
           <a href="${socialNetworks.discord}" target="_blank" class=""><i class="ri-discord-fill"></i></a>
           <a href="${socialNetworks.twitter}" target="_blank" class=""><i class="ri-twitter-fill"></i></a>
           <a href="${socialNetworks.facebook}" target="_blank" class=""><i class="ri-facebook-box-fill"></i></a>

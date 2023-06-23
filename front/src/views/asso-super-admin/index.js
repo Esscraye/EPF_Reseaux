@@ -17,7 +17,7 @@ export default (data) => {
         <div class="col-8 mt-3">
           ${createActu(assoc, userPermission.founder)}
           <div class="card text-center mb-2 nav-filtre-actu asso_admin actu-manuelle">
-            ${news.map((actu) => post(actu, userPermission.founder)).join('')}
+            ${news.map((actu) => post(actu, userPermission.founder, news)).join('')}
           </div>
         </div>
         <div class="col-4 mt-5 d-grid gap-2">
