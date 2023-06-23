@@ -55,66 +55,68 @@ const Createarticle = class Createarticle {
     this.run();
   }
 
-  saveNews() {
-    const newsTitleInput = document.querySelector('#floatingTextareaTitle');
-    const newsTextInput = document.querySelector('#floatingTextareaTexte');
-    const newsImgInput = document.querySelector('#formFileImage');
-    const newsImg = newsImgInput.files[0];
-    console.log('newsImgInput.files', newsImgInput);
-    const queryString = window.location.search;
-    const url = new URLSearchParams(queryString);
-    const id = url.get('id');
-    // on récupere la date
-    const currentDate = new Date();
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    const formattedDate = currentDate.toLocaleDateString('fr-FR', options);
-
-    if (newsTitleInput.value === '' || newsTextInput.value === '' || newsImgInput.files[0] === null) {
-      alert('Il faut remplir tous les champs');
-    } else {
-      const allowedExtensions = /(\.jpg|\.jpeg)$/i;
-      if (!allowedExtensions.test(newsImg.name)) {
-        alert('Seuls les fichiers JPEG sont autorisés.');
-        return;
-      }
-
-      const formData = {
-        title: newsTitleInput.value,
-        text: newsTextInput.value,
-        date: formattedDate,
-        img: newsImgInput.files[0],
-        idAsso: id
-      };
-
-      if (id) {
-        axios.put(`${config.IP_API}/news/${id}`, formData)
-          .then((response) => {
-            console.log(response);
-            // Mise à jour réussie, effectuer les actions nécessaires
-          })
-          .catch((error) => {
-            console.log(error);
-            // Gérer l'erreur lors de la mise à jour
-          });
+  runCreate() {
+    const postNews = document.querySelector('.postNewsButton');
+    postNews.addEventListener('click', () => {
+      const newsTitleInput = document.querySelector('#floatingTextareaTitle');
+      const newsTextInput = document.querySelector('#floatingTextareaTexte');
+      const newsImgInput = document.querySelector('#formFileImage');
+      const newsImg = newsImgInput.files[0];
+      console.log('newsImgInput.files', newsImgInput);
+      const queryString = window.location.search;
+      const url = new URLSearchParams(queryString);
+      const id = url.get('id');
+      // on récupere la date
+      const currentDate = new Date();
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      const formattedDate = currentDate.toLocaleDateString('fr-FR', options);
+      if (newsTitleInput.value === '' || newsTextInput.value === '' || newsImgInput.files[0] === null) {
+        alert('Il faut remplir tous les champs');
       } else {
-        axios.post(`${config.IP_API}/news`, formData)
-          .then((response) => {
-            console.log(response);
-            // Publication réussie, effectuer les actions nécessaires
-          })
-          .catch((error) => {
-            console.log(error);
-            // Gérer l'erreur lors de la publication
-          });
+        const allowedExtensions = /(\.jpg|\.jpeg)$/i;
+        if (!allowedExtensions.test(newsImg.name)) {
+          alert('Seuls les fichiers JPEG sont autorisés.');
+          return;
+        }
+
+        const formData = {
+          title: newsTitleInput.value,
+          text: newsTextInput.value,
+          date: formattedDate,
+          img: newsImgInput.files[0],
+          idAsso: id
+        };
+
+        if (id) {
+          axios.put(`${config.IP_API}/news/${id}`, formData)
+            .then((response) => {
+              console.log(response);
+              // Mise à jour réussie, effectuer les actions nécessaires
+            })
+            .catch((error) => {
+              console.log(error);
+              // Gérer l'erreur lors de la mise à jour
+            });
+        } else {
+          axios.post(`${config.IP_API}/news`, formData)
+            .then((response) => {
+              console.log(response);
+              // Publication réussie, effectuer les actions nécessaires
+            })
+            .catch((error) => {
+              console.log(error);
+              // Gérer l'erreur lors de la publication
+            });
+        }
+        // Vider les champs de saisie
+        newsTitleInput.value = '';
+        newsTextInput.value = '';
+        const newFileInput = document.createElement('input');
+        newFileInput.id = 'formFileImage';
+        newFileInput.type = 'file';
+        newsImgInput.parentNode.replaceChild(newFileInput, newsImgInput);
       }
-      // Vider les champs de saisie
-      newsTitleInput.value = '';
-      newsTextInput.value = '';
-      const newFileInput = document.createElement('input');
-      newFileInput.id = 'formFileImage';
-      newFileInput.type = 'file';
-      newsImgInput.parentNode.replaceChild(newFileInput, newsImgInput);
-    }
+    });
   }
 
   async fetchAssociationDataNews() {
@@ -130,13 +132,6 @@ const Createarticle = class Createarticle {
       console.log('perdu');
       // Gérer l'erreur
     }
-  }
-
-  runCreate() {
-    const postNews = document.querySelector('.postNewsButton');
-    postNews.addEventListener('click', () => {
-      this.saveNews();
-    });
   }
 
   async fetchAssociationDataAsso() {
@@ -155,12 +150,12 @@ const Createarticle = class Createarticle {
 
   async run() {
     await this.fetchAssociationDataNews(); // Fetch news data first
+    await this.fetchAssociationDataAsso();
     const { assoc, news } = this.data; // Destructure assoc and news from this.data
     new ControllerPage(ViewCreatearticle({ assoc, news }));
     setTimeout(() => {
       this.runCreate();
-    }, 500);
-    await this.fetchAssociationDataAsso();
+    }, 1000);
   }
 };
 

@@ -34,7 +34,7 @@ const createArticle = (data) => {
               </div>
             </div>
             <div class="col-3">
-            <a href="/assosSuperAdmin?id=${encodeURIComponent(data.idAsso)}" class="mt-4 btn btn-danger postNewsButton" onclick="saveNews()">Poster l'actualité</a>
+            <a href="/assosSuperAdmin?id=${encodeURIComponent(data.idAsso)}" class="mt-4 btn btn-danger postNewsButton">Poster l'actualité</a>
             </div>
           </div>
         </div>
