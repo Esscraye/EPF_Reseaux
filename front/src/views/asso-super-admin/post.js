@@ -13,7 +13,6 @@ const btn2 = (data) => {
   const {
     id
   } = data;
-  console.log('je supprime');
   return (`
   <div>
     <button type="button" id="${id}" class="btn btn-danger delActu">Supprimer</button>

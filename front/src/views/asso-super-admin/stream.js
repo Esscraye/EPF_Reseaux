@@ -3,7 +3,6 @@ const btn = (id) => (`
 `);
 export default (data, permissions) => {
   const { id } = data;
-  console.log(id);
   const { ajoutActu } = permissions;
 
   return (`

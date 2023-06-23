@@ -1,14 +1,12 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
 import ViewPage from '../views/page';
-import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
 import config from '../../config';
 
 let conversationId = localStorage.getItem('conversationId') || '1';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
-const censure = [];
 
 const token = cookie.get('token');
 let mailUserConnected = 'maxence.juery@epfedu.fr';
@@ -475,10 +473,8 @@ const Page = class Page {
 
   async run() {
     await this.getConversations();
-    this.discu = ViewDiscu(this.data, this.idChat, censure);
-    this.el.innerHTML = ViewPage(this.content, this.discu);
-    // conversationId = localStorage.getItem('conversationId') || '1';
-    // new ControllerPage(ViewDiscu(this.data), conversationId);
+    // this.discu = ViewDiscu(this.data, this.idChat, censure);
+    this.el.innerHTML = ViewPage(this.content, this.data, this.idChat);
     this.onClickSearch();
     this.OpenChat();
     this.ResponsiveNav();
