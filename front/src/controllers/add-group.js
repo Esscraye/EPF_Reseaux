@@ -21,13 +21,11 @@ const AddGroup = class AddGroup {
           idgroup: addInputid.value,
           namegroup: addInputname.value
         };
-        console.log(body);
         axios.post(`${config.IP_API}/group`, body)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         addInputid.value = ' ';
         addInputname.value = ' ';

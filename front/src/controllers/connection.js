@@ -19,10 +19,6 @@ const Connection = class Connection {
       const elInputPassword = document.querySelector('.passwordInput');
 
       if (elInputEmail.value && isEmail(elInputEmail.value) && elInputPassword.value) {
-        console.log({
-          email: elInputEmail.value,
-          mdp: elInputPassword.value
-        });
         const data = {
           email: elInputEmail.value,
           password: elInputPassword.value
@@ -35,7 +31,7 @@ const Connection = class Connection {
             }
           });
         } catch (error) {
-          console.error('Error fetching association data:', error);
+          throw new Error(error);
         }
       }
     });

@@ -22,13 +22,11 @@ const GenProfile = class GenProfile {
           idgroup: Number(addInputid.value),
           namegroup: addInputname.value
         };
-        console.log(body);
         axios.post(`${config.IP_API}/group`, body)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         addInputid.value = ' ';
         addInputname.value = ' ';
@@ -66,17 +64,15 @@ const GenProfile = class GenProfile {
           class: elInputClass.options[elInputClass.selectedIndex].text,
           groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
         };
-        console.log(body);
         axios.post(`${config.IP_API}/user`, body, {
           headers: {
             authorization: cookie.get('token')
           }
         })
-          .then((response) => {
-            console.log(response);
+          .then(() => {
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         elInputLastname.value = '';
         elInputFirstname.value = '';
@@ -101,11 +97,10 @@ const GenProfile = class GenProfile {
         const idgr = delInputid.value;
         const namegr = delInputname.value;
         axios.delete(`${config.IP_API}/group/?idgroup=${idgr}&namegroup=${namegr}`)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         delInputid.value = ' ';
         delInputname.value = ' ';
@@ -117,13 +112,11 @@ const GenProfile = class GenProfile {
 
   run() {
     new ControllerPage(ViewGenProfile(this.data));
-    console.log('je suis ici');
     setTimeout(() => {
       this.onClickSearch();
       this.onClickAjouter();
       this.onClickDel();
-    }, 5000);
-    console.log('maitenant je suis ici');
+    }, 500);
     // this.onHandleClick();
   }
 };

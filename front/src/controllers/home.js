@@ -1,5 +1,4 @@
 import axios from 'axios';
-import cookie from 'js-cookie';
 import ControllerPage from './page';
 import ViewHome from '../views/home';
 import config from '../../config';
@@ -39,7 +38,6 @@ const Home = class Home {
   }
 
   async run() {
-    console.log(cookie.get('token'));
     await this.fetchAssociationDataNews();
     new ControllerPage(ViewHome(this.data));
   }

@@ -29,11 +29,8 @@ const AdminModifyUser = class AdminModifyUser {
           firstname: elInputFirstname.value,
           email: elInputEmail.value,
           description: elInputDescription.value,
-          promoTemp: elInputPromo.options[elInputPromo.selectedIndex].value,
           promo: elInputPromo.options[elInputPromo.selectedIndex].text,
-          classTemp: elInputClass.options[elInputClass.selectedIndex].value,
           class: elInputClass.options[elInputClass.selectedIndex].text,
-          groupetpTemp: elInputGrouptp.options[elInputGrouptp.selectedIndex].value,
           groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
 
         });

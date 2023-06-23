@@ -64,7 +64,6 @@ const Createarticle = class Createarticle {
     const queryString = window.location.search;
     const url = new URLSearchParams(queryString);
     const id = url.get('id');
-    console.log(id);
     // on récupere la date
     const currentDate = new Date();
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -86,12 +85,8 @@ const Createarticle = class Createarticle {
         img: newsImgInput.files[0],
         idAsso: id
       };
-
-      console.log(formData);
-
       axios.post(`${config.IP_API}/news`, formData)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           // Vider les champs de saisie
           newsTitleInput.value = '';
           newsTextInput.value = '';
@@ -101,7 +96,7 @@ const Createarticle = class Createarticle {
           newsImgInput.parentNode.replaceChild(newFileInput, newsImgInput);
         })
         .catch((error) => {
-          console.log(error);
+          throw new Error(error);
         });
     }
   }

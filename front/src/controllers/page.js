@@ -230,13 +230,12 @@ const Page = class Page {
       if (elInputSearch.value) {
         const emailsearch = elInputSearch.value;
         axios.get(`${config.IP_API}/user/${encodeURIComponent(emailsearch)}`)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
             // this.data.infoPerso = response.data;
             window.location.replace(`${config.IP_FRONT}/profil?email=${emailsearch}`);
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         elInputSearch.value = ' ';
       } else {
@@ -250,7 +249,6 @@ const Page = class Page {
         if (elChoice) {
           // Accès à la valeur de l'attribut id
           const valeurId = elChoice.id;
-          console.log(valeurId);
           conversationId = valeurId;
           localStorage.setItem('conversationId', conversationId);
           location.reload();
@@ -340,7 +338,6 @@ const Page = class Page {
 
     if (conversation.type === 'individual') {
       const elBlock = conversation.type === 'individual' ? document.querySelector('.bloquer button') : null;
-      console.log(elBlock);
       elBlock.addEventListener('click', () => {
         const { id } = conversation;
         axios.put(`${config.IP_API}/conversation/${id}`, { censure: true })

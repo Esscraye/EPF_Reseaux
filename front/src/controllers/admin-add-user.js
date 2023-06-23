@@ -30,21 +30,16 @@ const AdminAddUser = class AdminAddUser {
           firstname: elInputFirstname.value,
           email: elInputEmail.value,
           description: elInputDescription.value,
-          promoTemp: elInputPromo.options[elInputPromo.selectedIndex].value,
           promo: elInputPromo.options[elInputPromo.selectedIndex].text,
-          classTemp: elInputClass.options[elInputClass.selectedIndex].value,
           class: elInputClass.options[elInputClass.selectedIndex].text,
-          groupetpTemp: elInputGrouptp.options[elInputGrouptp.selectedIndex].value,
           groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
 
         };
-        console.log(body);
         axios.post(`${config.IP_API}/user`, body)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         elInputLastname.value = ' ';
         elInputFirstname.value = ' ';
