@@ -3,12 +3,17 @@ const btnDelete = (data) => {
     id
   } = data;
   return (`
-  <button type="button" id="${id}" class="btn btn-danger delAsso">Supprimer</button>
-`);
+   <button type="button" id="${id}" class="btn btn-danger delAsso">Supprimer</button>
+  `);
 };
-const btnManage = () => `
-  <a href="/gestMember" class="btn btn-danger Member" role="button">Membres</a>
-`;
+const btnManage = (data) => {
+  const {
+    id
+  } = data;
+  return (`
+   <a href="/gestMember?id=${encodeURIComponent(id)}" class="btn btn-danger Member" role="button">Membres ${id}</a>
+  `);
+};
 
 const btnUpdate = () => `
   <button type="button" class="btn btn-danger change" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifier</button>
@@ -23,24 +28,22 @@ export default (data, permissions) => {
   const { assoc } = permissions;
   return (`
     <div class="container-fluid text-center">
-      <div class="background-img" style="background-image: url('/images/bannerphoto.jpg'); background-size: cover;">
-        <div class="row shadow-lg p-1">
-          <div class="col-2">
-            <img width="150" src="${logo}" alt="logo" id="logo-img">
-          </div>
-          <div class="col-7">
-            <h3 class="pt-3">${name}</h3>
-          </div>
-          <div class="col-3">
-            <div class="row pt-3">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                ${assoc.delete ? btnDelete(data) : ''}
-                ${assoc.manage ? btnManage() : ''}
-                ${assoc.update ? btnUpdate() : ''}
-                ${assoc.follow ? btnFollow() : ''}
-              </div>
-            </div>    
-          </div>
+      <div class="row shadow-lg p-1">
+        <div class="col-2">
+          <img width="150" src="${logo}" alt="logo" id="logo-img">
+        </div>
+        <div class="col-7">
+          <h3 class="pt-3">${name}</h3>
+        </div>
+        <div class="col-3">
+          <div class="row pt-3">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              ${assoc.delete ? btnDelete(data) : ''}
+              ${assoc.manage ? btnManage(data) : ''}
+              ${assoc.update ? btnUpdate() : ''}
+              ${assoc.follow ? btnFollow() : ''}
+            </div>
+          </div>    
         </div>
       </div>
     </div>

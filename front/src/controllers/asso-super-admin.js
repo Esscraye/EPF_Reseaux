@@ -74,7 +74,6 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     try {
       const response = await axios.get(`${config.IP_API}/news`);
       const filteredNews = response.data.filter((news) => news.idAsso === id);
-      // const CachanCards = cards.filter((assoc) => assoc.campus === 'Cachan');
       this.data.news = filteredNews;
     } catch (error) {
       throw new Error(error);
