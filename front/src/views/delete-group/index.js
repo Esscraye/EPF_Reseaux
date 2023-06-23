@@ -1,5 +1,3 @@
-import './index.scss';
-
 export default () => (`
   <div align = "center" class="divcent" id ="addgr">
     <div class ="ajt_groupe">

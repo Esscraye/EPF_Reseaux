@@ -1,5 +1,3 @@
-import './index.scss';
-
 export default () => (`
 <main class="contener-conn">
   <div class="conn-border shadow-manuelle box-mdp">

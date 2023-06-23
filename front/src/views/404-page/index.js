@@ -1,5 +1,3 @@
-import './index.scss';
-
 export default () => (`
   <main class="page-error">
     <div id="container">

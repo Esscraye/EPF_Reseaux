@@ -1,5 +1,3 @@
-import './index.scss';
-
 export default () => (`
 <section class="s-space">
   <form>

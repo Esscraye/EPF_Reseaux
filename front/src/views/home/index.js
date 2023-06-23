@@ -1,5 +1,4 @@
 import article from './article';
-import './index.scss';
 
 export default (data) => {
   const { news, assoc } = data;

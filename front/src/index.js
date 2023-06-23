@@ -19,6 +19,7 @@ import ControllerDelGroup from './controllers/delete-group';
 import ControllerGenProfile from './controllers/general-profile';
 
 import './index.scss';
+import './404.scss';
 
 const router = new Router({
   mode: 'history',

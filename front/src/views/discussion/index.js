@@ -6,8 +6,6 @@ import barreEnvoiMess from './barre_envoie_mess';
 import messG from './message_gauche';
 import messD from './message_droite';
 
-import './index.scss';
-
 const token = cookie.get('token');
 let mailUserConnected = 'maxence.juery@epfedu.fr';
 if (token) {

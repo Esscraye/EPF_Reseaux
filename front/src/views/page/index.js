@@ -1,8 +1,6 @@
 import header from './header';
 import footer from './footer';
 
-import './index.scss';
-
 export default (content, discu) => (`
   <header class="">
     ${header()}

@@ -1,5 +1,3 @@
-import './index.scss';
-
 export default () => (`
 <main class="contener-conn">
   <div class="sect-2 conn-border shadow-manuelle">

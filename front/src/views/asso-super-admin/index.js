@@ -5,8 +5,6 @@ import contacts from './prefooter';
 import assocBanner from './assoc-banner';
 import createActu from './stream';
 
-import './index.scss';
-
 export default (data) => {
   const {
     assoc, userPermission, news

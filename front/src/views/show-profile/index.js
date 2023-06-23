@@ -1,10 +1,3 @@
-import './index.scss';
-
-// const btnDelete = () => `
-//   <a href="/change-profile" class="btn btn-danger mr-2" role="button"
-// id ="btnmodifprofil">Modifier profil</a>
-// `;
-
 export default (data) => {
   const { infoPerso } = data;
   return (`

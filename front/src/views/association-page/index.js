@@ -1,5 +1,4 @@
 import card from './card';
-import './index.scss';
 
 export default (data) => {
   const { cards } = data;
