@@ -14,7 +14,9 @@ $inputZone: #555;
 $contenant: lightgray;
 $couleur2 : #ef3d3d;
 $couleur1 : #1a1e21; // #1a1e21
-
+$couleur3 : #fd8f44; // that was before couleur2 when this part was in index.scss of show profile
+$mess-g : #fc8769;
+$mess-d : #dedede;
 
 .asso_admin{
     display: flex;
@@ -463,29 +465,27 @@ main button:hover{
     overflow: hidden;
 }
 
-  @keyframes slide-up {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
+@keyframes slide-up {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
   }
 
-  @keyframes slide-down {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+@keyframes slide-down {
+  0% {
+    transform: translateX(0%);
   }
+  100% {
+    transform: translateX(100%);
+  }
+}
 
 /* ================================================== */
 /* SCSS SHOW PROFILE */
 /* ================================================== */
-
-$couleur3 : #fd8f44; // that was before couleur2 when this part was in index.scss of show profile
 
 .container-profil{
     background-color: $contenant;
@@ -666,9 +666,6 @@ $couleur3 : #fd8f44; // that was before couleur2 when this part was in index.scs
 /* SCSS DISCUSSION */
 /* ================================================== */
 
-$mess-g : #fc8769;
-$mess-d : #dedede;
-
 .liste-conv{
     overflow-y: scroll;
     overflow-x: hidden;
@@ -750,8 +747,6 @@ $mess-d : #dedede;
     border-radius: 25px;
     height: 96%;
 }
-
-// max
 
 .barre-discu {
     display: flex;
