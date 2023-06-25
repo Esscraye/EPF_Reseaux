@@ -12,3 +12,4 @@ api/yarn-error.log
 api/yarn.lock
 api/package-lock.json
 api/.env
+.idea/
