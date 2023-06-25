@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import crypto from 'crypto';
+
 import UserModel from '../models/user.mjs';
 import authToken from '../hook/auth.mjs';
 
@@ -78,7 +80,7 @@ const Users = class Users {
     });
   }
 
-  login() {
+  loginOld() {
     this.app.post('/login/', (req, res) => {
       try {
         const { email, password } = req.body;
@@ -106,6 +108,63 @@ const Users = class Users {
             error: err,
             message: 'Internal Server error'
           });
+        });
+      } catch (err) {
+        console.error(`[ERROR] users/login -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  login() {
+    this.app.post('/login', async (req, res) => {
+      try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+          res.status(400).json({
+            code: 400,
+            message: 'Missing parameters'
+          });
+        }
+
+        const user = await this.UserModel.findOne({ email });
+
+        if (!user || user.password !== password) {
+          res.status(401).json({
+            code: 401,
+            message: `Username or password is incorrect ${user.password}}`
+          });
+        }
+
+        /* création du token csrf */
+        const xsrfToken = crypto.randomBytes(64).toString('hex');
+
+        /* création du token jwt avec le csrf dans le payload */
+        const accessToken = jwt.sign({ email, xsrfToken }, process.env.JWT_TOKEN, {
+          algorithm: process.env.JWT_ALGORITHM,
+          audience: process.env.JWT_AUDIENCE,
+          expiresIn: process.env.JWT_EXPIRES_IN,
+          issuer: process.env.JWT_ISSUER,
+          subject: user._id.toString()
+        });
+
+        /* création du cookie contenant le JWT */
+        res.cookie('access_token', accessToken, {
+          httpOnly: false,
+          secure: process.env.NODE_ENV === 'production',
+          maxAge: process.env.JWT_EXPIRES_IN,
+          sameSite: 'None'
+        });
+
+        /* On envoie une reponse JSON contenant la durée de vie du token et le token CSRF */
+        res.status(200).json({
+          expiresIn: process.env.JWT_EXPIRES_IN,
+          xsrfToken
         });
       } catch (err) {
         console.error(`[ERROR] users/login -> ${err}`);
@@ -150,7 +209,26 @@ const Users = class Users {
     });
   }
 
+  checkToken() {
+    this.app.get('/checkToken', authToken, (req, res) => {
+      try {
+        res.status(200).json({
+          code: 200,
+          message: 'Token is valid'
+        });
+      } catch (err) {
+        console.error(`[ERROR] users/checkToken -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
+    this.checkToken();
     this.create();
     this.showByEmail();
     this.deleteById();

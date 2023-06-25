@@ -1,5 +1,6 @@
 import Router from 'vanilla-router';
 import cookie from 'js-cookie';
+import config from '../config';
 
 import ControllerHome from './controllers/home';
 import Controller404Page from './controllers/404-page';
@@ -91,8 +92,31 @@ router.add('/general-profile', () => {
 const queryString = window.location.search;
 const { pathname } = location;
 
-if (cookie.get('token') || (pathname === '/password-forgot')) {
+let xsrfToken = localStorage.getItem('xsrfToken');
+
+if (pathname === '/connection' || pathname === '/password-forgot') {
   router.navigateTo(pathname + queryString);
+} else if (xsrfToken && cookie.get('access_token')) {
+  xsrfToken = JSON.parse(xsrfToken);
+
+  const headers = new Headers();
+  headers.append('x-xsrf-token', xsrfToken);
+
+  const options = {
+    method: 'GET',
+    mode: 'cors',
+    headers,
+    credentials: 'include',
+    origin: config.IP_API
+  };
+
+  const response = await fetch(`${config.IP_API}/checkToken`, options);
+
+  if (response.status === 200) {
+    router.navigateTo(pathname + queryString);
+  } else {
+    router.navigateTo('/connection');
+  }
 } else {
   router.navigateTo('/connection');
 }

@@ -8,7 +8,7 @@ let conversationId = localStorage.getItem('conversationId') || '1';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
 
-const token = cookie.get('token');
+const token = cookie.get('access_token');
 let mailUserConnected = 'maxence.juery@epfedu.fr';
 if (token) {
   const base64Url = token.split('.')[1];

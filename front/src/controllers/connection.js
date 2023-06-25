@@ -1,5 +1,5 @@
 import axios from 'axios';
-import cookie from 'js-cookie';
+// import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ViewConnection from '../views/connection';
 import config from '../../config';
@@ -24,9 +24,14 @@ const Connection = class Connection {
           password: elInputPassword.value
         };
         try {
-          axios.post(`${config.IP_API}/login`, data).then((response) => {
-            cookie.set('token', response.data.token);
+          axios.post(`${config.IP_API}/login`, data, {
+            withCredentials: true,
+            credentials: 'include',
+            origin: config.IP_API
+          }).then((response) => {
             if (response.status === 200) {
+              const { xsrfToken } = response.data;
+              localStorage.setItem('xsrfToken', JSON.stringify(xsrfToken));
               window.location.replace(`${config.IP_FRONT}/`);
             }
           });

@@ -3,7 +3,7 @@ import barreDiscuGroup from './barre_discu_groupe';
 import barreDiscuPerso from './barre_discu_solo';
 import block from './choix_discu';
 
-const token = cookie.get('token');
+const token = cookie.get('acess-token');
 let mailUserConnected = 'maxence.juery@epfedu.fr';
 if (token) {
   const base64Url = token.split('.')[1];
