@@ -4,7 +4,7 @@ export default () => (`
     <div>
       <img src="/images/logo.png" alt="logo epf" width="100" height="100">
     </div>
-    <form align="center formconnection">
+    <form align="center" class="formconnection">
       <div class="mb-3 mt-1">
         <label for="exampleFormControlInput1" class="form-label">E-mail</label>
         <input type="email" class="form-control emailInput" placeholder="Votre email">

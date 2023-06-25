@@ -11,9 +11,9 @@ const Connection = class Connection {
   }
 
   onClickConnection() {
-    const elBtn = document.querySelector('.connection');
+    const form = document.querySelector('.formconnection');
 
-    elBtn.addEventListener('click', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const elInputEmail = document.querySelector('.emailInput');
       const elInputPassword = document.querySelector('.passwordInput');
@@ -24,7 +24,7 @@ const Connection = class Connection {
           password: elInputPassword.value
         };
         try {
-          axios.post(`${config.IP_API}/login`, data, {
+          await axios.post(`${config.IP_API}/login`, data, {
             withCredentials: true,
             credentials: 'include',
             origin: config.IP_API
