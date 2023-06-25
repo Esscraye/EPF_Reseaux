@@ -1,5 +1,4 @@
 import axios from 'axios';
-import cookie from 'js-cookie';
 import ViewPage from '../views/page';
 import messD from '../views/discussion/message_droite';
 import config from '../../config';
@@ -8,7 +7,7 @@ let conversationId = localStorage.getItem('conversationId') || '1';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
 
-const token = cookie.get('access_token');
+const token = localStorage.getItem('token');
 let mailUserConnected = 'maxence.juery@epfedu.fr';
 if (token) {
   const base64Url = token.split('.')[1];

@@ -1,5 +1,4 @@
 import Router from 'vanilla-router';
-import cookie from 'js-cookie';
 import config from '../config';
 
 import ControllerHome from './controllers/home';
@@ -96,7 +95,7 @@ let xsrfToken = localStorage.getItem('xsrfToken');
 
 if (pathname === '/connection' || pathname === '/password-forgot') {
   router.navigateTo(pathname + queryString);
-} else if (xsrfToken && cookie.get('access_token')) {
+} else if (xsrfToken && localStorage.getItem('token')) {
   xsrfToken = JSON.parse(xsrfToken);
 
   const headers = new Headers();

@@ -155,7 +155,7 @@ const Users = class Users {
 
         /* création du cookie contenant le JWT */
         res.cookie('access_token', accessToken, {
-          httpOnly: false,
+          httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
           maxAge: process.env.JWT_EXPIRES_IN,
           sameSite: 'None'
@@ -164,7 +164,8 @@ const Users = class Users {
         /* On envoie une reponse JSON contenant la durée de vie du token et le token CSRF */
         res.status(200).json({
           expiresIn: process.env.JWT_EXPIRES_IN,
-          xsrfToken
+          xsrfToken,
+          accessToken
         });
       } catch (err) {
         console.error(`[ERROR] users/login -> ${err}`);

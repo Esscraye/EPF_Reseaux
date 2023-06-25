@@ -1,5 +1,4 @@
 import axios from 'axios';
-import cookie from 'js-cookie';
 import config from '../../config';
 import ViewShowProfile from '../views/show-profile';
 import ControllerPage from './page';
@@ -10,7 +9,7 @@ let emailsearch = url.get('email');
 
 const ShowProfile = class ShowProfile {
   getemailuser() {
-    const token = cookie.get('access_token');
+    const token = localStorage.getItem('token');
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));

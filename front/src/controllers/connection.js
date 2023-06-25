@@ -30,8 +30,9 @@ const Connection = class Connection {
             origin: config.IP_API
           }).then((response) => {
             if (response.status === 200) {
-              const { xsrfToken } = response.data;
+              const { xsrfToken, accessToken } = response.data;
               localStorage.setItem('xsrfToken', JSON.stringify(xsrfToken));
+              localStorage.setItem('token', JSON.stringify(accessToken));
               window.location.replace(`${config.IP_FRONT}/`);
             }
           });
