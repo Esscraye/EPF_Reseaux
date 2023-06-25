@@ -88,6 +88,11 @@ router.add('/general-profile', () => {
   new ControllerGenProfile();
 });
 
+router.add('/logout', () => {
+  localStorage.clear();
+  router.navigateTo('/connection');
+});
+
 const queryString = window.location.search;
 const { pathname } = location;
 
