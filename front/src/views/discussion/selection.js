@@ -7,8 +7,6 @@ export default (data) => {
   const groupChoicesHTML = groupChoices.map((conversation) => block(conversation)).join('');
   const individualChoicesHTML = individualChoices.map((conversation) => block(conversation)).join('');
 
-  console.log(individualChoices);
-
   return (`
     <div class="row mt-1">
       <h4 class="text-white text-center mt-2 mb-2 py-2">Groupes</h4>
