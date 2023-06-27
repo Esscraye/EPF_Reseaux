@@ -73,7 +73,6 @@ const Server = class Server {
     new routes.Assoc(this.app, this.connect);
     new routes.Groups(this.app, this.connect);
     new routes.News(this.app, this.connect);
-    new routes.Messages(this.app, this.connect);
     new routes.Conversations(this.app, this.connect);
 
     this.app.use((req, res) => {

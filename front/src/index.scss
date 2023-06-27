@@ -1,29 +1,22 @@
 /* ================================================== */
-/* Partie Chat de discussion */
-/* ================================================== */
-
-.liste-conv{
-    overflow-y: scroll !important;
-    height: 100vh !important;
-}
-
-.messages{
-    overflow-y: scroll !important;
-    overflow-x: hidden ;
-    height: 82vh !important;
-}
-
-.messages-container{
-    height: 100vh !important;
-}
-
-.bulle{
-    border-radius: 50%;
-    height: 40px;
-}
+@charset "utf-8";
+@import url("https://cdn.jsdelivr.net/npm/remixicon@3.3.0/fonts/remixicon.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
 
 /* ================================================== */
+/* Initialisation des variables */
+/* ================================================== */
 
+$text: #172317;
+$back: #f9efef;
+$inputZone: #555;
+$contenant: lightgray;
+$couleur2 : #ef3d3d;
+$couleur1 : #1a1e21; // #1a1e21
+$couleur3 : #fd8f44; // that was before couleur2 when this part was in index.scss of show profile
+$mess-g : #fc8769;
+$mess-d : #dedede;
 
 .asso_admin{
     display: flex;
@@ -31,7 +24,6 @@
     overflow-y: scroll !important;
     height: 32vh !important;
 }
-  // temp.css
 
 .form-label-1{
     position: relative;   
@@ -74,4 +66,1152 @@
 
 #exampleFormControlInputid2 {
     width : 20%;
+}
+
+/* ================================================== */
+/* SCSS PAGE */
+/* ================================================== */
+
+/* ================================================== */
+/* Général */
+/* ================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: $text;
+}
+
+.btn {
+    background-color: $contenant;
+    color : $text;
+    border: 1px solid $couleur1 !important;
+}
+
+.btn:hover{
+    background-color:$couleur2 !important;
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.2),
+                10px 10px 15px rgba(0,0,0,0.1),
+                inset 5px 5px 15px rgba(255,255,255,0.2),
+                inset -5px -5px 15px rgba(0,0,0,0.1);
+    color: $back;
+}
+
+body {
+    overflow:hidden;
+    overflow-y:auto;
+    background-color: $back;
+}
+
+main{
+    background-color: $back;
+    min-height: 100%;
+}
+
+input{
+    background-color: $contenant !important;
+    border: solid 2px $inputZone !important;
+}
+
+/* ================================================== */
+/* Partie HEADER */
+/* ================================================== */
+
+header{
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: auto;
+    transition: opacity 3s ease-in-out;
+    margin-bottom: 20px;
+    background-color: $back;
+    z-index: 8000;
+
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: $back;
+        padding: 0em 1em 0em 1em;
+        width: 100%;
+        height: 100px;
+        background-color: $couleur1;
+    }
+
+    nav a{
+        color:$back;
+        text-decoration: none;
+        font-size: 1.1em;
+        margin: 1em;
+        transition: background-color 3s ease-in-out;
+    }
+
+    nav .slected{
+        background-color:$couleur2;
+        box-shadow: -5px -5px 15px rgba(255,255,255,0.2),
+                    10px 10px 15px rgba(0,0,0,0.1),
+                    inset 5px 5px 15px rgba(255,255,255,0.2),
+                    inset -5px -5px 15px rgba(0,0,0,0.1);
+    }
+
+    h5{
+        margin: 0;
+    }
+
+    .partie-g{
+        display: flex;
+        align-items: center;
+    }
+
+    .partie-d{
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-nav{
+        padding: 2% 2% 2% 2%;
+        border-radius: 10px;
+        background-color: $couleur1;
+        color : $back;
+        margin-right: 10%;
+    }
+
+    .nav-links{
+        display: flex;
+    }
+
+    .menu-hamburger{
+        display: none;
+        position: absolute;
+        top: 25px;
+        left: 205px;
+        width: 50px;
+    }
+
+    .btn-port{
+        border-radius: 10px;
+        background-color: $couleur1;
+        color : $back;
+        padding: 10px 10px 10px 10px;
+    }
+
+
+    @media screen and (max-width: 1035px){
+
+        .nav-links{
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(7px);
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-left: -100%;
+            transition: all 0.5s ease;
+        }
+
+        .nav-links.mobile-menu{
+            margin-left: 0;
+        }
+
+        .menu-hamburger{
+            display: grid;
+        }
+
+        .btn-nav{
+            padding: 2% 2% 2% 2%;
+            border-radius: 10px;
+            background-color: rgba(215, 195, 195, 0.5);
+            color : $couleur1;
+            margin: 0;
+            margin-bottom: 20px;
+            width: 130px;
+        }
+    }
+}
+
+header, footer{
+    .div-ronde {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background:$couleur1; 
+        margin-right: 10px;
+    }
+
+    .logo{
+        display: flex;
+        width:100%;
+        height: 100%;
+    }
+
+    .log{
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10%;
+    }
+}
+/* ================================================== */
+/* Partie FOOTER */
+/* ================================================== */
+
+footer{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    height: 300px;
+    background-color: $couleur1;
+    color: $back;
+    align-items: center;
+    padding: 0 10 0 0;
+    margin-top: 20px;
+
+    h5, p, a{
+        color: $back;
+    }
+
+    .log h5{
+        margin: 0;
+    }
+
+    a{
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: all 0.3s ease;
+        color: $back;
+    }
+    
+    a:hover{
+        cursor: pointer;
+        color: $back;
+    }
+
+    .cont-foot{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .reseaux{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content-reseaux{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $couleur2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $back;
+        margin-right: 8px;
+        transition: all 0.3S ease;
+    }
+
+    .content-reseaux:hover{
+        background-color: $couleur1;
+        color: $couleur2;
+        padding-bottom: 5px;
+    }
+
+    h4{
+        font-size: 18px;
+        color: $back;
+        text-transform: capitalize;
+        margin-bottom: 35px;
+        font-weight: 500;
+        position: relative;
+    }
+    
+    h4::before{
+       content: '';
+       position: absolute;
+       left: 0;
+       bottom: -10px;
+       background-color:$couleur2;
+       height: 2px;
+       box-sizing: border-box;
+       width: 50px;
+    }
+
+    .ender-barre{
+        position: relative;
+    }
+    
+    .ender-barre::after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $couleur2;
+        transform: scaleX(0); 
+        transition: transform 0.3s ease; 
+    }
+  
+    .ender-barre:hover::after {
+        transform: scaleX(1); 
+    }
+ 
+    
+}
+
+/* ================================================== */
+/* Boutton ouverture du chat */
+/* ================================================== */
+
+#chat-btn .chat{
+    position: fixed;
+    transform: all .5s ease;
+    background-color: $couleur1;
+    display: block;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    border-radius: 50px;
+    border-left: none;
+    color: $back;
+    font-weight: 700;
+    font-size: 30px;
+    bottom: 125px;
+    right: 30px;
+    border: 0;
+    z-index: 9999;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+
+#chat-btn .chat:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: $couleur2;
+    border-radius: 50%;
+    -webkit-animation:pulse-border 1500ms ease-out infinite;
+    animation: pulse-border 1500ms ease-out infinite;
+}
+
+#chat-btn .chat:focus{
+    border: none;
+    outline: none;
+}
+
+main button:hover{
+    color: $text !important;
+}
+
+@keyframes pulse-border {
+    0%{transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1); opacity: 0.2;}
+    100%{transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5); opacity: 0.5;}
+}
+
+.modal{
+    max-width: 100%;
+    max-height: 100%;
+    border: 0;
+
+    & > * {
+        margin: 0 0 0.5rem 0;
+    }
+}
+
+.modal[open] {
+    animation: slide-up 1000ms forwards;
+}
+
+.modal[closing] {
+    display: block;
+    pointer-events: none;
+    inset: 0;
+    z-index: 9999;
+    animation: slide-down 1000ms forwards;
+}
+
+.modal-add{
+    display: grid;
+    overflow: hidden;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+  }
+
+@keyframes slide-down {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ================================================== */
+/* SCSS SHOW PROFILE */
+/* ================================================== */
+
+.container-profil{
+    background-color: $contenant;
+    margin-bottom: 5%;
+    margin-top: 20px;
+    padding: 4% 4% 4% 4%;
+}
+
+.container-info-prof{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.image-prof{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10%;
+}
+
+.text-gras{
+    font-weight: bold;
+    color: $couleur1;
+    text-align: center;
+}
+
+.info-profil{
+    margin-bottom: 10px;
+    
+}
+
+/* ================================================== */
+/* SCSS PASSWORD FORGOTTEN */
+/* ================================================== */
+
+.sec1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.ecart{
+  margin-bottom: 1em;
+}
+
+.deco:hover{
+  text-decoration: underline;
+}
+
+.box-mdp{
+  padding: 2% 2% 2% 2%;
+}
+
+/* ================================================== */
+/* SCSS HOME PAGE */
+/* ================================================== */
+
+.actu {
+    background-color: $contenant;
+}
+
+.nav-filtre-actu{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll !important;
+    height: 72vh !important;
+  }
+
+.back-im {
+    background-color: $back;
+}
+
+.img-article{
+    height: 20vh;
+    width: 80%;
+}
+
+.contener-info-asso{
+    display: flex;
+    align-items: center;
+}
+
+.info-asso{
+    height: auto;
+    width: 70%;
+    border-radius: 10px;
+    text-align: justify;
+    margin-left: 15%;
+    align-items: center;
+    background: $contenant;
+}
+
+.info-asso h2{
+    text-align: center;
+}
+
+.info-asso .texte-asso{
+    padding: 5%;
+}
+
+.shadow-manuelle{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    border: solid 1px;
+    border-color: $inputZone;
+    color: $couleur1;
+}
+
+.titre-event{
+    font-size: 25px;
+    text-shadow: 1px 1px 2px #172317;
+    position: relative;
+}
+
+.changeActu{
+    margin-bottom: 10px;
+}
+
+.text-style{
+    text-align: justify;
+}
+
+/* ================================================== */
+/* SCSS GENERAL PROFILE */
+/* ================================================== */
+
+.reglageD{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.reglageT{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+}
+
+.s-space{
+    margin-top: 40px;
+}
+
+.title-underline-admin{
+    color: $couleur1;
+    font-size: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 30%;
+    margin-left: 20px;
+}
+
+.title-underline-admin::before{
+    content: '';
+    position: absolute;
+    left: 1;
+    bottom: -2px;
+    background-color:$couleur2;
+    height: 2px;
+    box-sizing: border-box;
+    width: 20%;
+}
+
+.size-colomn{
+    width: 45%;
+}
+
+.size-colomn2{
+    width: 95%;
+}
+
+/* ================================================== */
+/* SCSS DISCUSSION */
+/* ================================================== */
+
+.liste-conv{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.liste-conv::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.liste-conv::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.messages{
+    overflow-y: scroll;
+    overflow-x: hidden ;
+}
+
+.messages::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.messages-size{
+    height: 400px;
+}
+
+.messages-container{
+    height: 100vh;
+}
+
+.bulle{
+    border-radius: 50%;
+    height: 40px;
+}
+
+.btn-fermeture{
+    width: 40px;
+    border-radius: 100%;
+}
+
+.close-btn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: $couleur2;
+}
+
+.contener-chat{
+    display: flex;
+    justify-content: space-between;
+    background-color: $back; 
+}
+
+.contener-chat-g{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 1%;
+    justify-content: center;
+}
+
+.contener-chat-d {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+    margin-right: 1%;
+    justify-content: center;
+}
+
+.container-margin{
+    background-color: $couleur2;
+    border-radius: 25px;
+    height: 96%;
+}
+
+.barre-discu {
+    display: flex;
+    background-color: $couleur2;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $couleur1;
+    padding: 1% 1% 1% 1%;
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
+
+.barre-intern {
+    display: flex;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.icone-discu {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    max-width: 25%;
+    margin-bottom: 0.25rem;
+}
+
+.name-discu {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 1.5rem;
+    align-items: center;
+    color: white;
+    white-space: nowrap;
+    margin-bottom: 7px;
+}
+
+.cross-discu {
+    display: flex;
+    margin-top: auto;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.25rem;
+    margin-bottom: 9px;
+}
+
+.info-discu-barre {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.bloquer{
+    padding-right: 25px;
+}
+
+.list-group-horizontal {
+    border: 1px solid $couleur1;
+    border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 25px;
+    background-color: $couleur2;
+    margin-top: 10px;
+    margin-bottom: 0;
+    background-color: #e13535;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    width: 90%;
+}
+
+.list-group-horizontal:hover{
+    background-color: #be1e1e;
+}
+
+.test {
+    display: flex;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.icone-selec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-selec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-left: 10px;
+    flex-grow: 0;
+    flex-basis: 83%;
+    white-space: nowrap;
+}
+
+.message-txt-droite {
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $text;
+    border-radius: 10px;
+    font-size: 18px;
+    word-wrap: break-word;
+    background-color: $mess-d;
+}
+
+.message-txt-gauche {
+    position: relative;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: 1px solid black;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    word-wrap: break-word;
+    background-color: $mess-g;
+    text-align: center;
+    color: $text;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.position-mess {
+    width: auto;
+    max-width: 40%;
+}
+
+[data-message-count] {
+    margin-left: 10px;
+}
+
+.icone-cercle {
+    border-radius: 100%;
+    border: solid 1px $couleur1;
+    height: 30px;
+    width: 30px;
+}
+
+/* ================================================== */
+/* SCSS DELETE GROUP */
+/* ================================================== */
+
+.ajt_groupe{
+  margin-top: 40px;
+  margin-bottom: 60px;
+  text-align: left;
+  margin-left: 130px;
+}
+#txtaddbtn{
+  text-align: left;
+  margin-left: 130px; 
+}
+#identifiant_input {
+  width : 20% ; 
+}
+
+#nom_groupe_input {
+  width : 20%;
+}
+
+#addgroupbtn {
+  background-color: #b43030;
+  border-color: #b43030;
+  color : white;
+  width : 8%; 
+}
+
+/* ================================================== */
+/* SCSS CONNECTION */
+/* ================================================== */
+
+.contener-conn{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(45deg, #b43030, #ff9e02); 
+}
+
+.sect-2{
+    display: grid;
+    padding: 2% 2% 2% 2%;
+    width: 30em;
+}
+
+.conn-border{
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    background: $contenant;
+}
+
+.underline-connect:hover{
+    text-decoration: underline;
+}
+
+.bt{
+    width: 6em;
+    align-items: center;
+    text-align: center;
+}
+
+/* ================================================== */
+/* SCSS CHANGE PROFILE */
+/* ================================================== */
+
+.titre-recherche{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.recherche-profil{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 10% 0 10%;
+}
+
+.recherche-profil2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+}
+
+.zone-texte{
+    width:15em;
+}
+
+.enregistrer-modif{
+    margin-top:1em;
+    width:50%;
+}
+
+.image-proportionnelle {
+    width: 80%;
+    height: 50%;
+    border-radius: 100%;  
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: $couleur1;
+    border: solid $couleur2;
+}
+
+textarea:hover{
+    background-color: #e1e1e18d !important;
+}
+
+input:hover{
+    background-color: #e1e1e18d !important;
+}
+
+input, textarea{
+    background-color: #ffffff8d !important;
+}
+
+.modif-profil{
+    justify-content: center;
+    font-size:smaller;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.info-profil{
+    font-size: small;
+}
+
+.contener-show-profile{
+    height: auto;
+    width: 20%;
+    border-radius: 10px;
+    text-align: justify;
+    align-items: center;
+    background: $contenant;
+    display: flex;
+    flex-direction: column;
+}
+
+.contener-show-profile2{
+    height: auto;
+    width: 60%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    align-items: baseline;
+    background: $contenant;
+}
+
+.contener-show-profile3{
+    height: auto;
+    width: 80%;
+    border-radius: 10px;
+    text-align: justify;
+    align-items: center;
+    background: $contenant;
+    margin-top: 40px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-taille{
+    width: 60%;
+}
+
+.taille-modif{
+    width: 100%;
+}
+
+.position-btn-modif{
+    display: flex;
+    justify-content: center;
+}
+
+/* ================================================== */
+/* ASSOCIATION PAGE */
+/* ================================================== */
+
+.img-manuelle{
+    width: 90%;
+    height: 70%;
+    margin: 10px 10px 10px 10px;
+}
+
+.titre-manuelle{
+    color: $couleur1;
+    font-size: 18px;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.text-manuelle{
+    color: $couleur1;
+}
+
+.titre-manuelle::before{
+   content: '';
+   position: absolute;
+   left: 1;
+   bottom: -15px;
+   background-color:$couleur2;
+   height: 2px;
+   box-sizing: border-box;
+   width: 50%;
+}
+
+.box-manuelle{
+    transition: all 0.4s ease;
+}
+
+.box-manuelle:hover{
+    transform: translateY(-10px);
+}
+
+.contener-manuelle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-underline{
+    color: $couleur1;
+    font-size: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 20%;
+    margin-top: 20px;
+}
+
+.title-underline::before{
+    content: '';
+    position: absolute;
+    left: 1;
+    bottom: -2px;
+    background-color:$couleur2;
+    height: 2px;
+    box-sizing: border-box;
+    width: 20%;
+}
+
+.contener-manuelle {
+    display: flex;
+    align-items: stretch;
+}
+  
+.box-manuelle {
+    display: flex;
+    flex-direction: column;
+}
+  
+.aspect-ratio-wrapper {
+    position: relative;
+    padding-bottom: 100%; /* Hauteur de la carte */
+    overflow: hidden;
+}
+  
+.card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ================================================== */
+/* SCSS ASSO SUPER ADMIN */
+/* ================================================== */
+
+.actu-manuelle{
+    background-color: $back;
+    border: none;
+    min-height: 70%;
+}
+
+.art-border{
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+    background: $contenant;
+}
+
+/* ================================================== */
+/* SCSS ADD GROUP */
+/* ================================================== */
+
+.ajt_groupe{
+  margin-top: 40px;
+  margin-bottom: 60px;
+  text-align: left;
+  margin-left: 130px;
+}
+#txtaddbtn{
+  text-align: left;
+  margin-left: 130px; 
+}
+#identifiant_input {
+  width : 20% ; 
+}
+
+#nom_groupe_input {
+  width : 20%;
+}
+
+#addgroupbtn {
+  background-color: #b43030;
+  border-color: #b43030;
+  color : white;
+  width : 8%; 
 }

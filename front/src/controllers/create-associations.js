@@ -50,8 +50,7 @@ const Home = class Home {
             }
           }
         )
-          .then((response) => {
-            console.log(response);
+          .then(() => {
             // Vider les champs de saisie
             elInputNameassos.value = '';
             elInputChoicecampus.value = '';
@@ -59,7 +58,7 @@ const Home = class Home {
             document.querySelector('#mailassos').value = '';
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
       } else {
         console.log({

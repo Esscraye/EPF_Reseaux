@@ -19,14 +19,11 @@ const DelGroup = class DelGroup {
       if (delInputid.value && delInputname.value) {
         const idgr = delInputid.value;
         const namegr = delInputname.value;
-        console.log(idgr);
-        console.log(namegr);
         axios.delete(`${config.IP_API}/group/?idgroup=${idgr}&namegroup=${namegr}`)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         delInputid.value = ' ';
         delInputname.value = ' ';

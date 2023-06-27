@@ -1,5 +1,4 @@
 import card from './card';
-import './index.scss';
 
 export default (data) => {
   const { cards } = data;
@@ -7,6 +6,7 @@ export default (data) => {
   const CachanCards = cards.filter((assoc) => assoc.campus === 'Cachan');
   const StNazaireCards = cards.filter((assoc) => assoc.campus === 'Saint-Nazaire');
   const TroyesCards = cards.filter((assoc) => assoc.campus === 'Troyes');
+  const MultiCards = cards.filter((assoc) => assoc.campus === 'Multicampus');
   return (`
     <div class="mt-2 float-end">
       <a href="/createAssos" class="btn btn-danger mr-2" role="button">Créer assos</a>
@@ -39,6 +39,13 @@ export default (data) => {
         <div class="container-fluid text-center">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
           ${TroyesCards.map((assoc) => card(assoc)).join('')}
+          </div>
+        </div>
+
+        <h4 class="fw-bold px-2 pb-2 title-underline">Multicampus :</h4>
+        <div class="container-fluid text-center">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+          ${MultiCards.map((assoc) => card(assoc)).join('')}
           </div>
         </div>
       </div>

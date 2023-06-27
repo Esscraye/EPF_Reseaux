@@ -1,5 +1,3 @@
-import './index.scss';
-
 export default () => (`
   <div class="recherche-profil">
     <section class ="shadow-manuelle contener-show-profile">

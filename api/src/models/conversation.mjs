@@ -1,14 +1,12 @@
 import mongoose from 'mongoose';
 
-const Schema = new mongoose.Schema({
-  participants: [{
-    email: { type: String, required: true }
+const discussionSchema = new mongoose.Schema({
+  members: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }],
-  type: { type: String, required: true },
   name: String,
-  icone: String,
-  censure: Boolean,
-  convId: String
+  icon: String
 }, {
   collection: 'conversations',
   minimize: false,
@@ -24,4 +22,32 @@ const Schema = new mongoose.Schema({
   }
 });
 
-export default Schema;
+const messageSchema = new mongoose.Schema({
+  content: { type: String, required: true },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  fromDiscussion: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Discussion',
+    required: true
+  }
+}, {
+  collection: 'messages',
+  minimize: false,
+  versionKey: false,
+  timestamps: true
+}).set('toJSON', {
+  transform: (doc, ret) => {
+    const retUpdated = ret;
+    retUpdated.id = ret._id;
+
+    delete retUpdated._id;
+
+    return retUpdated;
+  }
+});
+
+export default { discussionSchema, messageSchema };

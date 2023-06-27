@@ -6,8 +6,6 @@ import barreEnvoiMess from './barre_envoie_mess';
 import messG from './message_gauche';
 import messD from './message_droite';
 
-import './index.scss';
-
 const token = cookie.get('token');
 let mailUserConnected = 'maxence.juery@epfedu.fr';
 if (token) {
@@ -36,16 +34,18 @@ export default (data, idChat) => {
     }
 
     return (`
-      <div class="row">
-        <div class="col-3 liste-conv bg-danger">
-          ${selection(data)}
-        </div>
-        <div class="col-9 messages-container">
-          ${barreDiscuComponent}
-          <div class="messages">
-            ${messagesHTML}
+      <div class="contener-chat">
+        <div class="contener-chat-g liste-conv">
+          <div class="container-margin">
+            ${selection(data)}
           </div>
-          ${barreEnvoiMess()}
+        </div>
+        <div class="contener-chat-d messages-container">
+            ${barreDiscuComponent}
+            <div class="messages messages-size">
+              ${messagesHTML}
+            </div>
+            ${barreEnvoiMess()}
         </div>
       </div>
     `);

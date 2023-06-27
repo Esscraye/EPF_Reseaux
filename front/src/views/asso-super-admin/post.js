@@ -3,10 +3,10 @@ const btn = (data) => {
     id
   } = data;
   return (`
-  <div>
-    <button type="button" id="${id}" class="btn btn-danger changeActu">Modifier</button>
-  </div>
-`);
+    <div>
+      <a href="/createArticle?id=${encodeURIComponent(id)}" id="${id}" class="btn btn-danger CreateActu" role="button">Modifier</a>
+    </div>
+  `);
 };
 
 const btn2 = (data) => {

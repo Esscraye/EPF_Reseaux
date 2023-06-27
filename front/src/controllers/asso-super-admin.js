@@ -66,8 +66,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
       const response = await axios.get(`${config.IP_API}/assoc/${id}`);
       this.data.assoc = response.data;
     } catch (error) {
-      console.log('perdu');
-      // Gérer l'erreur
+      throw new Error(error);
     }
   }
 
@@ -75,11 +74,9 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     try {
       const response = await axios.get(`${config.IP_API}/news`);
       const filteredNews = response.data.filter((news) => news.idAsso === id);
-      // const CachanCards = cards.filter((assoc) => assoc.campus === 'Cachan');
       this.data.news = filteredNews;
     } catch (error) {
-      console.log(error);
-      // Gérer l'erreur
+      throw new Error(error);
     }
   }
 
@@ -172,8 +169,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
     elButtons.forEach((elButton) => {
       elButton.addEventListener('click', (e) => {
         e.preventDefault();
-        const infoActu = elButton.getAttribute('data-actu');
-        console.log(infoActu);
+        // const infoActu = elButton.getAttribute('data-actu');
         document.location.href = '../createArticle';
       });
     });
@@ -205,7 +201,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         this.data.assoc.descriptionAsso = newDescriptionAsso;
         location.reload();
       } catch (error) {
-        console.log('Erreur lors de la mise à jour de la description de l\'équipe');
+        throw new Error(error);
       }
     });
   }
@@ -236,7 +232,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         this.data.assoc.descriptionTeam = newDescriptionTeam;
         location.reload();
       } catch (error) {
-        console.log('Erreur lors de la mise à jour de la description de l\'équipe');
+        throw new Error(error);
       }
     });
   }
@@ -273,7 +269,7 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         });
         location.reload();
       } catch (error) {
-        console.log('Erreur lors de la mise à jour de la description de l\'équipe');
+        throw new Error(error);
       }
     });
   }

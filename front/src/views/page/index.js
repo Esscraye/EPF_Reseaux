@@ -1,9 +1,8 @@
 import header from './header';
 import footer from './footer';
+import chat from './discussion';
 
-import './index.scss';
-
-export default (content, discu) => (`
+export default (content, data, idChat) => (`
   <header class="">
     ${header()}
   </header>
@@ -13,7 +12,7 @@ export default (content, discu) => (`
       <button href="#" class="chat open-button"><i class="ri-chat-smile-3-line"></i></button>
     </div>
     <dialog class="modal" id="modal">
-      ${discu}
+      ${chat(data, idChat)}
     </dialog>
   </main>
   <footer>

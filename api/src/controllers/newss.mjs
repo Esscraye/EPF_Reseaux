@@ -73,6 +73,38 @@ const News = class News {
     });
   }
 
+  update() {
+    this.app.put('/news/:id', (req, res) => {
+      try {
+        const { id } = req.params;
+        const {
+          text,
+          img,
+          title
+        } = req.body;
+        this.NewsModel.findByIdAndUpdate(id, {
+          text,
+          img,
+          title
+        }).then((news) => {
+          res.status(200).json(news || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] newss/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   recup() {
     this.app.get('/news', (req, res) => {
       try {
@@ -100,6 +132,7 @@ const News = class News {
     this.showById();
     this.deleteById();
     this.recup();
+    this.update();
   }
 };
 

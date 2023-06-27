@@ -1,16 +1,13 @@
 import axios from 'axios';
-import cookie from 'js-cookie';
 import ViewPage from '../views/page';
-import ViewDiscu from '../views/discussion';
 import messD from '../views/discussion/message_droite';
 import config from '../../config';
 
 let conversationId = localStorage.getItem('conversationId') || '1';
 let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
-const censure = [];
 
-const token = cookie.get('token');
+const token = localStorage.getItem('token');
 let mailUserConnected = 'maxence.juery@epfedu.fr';
 if (token) {
   const base64Url = token.split('.')[1];
@@ -230,13 +227,12 @@ const Page = class Page {
       if (elInputSearch.value) {
         const emailsearch = elInputSearch.value;
         axios.get(`${config.IP_API}/user/${encodeURIComponent(emailsearch)}`)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
             // this.data.infoPerso = response.data;
             window.location.replace(`${config.IP_FRONT}/profil?email=${emailsearch}`);
           })
           .catch((error) => {
-            console.log(error);
+            throw new Error(error);
           });
         elInputSearch.value = ' ';
       } else {
@@ -307,20 +303,19 @@ const Page = class Page {
           const message = {
             text: messageText,
             times: `${now.getHours()}h${now.getMinutes()}`,
+            idconv: conversationId,
             author: {
-              firstName: 'Maxence',
-              lastName: 'Juery',
-              email: 'maxence.juery@epfedu.fr'
+              firstName: mailUserConnected.split('.')[0],
+              lastName: mailUserConnected.split('.')[1],
+              email: mailUserConnected
             }
           };
 
           elInput.value = '';
 
-          const conversation = this.data.conversations
-            .find((conv) => conv.convId === conversationId);
+          const conversation = this.data.conversations.find((cv) => cv.convId === conversationId);
           if (conversation) {
-            conversation.messages.push(message);
-
+            axios.post(`${config.IP_API}/message`, message).then();
             const conversationElement = document.getElementById(`${conversationId}`);
             const messageCountElement = conversationElement.querySelector('[data-message-count]');
             if (messageCountElement) {
@@ -477,10 +472,8 @@ const Page = class Page {
 
   async run() {
     await this.getConversations();
-    this.discu = ViewDiscu(this.data, this.idChat, censure);
-    this.el.innerHTML = ViewPage(this.content, this.discu);
-    // conversationId = localStorage.getItem('conversationId') || '1';
-    // new ControllerPage(ViewDiscu(this.data), conversationId);
+    // this.discu = ViewDiscu(this.data, this.idChat, censure);
+    this.el.innerHTML = ViewPage(this.content, this.data, this.idChat);
     this.onClickSearch();
     this.OpenChat();
     this.ResponsiveNav();
