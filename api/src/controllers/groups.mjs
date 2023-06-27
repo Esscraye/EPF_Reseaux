@@ -12,6 +12,10 @@ const Group = class Group {
     this.app.delete('/group/', (req, res) => {
       const idg = req.query.idgroup;
       const nameg = req.query.namegroup;
+      if (typeof idg !== 'string' || typeof nameg !== 'string') {
+        res.status(400).json({ status: 'error', message: 'Bad request' });
+        return;
+      }
       try {
         this.GroupModel.findOneAndDelete({ idgroup: idg, namegroup: nameg })
           .then((group) => {

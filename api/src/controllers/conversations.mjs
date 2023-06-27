@@ -181,6 +181,10 @@ const Conversations = class Conversations {
           name,
           icon
         } = req.body;
+        if (typeof name !== 'string' || typeof icon !== 'string') {
+          res.status(400).json({ status: 'error' });
+          return;
+        }
         this.ConversationModel.findByIdAndUpdate(id, {
           name,
           icon
@@ -210,6 +214,10 @@ const Conversations = class Conversations {
         const {
           content
         } = req.body;
+        if (typeof content !== 'string') {
+          res.status(400).json({ status: 'error' });
+          return;
+        }
         this.MessageModel.findByIdAndUpdate(id, {
           content
         }).then((message) => {

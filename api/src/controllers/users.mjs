@@ -80,7 +80,7 @@ const Users = class Users {
     });
   }
 
-  loginOld() {
+  /* loginOld() {
     this.app.post('/login/', (req, res) => {
       try {
         const { email, password } = req.body;
@@ -118,18 +118,19 @@ const Users = class Users {
         });
       }
     });
-  }
+  } */
 
   login() {
     this.app.post('/login', async (req, res) => {
       try {
         const { email, password } = req.body;
 
-        if (!email || !password) {
+        if (!email || !password || typeof email !== 'string' || typeof password !== 'string') {
           res.status(400).json({
             code: 400,
             message: 'Missing parameters'
           });
+          return;
         }
 
         const user = await this.UserModel.findOne({ email });
@@ -185,6 +186,10 @@ const Users = class Users {
         const {
           firstname, lastname, email, description
         } = req.body;
+        if (typeof firstname !== 'string' || typeof lastname !== 'string' || typeof email !== 'string' || typeof description !== 'string') {
+          res.status(400).json({ status: 'error' });
+          return;
+        }
 
         this.UserModel.findByIdAndUpdate(id, {
           firstname,
