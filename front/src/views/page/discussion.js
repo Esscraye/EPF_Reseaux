@@ -2,28 +2,15 @@ import barreDiscuGroup from './barre_discu_groupe';
 import barreDiscuPerso from './barre_discu_solo';
 import block from './choix_discu';
 
-const token = localStorage.getItem('token');
-let mailUserConnected = 'maxence.juery@epfedu.fr';
-if (token) {
-  const base64Url = token.split('.')[1];
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
-  mailUserConnected = JSON.parse(jsonPayload).email;
-}
-
-const hour = (hourData) => (`
-  <p class="fw-lighter fst-italic text-center m-0">${hourData}</p>
-`);
-
 // message_gauche.js //
 
 const messG = (messageData) => (`
-${hour(messageData.times)}
+<p class="fw-lighter fst-italic text-center m-0">${messageData.createdAt}</p>
 <div class="row justify-content-start text-start">
     <div class="position-mess">
-    <div class="fw-lighter fst-italic">${messageData.author.firstName} ${messageData.author.lastName}</div>
+    <div class="fw-lighter fst-italic">${messageData.author.firstname} ${messageData.author.lastname}</div>
     <div class="message-txt-gauche">
-        ${messageData.text}  
+        ${messageData.content}
     </div>
     </div>
 </div>
@@ -32,12 +19,12 @@ ${hour(messageData.times)}
 // message_droite.js //
 
 const messD = (messageData) => (`
-${hour(messageData.times)}
+<p class="fw-lighter fst-italic text-center m-0">${messageData.createdAt}</p>
 <div class="row justify-content-end me-1 text-end">
     <div class="position-mess">
-    <div class="fw-lighter fst-italic">${messageData.author.firstName} ${messageData.author.lastName}</div>
+    <div class="fw-lighter fst-italic">${messageData.author.firstname} ${messageData.author.lastname}</div>
     <div class="message-txt-droite">
-        ${messageData.text} 
+        ${messageData.content} 
     </div>
     </div>
 </div>
@@ -45,12 +32,12 @@ ${hour(messageData.times)}
 
 // --- messages --- //
 
-export default (data, idChat) => {
+export default (data, idChat, userId) => {
   const { conversations, messages } = data;
 
   // selection.js //
-  const groupChoices = data.conversations.filter((conv) => conv.type === 'group');
-  const individualChoices = data.conversations.filter((conv) => (conv.type === 'individual' && conv.censure === false));
+  const groupChoices = conversations.filter((conv) => conv.members.length > 2);
+  const individualChoices = conversations.filter((conv) => (conv.members.length === 2));
 
   const groupChoicesHTML = groupChoices.map((conversation) => block(conversation)).join('');
   const individualChoicesHTML = individualChoices.map((conversation) => block(conversation)).join('');
@@ -66,19 +53,21 @@ export default (data, idChat) => {
     </div>`;
   // --- selection --- //
 
-  const convParameter = idChat || '1';
+  const convParameter = idChat || '649ae40d37cf658836fdb6ee';
 
-  const conversation = conversations.find((conv) => conv.convId === convParameter);
-  const convMessages = messages.filter((mess) => mess.idconv === convParameter);
+  const conversation = conversations.find((conv) => conv.id === convParameter);
+  const convMessages = messages.filter((mess) => mess.fromDiscussion.id === convParameter);
 
-  if (convMessages) {
-    const messagesHTML = convMessages.map((message) => (message.author.email === mailUserConnected ? messD(message) : messG(message))).join('');
+  if (convMessages && conversation) {
+    const messagesHTML = convMessages.map((message) => (message.author.id === userId ? messD(message) : messG(message))).join('');
+    console.log(convMessages);
+    console.log(userId);
 
     let barreDiscuComponent;
-    if (conversation.type === 'group') {
-      barreDiscuComponent = barreDiscuGroup(conversation.name, conversation.icone);
-    } else if (conversation.type === 'individual') {
-      barreDiscuComponent = barreDiscuPerso(conversation.name, conversation.icone);
+    if (conversation.members.length > 2) {
+      barreDiscuComponent = barreDiscuGroup(conversation.name, conversation.icon);
+    } else if (conversation.members.length === 2) {
+      barreDiscuComponent = barreDiscuPerso(conversation.name, conversation.icon);
     }
 
     return (`

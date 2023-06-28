@@ -1,17 +1,14 @@
 import config from '../../../config';
 
-const fetchMess = await fetch(`${config.IP_API}/message/`);
-const messages = await fetchMess.json();
-
 export default (data) => {
-  const convMessages = messages.filter((mess) => mess.idconv === data.convId);
+  const convMessages = fetch(`${config.IP_API}/message/${data.id}`).then((res) => res.json());
   const numberMessages = convMessages.length;
 
   return (`
     <ul class="list-group-horizontal">
-      <a href="#" class="discu-choice" id="${data.convId}">
+      <a href="#" class="discu-choice" id="${data.id}">
         <div class="test">
-          <li class="icone-selec"><img src="${data.icone}" class="icone-cercle" alt="..."></li>
+          <li class="icone-selec"><img src="${data.icon}" class="icone-cercle" alt="..."></li>
           <li class="name-selec">
             ${data.name}
             <span class="badge bg-primary rounded-pill bg-white text-black" data-message-count>${numberMessages}</span>

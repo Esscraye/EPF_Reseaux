@@ -8,208 +8,20 @@ let val = localStorage.getItem('val') || 1;
 let headerSelect = localStorage.getItem('head') || 1;
 
 const token = localStorage.getItem('token');
-let mailUserConnected = 'maxence.juery@epfedu.fr';
+let UserId = '1';
 if (token) {
   const base64Url = token.split('.')[1];
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
-  mailUserConnected = JSON.parse(jsonPayload).email;
+  UserId = JSON.parse(jsonPayload).sub;
 }
 
 const Page = class Page {
   constructor(content) {
     this.el = document.body;
     this.content = content;
-    this.idChat = localStorage.getItem('conversationId') || '1';
-    this.data = {
-      conversations: [{
-        participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr'],
-        type: 'individual',
-        name: 'Victor Marchand',
-        icone: 'https://tse4.mm.bing.net/th?id=OIP.AENl1AC1hSURPNEUwarSawHaHa&pid=Api&P=0&h=180',
-        censure: false,
-        convId: '1',
-        messages: [{
-          text: 'Hello !',
-          times: '13h52',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Comment va ?',
-          times: '13h54',
-          author: {
-            firstName: 'Victor',
-            lastName: 'Marchand',
-            email: 'victor.marchand@epfedu.fr'
-          }
-        },
-        {
-          text: '???',
-          times: '13h55',
-          author: {
-            firstName: 'Victor',
-            lastName: 'Marchand',
-            email: 'victor.marchand@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        }
-        ]
-      }, {
-        participants: ['victor.marchand@epfedu.fr', 'maxence.juery@epfedu.fr', 'leo.leboss@epfedu.fr'],
-        type: 'group',
-        name: 'Projet intranet',
-        icone: 'https://tse3.mm.bing.net/th?id=OIP.-xJE4WTayjrJUhukEsN1VwHaHa&pid=Api&P=0&h=180',
-        censure: false,
-        convId: '2',
-        messages: [{
-          text: 'Hello',
-          times: '13h52',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Comment va ?',
-          times: '13h54',
-          author: {
-            firstName: 'Victor',
-            lastName: 'Marchand',
-            email: 'victor.marchand@epfedu.fr'
-          }
-        },
-        {
-          text: '???',
-          times: '13h55',
-          author: {
-            firstName: 'Leo',
-            lastName: 'Le Boss',
-            email: 'victor.marchand@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        }
-        ]
-      }, {
-        participants: ['alban.lauby@epfedu.fr', 'maxence.juery@epfedu.fr'],
-        type: 'individual',
-        name: 'Alban Lauby',
-        icone: 'https://tse4.mm.bing.net/th?id=OIP.AENl1AC1hSURPNEUwarSawHaHa&pid=Api&P=0&h=180',
-        censure: false,
-        convId: '3',
-        messages: [{
-          text: 'Hello !',
-          times: '13h52',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Comment va ?',
-          times: '13h54',
-          author: {
-            firstName: 'Alban',
-            lastName: 'Lauby',
-            email: 'alban.lauby@epfedu.fr'
-          }
-        },
-        {
-          text: '???',
-          times: '13h55',
-          author: {
-            firstName: 'Alban',
-            lastName: 'Lauby',
-            email: 'alban.lauby@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        },
-        {
-          text: 'Oui',
-          times: '13h57',
-          author: {
-            firstName: 'Maxence',
-            lastName: 'Juery',
-            email: 'maxence.juery@epfedu.fr'
-          }
-        }
-        ]
-      }]
-    };
+    this.idChat = localStorage.getItem('conversationId') || '649ae40d37cf658836fdb6ee';
+    this.data = {};
     this.run();
   }
 
@@ -261,21 +73,15 @@ const Page = class Page {
       const messageText = elInput.value;
 
       if (messageText) {
-        const now = new Date();
         const message = {
-          text: messageText,
-          times: `${now.getHours()}h${now.getMinutes()}`,
-          idconv: conversationId,
-          author: {
-            firstName: mailUserConnected.split('.')[0],
-            lastName: mailUserConnected.split('.')[1],
-            email: mailUserConnected
-          }
+          content: messageText,
+          fromDiscussion: conversationId,
+          author: UserId
         };
 
         elInput.value = '';
 
-        const conversation = this.data.conversations.find((conv) => conv.convId === conversationId);
+        const conversation = this.data.conversations.find((conv) => conv.id === conversationId);
         if (conversation) {
           axios.post(`${config.IP_API}/message`, message).then();
           const conversationElement = document.getElementById(`${conversationId}`);
@@ -299,21 +105,15 @@ const Page = class Page {
         const messageText = elInput.value;
 
         if (messageText) {
-          const now = new Date();
           const message = {
-            text: messageText,
-            times: `${now.getHours()}h${now.getMinutes()}`,
-            idconv: conversationId,
-            author: {
-              firstName: mailUserConnected.split('.')[0],
-              lastName: mailUserConnected.split('.')[1],
-              email: mailUserConnected
-            }
+            content: messageText,
+            fromDiscussion: conversationId,
+            author: UserId
           };
 
           elInput.value = '';
 
-          const conversation = this.data.conversations.find((cv) => cv.convId === conversationId);
+          const conversation = this.data.conversations.find((cv) => cv.id === conversationId);
           if (conversation) {
             axios.post(`${config.IP_API}/message`, message).then();
             const conversationElement = document.getElementById(`${conversationId}`);
@@ -331,10 +131,9 @@ const Page = class Page {
       }
     });
 
-    const conversation = this.data.conversations.find((conv) => conv.convId === conversationId);
-
-    if (conversation.type === 'individual') {
-      const elBlock = conversation.type === 'individual' ? document.querySelector('.bloquer button') : null;
+    const conversation = this.data.conversations.find((conv) => conv.id === conversationId);
+    if (conversation && conversation.members.lenght === 2) {
+      const elBlock = conversation.members.lenght === 2 ? document.querySelector('.bloquer button') : null;
       elBlock.addEventListener('click', () => {
         const { id } = conversation;
         axios.put(`${config.IP_API}/conversation/${id}`, { censure: true })
@@ -359,21 +158,23 @@ const Page = class Page {
       localStorage.setItem('val', val);
     });
 
-    closeModal.addEventListener('click', () => {
-      clasDialog.classList.remove('modal-add');
-      modal.close();
-      val = 1;
-      localStorage.setItem('val', val);
-    });
-
-    closeModal.addEventListener('click', () => {
-      modal.setAttribute('closing', '');
-      modal.addEventListener('animationend', () => {
-        modal.removeAttribute('closing');
+    if (closeModal) {
+      closeModal.addEventListener('click', () => {
         clasDialog.classList.remove('modal-add');
         modal.close();
-      }, { once: true });
-    });
+        val = 1;
+        localStorage.setItem('val', val);
+      });
+
+      closeModal.addEventListener('click', () => {
+        modal.setAttribute('closing', '');
+        modal.addEventListener('animationend', () => {
+          modal.removeAttribute('closing');
+          clasDialog.classList.remove('modal-add');
+          modal.close();
+        }, { once: true });
+      });
+    }
   }
 
   ResponsiveNav() {
@@ -462,18 +263,19 @@ const Page = class Page {
   }
 
   async getConversations() {
-    const convs = await fetch(`${config.IP_API}/conversation/`);
-    const conversations = await convs.json();
-    const mess = await fetch(`${config.IP_API}/message/`);
-    const messages = await mess.json();
+    const convs = await fetch(`${config.IP_API}/conversation/`).then((res) => res.json());
+    const conversations = await convs.filter((conv) => conv.members.includes(UserId));
+    const idConvs = await conversations.map((conv) => conv.id);
+    const messages = idConvs.map((conv) => fetch(`${config.IP_API}/message/${conv}`).then((res) => res.json()));
+    const allMessages = await Promise.all(messages);
     this.data.conversations = conversations;
-    this.data.messages = messages;
+    this.data.messages = allMessages.flat();
   }
 
   async run() {
     await this.getConversations();
-    // this.discu = ViewDiscu(this.data, this.idChat, censure);
-    this.el.innerHTML = ViewPage(this.content, this.data, this.idChat);
+    console.log('userId', UserId);
+    this.el.innerHTML = ViewPage(this.content, this.data, this.idChat, UserId);
     this.onClickSearch();
     this.OpenChat();
     this.ResponsiveNav();

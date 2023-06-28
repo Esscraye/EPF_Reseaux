@@ -127,7 +127,7 @@ const Conversations = class Conversations {
   showAllConversation() {
     this.app.get('/conversation', (req, res) => {
       try {
-        this.ConversationModel.find().populate('members').then((conversations) => {
+        this.ConversationModel.find().then((conversations) => {
           res.status(200).json(conversations || []);
         }).catch(() => {
           res.status(500).json({
@@ -152,6 +152,9 @@ const Conversations = class Conversations {
           path: 'fromDiscussion',
           match: { _id: req.params.conversationId },
           select: 'name'
+        }).populate({
+          path: 'author',
+          select: 'firstname lastname'
         })
           .then((messages) => messages.filter((message) => message.fromDiscussion !== null))
           .then((messages) => {
