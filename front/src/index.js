@@ -3,10 +3,8 @@ import config from '../config';
 
 import ControllerHome from './controllers/home';
 import Controller404Page from './controllers/404-page';
-import ControllerAddUser from './controllers/admin-add-user';
 import ControllerChangeUser from './controllers/admin-modify-user';
 import ControllerShowProf from './controllers/show-profile';
-import ControllerAddGroup from './controllers/add-group';
 import ControllerAssoSuperAdmin from './controllers/asso-super-admin';
 import ControllerConnection from './controllers/connection';
 import ControllerCreateArticle from './controllers/create-article';
@@ -15,7 +13,6 @@ import ControllerMemberManagement from './controllers/member-management';
 import ControllerPasswordForgotten from './controllers/password-forgotten';
 import ControllerAssociationPage from './controllers/association-page';
 import ControllerChangeProfile from './controllers/change-profile';
-import ControllerDelGroup from './controllers/delete-group';
 import ControllerGenProfile from './controllers/general-profile';
 
 import './index.scss';
@@ -32,24 +29,12 @@ router.add('', () => {
   new ControllerHome();
 });
 
-router.add('/addUser', () => {
-  new ControllerAddUser();
-});
-
 router.add('/changeUser', () => {
   new ControllerChangeUser();
 });
 
 router.add('/profil', () => {
   new ControllerShowProf();
-});
-
-router.add('/addGrp', () => {
-  new ControllerAddGroup();
-});
-
-router.add('/delGrp', () => {
-  new ControllerDelGroup();
 });
 
 router.add('/assosSuperAdmin', () => {
