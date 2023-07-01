@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import cookie from 'js-cookie';
 import { isEmail } from 'validator';
 import ViewConnection from '../views/connection';
 import config from '../../config';
@@ -26,8 +25,7 @@ const Connection = class Connection {
         try {
           await axios.post(`${config.IP_API}/login`, data, {
             withCredentials: true,
-            credentials: 'include',
-            origin: config.IP_API
+            credentials: 'include'
           }).then((response) => {
             if (response.status === 200) {
               const { xsrfToken, accessToken } = response.data;

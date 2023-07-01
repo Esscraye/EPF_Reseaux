@@ -1,5 +1,5 @@
 const config = {
-    IP_API: 'http://leobaleras.live:3000',
+    IP_API: 'https://leobaleras.live:3000',
     IP_FRONT: 'http://127.0.0.1:9090'
   };
   

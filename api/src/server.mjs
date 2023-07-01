@@ -5,6 +5,11 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
+import fs from 'fs';
+import https from 'https';
+import http from 'http';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Core
 import config from './config.mjs';
@@ -12,6 +17,11 @@ import routes from './controllers/routes.mjs';
 
 const Server = class Server {
   constructor() {
+    if (process.env.NODE_ENV === 'production') {
+      const ssl_certificate =  fs.readFileSync(process.env.SSL_CERT);
+      const ssl_certificate_key =  fs.readFileSync(process.env.SSL_KEY);
+      this.credentials = { key: ssl_certificate_key, cert: ssl_certificate };
+    }
     this.app = express();
     this.config = config[process.argv[2]] || config.development;
   }
@@ -65,7 +75,7 @@ const Server = class Server {
     this.app.use(compression());
     this.app.use(cors({
       credentials: true,
-      origin: 'http://127.0.0.1:9090',
+      origin: this.config.origin
     }));
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
@@ -97,7 +107,13 @@ const Server = class Server {
       this.security();
       this.middleware();
       this.routes();
-      this.app.listen(this.config.port);
+      if (process.env.NODE_ENV === 'production') {
+        const httpsServer = https.createServer(this.credentials, this.app);
+        httpsServer.listen(this.config.port);
+      } else {
+        const httpServer = http.createServer(this.app);
+        httpServer.listen(this.config.port);
+      }
     } catch (err) {
       console.error(`[ERROR] Server -> ${err}`);
     }
