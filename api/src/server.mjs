@@ -9,6 +9,7 @@ import fs from 'fs';
 import https from 'https';
 import http from 'http';
 import dotenv from 'dotenv';
+import { Server as SocketServer } from 'socket.io';
 dotenv.config();
 
 // Core
@@ -23,6 +24,14 @@ const Server = class Server {
       this.credentials = { key: ssl_certificate_key, cert: ssl_certificate };
     }
     this.app = express();
+    this.io = new SocketServer();
+    if (process.env.NODE_ENV === 'production') {
+      this.httpsServer = https.createServer(this.credentials, this.app);
+      this.io.attach(this.ttpsServer);
+    } else {
+      this.httpServer = http.createServer(this.app);
+      this.io.attach(this.httpServer);
+    }
     this.config = config[process.argv[2]] || config.development;
   }
 
@@ -107,12 +116,16 @@ const Server = class Server {
       this.security();
       this.middleware();
       this.routes();
+      this.io.on('connection', (socket) => {
+        console.log('a user connected');
+        socket.on('disconnect', () => {
+          console.log('user disconnected');
+        });
+      });
       if (process.env.NODE_ENV === 'production') {
-        const httpsServer = https.createServer(this.credentials, this.app);
-        httpsServer.listen(this.config.port);
+        this.httpsServer.listen(this.config.port);
       } else {
-        const httpServer = http.createServer(this.app);
-        httpServer.listen(this.config.port);
+        this.httpServer.listen(this.config.port);
       }
     } catch (err) {
       console.error(`[ERROR] Server -> ${err}`);
