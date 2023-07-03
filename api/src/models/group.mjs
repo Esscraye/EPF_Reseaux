@@ -2,7 +2,11 @@ import mongoose from 'mongoose';
 
 const Schema = new mongoose.Schema({
   idgroup: Number,
-  namegroup: String
+  namegroup: String,
+  members: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
 }, {
   collection: 'groups',
   minimize: false,
