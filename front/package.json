@@ -1,7 +1,7 @@
 {
-  "name": "@so-xzen/chat-bot-io-v2",
+  "name": "@esscraye/epf-reseaux",
   "version": "1.0.0",
-  "description": "Chat Bot IO v2",
+  "description": "EPF Réseaux V1",
   "main": "index.js",
   "scripts": {
     "start": "npx webpack-dev-server --mode development",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xzen/chat-bot-io-v2.git"
+    "url": "git+https://github.com/Esscraye/EPF_Reseaux.git"
   },
-  "author": "",
+  "author": "Created by Cyril Vimard and maintained by Léo Baleras",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xzen/chat-bot-io-v2/issues"
+    "url": "https://github.com/Esscraye/EPF_Reseaux/issues"
   },
-  "homepage": "https://github.com/xzen/chat-bot-io-v2#readme",
+  "homepage": "https://github.com/Esscraye/EPF_Reseaux#readme",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.5.4",
@@ -42,6 +42,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "js-cookie": "^3.0.5",
+    "socket.io-client": "^4.7.1",
     "validator": "^13.9.0",
     "vanilla-router": "^1.2.8"
   }
