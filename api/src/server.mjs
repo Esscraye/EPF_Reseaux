@@ -10,6 +10,8 @@ import https from 'https';
 import http from 'http';
 import dotenv from 'dotenv';
 import { Server as SocketServer } from 'socket.io';
+import rateLimiter from './hook/rateLimiter.mjs';
+
 dotenv.config();
 
 // Core
@@ -88,6 +90,7 @@ const Server = class Server {
     }));
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
+    this.app.use(rateLimiter);
   }
 
   routes() {
