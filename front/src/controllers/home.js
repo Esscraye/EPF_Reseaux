@@ -17,7 +17,6 @@ const Home = class Home {
     try {
       const response = await axios.get(`${config.IP_API}/news`);
       this.data.news = response.data;
-      await this.fetchAssociationData();
     } catch (error) {
       console.error('Error fetching news data:', error);
     }
@@ -39,6 +38,7 @@ const Home = class Home {
 
   async run() {
     await this.fetchAssociationDataNews();
+    await this.fetchAssociationData();
     new ControllerPage(ViewHome(this.data));
   }
 };
