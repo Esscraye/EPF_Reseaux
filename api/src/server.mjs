@@ -29,7 +29,7 @@ const Server = class Server {
     this.io = new SocketServer();
     if (process.env.NODE_ENV === 'production') {
       this.httpsServer = https.createServer(this.credentials, this.app);
-      this.io.attach(this.ttpsServer);
+      this.io.attach(this.httpsServer);
     } else {
       this.httpServer = http.createServer(this.app);
       this.io.attach(this.httpServer);
