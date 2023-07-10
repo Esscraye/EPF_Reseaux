@@ -1,15 +1,17 @@
-import AssocModel from '../models/assoc.mjs';
+import Models from '../models/assoc.mjs';
 import authToken from '../hook/auth.mjs';
+
+const { AssocSchema, newsSchema } = Models;
 
 const Assoc = class Assoc {
   constructor(app, connect) {
     this.app = app;
-    this.AssocModel = connect.model('Assoc', AssocModel);
-
+    this.AssocModel = connect.model('Assoc', AssocSchema);
+    this.NewsModel = connect.model('News', newsSchema);
     this.run();
   }
 
-  create() {
+  createAssoc() {
     this.app.post('/assoc/', authToken, (req, res) => {
       try {
         const assocModel = new this.AssocModel(req.body);
@@ -30,7 +32,7 @@ const Assoc = class Assoc {
     });
   }
 
-  showAll() {
+  showAllAssoc() {
     this.app.get('/assoc', (req, res) => {
       try {
         this.AssocModel.find().then((associations) => {
@@ -51,7 +53,7 @@ const Assoc = class Assoc {
     });
   }
 
-  showByID() {
+  showByIDAssoc() {
     this.app.get('/assoc/:id', (req, res) => {
       try {
         this.AssocModel.findById(req.params.id).then((association) => {
@@ -72,7 +74,7 @@ const Assoc = class Assoc {
     });
   }
 
-  deleteById() {
+  deleteByIdAssoc() {
     this.app.delete('/assoc/:id', (req, res) => {
       try {
         this.AssocModel.findByIdAndDelete(req.params.id).then((association) => {
@@ -129,12 +131,167 @@ const Assoc = class Assoc {
     });
   }
 
+  deleteByIdNews() {
+    this.app.delete('/news/:id', (req, res) => {
+      try {
+        this.NewsModel.findByIdAndDelete(req.params.id).then((news) => {
+          res.status(200).json(news || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] newss/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  showByIdNews() {
+    this.app.get('/news/:id', (req, res) => {
+      try {
+        this.NewsModel.findById(req.params.id).then((news) => {
+          res.status(200).json(news || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] newss/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  createNews() {
+    this.app.post('/news/', (req, res) => {
+      try {
+        const newsModel = new this.NewsModel(req.body);
+
+        newsModel.save().then((news) => {
+          res.status(200).json(news || {});
+        }).catch(() => {
+          res.status(200).json({});
+        });
+      } catch (err) {
+        console.error(`[ERROR] newss/create -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  updateNews() {
+    this.app.put('/news/:id', (req, res) => {
+      try {
+        const { id } = req.params;
+        const {
+          text,
+          img,
+          title
+        } = req.body;
+        this.NewsModel.findByIdAndUpdate(id, {
+          text,
+          img,
+          title
+        }).then((news) => {
+          res.status(200).json(news || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] newss/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  recupNews() {
+    this.app.get('/news', (req, res) => {
+      try {
+        this.NewsModel.find().then((newss) => {
+          res.status(200).json(newss || []);
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] newss/ -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  showAllMessageByConversationId() {
+    this.app.get('/message/:conversationId', (req, res) => {
+      try {
+        this.MessageModel.find().populate({
+          path: 'fromDiscussion',
+          match: { _id: req.params.conversationId },
+          select: 'name'
+        }).populate({
+          path: 'author',
+          select: 'firstname lastname'
+        })
+          .then((messages) => messages.filter((message) => message.fromDiscussion !== null))
+          .then((messages) => {
+            res.status(200).json(messages || []);
+          })
+          .catch(() => {
+            res.status(500).json({
+              code: 500,
+              message: `Internal Server error + ${res}`
+            });
+          });
+      } catch (err) {
+        console.error(`[ERROR] message/:conversationId -> ${err}`);
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
-    this.create();
-    this.showAll();
-    this.showByID();
-    this.deleteById();
+    this.createAssoc();
+    this.showAllAssoc();
+    this.showByIDAssoc();
+    this.deleteByIdAssoc();
     this.updateAssoc();
+    this.createNews();
+    this.showByIdNews();
+    this.deleteByIdNews();
+    this.recupNews();
+    this.updateNews();
   }
 };
 
