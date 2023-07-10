@@ -3,23 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-/* export default (req, res, next) => {
-  const token = req.headers.authorization;
-
-  if (!token) {
-    return res.sendStatus(403);
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_TOKEN);
-    req.user = decoded;
-  } catch (err) {
-    return res.sendStatus(401);
-  }
-
-  return next();
-}; */
-
 export default (req, res, next) => {
   try {
     const { headers } = req;
@@ -27,14 +10,14 @@ export default (req, res, next) => {
 
     /* On vérifie que le JWT est présent dans les cookies de la requête */
     if (!cookie || cookie.split('=')[0] !== 'access_token') {
-      return res.sendStatus(401).json({ message: 'Missing token in cookie' });
+      return res.status(401).json({ message: 'Missing token in cookie' });
     }
 
     const accessToken = cookie.split('=')[1];
 
     /* On vérifie que le token CSRF est présent dans les headers de la requête */
     if (!headers || !headers['x-xsrf-token']) {
-      return res.sendStatus(401).json({ message: 'Missing XSRF token in header' });
+      return res.status(401).json({ message: 'Missing XSRF token in header' });
     }
 
     const xsrfToken = headers['x-xsrf-token'];
@@ -46,7 +29,7 @@ export default (req, res, next) => {
 
     /* On vérifie que le token CSRF est le même que dans le payload du JWT */
     if (xsrfToken !== decoded.xsrfToken) {
-      return res.sendStatus(401).json({ message: 'Invalid XSRF token' });
+      return res.status(401).json({ message: 'Invalid XSRF token' });
     }
 
     req.user = decoded;
