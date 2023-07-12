@@ -78,6 +78,15 @@ router.add('/logout', () => {
   router.navigateTo('/connection');
 });
 
+const docTitle = document.title;
+window.addEventListener('blur', () => {
+  document.title = 'Reviens ! ;(';
+});
+
+window.addEventListener('focus', () => {
+  document.title = docTitle;
+});
+
 const queryString = window.location.search;
 const { pathname } = location;
 
