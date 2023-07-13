@@ -103,6 +103,13 @@ const Assoc = class Assoc {
         const {
           name, campus, logo, descriptionAsso, descriptionTeam, mail, phone, socialNetworks
         } = req.body;
+        if (typeof name !== 'string' || typeof campus !== 'string' || typeof logo !== 'string'
+                || typeof descriptionAsso !== 'string' || typeof descriptionTeam !== 'string'
+                || typeof mail !== 'string' || typeof phone !== 'string'
+                || typeof socialNetworks !== typeof []) {
+          res.status(400).json({ status: 400, message: 'Bad type element' });
+          return;
+        }
         this.AssocModel.findByIdAndUpdate(id, {
           name,
           campus,
@@ -205,6 +212,10 @@ const Assoc = class Assoc {
           img,
           title
         } = req.body;
+        if (typeof text !== 'string' || typeof img !== 'string' || typeof title !== 'string') {
+          res.status(400).json({ status: 400, message: 'Bad type element' });
+          return;
+        }
         this.NewsModel.findByIdAndUpdate(id, {
           text,
           img,
