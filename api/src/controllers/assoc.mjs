@@ -106,7 +106,7 @@ const Assoc = class Assoc {
         if (typeof name !== 'string' || typeof campus !== 'string' || typeof logo !== 'string'
                 || typeof descriptionAsso !== 'string' || typeof descriptionTeam !== 'string'
                 || typeof mail !== 'string' || typeof phone !== 'string'
-                || typeof socialNetworks !== typeof []) {
+                || !Array.isArray(socialNetworks)) {
           res.status(400).json({ status: 400, message: 'Bad type element' });
           return;
         }
