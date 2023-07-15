@@ -2,15 +2,18 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
 
-import UserModel from '../models/user.mjs';
+import Models from '../models/user.mjs';
 import authToken from '../hook/auth.mjs';
+
+const { UserSchema, GroupSchema } = Models;
 
 dotenv.config();
 
 const Users = class Users {
   constructor(app, connect) {
     this.app = app;
-    this.UserModel = connect.model('User', UserModel);
+    this.UserModel = connect.model('User', UserSchema);
+    this.GroupModel = connect.model('Group', GroupSchema);
 
     this.run();
   }
@@ -79,46 +82,6 @@ const Users = class Users {
       }
     });
   }
-
-  /* loginOld() {
-    this.app.post('/login/', (req, res) => {
-      try {
-        const { email, password } = req.body;
-
-        this.UserModel.findOne({ email }).then((user) => {
-          if (!user) {
-            res.status(404).json({
-              code: 404,
-              message: 'User not found'
-            });
-          } else if (user.password === password) {
-            const token = jwt.sign({ email }, process.env.JWT_TOKEN, { expiresIn: '24h' });
-            res.status(200).json({
-              token
-            });
-          } else {
-            res.status(401).json({
-              code: 401,
-              message: 'Unauthorized'
-            });
-          }
-        }).catch((err) => {
-          res.status(500).json({
-            code: 500,
-            error: err,
-            message: 'Internal Server error'
-          });
-        });
-      } catch (err) {
-        console.error(`[ERROR] users/login -> ${err}`);
-
-        res.status(400).json({
-          code: 400,
-          message: 'Bad request'
-        });
-      }
-    });
-  } */
 
   login() {
     this.app.post('/login', async (req, res) => {
@@ -224,6 +187,78 @@ const Users = class Users {
         });
       } catch (err) {
         console.error(`[ERROR] users/checkToken -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  deleteById() {
+    this.app.delete('/group/', (req, res) => {
+      const idg = req.query.idgroup;
+      const nameg = req.query.namegroup;
+      if (typeof idg !== 'string' || typeof nameg !== 'string') {
+        res.status(400).json({ status: 'error', message: 'Bad request' });
+        return;
+      }
+      try {
+        this.GroupModel.findOneAndDelete({ idgroup: idg, namegroup: nameg })
+          .then((group) => {
+            res.status(200).json(group || {});
+          })
+          .catch(() => {
+            res.status(500).json({
+              code: 500,
+              message: 'Internal Server error'
+            });
+          });
+      } catch (err) {
+        console.error(`[ERROR] groups/:id -> ${err}`);
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  showById() {
+    this.app.get('/group/:id', (req, res) => {
+      try {
+        this.GroupModel.findById(req.params.id).then((group) => {
+          res.status(200).json(group || {});
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] groups/:id -> ${err}`);
+
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
+  create() {
+    this.app.post('/group/', (req, res) => {
+      try {
+        const groupModel = new this.GroupModel(req.body);
+
+        groupModel.save().then((group) => {
+          res.status(200).json(group || {});
+        }).catch(() => {
+          res.status(200).json({});
+        });
+      } catch (err) {
+        console.error(`[ERROR] group/create -> ${err}`);
 
         res.status(400).json({
           code: 400,
