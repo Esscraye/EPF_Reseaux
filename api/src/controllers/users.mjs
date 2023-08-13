@@ -18,7 +18,7 @@ const Users = class Users {
     this.run();
   }
 
-  deleteById() {
+  deleteUserById() {
     this.app.delete('/user/:id', authToken, (req, res) => {
       try {
         this.UserModel.findByIdAndDelete(req.params.id).then((user) => {
@@ -62,7 +62,7 @@ const Users = class Users {
     });
   }
 
-  create() {
+  createUser() {
     this.app.post('/user/', authToken, (req, res) => {
       try {
         const userModel = new this.UserModel(req.body);
@@ -196,7 +196,7 @@ const Users = class Users {
     });
   }
 
-  deleteById() {
+  deleteGroupById() {
     this.app.delete('/group/', (req, res) => {
       const idg = req.query.idgroup;
       const nameg = req.query.namegroup;
@@ -225,7 +225,7 @@ const Users = class Users {
     });
   }
 
-  showById() {
+  showGroupById() {
     this.app.get('/group/:id', (req, res) => {
       try {
         this.GroupModel.findById(req.params.id).then((group) => {
@@ -247,7 +247,7 @@ const Users = class Users {
     });
   }
 
-  create() {
+  createGroup() {
     this.app.post('/group/', (req, res) => {
       try {
         const groupModel = new this.GroupModel(req.body);
@@ -270,11 +270,14 @@ const Users = class Users {
 
   run() {
     this.checkToken();
-    this.create();
+    this.createUser();
     this.showByEmail();
-    this.deleteById();
+    this.deleteUserById();
     this.login();
     this.updateProfile();
+    this.deleteGroupById();
+    this.showGroupById();
+    this.createGroup();
   }
 };
 
