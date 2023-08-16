@@ -13,9 +13,9 @@
     - [Goals](#goals)
 - [Further description of components](#further-description-of-components)
     - [API](#api)
-        - [](#overview)
-        - [](#post-create-user)
-        - [](#post-show-user)
+        - [overview](#overview)
+        - [create user](#post-create-user)
+        - [show user](#post-show-user)
     - [Database](#database)
         - [Fonctionnement](#fonctionnement)
         - [Routes](#routes)
@@ -49,7 +49,7 @@ wsl --install -d Ubuntu
 
 3. Clone the 'EPF_reseaux' file into one of Ubuntu's folders :
 ```bash
-git clone https://github.com/mab1o/EPF_Reseaux.git # Git is already installed on unbuntu
+git clone https://github.com/mab1o/EPF_Reseaux.git # Git is already installed on Ubuntu
 ```
 
 
@@ -140,17 +140,17 @@ git config --list                           # to view all parameters
 ```bash
 git remote remove origin                                        # delete the shortcut origin
 git remote add origin git@github.com:Esscraye/EPF_Reseaux.git   # add the shortcut origin
-git remote add git@github.com:PSEUDO/EPF_Reseaux.git   # add the shortcut upstream
+git remote add git@github.com:PSEUDO/EPF_Reseaux.git            # add the shortcut upstream
 git remote -v                                                   # to view all shortcuts
 ```
 
 - Submit a modification (currently all modifications are made on the `devel` branch)
 
 ```bash
-git status                  # check staged files
-git add exp.txt             # stage modifications
-git commit -m "mon message" # commit files
-git push upstream devel     # push on the devel branch
+git status                      # check staged files
+git add exp.txt                 # stage modifications
+git commit -m "mon message"     # commit files
+git push upstream devel         # push on the devel branch
 ```
 
 - Update local directory
@@ -225,10 +225,12 @@ This is a list of the features planned for `EPF_Reseaux`:
     - [ ] Suppression d'un message
 
 
+
 ## Further description of components
 
 
 ### API
+
 
 #### Overview
 The API allows users to retrieve all of the users of the application in micro service through a REST architecture. This API will be mainly used for registed Accounts.
@@ -306,12 +308,12 @@ Response :
 * mongodb (please configure config.js for link mongodb)
 
 
-
 ### Database
 
 #### Fonctionnement
 
-<h4><b>Discussion</b></h4>
+
+<h4>Discussion</h4>
 
 | composant | type | description |
 | :--- | :--- | :--- |
@@ -319,8 +321,8 @@ Response :
 | icon | `string` | path de l'icone de la discussion |
 | members | `[{ObjectId, ref: 'User'}]` | liste des membres de la discussion |
 
-</br>
-<h4><b>Message</b></h4>
+
+<h4>Message</h4>
 
 | composant | type | description |
 | :--- | :--- | :--- |
@@ -328,8 +330,8 @@ Response :
 | author | `{ObjectId, ref: 'User'}` | auteur du message |
 | fromDiscussion | `{ObjectId, ref: 'Discussion'}` | discussion associée |
 
-</br>
-<h4><b>User</b></h4>
+
+<h4>User</h4>
 
 | composant | type | description |
 | :--- | :--- | :--- |
