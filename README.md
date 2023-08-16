@@ -9,71 +9,80 @@
     - [Running](#running)
     - [How to use git](#how-to-use-git)
 - [Contribute to the project](#contribute-to-the-project)
-    - [Terms and conditions](#terms-and-conditions)
     - [Road Map](#road-map)
     - [Goals](#goals)
 - [Further description of components](#further-description-of-components)
     - [API](#api)
+        - [](#overview)
+        - [](#post-create-user)
+        - [](#post-show-user)
     - [Database](#database)
+        - [Fonctionnement](#fonctionnement)
+        - [Routes](#routes)
+
 
 ## Introduction
 
-'EPF_Reseaux' aims to provide EPF students with an intranet. It enables students to communicate with each other and with campus associations.
+`EPF_Reseaux` aims to provide EPF students with an intranet. It enables students to communicate with each other and with campus associations.
+
 
 ## About
 
-'EPF_reseaux' runs on a Linux server. The API (Application Programming Interface) is coded in Node.js. The database is hosted on [mongodb](https://www.mongodb.com) ([database structure](#database)).
+`EPF_reseaux` runs on a Linux server. The API (Application Programming Interface) is coded in Node.js. The database is hosted on [mongodb](https://www.mongodb.com).
+
 
 ## Installing and running the program
 
 As the program runs under Linux, it must be installed in a Linux environment. Then, to run it, you'll need to connect it to the database.
 
+
 ### Installing
 
 To install the program, you need :
 
-1. if you are using Windows, [install Windows Subsystem for Linux](https://lecrabeinfo.net/windows-11-installer-wsl-windows-subsystem-for-linux.html) ('WSL').
+1. if you are using Windows, [install Windows Subsystem for Linux](https://lecrabeinfo.net/windows-11-installer-wsl-windows-subsystem-for-linux.html) (`WSL`).
 
-2. Then install a Linux distribution 'Ubuntu' :
-'''sh
+2. Then install a Linux distribution `Ubuntu` :
+```bash
 wsl --install -d Ubuntu
-'''
+```
 
 3. Clone the 'EPF_reseaux' file into one of Ubuntu's folders :
-'''sh
+```bash
 git clone https://github.com/mab1o/EPF_Reseaux.git # Git is already installed on unbuntu
-'''
+```
+
 
 ### Running
 
-1. Install Node Version Manager ('nvm')
+1. Install Node Version Manager (`nvm`)
 
-2. Install Node Package Manager ('npm') :
+2. Install Node Package Manager (`npm`) :
 
-'''sh
+```bash
 nvm install 16  # installs Node.js version 16
-'''
+```
 
 3. Installer les bibliothèques nécessaire dans /front et /api
 
-'''sh
+```bash
 npm i
-'''
+```
 
 4. Create config.js files in /front and .env files in /api
 
 config.js
-'''sh
+```bash
 const config = {
   IP_API: '',   # add the value of IP_API
   IP_FRONT: ''  # add the value of IP_FRONT
 };
 
 export default config;
-'''
+```
 
 .env
-'''sh
+```bash
 MONGODB_URL=""      # add value 
 JWT_TOKEN=""        # add value 
 JWT_ALGORITHM=""    # add value
@@ -81,7 +90,7 @@ JWT_AUDIENCE=""     # add value
 JWT_EXPIRES_IN=""   # add value
 JWT_ISSUER=""       # add value
 NODE_ENV=""         # add value
-'''
+```
 
 5. Launch the site
 
@@ -113,46 +122,48 @@ Dev mode for API :
 npm run dev
 ```
 
+
 ### How to use git
 
-As this project is made by students for students, here's a quick reminder of how to use **Git** and **Github**.
+As this project is made by students for students, here's a quick reminder of how to use `Git` and `Github`.
 
-- Customize your **Git** with, for example :
+- Customize your `Git` with, for example :
 
-'''sh
+```bash
 git config user.name "John Doe"             # add a user name
 git config user.email "John.Doe@gmail.com"  # add a user email
 git config --list                           # to view all parameters
-'''
+```
 
 - Adding and deleting shortcuts
 
-'''sh
+```bash
 git remote remove origin                                        # delete the shortcut origin
 git remote add origin git@github.com:Esscraye/EPF_Reseaux.git   # add the shortcut origin
 git remote add git@github.com:PSEUDO/EPF_Reseaux.git   # add the shortcut upstream
 git remote -v                                                   # to view all shortcuts
-'''
+```
 
-- Submit a modification (currently all modifications are made on the 'devel' branch)
+- Submit a modification (currently all modifications are made on the `devel` branch)
 
-'''sh
+```bash
 git status                  # check staged files
 git add exp.txt             # stage modifications
 git commit -m "mon message" # commit files
 git push upstream devel     # push on the devel branch
-'''
+```
 
 - Update local directory
 
-'''sh
+```bash
 git fetch --all          # get the latest version
 git rebase origin/devel  # validate latest version
-'''
+```
 
 ## Contribute to the project
 
 Would you like to contribute to the project? Here are some ways you can help!
+
 
 ### Road Map
 This is a list of the features planned for `EPF_Reseaux`:
@@ -162,57 +173,60 @@ This is a list of the features planned for `EPF_Reseaux`:
 - [ ] create an automatic url for each association
 - [ ] CGU - legal terms
 
+
 ### Goals
 
-**Inscription :**
-- [ ] Création d'un compte
-- [ ] Vérification de l'adresse mail
-- [ ] Connexion au compte
+- Inscription
+    - [ ] Création d'un compte
+    - [ ] Vérification de l'adresse mail
+    - [ ] Connexion au compte
 
-**Connexion :**
-- [ ] Connexion au compte
+- Connexion
+    - [ ] Connexion au compte
 
-**Mot de passe oublié :**
-- [ ] Envoie d'un mail de réinitialisation du mot de passe
-- [ ] Réinitialisation du mot de passe
+- Mot de passe oublié
+    - [ ] Envoie d'un mail de réinitialisation du mot de passe
+    - [ ] Réinitialisation du mot de passe
 
-**Accueil :**
-- [ ] Liste des discussions
-- [ ] Création d'une discussion
+- Accueil
+    - [ ] Liste des discussions
+    - [ ] Création d'une discussion
 
-**Discussion :**
-- [ ] Liste des messages
-- [ ] Ajout d'un message
-- [ ] Suppression d'un message
-- [ ] Ajout d'un fichier
-- [ ] Suppression d'un fichier
-- [ ] Suppression de la discussion
-- [ ] Ajout d'un membre
-- [ ] Suppression d'un membre
-- [ ] Modification du nom de la discussion
+- Discussion
+    - [ ] Liste des messages
+    - [ ] Ajout d'un message
+    - [ ] Suppression d'un message
+    - [ ] Ajout d'un fichier
+    - [ ] Suppression d'un fichier
+    - [ ] Suppression de la discussion
+    - [ ] Ajout d'un membre
+    - [ ] Suppression d'un membre
+    - [ ] Modification du nom de la discussion
 
-**Profil :**
-- [ ] Modification du nom
-- [ ] Modification de l'adresse mail
-- [ ] Modification du mot de passe
-- [ ] Suppression du compte
-- [ ] Déconnexion
+- Profil
+    - [ ] Modification du nom
+    - [ ] Modification de l'adresse mail
+    - [ ] Modification du mot de passe
+    - [ ] Suppression du compte
+    - [ ] Déconnexion
 
-**Admin :**
-- [ ] Liste des utilisateurs
-- [ ] Ajout d'un utilisateur
-- [ ] Modification d'un utilisateur
-- [ ] Suppression d'un utilisateur
-- [ ] Liste des discussions
-- [ ] Ajout d'une discussion
-- [ ] Modification d'une discussion
-- [ ] Suppression d'une discussion
-- [ ] Liste des messages
-- [ ] Ajout d'un message
-- [ ] Modification d'un message
-- [ ] Suppression d'un message
+- Admin
+    - [ ] Liste des utilisateurs
+    - [ ] Ajout d'un utilisateur
+    - [ ] Modification d'un utilisateur
+    - [ ] Suppression d'un utilisateur
+    - [ ] Liste des discussions
+    - [ ] Ajout d'une discussion
+    - [ ] Modification d'une discussion
+    - [ ] Suppression d'une discussion
+    - [ ] Liste des messages
+    - [ ] Ajout d'un message
+    - [ ] Modification d'un message
+    - [ ] Suppression d'un message
+
 
 ## Further description of components
+
 
 ### API
 
@@ -220,6 +234,7 @@ This is a list of the features planned for `EPF_Reseaux`:
 The API allows users to retrieve all of the users of the application in micro service through a REST architecture. This API will be mainly used for registed Accounts.
 
 It will also create own users to recover data to the platform but is in no way related to the users collected via the crawling of profiles on Social Networks.
+
 
 #### [POST] Create user
 Allows the creation of a single user.
@@ -253,6 +268,7 @@ Response :
   }
 ```
 
+
 #### [POST] Show user
 Show an user by id.
 
@@ -282,6 +298,7 @@ Response :
   }
 ```
 
+
 #### Requirements
 * node 18
 * npm or yarn or pnpm
@@ -289,12 +306,12 @@ Response :
 * mongodb (please configure config.js for link mongodb)
 
 
+
 ### Database
 
-#### **Fonctionnement de la BDD mongodb**
-<center>
-</br>
-<h3><b>Discussion</b></h3>
+#### Fonctionnement
+
+<h4><b>Discussion</b></h4>
 
 | composant | type | description |
 | :--- | :--- | :--- |
@@ -303,7 +320,7 @@ Response :
 | members | `[{ObjectId, ref: 'User'}]` | liste des membres de la discussion |
 
 </br>
-<h3 align="center"><b>Message</b></h3>
+<h4><b>Message</b></h4>
 
 | composant | type | description |
 | :--- | :--- | :--- |
@@ -312,7 +329,7 @@ Response :
 | fromDiscussion | `{ObjectId, ref: 'Discussion'}` | discussion associée |
 
 </br>
-<h3 align="center"><b>User</b></h3>
+<h4><b>User</b></h4>
 
 | composant | type | description |
 | :--- | :--- | :--- |
@@ -324,11 +341,10 @@ Response :
 | discussions | `[{ObjectId, ref: 'Discussion'}]` | liste des discussions de l'utilisateur |
 | messages | `[{ObjectId, ref: 'Message'}]` | liste des messages de l'utilisateur |
 
-</center>
 
 #### **Routes**
 
-- **Users**
+- Users
 
 | route | method | description |
 | :--- | :--- | :--- |
@@ -340,7 +356,7 @@ Response :
 | `/user/:id` | `PUT` | modification d'un utilisateur |
 | `/user/:id` | `DELETE` | suppression d'un utilisateur |
 
-- **Discussions**
+- Discussions
 
 | route | method | description |
 | :--- | :--- | :--- |
@@ -350,7 +366,7 @@ Response :
 | `/discussion/:id` | `PUT` | modification d'une discussion |
 | `/discussion/:id` | `DELETE` | suppression d'une discussion |
 
-- **Messages**
+- Messages
 
 | route | method | description |
 | :--- | :--- | :--- |
@@ -360,7 +376,7 @@ Response :
 | `/message/:id` | `PUT` | modification d'un message |
 | `/message/:id` | `DELETE` | suppression d'un message |
 
-- **Associations**
+- Associations
 
 | route | method | description |
 | :--- | :--- | :--- |
@@ -370,7 +386,7 @@ Response :
 | `/association/:id` | `PUT` | modification d'une association |
 | `/association/:id` | `DELETE` | suppression d'une association |
 
-- **SocialNetworks**
+- SocialNetworks
 
 | route | method | description |
 | :--- | :--- | :--- |
@@ -380,7 +396,7 @@ Response :
 | `/socialNetwork/:id` | `PUT` | modification des réseaux sociaux pour l'asso `id` |
 | `/socialNetwork/:id` | `DELETE` | suppression des réseaux sociaux pour l'asso `id` |
 
-- **Events**
+- Events
 
 | route | method | description |
 | :--- | :--- | :--- |
@@ -390,7 +406,7 @@ Response :
 | `/event/:id` | `PUT` | modification d'un événement |
 | `/event/:id` | `DELETE` | suppression d'un événement |
 
-- **News**
+- News
 
 | route | method | description |
 | :--- | :--- | :--- |
@@ -400,13 +416,13 @@ Response :
 | `/news/:id` | `PUT` | modification d'une actualité |
 | `/news/:id` | `DELETE` | suppression d'une actualité |
 
-- **Upload**
+- Upload
 
 | route | method | description |
 | :--- | :--- | :--- |
 | `/upload/` | `POST` | upload d'un fichier |
 
-- **Download**
+- Download
 
 | route | method | description |
 | :--- | :--- | :--- |
