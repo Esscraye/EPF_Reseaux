@@ -36,7 +36,7 @@ export default () => (`
           </div>         
           <div class="mb-4">
             <label class="form-label">Groupe de TD</label>
-            <select class="form-select class">
+            <select class="form-select grouptd">
               <option selected>Sélectionner...</option>
               <option value="1">TD E</option>
               <option value="2">TD F</option>
@@ -74,14 +74,14 @@ export default () => (`
   <h2 class="title-underline-admin">Ajouter un groupe</h2>
   <div class ="reglageT shadow-manuelle info-asso">
     <div class="size-colomn2">
-      <div class="mb-4">Identifiant
-          <input type="email" id="id_input" class="form-control border-black" placeholder="Saisir l'identifiant">
+      <div class="mb-4">Type de groupe (td, promo...)
+          <input type="text" class="form-control border-black type-addgroup-input" placeholder="Saisir l'identifiant">
         </div> 
         <div class="mb-4">Nom du groupe
-          <input type="email" id="nom_group_input" class="form-control border-black" placeholder="Saisir le nom du groupe">
+          <input type="text" class="form-control border-black name-addgroup-input" placeholder="Saisir le nom du groupe">
         </div>
         <div class="reglageD">
-          <button type="button" class="btn mb-4" id="addgroup">Ajouter</button>
+          <button type="button" class="btn mb-4 create-group-btn">Ajouter</button>
         </div>
       </div>
   </div>
@@ -92,10 +92,10 @@ export default () => (`
     <div class="reglageT shadow-manuelle info-asso">
       <div class="size-colomn2">
         <div class="mb-4">Identifiant
-          <input type="email" id="id_input" class="form-control border-black" placeholder="Saisir l'identifiant">
+          <input type="text" class="form-control border-black id-delgroup" placeholder="Saisir l'identifiant">
         </div>
         <div class="mb-4">Nom du groupe
-          <input type="email" id="#nom_groupe_input" class="form-control border-black" placeholder="Saisir le nom du groupe">
+          <input type="text" class="form-control border-black name-delgroup" placeholder="Saisir le nom du groupe">
         </div>
         <div class="reglageD">
           <button type="button" class="btn mb-4" id="delgroupbtn">Supprimer</button>

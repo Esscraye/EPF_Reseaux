@@ -11,16 +11,17 @@ const GenProfile = class GenProfile {
     this.data = { infoPerso: {} };
   }
 
-  onClickSearch() {
-    const addButton = document.querySelector('#addgroup');
+  onClickCreateGroup() {
+    const addButton = document.querySelector('.create-group-btn');
     addButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const addInputid = document.querySelector('#id_input');
-      const addInputname = document.querySelector('#nom_group_input');
-      if (addInputid.value && addInputname.value) {
+      const addInputtype = document.querySelector('.type-addgroup-input');
+      const addInputname = document.querySelector('.name-addgroup-input');
+      if (addInputtype.value && addInputname.value) {
         const body = {
-          idgroup: Number(addInputid.value),
-          namegroup: addInputname.value
+          typegroup: addInputtype.value,
+          namegroup: addInputname.value,
+          members: []
         };
         axios.post(`${config.IP_API}/group`, body)
           .then(() => {
@@ -28,7 +29,7 @@ const GenProfile = class GenProfile {
           .catch((error) => {
             throw new Error(error);
           });
-        addInputid.value = ' ';
+        addInputtype.value = ' ';
         addInputname.value = ' ';
       } else {
         console.log('Veuillez réessayer !');
@@ -36,6 +37,7 @@ const GenProfile = class GenProfile {
     });
   }
 
+  /// Fonction actuellement non fonctionnelle !
   onClickAjouter() {
     const elButton = document.querySelector('#ajouter');
     elButton.addEventListener('click', (e) => {
@@ -46,30 +48,30 @@ const GenProfile = class GenProfile {
       const elInputEmail = document.querySelector('.email');
       const elInputDescription = document.querySelector('.description');
       const elInputPromo = document.querySelector('.promo');
-      const elInputClass = document.querySelector('.class');
-      const elInputGrouptp = document.querySelector('.grouptp');
+      // const elInputGroupTd = document.querySelector('.grouptd');
+      // const elInputGrouptp = document.querySelector('.grouptp');
       if (elInputEmail.value && isEmail(elInputEmail.value)
       && elInputLastname.value
       && elInputFirstname.value
       && elInputDescription.value
-      && elInputPromo.value
-      && elInputClass.value
-      && elInputGrouptp.value) {
+      && elInputPromo.value) {
         const body = {
           lastname: elInputLastname.value,
           firstname: elInputFirstname.value,
           email: elInputEmail.value,
           description: elInputDescription.value,
-          promo: elInputPromo.options[elInputPromo.selectedIndex].text,
-          class: elInputClass.options[elInputClass.selectedIndex].text,
-          groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
+          role: elInputEmail.value
         };
         axios.post(`${config.IP_API}/user`, body, {
           headers: {
             authorization: cookie.get('token')
           }
         })
-          .then(() => {
+          .then(() => { // get the id of the user to create the group after.
+            // const groupPromo = elInputPromo.options[elInputPromo.selectedIndex].text
+            // const groupTd = elInputGroupTd.options[elInputGroupTd.selectedIndex].text
+            // const groupeTp = elInputGrouptp.options[elInputGrouptp.selectedIndex].text
+            // find each group then push the user in there.
           })
           .catch((error) => {
             throw new Error(error);
@@ -78,9 +80,6 @@ const GenProfile = class GenProfile {
         elInputFirstname.value = '';
         elInputEmail.value = '';
         elInputDescription.value = '';
-        elInputPromo.options[elInputPromo.selectedIndex].text = '';
-        elInputClass.options[elInputClass.selectedIndex].text = '';
-        elInputGrouptp.options[elInputGrouptp.selectedIndex].text = '';
       } else {
         console.log('Problem');
       }
@@ -91,19 +90,18 @@ const GenProfile = class GenProfile {
     const delButton = document.querySelector('#delgroupbtn');
     delButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const delInputid = document.querySelector('#id_input');
-      const delInputname = document.querySelector('#nom_groupe_input');
-      if (delInputid.value && delInputname.value) {
+      const delInputid = document.querySelector('.id-delgroup');
+      const delInputname = document.querySelector('.name-delgroup');
+      if (delInputid.value) {
         const idgr = delInputid.value;
-        const namegr = delInputname.value;
-        axios.delete(`${config.IP_API}/group/?idgroup=${idgr}&namegroup=${namegr}`)
+        axios.delete(`${config.IP_API}/group/${idgr}`)
           .then(() => {
           })
           .catch((error) => {
             throw new Error(error);
           });
-        delInputid.value = ' ';
-        delInputname.value = ' ';
+        delInputid.value = '';
+        delInputname.value = '';
       } else {
         console.log('Veuillez réessayer !');
       }
@@ -113,10 +111,10 @@ const GenProfile = class GenProfile {
   run() {
     new ControllerPage(ViewGenProfile(this.data));
     setTimeout(() => {
-      this.onClickSearch();
+      this.onClickCreateGroup();
       this.onClickAjouter();
       this.onClickDel();
-    }, 500);
+    }, 1000);
     // this.onHandleClick();
   }
 };
