@@ -17,8 +17,8 @@ const Home = class Home {
     elButtonAddMembre.addEventListener('click', (e) => {
       e.preventDefault();
       const elInputSearch = document.querySelector('.searchInput');
-      console.log('resultat', resultat);
-      console.log('elInputSearch', elInputSearch);
+      // console.log('resultat', resultat);
+      // console.log('elInputSearch', elInputSearch);
       if (elInputSearch.value) {
         resultat.textContent = elInputSearch.value;
         elInputSearch.value = '';

@@ -18,7 +18,7 @@ const Home = class Home {
       const response = await axios.get(`${config.IP_API}/news`);
       this.data.news = response.data;
     } catch (error) {
-      console.error('Error fetching news data:', error);
+      throw new Error('Error fetching news data:', error);
     }
   }
 
@@ -32,7 +32,7 @@ const Home = class Home {
       });
       await Promise.all(associationDataPromises);
     } catch (error) {
-      console.error('Error fetching association data:', error);
+      throw new Error('Error fetching association data:', error);
     }
   }
 

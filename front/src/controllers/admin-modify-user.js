@@ -19,24 +19,35 @@ const AdminModifyUser = class AdminModifyUser {
       const elInputFirstname = document.querySelector('.firstname');
       const elInputEmail = document.querySelector('.email');
       const elInputDescription = document.querySelector('.description');
-      const elInputPromo = document.querySelector('.promo');
-      const elInputClass = document.querySelector('.class');
-      const elInputGrouptp = document.querySelector('.grouptp');
-      if (elInputEmail.value && isEmail(elInputEmail.value) && elInputLastname.value
-      && elInputFirstname && elInputDescription && elInputPromo && elInputClass && elInputGrouptp) {
-        console.log({
-          lastname: elInputLastname.value,
-          firstname: elInputFirstname.value,
-          email: elInputEmail.value,
-          description: elInputDescription.value,
-          promo: elInputPromo.options[elInputPromo.selectedIndex].text,
-          class: elInputClass.options[elInputClass.selectedIndex].text,
-          groupetp: elInputGrouptp.options[elInputGrouptp.selectedIndex].text
-
-        });
-      } else {
-        console.log('Problem');
+      // const elInputPromo = document.querySelector('.promo');
+      // const elInputClass = document.querySelector('.class');
+      // const elInputGrouptp = document.querySelector('.grouptp');
+      const body = {};
+      if (elInputEmail.value && isEmail(elInputEmail.value)) {
+        body.email = elInputEmail.value;
       }
+      if (elInputLastname.value) {
+        body.lastname = elInputLastname.value;
+      }
+      if (elInputFirstname.value) {
+        body.firstname = elInputFirstname.value;
+      }
+      if (elInputDescription.value) {
+        body.description = elInputDescription.value;
+      }
+      /* if (elInputPromo.value) {
+        body.promo = elInputPromo.options[elInputPromo.selectedIndex].text;
+      }
+      if (elInputClass.value) {
+        body.class = elInputClass.options[elInputClass.selectedIndex].text;
+      }
+      if (elInputGrouptp.value) {
+        body.groupetp = elInputGrouptp.options[elInputGrouptp.selectedIndex].text;
+      } */
+      // localStorage.getItem('emailsearch'));
+      /* else {
+        console.log('Problem');
+      } */
     });
   }
 

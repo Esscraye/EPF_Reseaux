@@ -31,9 +31,10 @@ const GenProfile = class GenProfile {
           });
         addInputtype.value = ' ';
         addInputname.value = ' ';
-      } else {
-        console.log('Veuillez réessayer !');
       }
+      /* else {
+        console.log('Veuillez réessayer !');
+      } */
     });
   }
 
@@ -80,9 +81,10 @@ const GenProfile = class GenProfile {
         elInputFirstname.value = '';
         elInputEmail.value = '';
         elInputDescription.value = '';
-      } else {
-        console.log('Problem');
       }
+      /* else {
+        console.log('Problem');
+      } */
     });
   }
 
@@ -102,9 +104,10 @@ const GenProfile = class GenProfile {
           });
         delInputid.value = '';
         delInputname.value = '';
-      } else {
-        console.log('Veuillez réessayer !');
       }
+      /* else {
+        console.log('Veuillez réessayer !');
+      } */
     });
   }
 

@@ -40,9 +40,10 @@ const PasswordForgot = class PasswordForgot {
         window.location.href = emailContent;
 
         elInput.value = '';
-      } else {
-        console.log('Veuillez fournir une adresse email valide.');
       }
+      /* else {
+        console.log('Veuillez fournir une adresse email valide.');
+      } */
     });
   }
 

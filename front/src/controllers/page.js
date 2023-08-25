@@ -49,9 +49,10 @@ const Page = class Page {
             throw new Error(error);
           });
         elInputSearch.value = ' ';
-      } else {
-        console.log('Veuillez réessayer !');
       }
+      /* else {
+        console.log('Veuillez réessayer !');
+      } */
     });
 
     elChoices.forEach((elChoice) => {
@@ -63,9 +64,10 @@ const Page = class Page {
           conversationId = valeurId;
           localStorage.setItem('conversationId', conversationId);
           location.reload();
-        } else {
-          console.log("L'élément avec cet ID n'existe pas.");
         }
+        /* else {
+          console.log("L'élément avec cet ID n'existe pas.");
+        } */
       });
     });
 
