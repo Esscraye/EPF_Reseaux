@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { io } from 'socket.io-client';
 import ViewPage from '../views/page';
 import messD from '../views/discussion/message_droite';
 import config from '../../config';
@@ -22,6 +23,7 @@ const Page = class Page {
     this.content = content;
     this.idChat = localStorage.getItem('conversationId') || '649ae40d37cf658836fdb6ee';
     this.data = {};
+    this.socket = io(config.IP_API);
     this.run();
   }
 
@@ -83,6 +85,7 @@ const Page = class Page {
 
         const conversation = this.data.conversations.find((conv) => conv.id === conversationId);
         if (conversation) {
+          this.socket.emit('message', message);
           axios.post(`${config.IP_API}/message`, message).then();
           const conversationElement = document.getElementById(`${conversationId}`);
           const messageCountElement = conversationElement.querySelector('[data-message-count]');
@@ -266,7 +269,7 @@ const Page = class Page {
     const convs = await fetch(`${config.IP_API}/conversation/`).then((res) => res.json());
     const conversations = await convs.filter((conv) => conv.members.includes(UserId));
     const idConvs = await conversations.map((conv) => conv.id);
-    const messages = idConvs.map((conv) => fetch(`${config.IP_API}/message/${conv}`).then((res) => res.json()));
+    const messages = await idConvs.map((conv) => fetch(`${config.IP_API}/message/${conv}`).then((res) => res.json()));
     const allMessages = await Promise.all(messages);
     this.data.conversations = conversations;
     this.data.messages = allMessages.flat();
@@ -274,7 +277,6 @@ const Page = class Page {
 
   async run() {
     await this.getConversations();
-    console.log('userId', UserId);
     this.el.innerHTML = ViewPage(this.content, this.data, this.idChat, UserId);
     this.onClickSearch();
     this.OpenChat();

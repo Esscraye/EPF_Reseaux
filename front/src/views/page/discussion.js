@@ -58,19 +58,19 @@ export default (data, idChat, userId) => {
   const conversation = conversations.find((conv) => conv.id === convParameter);
   const convMessages = messages.filter((mess) => mess.fromDiscussion.id === convParameter);
 
+  let barreDiscuComponent = barreDiscuGroup('Groupe', 'https://picsum.photos/200'); // default value
+  let messagesHTML; // default value
   if (convMessages && conversation) {
-    const messagesHTML = convMessages.map((message) => (message.author.id === userId ? messD(message) : messG(message))).join('');
-    console.log(convMessages);
-    console.log(userId);
+    messagesHTML = convMessages.map((message) => (message.author.id === userId ? messD(message) : messG(message))).join('');
 
-    let barreDiscuComponent;
     if (conversation.members.length > 2) {
       barreDiscuComponent = barreDiscuGroup(conversation.name, conversation.icon);
     } else if (conversation.members.length === 2) {
       barreDiscuComponent = barreDiscuPerso(conversation.name, conversation.icon);
     }
+  }
 
-    return (`
+  return (`
       <div class="contener-chat">
         <div class="contener-chat-g liste-conv">
           <div class="container-margin">
@@ -92,7 +92,4 @@ export default (data, idChat, userId) => {
         </div>
       </div>
     `);
-  }
-
-  return "Aucune conversation de type 'group' ou 'individual' n'est disponible.";
 };
