@@ -15,15 +15,9 @@ const GenProfile = class GenProfile {
     const addButton = document.querySelector('.create-group-btn');
     addButton.addEventListener('click', (e) => {
       e.preventDefault();
-<<<<<<< HEAD
-      const addInputid = document.querySelector('#id-input');
-      const addInputname = document.querySelector('#nom-group-input');
-      if (addInputid.value && addInputname.value) {
-=======
       const addInputtype = document.querySelector('.type-addgroup-input');
       const addInputname = document.querySelector('.name-addgroup-input');
       if (addInputtype.value && addInputname.value) {
->>>>>>> 6a542a08a3709929d8ea9a914287dde35f9aec5f
         const body = {
           typegroup: addInputtype.value,
           namegroup: addInputname.value,
@@ -96,15 +90,9 @@ const GenProfile = class GenProfile {
     const delButton = document.querySelector('#delgroupbtn');
     delButton.addEventListener('click', (e) => {
       e.preventDefault();
-<<<<<<< HEAD
-      const delInputid = document.querySelector('#id-input');
-      const delInputname = document.querySelector('#nom-groupe-input');
-      if (delInputid.value && delInputname.value) {
-=======
       const delInputid = document.querySelector('.id-delgroup');
       const delInputname = document.querySelector('.name-delgroup');
       if (delInputid.value) {
->>>>>>> 6a542a08a3709929d8ea9a914287dde35f9aec5f
         const idgr = delInputid.value;
         axios.delete(`${config.IP_API}/group/${idgr}`)
           .then(() => {
