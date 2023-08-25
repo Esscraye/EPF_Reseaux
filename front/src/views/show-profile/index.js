@@ -2,14 +2,14 @@ export default (data) => {
   const { infoPerso } = data;
   return (`
     <section class="profil-intro">
-      <div class="container.fluid">
+      <div class="container-fluid">
         <div class="row mb-5" >
           <div class="col-3 container-info-prof">
             <img src="${infoPerso.image}" alt="Image utilisateur" class=" rounded-circle imageprof image-prof" id ="affprofimage">
             <div class ="text-gras">
                 ${infoPerso.firstname} ${infoPerso.lastname}
             </div>
-            <div class="">
+            <div>
               <a href="/change-profile" class="btn  btn-danger mr-2" role="button" id="btnmodifprofil">Modifier profil</a>
             </div>
           </div>

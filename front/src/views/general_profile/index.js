@@ -23,7 +23,7 @@ export default () => (`
         <option value="5">5A</option>
       </select>
       <label for="user-td" class="form-label">Groupe de TD</label>
-      <select id="user-td" class="form-select class mb-4">
+      <select id="user-td" class="form-select grouptd mb-4">
         <option selected>Sélectionner...</option>
         <option value="1">TD E</option>
         <option value="2">TD F</option>
@@ -54,21 +54,21 @@ export default () => (`
 <section class="general-profile-form">
   <h2>Ajouter un groupe</h2>
   <form class ="column-setting info-asso">
-      <label for="id-input" class="form-label">Identifiant</label>
-      <input type="text" id="id-input" class="form-control border-black mb-4" placeholder="Saisir l'identifiant">
-      <label for="nom-group-input" class="form-label">Nom du groupe</label>
-      <input type="text" id="nom-group-input" class="form-control border-black mb-4" placeholder="Saisir le nom du groupe">
-      <input type="submit" class="btn mb-4 " id="addgroup" value="Ajouter">
+      <label for="id-adinput" class="form-label">Type de groupe (td, promo...)</label>
+      <input type="text" id="id-adinput" class="form-control border-black mb-4 type-addgroup-input" placeholder="Saisir l'identifiant">
+      <label for="nom-adgroup-input" class="form-label">Nom du groupe</label>
+      <input type="text" id="nom-adgroup-input" class="form-control border-black mb-4 name-addgroup-input" placeholder="Saisir le nom du groupe">
+      <input type="submit" class="btn mb-4 create-group-btn" value="Ajouter">
   </form>
 </section>
 <section class="general-profile-form">
   <h2>Supprimer un groupe</h2>
   <form class="column-setting info-asso">
-    <label for="id-input" class="form-label">Identifiant</label>
-    <input type="text" id="id-input" class="form-control border-black mb-4" placeholder="Saisir l'identifiant">
-    <label for="nom-group-input" class="form-label">Nom du groupe</label>
-    <input type="text" id="nom-groupe-input" class="form-control border-black mb-4" placeholder="Saisir le nom du groupe">
-    <input type="submit" class="btn mb-4" id="delgroupbtn" value="Supprimer">
+    <label for="id-delinput" class="form-label">Identifiant</label>
+    <input type="text" id="id-delinput" class="form-control border-black mb-4 id-delgroup" placeholder="Saisir l'identifiant">
+    <label for="nom-delgroup-input" class="form-label">Nom du groupe</label>
+    <input type="text" id="nom-delgroupe-input" class="form-control border-black mb-4" placeholder="Saisir le nom du groupe">
+    <input type="submit" class="btn mb-4 name-delgroup" id="delgroupbtn" value="Supprimer">
   </form>
 </section>
 `);

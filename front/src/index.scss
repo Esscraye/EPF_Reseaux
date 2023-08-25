@@ -34,9 +34,9 @@
 /* Général  variables*/
 /* ================================================== */
 
-$main-color :#1a1e21;
+$main-color : #1a1e21;
 $secondary-color : lightgray;
-$thirdary-color :#ef3d3d;
+$thirdary-color : #ef3d3d;
 $text-color : black;
 $back-color : white;
 
@@ -50,7 +50,7 @@ $mess-d : #dedede;
 /* ================================================== */
 
 @mixin btn-shadow {
-    box-shadow : -5px -5px 15px rgba(255,255,255,0.2),
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.2),
                 10px 10px 15px rgba(0,0,0,0.1),
                 inset 5px 5px 15px rgba(255,255,255,0.2),
                 inset -5px -5px 15px rgba(0,0,0,0.1);
@@ -1034,7 +1034,7 @@ input, textarea{
 }
 
 .titre-manuelle{
-    color: $main-color;
+    color: $text-color;
     font-size: 18px;
     text-transform: capitalize;
     margin-bottom: 35px;
@@ -1043,7 +1043,7 @@ input, textarea{
 }
 
 .text-manuelle{
-    color: $main-color;
+    color: $text-color;
 }
 
 .titre-manuelle::before{
@@ -1072,7 +1072,7 @@ input, textarea{
 }
 
 .title-underline{
-    color: $main-color;
+    color: $text-color;
     font-size: 30px;
     margin-bottom: 20px;
     position: relative;

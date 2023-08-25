@@ -17,7 +17,7 @@ export default () => (`
     </div>
   </div>
   <div class="cont-foot">
-    <h4>quick Links</h4>
+    <h4>Quick Links</h4>
     <a href="/" id="ACC2">Accueil</a>
     <a href="/homeAssos" id="ASS2">Association</a>
     <a href="/profil" id="PRO2">profil</a>
