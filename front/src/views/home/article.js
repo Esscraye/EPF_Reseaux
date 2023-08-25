@@ -5,7 +5,7 @@ export default (newsItem, association) => {
   const { name, logo, id } = association;
 
   return (`
-    <div class="card text-center actu my-3 shadow-manuelle">
+    <div class="card text-center actu my-3">
       <div class="card-header">
         <div class="row">
           <div class="col-1">
