@@ -15,8 +15,8 @@ const GenProfile = class GenProfile {
     const addButton = document.querySelector('#addgroup');
     addButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const addInputid = document.querySelector('#id_input');
-      const addInputname = document.querySelector('#nom_group_input');
+      const addInputid = document.querySelector('#id-input');
+      const addInputname = document.querySelector('#nom-group-input');
       if (addInputid.value && addInputname.value) {
         const body = {
           idgroup: Number(addInputid.value),
@@ -91,8 +91,8 @@ const GenProfile = class GenProfile {
     const delButton = document.querySelector('#delgroupbtn');
     delButton.addEventListener('click', (e) => {
       e.preventDefault();
-      const delInputid = document.querySelector('#id_input');
-      const delInputname = document.querySelector('#nom_groupe_input');
+      const delInputid = document.querySelector('#id-input');
+      const delInputname = document.querySelector('#nom-groupe-input');
       if (delInputid.value && delInputname.value) {
         const idgr = delInputid.value;
         const namegr = delInputname.value;

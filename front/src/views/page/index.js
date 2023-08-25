@@ -8,12 +8,14 @@ export default (content, data, idChat, userId) => (`
   </header>
   <main>
     ${content}
-    <div id="chat-btn">
-      <button href="#" class="chat open-button"><i class="ri-chat-smile-3-line"></i></button>
-    </div>
-    <dialog class="modal" id="modal">
-      ${chat(data, idChat, userId)}
-    </dialog>
+    <section class="chat-section">
+      <div class="chat-btn" id="chat-btn">
+        <button href="#" class="chat open-button"><i class="ri-chat-smile-3-line"></i></button>
+      </div>
+      <dialog class="modal" id="modal">
+        ${chat(data, idChat, userId)}
+      </dialog>
+    </section>
   </main>
   <footer>
     ${footer()}

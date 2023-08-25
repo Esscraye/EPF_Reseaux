@@ -1,5 +1,5 @@
 export default () => (`
-<main class="contener-conn">
+<main class="password-section">
   <div class="sect-2 conn-border shadow-manuelle">
     <div>
       <img src="/images/logo.png" alt="logo epf" width="100" height="100">
@@ -17,7 +17,7 @@ export default () => (`
         <button type="submit" class="btn bt connection">Connexion</button> 
       </div>
     </form>
-    <a href="/password-forgot" class="underline-connect link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mot de passe oublié ?</a>
+    <a href="/password-forgot" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mot de passe oublié ?</a>
   </div>
 </main>
 `);
