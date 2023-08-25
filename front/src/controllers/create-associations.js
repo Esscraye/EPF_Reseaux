@@ -60,11 +60,12 @@ const Home = class Home {
           .catch((error) => {
             throw new Error(error);
           });
-      } else {
+      }
+      /* else {
         console.log({
           result: 'Problem'
         });
-      }
+      } */
     });
   }
 

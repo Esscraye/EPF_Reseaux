@@ -108,7 +108,8 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         button.addEventListener('click', async (e) => {
           e.preventDefault();
           const idAssoc = button.getAttribute('id');
-          const dialog = confirm("Supprimer l'association ?");
+          // const dialog = confirm("Supprimer l'association ?"); // need to recode confirm()
+          const dialog = true; // need to recode our own confirm()
           if (dialog) {
             try {
               // Supprimer l'association
@@ -118,13 +119,14 @@ const AssoSuperAdmin = class AssoSuperAdmin {
               const filteredNews = response.data.filter((news) => news.idAsso === idAssoc);
               const newsIds = filteredNews.map((news) => news.id);
               await Promise.all(newsIds.map((newsId) => axios.delete(`${config.IP_API}/news/${newsId}`)));
-              alert('Association et actualités supprimées');
+              // alert('Association et actualités supprimées'); // need to recode our own alert
             } catch (error) {
               throw new Error("Erreur lors de la suppression de l'association et des actualités");
             }
-          } else {
-            alert('annulation de la demande');
           }
+          /* else {
+            alert('annulation de la demande'); // need to recode our own alert
+          } */
         });
       });
     }
@@ -138,18 +140,20 @@ const AssoSuperAdmin = class AssoSuperAdmin {
         elButtonActu.addEventListener('click', async (e) => {
           e.preventDefault();
           const newsId = elButtonActu.getAttribute('id');
-          const dialog = confirm("Supprimer l'actualité ?");
+          // const dialog = confirm("Supprimer l'actualité ?"); // need to recode our own confirm()
+          const dialog = true; // need to recode our own confirm()
           if (dialog) {
             try {
               await axios.delete(`${config.IP_API}/news/${newsId}`);
-              alert('actualité supprimée');
+              // alert('actualité supprimée'); // need to recode our own alert
               location.reload();
             } catch (error) {
               throw new Error("Erreur lors de la suppression de l'actualité");
             }
-          } else {
-            alert('annulation de la demande');
           }
+          /* else {
+            alert('annulation de la demande'); // need to recode our own alert
+          } */
         });
       });
     }
