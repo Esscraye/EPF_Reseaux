@@ -368,6 +368,10 @@ footer {
             div:hover {
                 background-color: $main-color;
                 padding-bottom: 5px;
+
+                i {
+                    color: $thirdary-color;
+                }
             }
         }
     }
@@ -396,7 +400,10 @@ footer {
             font-weight: 700;
             font-size: 30px;
             background-color: $main-color;
-            color: $main-color;
+
+            i {
+                color: $back-color;
+            }
         }
         
         .chat:before {
@@ -425,7 +432,7 @@ footer {
         }
     }
 
-    .modal{
+    .modal {
         max-width: 100%;
         max-height: 100%;
         border: 0;
@@ -490,7 +497,7 @@ footer {
         justify-content: center;
         text-align: center;
         align-items: center;    
-        
+
         .image-prof {
             width: 200px;
             height: 200px;
@@ -889,7 +896,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, $thirdary-color, $main-color);
+    background: linear-gradient(45deg, #b43030, #ff9e02);
 
     .sect-2 {
         display: grid;
