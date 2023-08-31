@@ -72,14 +72,12 @@ export default (data, idChat, userId) => {
 
   return (`
       <div class="contener-chat">
-        <div class="contener-chat-g liste-conv">
-          <div class="container-margin">
+        <div class="contener-chat-g">
             ${selection}
-          </div>
         </div>
-        <div class="contener-chat-d messages-container">
+        <div class="contener-chat-d">
           ${barreDiscuComponent}
-          <div class="messages messages-size">
+          <div class="messages">
             ${messagesHTML}
           </div>
           <div class="row border border-secondary border-3 mt-2 me-1">
