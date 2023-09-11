@@ -5,43 +5,51 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
 
 /* ================================================== */
-/* Table of contents*/
+/*CLEANING STATUS*/
 /* ================================================== */
-/*
-- ABSTRACT variables
-- ABSTRACT mixins
-- ABSTRACT elements
-- PAGE HEADER
-- PAGE FOOTER
-- PAGE CHAT
-- SHOW PROFILE
-- PASSWORD FORGOTTEN
-- HOME PAGE
-- GENERAL PROFILE
-- DISCUSSION
-- CONNECTION
-- CHANGE PROFILE
-- ASSOCIATION PAGE
-- ASSO SUPER ADMIN
+
+/*  Section                    status
+
+- General variables             NO
+- General mixins                NO
+- General elements              NO
+- index.js ???                  NO
+- Partie ajout d'un groupe      NO
+- PAGE HEADER                   YES
+- PAGE FOOTER                   YES
+- PAGE CHAT                     YES
+- SHOW PROFILE                  YES
+- PASSWORD FORGOTTEN            YES
+- HOME PAGE                     YES
+- GENERAL PROFILE               YES
+- DISCUSSION                    NO
+- DELETE GROUP                  NO
+- CONNECTION                    YES
+- CHANGE PROFILE                NO
+- ASSOCIATION PAGE              NO
+- ASSO SUPER ADMIN              YES
 */
 
 /* ================================================== */
-/* ABSTRACT  variables */
+/* Général  variables*/
 /* ================================================== */
 
-$main-color : #1a1e21;
+$main-color : #ffdcdc;// #1a1e21;
 $secondary-color : lightgray;
 $thirdary-color : #ef3d3d;
 $text-color : black;
-$back-color : white;
+$back-color : black; //white
+$bg-color : white;
+
+
+/* remove when clean finish*/
+$mess-g : #fc8769;
+$mess-d : #dedede;
+/* remove when clean finish*/
 
 /* ================================================== */
-/* ABSTRACT  mixins */
+/* Général  mixins*/
 /* ================================================== */
-
-@mixin simple-shadow {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
 
 @mixin btn-shadow {
     box-shadow: -5px -5px 15px rgba(255,255,255,0.2),
@@ -54,7 +62,6 @@ $back-color : white;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
     border: solid 1px darken($secondary-color, 50%);
     background: $secondary-color;
-    border-radius: 10px;
 }
 
 @mixin logo-area {
@@ -78,7 +85,7 @@ $back-color : white;
     }
 }
 
-@mixin red-underline($width-line, $left-position) {
+@mixin red-underline($width-line){
     & {
         position: relative;
     }
@@ -86,7 +93,7 @@ $back-color : white;
     &::before {
         content: '';
         position: absolute;
-        left: $left-position;
+        left: 0;
         bottom: -5px;
         background-color: $thirdary-color;
         height: 2px;
@@ -94,37 +101,24 @@ $back-color : white;
     }
 }
 
-@mixin message-box($color){
-    width: 100%;
-    border: 1px solid black;
-    position: relative;
-    text-align: center;
-    padding: 7px 10px;
-    color: $text-color;
-    border-radius: 10px;
-    font-size: 18px;
-    word-wrap: break-word;
-    background-color: $color;
-}
-
 /* ================================================== */
-/* ABSTRACT  elements */
+/* Général  elements*/
 /* ================================================== */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: $text-color;
-    font-family: "Roboto", sans-serif;
-    font-size: 1em;
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    color : $text-color;
+    font-family : "Roboto", sans-serif;
+    font-size : 1em;
 }
 
 body {
-    overflow: hidden;
-    overflow-y: auto;
-    background-color: $back-color;
-    min-height: 100%;
+    overflow : hidden;
+    overflow-y : auto;
+    background-color : $bg-color;
+    min-height : 100%;
 }
 
 main {
@@ -133,40 +127,86 @@ main {
 }
 
 a {
-    text-decoration: none;
+    text-decoration : none;
 }
 
 .btn {
-    background-color: $secondary-color;
-    border: 1px solid $main-color;
-    color: $text-color; // remove when bootstrap is gone
+    background-color : $secondary-color;
+    border : 1px solid $main-color;
+    color : $text-color; // remove when bootstrap is gone
 }
 
 .btn:hover {
-    background-color: $thirdary-color;
+    background-color : $thirdary-color;
     @include btn-shadow;
-    color: $back-color;
+    color : $back-color;
 }
 
-input, textarea {
-    background-color: color.adjust($secondary-color, $lightness: 15%) !important; // remove important when bootstrap is gone
-    border: solid 2px darken($secondary-color, 20%) !important; // remove important when bootstrap is gone
-    
+input {
+    background-color : $secondary-color;
+    border : solid 2px darken($secondary-color, 40%);
 }
 
-input:hover, textarea:hover {
-    background-color: color.adjust(lightgray, $lightness: 10%) !important; // remove important when bootstrap is gone
-}
-
-img {
+img{
     object-fit: cover;
 }
 
-/* remove when possible*/
-.shadow-manuelle {
+/* remove when clean is finish*/
+.shadow-manuelle{
     @include box-border-shadow;
 }
-/* remove when possible*/
+/* remove when clean is finish*/
+
+/* ================================================== */
+/* dossier ? */
+/* ================================================== */
+
+.asso_admin{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll !important;
+    height: 32vh !important;
+}
+
+.form-label-1{
+    position: relative;   
+    right: 255px;
+}
+
+.form-label-2{
+    position: relative;   
+    right: 247px;
+}
+
+.form-label-4{
+    position: relative;   
+    right: 234px;
+}
+
+.Enregistrer{
+    height: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================================================== */
+/* Partie ajout d'un groupe */
+/* ================================================== */
+
+.ajt_groupe {
+    margin-bottom: 60px;
+    text-align: left;
+    margin-left: 130px;
+}
+
+#exampleFormControlInputid1 {
+    width : 20% ; 
+}
+
+#exampleFormControlInputid2 {
+    width : 20%;
+}
 
 /* ================================================== */
 /* PAGE HEADER */
@@ -283,20 +323,20 @@ footer {
         text-transform: capitalize;
 
         h4 {
-            @include red-underline(50px,0);
+            @include red-underline(50px);
             font-size: 18px;
             color: $back-color;
             margin-bottom: 35px;
             font-weight: 500;
         }
 
-        > a {
+        & > a {
             font-size: 16px;
             color: $back-color;
             position: relative;
         }
 
-        > a::after {
+        & > a::after {
             content: "";
             position: absolute;
             left: 0px;
@@ -308,7 +348,7 @@ footer {
             transition: transform 0.3s ease; 
         }
 
-        > a:hover::after {
+        & > a:hover::after {
             transform: scaleX(1); 
         }
         
@@ -399,7 +439,7 @@ footer {
         max-height: 100%;
         border: 0;
 
-        > * {
+        & > * {
             margin: 0 0 0.5rem 0;
         }
         
@@ -506,7 +546,7 @@ footer {
         overflow-y: scroll;
         height: 72vh;
 
-        > div {
+        & > div {
             @include box-border-shadow;
         }
 
@@ -523,6 +563,7 @@ footer {
             @include box-border-shadow;
             width: 70%;            
             margin: auto;
+            border-radius: 10px;
 
             h2 {
                 text-align: center;
@@ -545,7 +586,7 @@ footer {
     padding-left: 20px;
 
     h2 {
-        @include red-underline(20%,0);
+        @include red-underline(20%);
         width: 30%;
         font-size: 30px;
         margin-bottom: 20px;
@@ -554,6 +595,7 @@ footer {
     form {
         @include box-border-shadow;
         width: 70%;
+        border-radius: 10px;
         padding-top: 20px;
         margin: auto;
     }
@@ -563,7 +605,7 @@ footer {
         justify-content: center;
         gap: 20px;
 
-        > div {
+        & > div {
             width: 45%;
         }
     }
@@ -575,7 +617,7 @@ footer {
         justify-content: center;
         align-items: center;
 
-        > *:not(input[type="submit"]) {
+        & > *:not(input[type="submit"]) {
             width: 95%;
         }
 
@@ -589,160 +631,262 @@ footer {
 /* DISCUSSION */
 /* ================================================== */
 
-.contener-chat {    
+.liste-conv{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.liste-conv::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.liste-conv::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.messages{
+    overflow-y: scroll;
+    overflow-x: hidden ;
+}
+
+.messages::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.messages-size{
+    height: 400px;
+}
+
+.messages-container{
     height: 100vh;
-    padding: 0% 1%;
+}
+
+.bulle{
+    border-radius: 50%;
+    height: 40px;
+}
+
+.btn-fermeture{
+    width: 40px;
+    border-radius: 100%;
+}
+
+.close-btn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: $thirdary-color;
+}
+
+.contener-chat{
     display: flex;
     justify-content: space-between;
-    background-color: $back-color;
+    background-color: $back-color; 
+}
 
-    .contener-chat-g{        
-        height: 96%;
-        width: 30%;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        background-color: $thirdary-color;
+.contener-chat-g{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 1%;
+    justify-content: center;
+}
 
-        &::-webkit-scrollbar {
-            width: 0.5em;
+.contener-chat-d {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+    margin-right: 1%;
+    justify-content: center;
+}
 
-            &-thumb {
-                background-color: darken($secondary-color,20%);
-            }
-        }
-            
-        .list-group-horizontal {
-            margin: 5px auto;
-            padding: 8px;
-            width: 90%;
-            border: 1px solid $main-color;
-            border-radius: 25px;
-            background-color: $thirdary-color;
-            @include simple-shadow;
-            
-            &:hover {
-                background-color: darken($thirdary-color, 30%);
-            }
+.container-margin{
+    background-color: $thirdary-color;
+    border-radius: 25px;
+    height: 96%;
+}
 
-            a {
-                display: flex;
-                text-decoration: none;
-                margin-left: 15px;
-                    
-                .icone-cercle {
-                    border-radius: 100%;
-                    border: solid 1px $main-color;
-                    height: 30px;
-                    width: 30px;
-                }
+.barre-discu {
+    display: flex;
+    background-color: $thirdary-color;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $main-color;
+    padding: 1% 1% 1% 1%;
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
 
-                .name-selec {
-                    margin-left: 10px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    flex-grow: 0;
-                    flex-basis: 83%;
-                    white-space: nowrap;
-                    color: white;
-                }
-            }
-        }
-    }
+.barre-intern {
+    display: flex;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+}
 
-    .contener-chat-d {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 66%;
-        
-        .barre-discu {
-            padding: 1%;
-            border-radius: 25px;
-            border: 1px solid $main-color;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            @include simple-shadow;
-            background-color: $thirdary-color;
-            
-            .barre-intern {
-                display: flex;
-                text-align: center;
-                margin-left: 0;
-                margin-right: 0;
+.icone-discu {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    max-width: 25%;
+    margin-bottom: 0.25rem;
+}
 
-                .name-discu {
-                    flex: 0 0 100%;
-                    align-items: center;
-                    max-width: 100%;
-                    margin-left: 1.5rem;
-                    margin-bottom: 7px;
-                    color: $back-color;
-                    white-space: nowrap;
-                }
-            }
- 
-            .cross-discu {
-                display: flex;
-                margin-top: auto;
-                justify-content: center;
-                align-items: center;
-                padding-top: 0.25rem;
-                margin-bottom: 9px;
+.name-discu {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 1.5rem;
+    align-items: center;
+    color: white;
+    white-space: nowrap;
+    margin-bottom: 7px;
+}
 
-                .bloquer {
-                    padding-right: 25px;
-                    margin-right : 1rem;
-                }
+.cross-discu {
+    display: flex;
+    margin-top: auto;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.25rem;
+    margin-bottom: 9px;
+}
 
-                .close-btn {
-                    width: 30px;
-                    height: 30px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border: none;
-                    background-color: $thirdary-color;
+.info-discu-barre {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
 
-                    .btn-fermeture {
-                       width: 40px;
-                    }
-                }
-            }
-        }
+.bloquer{
+    padding-right: 25px;
+}
 
-        .messages {
-            overflow-y: scroll;
-            overflow-x: hidden ;
-            height: 400px;
+.list-group-horizontal {
+    border: 1px solid $main-color;
+    border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 25px;
+    background-color: $thirdary-color;
+    margin-top: 10px;
+    margin-bottom: 0;
+    background-color: #e13535;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    width: 90%;
+}
 
-            &::-webkit-scrollbar {
-                width: 0.5em;
+.list-group-horizontal:hover{
+    background-color: #be1e1e;
+}
 
-                &-thumb {
-                    background-color: #888;
-                }
-            }
+.test {
+    display: flex;
+    text-decoration: none;
+    margin-left: 15px;
+}
 
-            .position-mess {
-                width: auto;
-                max-width: 40%;
-            }
+.icone-selec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-            .message-txt-droite {
-                @include message-box($secondary-color);
-            }
+.name-selec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-left: 10px;
+    flex-grow: 0;
+    flex-basis: 83%;
+    white-space: nowrap;
+}
 
-            .message-txt-gauche {
-                @include message-box(color.adjust($thirdary-color, $lightness: 30%));
-            }
-        }       
-    } 
+.message-txt-droite {
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $text-color;
+    border-radius: 10px;
+    font-size: 18px;
+    word-wrap: break-word;
+    background-color: $mess-d;
+}
+
+.message-txt-gauche {
+    position: relative;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: 1px solid black;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    word-wrap: break-word;
+    background-color: $mess-g;
+    text-align: center;
+    color: $text-color;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.position-mess {
+    width: auto;
+    max-width: 40%;
+}
+
+[data-message-count] {
+    margin-left: 10px;
+}
+
+.icone-cercle {
+    border-radius: 100%;
+    border: solid 1px $main-color;
+    height: 30px;
+    width: 30px;
+}
+
+/* ================================================== */
+/* DELETE GROUP */
+/* ================================================== */
+
+.ajt_groupe{
+  margin-top: 40px;
+  margin-bottom: 60px;
+  text-align: left;
+  margin-left: 130px;
+}
+#txtaddbtn{
+  text-align: left;
+  margin-left: 130px; 
+}
+#identifiant_input {
+  width : 20% ; 
+}
+
+#nom_groupe_input {
+  width : 20%;
+}
+
+#addgroupbtn {
+  background-color: #b43030;
+  border-color: #b43030;
+  color : white;
+  width : 8%; 
 }
 
 /* ================================================== */
@@ -760,6 +904,7 @@ footer {
         display: grid;
         padding: 2%;
         width: 30em;
+        border-radius: 10px;
         text-align: center;
         align-items: center;
         background: $secondary-color;
@@ -775,133 +920,209 @@ footer {
 /* CHANGE PROFILE */
 /* ================================================== */
 
-.recherche-profil {
+.titre-recherche{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.recherche-profil{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 10%;
-
-    .contener-show-profile {
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        @include box-border-shadow;
-
-        .image-proportionnelle {
-            width: 80%;
-            height: 50%;
-            border-radius: 100%;
-            margin: 10px 0px;
-            background-color: $main-color;
-            border: solid $thirdary-color;
-        }
-
-        .modif-profil {
-            font-size: smaller;
-            margin: 1em 0px;
-        }
-
-        h1 {
-            font-size: small;
-        }
-    }
-    
-    .contener-show-profile2 {
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        text-align: justify;
-        align-items: baseline;
-        @include box-border-shadow;
-        
-        .taille-modif {
-            width: 100%;
-        }
-
-        .position-btn-modif {
-            display: flex;
-            justify-content: center;
-        }
-
-        .enregistrer-modif {
-            margin-top:1em;
-            width:50%;
-        }
-    }
+    margin: 0 10% 0 10%;
 }
 
 .recherche-profil2{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     width: 100%;
+    margin: 0;
+}
 
-    .contener-show-profile3{
-        width: 80%;
-        margin-top: 40px;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: $secondary-color;
-        @include box-border-shadow;
-    }
+.zone-texte{
+    width:15em;
+}
 
-    .form-taille{
-        width: 60%;
-    }
+.enregistrer-modif{
+    margin-top:1em;
+    width:50%;
+}
+
+.image-proportionnelle {
+    width: 80%;
+    height: 50%;
+    border-radius: 100%;  
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: $main-color;
+    border: solid $thirdary-color;
+}
+
+textarea:hover{
+    background-color: #e1e1e18d !important;
+}
+
+input:hover{
+    background-color: #e1e1e18d !important;
+}
+
+input, textarea{
+    background-color: #ffffff8d !important;
+}
+
+.modif-profil{
+    justify-content: center;
+    font-size:smaller;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.info-profil{
+    font-size: small;
+}
+
+.contener-show-profile{
+    height: auto;
+    width: 20%;
+    border-radius: 10px;
+    text-align: justify;
+    align-items: center;
+    background: $secondary-color;
+    display: flex;
+    flex-direction: column;
+}
+
+.contener-show-profile2{
+    height: auto;
+    width: 60%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    align-items: baseline;
+    background: $secondary-color;
+}
+
+.contener-show-profile3{
+    height: auto;
+    width: 80%;
+    border-radius: 10px;
+    text-align: justify;
+    align-items: center;
+    background: $secondary-color;
+    margin-top: 40px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-taille{
+    width: 60%;
+}
+
+.taille-modif{
+    width: 100%;
+}
+
+.position-btn-modif{
+    display: flex;
+    justify-content: center;
 }
 
 /* ================================================== */
 /* ASSOCIATION PAGE */
 /* ================================================== */
 
-.asso-presentation {
+.img-manuelle{
+    width: 90%;
+    height: 70%;
+    margin: 10px 10px 10px 10px;
+}
 
-    .title-underline {
-        font-size: 30px;
-        margin: 20px 0px;
-        width: 20%;
-        @include red-underline(20%,1);
-    }
+.titre-manuelle{
+    color: $text-color;
+    font-size: 18px;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
 
-    .asso-contener {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
+.text-manuelle{
+    color: $text-color;
+}
 
-        .asso-box {       
-            transition: all 0.4s ease;
-            @include box-border-shadow;
-            
-            &:hover{
-                transform: translateY(-10px);
-            }
-            
-            .aspect-ratio-wrapper {
-                position: relative;
-                padding-bottom: 100%; // Card height
-                overflow: hidden;
-            }
-        }
- 
-        .card-img-top { // asso logo
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            margin: 10px;
-        }
+.titre-manuelle::before{
+   content: '';
+   position: absolute;
+   left: 1;
+   bottom: -15px;
+   background-color:$thirdary-color;
+   height: 2px;
+   box-sizing: border-box;
+   width: 50%;
+}
 
-        .asso-title {
-            font-size: 18px;
-            margin-bottom: 35px;
-            position: relative;
-            @include red-underline(50%,1);
-        }
-    }
+.box-manuelle{
+    transition: all 0.4s ease;
+}
+
+.box-manuelle:hover{
+    transform: translateY(-10px);
+}
+
+.contener-manuelle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-underline{
+    color: $text-color;
+    font-size: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 20%;
+    margin-top: 20px;
+}
+
+.title-underline::before{
+    content: '';
+    position: absolute;
+    left: 1;
+    bottom: -2px;
+    background-color:$thirdary-color;
+    height: 2px;
+    box-sizing: border-box;
+    width: 20%;
+}
+
+.contener-manuelle {
+    display: flex;
+    align-items: stretch;
+}
+  
+.box-manuelle {
+    display: flex;
+    flex-direction: column;
+}
+  
+.aspect-ratio-wrapper {
+    position: relative;
+    padding-bottom: 100%; /* Hauteur de la carte */
+    overflow: hidden;
+}
+  
+.card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* ================================================== */
@@ -911,11 +1132,7 @@ footer {
 .actu-manuelle {
     background-color: $back-color;
     border: none;
-    min-height: 70%;    
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    height: 32vh;
+    min-height: 70%;
 }
 
 .art-border {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { io } from 'socket.io-client';
 import ViewPage from '../views/page';
-import messD from '../views/discussion/message_droite';
+import messD from '../../../EPF_Reseaux/front/src/views/discussion/message_droite';
 import config from '../../config';
 
 let conversationId = localStorage.getItem('conversationId') || '1';

@@ -3,7 +3,7 @@ import cookie from 'js-cookie';
 import config from '../../config';
 import ControllerPage from './page';
 import ViewAssoSuperAdmin from '../views/asso-super-admin';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const AssoSuperAdmin = class AssoSuperAdmin {
   constructor() {

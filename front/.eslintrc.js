@@ -1,14 +1,25 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
-  extends: [
-    'airbnb-base',
+  extends: 'airbnb',
+  overrides: [
+    {
+      env: {
+        node: true
+      },
+      files: [
+        '.eslintrc.{js,cjs}'
+      ],
+      parserOptions: {
+        sourceType: 'script'
+      }
+    }
   ],
   parserOptions: {
-    ecmaVersion: 13,
-    sourceType: 'module',
+    ecmaVersion: 'latest',
+    sourceType: 'module'
   },
   rules: {
     'class-methods-use-this': 0,

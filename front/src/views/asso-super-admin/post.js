@@ -26,7 +26,7 @@ export default (data, permissions) => {
   } = data;
   const { news } = permissions;
   return (`
-    <div class="card m-2 art-border">
+    <div class="card m-2 shadow-manuelle art-border">
       <div class="row g-0 my-1">
         <div class="col-3">
           <img src="${img}" width="200" height="200" class=" rounded-start" alt="image_du_post">
