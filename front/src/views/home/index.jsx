@@ -6,8 +6,7 @@ import config from '../../../config';
 const fetchAssociationDataNews = async () => {
   try {
     const response = await axios.get(`${config.IP_API}/news`);
-    const newsData = response.data;
-    return newsData;
+    return response.data;
   } catch (error) {
     throw new Error('Error fetching news data:', error);
   }
