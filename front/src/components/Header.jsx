@@ -32,22 +32,24 @@ const navLinks = [
 function Header() {
   return (
     <header>
-      <div className="left-side">
-        <div className="navbar-brand logo-space">
-          <img src="/assets/logo.png" alt="logo" />
-          <h5>EPF Intranet :</h5>
+      <nav>
+        <div className="left-side">
+          <div className="navbar-brand logo-space">
+            <img src="/assets/logo.png" alt="logo" />
+            <h5>EPF Intranet :</h5>
+          </div>
+          <div className="nav-links">
+            {navLinks.map((nav) => (
+              <Link to={nav.path} className="btn" id={nav.id} key={nav.id}>{nav.title}</Link>
+            ))}
+          </div>
+          <img src="/assets/menu-btn.png" className="btn menu-hamburger" alt="menu" />
         </div>
-        <div className="nav-links">
-          {navLinks.map((nav) => (
-            <Link to={nav.path} className="btn" id={nav.id} key={nav.id}>{nav.title}</Link>
-          ))}
-        </div>
-        <img src="/assets/menu-btn.png" className="btn menu-hamburger" alt="menu" />
-      </div>
-      <form className="d-flex nav-search" role="search">
-        <input className="form-control me-2 input-col" id="navpageinputsearch" type="search" placeholder="Recherche" aria-label="Search" />
-        <button className="btn btn-outline-success" id="navpagebutton" type="button">Rechercher</button>
-      </form>
+        <form className="d-flex nav-search" role="search">
+          <input className="form-control me-2 input-col" id="navpageinputsearch" type="search" placeholder="Recherche" aria-label="Search" />
+          <button className="btn btn-outline-success" id="navpagebutton" type="button">Rechercher</button>
+        </form>
+      </nav>
     </header>
   );
 }
