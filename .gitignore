@@ -14,3 +14,4 @@ api/yarn.lock
 api/package-lock.json
 api/.env
 .idea/
+.ssl/
