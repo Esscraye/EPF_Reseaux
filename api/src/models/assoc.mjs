@@ -10,6 +10,10 @@ const AssocSchema = new mongoose.Schema(
     descriptionTeam: String,
     mail: String,
     phone: String,
+    funder: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
     socialNetworks: {
       instagram: String,
       discord: String,

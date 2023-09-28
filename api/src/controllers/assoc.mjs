@@ -292,6 +292,31 @@ const Assoc = class Assoc {
     });
   }
 
+  isFunder() {
+    this.app.get('/funder/:idassoc/:iduser', (req, res) => {
+      try {
+        this.AssocModel.findById(req.params.idassoc).then((assoc) => {
+          if (assoc.funder === req.params.iduser) {
+            res.status(200).json({ isFunder: true });
+          } else {
+            res.status(200).json({ isFunder: false });
+          }
+        }).catch(() => {
+          res.status(500).json({
+            code: 500,
+            message: 'Internal Server error'
+          });
+        });
+      } catch (err) {
+        console.error(`[ERROR] assoc/:id -> ${err}`);
+        res.status(400).json({
+          code: 400,
+          message: 'Bad request'
+        });
+      }
+    });
+  }
+
   run() {
     this.createAssoc();
     this.showAllAssoc();
@@ -303,6 +328,8 @@ const Assoc = class Assoc {
     this.deleteByIdNews();
     this.recupNews();
     this.updateNews();
+    this.showAllMessageByConversationId();
+    this.isFunder();
   }
 };
 
