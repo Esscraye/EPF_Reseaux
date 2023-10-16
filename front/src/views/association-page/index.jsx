@@ -3,8 +3,6 @@ import axios from 'axios';
 import Card from './Card';
 import config from '../../../config';
 
-
-
 function ViewAssociationPage() {
   const [cards, setCards] = useState([]);
 

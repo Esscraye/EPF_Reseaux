@@ -14,30 +14,42 @@ const getemailuser = () => {
 
 function ViewShowProfile() {
   const [infoPerso, setInfoPerso] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const queryString = window.location.search;
   const url = new URLSearchParams(queryString);
-  let emailsearch = url.get('email');
-  if (!emailsearch) {
-    emailsearch = getemailuser();
-  }
-  sessionStorage.setItem('emailsearch', emailsearch);
 
   useEffect(() => {
-    (async () => {
-      if (emailsearch) {
-        try {
-          const response = await axios.get(`${config.IP_API}/user/${emailsearch}`);
-          setInfoPerso(response.data);
-        } catch (error) {
-          throw new Error(error);
-        }
-      } else {
-        const response = await axios.get(`${config.IP_API}/user/${encodeURIComponent(emailsearch)}`);
+    const fetchData = async () => {
+      try {
+        const emailToSearch = url.get('email') || getemailuser();
+        sessionStorage.setItem('emailsearch', emailToSearch);
+
+        const response = await axios.get(`${config.IP_API}/user/${encodeURIComponent(emailToSearch)}`);
         setInfoPerso(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
       }
-    })();
+    };
+
+    fetchData();
   }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return (
+      <p>
+        Error:
+        {error.message}
+      </p>
+    );
+  }
 
   return (
     <section className="profil-intro">

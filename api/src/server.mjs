@@ -23,6 +23,7 @@ const Server = class Server {
     if (process.env.NODE_ENV === 'production') {
       const ssl_certificate =  fs.readFileSync(process.env.SSL_CERT);
       const ssl_certificate_key =  fs.readFileSync(process.env.SSL_KEY);
+      console.log('ssl_certificate', ssl_certificate);
       this.credentials = { key: ssl_certificate_key, cert: ssl_certificate };
     }
     this.app = express();
